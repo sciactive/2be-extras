@@ -17,7 +17,7 @@
    inkscape:version="0.47pre4 r22446"
    sodipodi:docname="pines.svg"
    style="display:inline"
-   inkscape:export-filename="/home/hunter/htdocs/pines/logo/pines.png"
+   inkscape:export-filename="/home/hunter/htdocs/tools/logo/pines.png"
    inkscape:export-xdpi="300"
    inkscape:export-ydpi="300">
   <defs
@@ -1084,19 +1084,85 @@
            in="SourceGraphic" />
       </feMerge>
     </filter>
+    <filter
+       id="filter3077"
+       inkscape:label="Drop shadow"
+       width="1.5"
+       height="1.5"
+       x="-.25"
+       y="-.25">
+      <feGaussianBlur
+         id="feGaussianBlur3079"
+         in="SourceAlpha"
+         stdDeviation="15.000000"
+         result="blur" />
+      <feColorMatrix
+         id="feColorMatrix3081"
+         result="bluralpha"
+         type="matrix"
+         values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1.000000 0 " />
+      <feOffset
+         id="feOffset3083"
+         in="bluralpha"
+         dx="0.000000"
+         dy="0.000000"
+         result="offsetBlur" />
+      <feMerge
+         id="feMerge3085">
+        <feMergeNode
+           id="feMergeNode3087"
+           in="offsetBlur" />
+        <feMergeNode
+           id="feMergeNode3089"
+           in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter
+       id="filter3091"
+       inkscape:label="Drop shadow"
+       width="1.5"
+       height="1.5"
+       x="-.25"
+       y="-.25">
+      <feGaussianBlur
+         id="feGaussianBlur3093"
+         in="SourceAlpha"
+         stdDeviation="15.000000"
+         result="blur" />
+      <feColorMatrix
+         id="feColorMatrix3095"
+         result="bluralpha"
+         type="matrix"
+         values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1.000000 0 " />
+      <feOffset
+         id="feOffset3097"
+         in="bluralpha"
+         dx="0.000000"
+         dy="0.000000"
+         result="offsetBlur" />
+      <feMerge
+         id="feMerge3099">
+        <feMergeNode
+           id="feMergeNode3101"
+           in="offsetBlur" />
+        <feMergeNode
+           id="feMergeNode3103"
+           in="SourceGraphic" />
+      </feMerge>
+    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
-     pagecolor="#ffffff"
+     pagecolor="#000000"
      bordercolor="#666666"
      borderopacity="1.0"
-     inkscape:pageopacity="0.0"
+     inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.175"
-     inkscape:cx="1598.9983"
-     inkscape:cy="558.75431"
+     inkscape:cx="1741.5743"
+     inkscape:cy="455.70915"
      inkscape:document-units="px"
-     inkscape:current-layer="layer4"
+     inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1280"
      inkscape:window-height="951"
@@ -1123,7 +1189,7 @@
      style="display:inline">
     <path
        sodipodi:type="arc"
-       style="fill:url(#linearGradient3675);fill-opacity:1;stroke:none"
+       style="fill:url(#linearGradient3675);fill-opacity:1;stroke:none;filter:url(#filter3091)"
        id="path2816"
        sodipodi:cx="388.57144"
        sodipodi:cy="635.2193"
@@ -1202,7 +1268,7 @@
      style="display:inline">
     <text
        xml:space="preserve"
-       style="font-size:878.97637939px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Mangal;-inkscape-font-specification:OpenSymbol Bold"
+       style="font-size:878.97637939000003371px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Mangal;-inkscape-font-specification:OpenSymbol Bold;filter:url(#filter3077)"
        x="1018.0848"
        y="545.49573"
        id="text3631"
