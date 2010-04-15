@@ -1,0 +1,33 @@
+<sales>
+	<sale>
+		<timestamp>2/22/2010 12:45</timestamp>
+		<customer>Juan Salvidor</customer>
+		<salesrep>Johnny Stillwater</salesrep>
+		<total>$474.39</total>
+		<items>
+			<item>
+				<price>$300.00</price>
+				<name>iPod Touch</name>
+				<description>New iPod Touch 8 GB w/Headphones</description>
+			</item>
+			<item>
+				<price>$74.39</price>
+				<name>Shoutzone Speakers</name>
+				<description>JL Audio Speaker Doc for iPod</description>
+			</item>
+		</items>
+	</sale>
+	<sale>
+		<timestamp>2/20/2010 3:12</timestamp>
+		<customer>Tom Dawson</customer>
+		<salesrep>Ashley Lee</salesrep>
+		<total>$755.77</total>
+		<items>
+			<item>
+				<price>$300.00</price>
+				<name>Samsung LCD TV</name>
+				<description>42" Flatscreen TV - Touch of Red</description>
+			</item>
+		</items>
+	</sale>
+</sales>

@@ -1,0 +1,18 @@
+slim1.0
+HEADER
+{"files":[{"type":"file","path":"testfile","offset":0,"size":69,"md5":"85b172952a7858f3b0ab595a080a24b3"},{"type":"link","path":"testfile link","target":"testfile"},{"type":"file","path":"slim format","offset":69,"size":376,"md5":"f38451c828e23b0150173a64b56b7075"}],"ichk":true}
+STREAM
+a test file
+
+if this works
+
+then this should be extracted
+
+CORRECTLY
+string (one line) (optional): "#!" then anything
+string (one line): anything then "slim1.0"
+anything here except a line with only "HEADER"
+string (one line): "HEADER"
+header (JSON of metadata and file array. if the first letter is "D", it means the JSON is compressed using deflate. file offsets refer to beginning of file stream as 0.)
+string (one line): "STREAM"
+file stream

@@ -1,0 +1,7 @@
+string (one line) (optional): "#!" then anything
+string (one line): anything then "slim1.0"
+anything here except a line with only "HEADER"
+string (one line): "HEADER"
+header (JSON of metadata and file array. if the first letter is "D", it means the JSON is compressed using deflate. file offsets refer to beginning of file stream as 0.)
+string (one line): "STREAM"
+file stream

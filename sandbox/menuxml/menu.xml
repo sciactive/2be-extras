@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menus>
+	<menu>
+		<name>Main Menu</name>
+		<position>main_menu</position>
+		<depends>
+			<!-- Simply check to see that the user is logged in, or no user management. -->
+			<ability />
+		</depends>
+
+		<entry>
+			<name>About</name>
+			<href>/about</href>
+			<onclick>alert("hello");</onclick>
+			<depends>
+				<ability>com_about/view</ability>
+			</depends>
+		</entry>
+
+		<entry>
+			<name>My Profile</name>
+			<depends>
+				<ability>com_profile/view</ability>
+			</depends>
+			<entry>
+				<!-- This should be hidden if user doesn't have com_profile/view. -->
+				<name>Edit Profile</name>
+				<href>/profile</href>
+			</entry>
+		</entry>
+		
+		<entry>
+			<name>Configuration</name>
+			<depends>
+				<!-- Pipe means or, &amp; means and. -->
+				<ability>com_configure/use&amp;(com_configure/view|com_configure/edit)</ability>
+			</depends>
+			
+			<entry>
+				<name>View</name>
+				<href>/configure/view</href>
+				<depends>
+					<ability>com_configure/view</ability>
+				</depends>
+			</entry>
+			
+			<entry>
+				<name>Edit</name>
+				<href>/configure/edit</href>
+				<depends>
+					<ability>com_configure/edit</ability>
+					<!-- Maybe not include this, I don't know. -->
+					<group>admin|root</group>
+				</depends>
+			</entry>
+		</entry>
+		
+		<entry>
+			<name>Log Manager</name>
+			<depends>
+				<ability>com_logger/view|com_logger/clear</ability>
+			</depends>
+			
+			<entry>
+				<name>View</name>
+				<href>/logger/view</href>
+				<depends>
+					<ability>com_logger/view</ability>
+				</depends>
+				
+				<entry>
+					<name>Only Today</name>
+					<href>/logger/view/?onlytoday=true</href>
+				</entry>
+			</entry>
+			
+			<entry>
+				<name>Clear</name>
+				<href>/logger/clear</href>
+				<depends>
+					<ability>com_logger/clear</ability>
+					<!-- Only visible while in com_logger. -->
+					<option>com_logger</option>
+					<!-- Only visible while in view action. -->
+					<action>view</action>
+					<!-- Not visible while in clear action. (Implied above) -->
+					<action>!clear</action>
+				</depends>
+			</entry>
+		</entry>
+	</menu>
+
+	<menu>
+		<name>Users</name>
+		<position>left</position>
+		<depends>
+			<option>com_user</option>
+		</depends>
+
+		<entry>
+			<name>New User</name>
+			<href>/user/edituser</href>
+			<depends>
+				<ability>com_user/newuser</ability>
+			</depends>
+		</entry>
+
+		<entry>
+			<name>New Group</name>
+			<href>/user/editgroup</href>
+			<depends>
+				<ability>com_user/newgroup</ability>
+			</depends>
+		</entry>
+	</menu>
+
+	<menu>
+		<name>Guests</name>
+		<position>left</position>
+
+		<entry>
+			<name>Visit</name>
+			<href>/visit</href>
+		</entry>
+	</menu>
+</menus>

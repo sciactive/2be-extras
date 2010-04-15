@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<title>Calendar</title>
+		<!-- jQuery -->
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
+		<!-- jQuery UI -->
+		<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/smoothness/jquery-ui.css" media="all" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.js"></script>
+		<style type="text/css">
+			/* <![CDATA[ */
+			#calendar {
+				float: left;
+				clear: left;
+			}
+			#calendar .label {
+				float: left;
+				clear: left;
+			}
+			#calendar .week {
+				float: left;
+				clear: left;
+			}
+			#calendar .day {
+				float: left;
+				width: 100px;
+				height: 100px;
+				border: 1px solid blue;
+			}
+			/* ]]> */
+		</style>
+		<script type="text/javascript">
+			// <![CDATA[
+
+			$(document).ready(function(){
+				var calendar = $("#calendar");
+				var date = new Date(2010, 1, 4);
+				calendar.append($("<div />", {
+						"class": "label",
+						"html": date.toDateString()
+					}));
+				date.setDate(1);
+				date.setHours(0);
+				date.setMinutes(0);
+				date.setSeconds(0);
+				date.setMilliseconds(0);
+				var cur_day = 1;
+
+				var cur_month = date.getMonth();
+				var cur_week_div = $("<div />", {
+					"class": "week"
+				}).appendTo(calendar);
+				do {
+					date.setDate(cur_day - 1);
+					cur_day = date.getDate();
+					cur_week_div.prepend($("<div />", {
+						"class": "day",
+						"html": cur_day
+					}));
+				} while (date.getDay() != 0);
+				date.setDate(1);
+				date.setMonth(cur_month);
+				while (date.getMonth() == cur_month || date.getDay() != 0) {
+					cur_day = date.getDate();
+					if (date.getDay() == 0) {
+						cur_week_div = $("<div />", {
+							"class": "week"
+						}).appendTo(calendar);
+					}
+					cur_week_div.append($("<div />", {
+						"class": "day",
+						"html": cur_day
+					}));
+					date.setDate(cur_day+1);
+				}
+			});
+
+			// ]]>
+		</script>
+	</head>
+	<body>
+		<div id="calendar"></div>
+	</body>
+</html>
