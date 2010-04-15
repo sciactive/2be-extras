@@ -4,9 +4,9 @@ echo Setting up directory structure.
 mkdir "jquery.pnotify"
 mkdir "jquery.pnotify/use for pines style icons"
 echo Importing files.
-cp "../pines/components/com_pnotify/includes/jquery.pnotify.default.icons.css" "jquery.pnotify/use for pines style icons/"
-cp "../pines/components/com_pnotify/includes/jquery.pnotify.default.css" "jquery.pnotify/"
-cp "../pines/components/com_pnotify/includes/jquery.pnotify.js" "jquery.pnotify/"
+cp "../../pines/pines/components/com_pnotify/includes/jquery.pnotify.default.icons.css" "jquery.pnotify/use for pines style icons/"
+cp "../../pines/pines/components/com_pnotify/includes/jquery.pnotify.default.css" "jquery.pnotify/"
+cp "../../pines/pines/components/com_pnotify/includes/jquery.pnotify.js" "jquery.pnotify/"
 
 echo Compressing JavaScript with Google Closure Compiler.
 head -n 8 jquery.pnotify/jquery.pnotify.js > jquery.pnotify/jquery.pnotify.min.js

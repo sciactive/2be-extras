@@ -3,8 +3,8 @@
 echo Setting up directory structure.
 mkdir "jquery.ptags"
 echo Importing files.
-cp "../pines/components/com_ptags/includes/jquery.ptags.default.css" "jquery.ptags/"
-cp "../pines/components/com_ptags/includes/jquery.ptags.js" "jquery.ptags/"
+cp "../../pines/pines/components/com_ptags/includes/jquery.ptags.default.css" "jquery.ptags/"
+cp "../../pines/pines/components/com_ptags/includes/jquery.ptags.js" "jquery.ptags/"
 
 echo Compressing JavaScript with Google Closure Compiler.
 head -n 8 jquery.ptags/jquery.ptags.js > jquery.ptags/jquery.ptags.min.js
