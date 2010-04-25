@@ -12,7 +12,7 @@
  *
  * @global string $working_dir
  */
-$working_dir = '../pines/system/css/tango-icon-theme/';
+$working_dir = '../../pines/system/css/tango-icon-theme/';
 
 
 $working_dir_regex = '/'.preg_quote($working_dir, '/').'/';

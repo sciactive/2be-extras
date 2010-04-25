@@ -5,7 +5,7 @@ function clean_filename($filename) {
 if (isset($_REQUEST['directory'])) {
 	$directory = clean_filename($_REQUEST['directory']);
 	if (empty($directory)) $directory = 'pines';
-	$directory = '../'.$directory;
+	$directory = '../../'.$directory;
 	$file = clean_filename($_REQUEST['file']);
 	switch ($_REQUEST['submit']) {
 		case "Build .php":
