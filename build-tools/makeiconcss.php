@@ -12,7 +12,7 @@
  *
  * @global string $working_dir
  */
-$working_dir = '../../pines/components/com_tangoicons/includes/tango/';
+$working_dir = '../../pines/components/com_oxygenicons/includes/oxygen/';
 
 $dir_iterator = new RecursiveDirectoryIterator($working_dir);
 $iterator = new RecursiveIteratorIterator($dir_iterator, RecursiveIteratorIterator::CHILD_FIRST);
