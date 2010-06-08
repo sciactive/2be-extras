@@ -23,11 +23,18 @@ foreach ($iterator as $file_path) {
 	$rel_file = substr($file_path, strlen($working_dir));
 	$dir = substr($rel_file, 0, strpos($rel_file, '/'));
 	$file = substr($rel_file, strrpos($rel_file, '/') + 1, -4);
-    $styles["picon_{$dir}_{$file}"] = $rel_file;
+	$file = str_replace('+', '_', $file);
+	if ($dir == '16') {
+		$styles[".picon-{$file}"] = $rel_file;
+	} else {
+		$styles[".picon-{$dir}.picon-{$file}"] = $rel_file;
+	}
 }
 
+ksort($styles);
+
 foreach ($styles as $key => $value) {
-	echo ".{$key} {background-image: url(\"{$value}\")}\n";
+	echo "{$key} {background-image:url(\"{$value}\")}\n";
 }
 
 exit;
