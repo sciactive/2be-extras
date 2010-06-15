@@ -14,9 +14,9 @@ java -jar compiler.jar --js=jquery.pgrid/jquery.pgrid.js >> jquery.pgrid/jquery.
 
 echo Zipping the whole directory.
 cd jquery.pgrid/
-zip -r jquery.pgrid.zip .
+zip -r pgrid.zip .
 cd ..
-mv jquery.pgrid/jquery.pgrid.zip .
+mv jquery.pgrid/pgrid.zip .
 
 echo Cleaning up.
 rm -r jquery.pgrid/

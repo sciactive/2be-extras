@@ -12,9 +12,9 @@ java -jar compiler.jar --js=jquery.ptags/jquery.ptags.js >> jquery.ptags/jquery.
 
 echo Zipping the whole directory.
 cd jquery.ptags/
-zip -r jquery.ptags.zip .
+zip -r ptags.zip .
 cd ..
-mv jquery.ptags/jquery.ptags.zip .
+mv jquery.ptags/ptags.zip .
 
 echo Cleaning up.
 rm -r jquery.ptags/

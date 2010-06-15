@@ -14,9 +14,9 @@ java -jar compiler.jar --js=jquery.pnotify/jquery.pnotify.js >> jquery.pnotify/j
 
 echo Zipping the whole directory.
 cd jquery.pnotify/
-zip -r jquery.pnotify.zip .
+zip -r pnotify.zip .
 cd ..
-mv jquery.pnotify/jquery.pnotify.zip .
+mv jquery.pnotify/pnotify.zip .
 
 echo Cleaning up.
 rm -r jquery.pnotify/
