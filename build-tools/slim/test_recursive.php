@@ -28,7 +28,7 @@ STREAM
 $arc->working_directory = '../';
 $arc->compression = '';
 $arc->header_compression = false;
-$arc->add_directory('archives', true, true, '/\.slm$/');
+$arc->add_directory('slim', true, true, '/\.slm$/');
 
 if ($arc->write('testrecursive.slm')) {
 	echo 'Regular archive written successfully. ';

@@ -9,31 +9,19 @@ if (isset($_REQUEST['directory'])) {
 	$file = clean_filename($_REQUEST['file']);
 	switch ($_REQUEST['submit']) {
 		case "Build .php":
-			$archive = file_get_contents('extract-template.php');
-			$tokens = token_get_all($archive);
-			$archive = '';
-			foreach ($tokens as $cur_token) {
-				$comment_tokens = array(T_COMMENT);
+			include('slim/archive.php');
 
-				if (defined('T_DOC_COMMENT'))
-					$comment_tokens[] = T_DOC_COMMENT;
-				if (defined('T_ML_COMMENT'))
-					$comment_tokens[] = T_ML_COMMENT;
-
-				if (is_array($cur_token)) {
-					if (in_array($cur_token[0], $comment_tokens))
-						continue;
-
-					$cur_token = $cur_token[1];
-				}
-
-				$archive .= $cur_token;
-			}
-			$archive = preg_replace('/\s+/s', ' ', $archive);
-			$archive = str_replace('\'#FILECONTENTS#\'', str_replace('\' . "\0" . \'', '\'."\0".\'', var_export(`cd $directory && tar -cjf - --exclude-vcs *`, true)), $archive);
+			$arc = new slim;
+			$arc->stub = file_get_contents('extract-template.php');
+			$arc->working_directory = $directory;
+			$arc->file_integrity = true;
+			$arc->add_directory('.');
 			//header('Content-Type: application/x-httpd-php');
-			header('Content-Type: application/xhtml+xml');
+			header('Content-Type: application/octet-stream');
 			header("Content-Disposition: attachment; filename=\"$file.php\"");
+
+			$arc->write('php://output');
+			exit;
 			break;
 		case "Build .tar.gz":
 			$archive = `cd $directory && tar -czf - --exclude-vcs *`;
