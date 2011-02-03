@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<book version="5.0" xmlns="http://docbook.org/ns/docbook"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:svg="http://www.w3.org/2000/svg"
+      xmlns:m="http://www.w3.org/1998/Math/MathML"
+      xmlns:html="http://www.w3.org/1999/xhtml"
+      xmlns:db="http://docbook.org/ns/docbook">
+  <info>
+    <title>Pines Development</title>
+
+    <author>
+      <personname><firstname>Hunter</firstname><surname>Perrin</surname></personname>
+
+      <affiliation>
+        <orgname>SciActive</orgname>
+      </affiliation>
+    </author>
+
+    <pubdate></pubdate>
+  </info>
+
+  <chapter>
+    <title>Introduction</title>
+
+    <para></para>
+  </chapter>
+
+  <chapter>
+    <title>Pines Core</title>
+
+    <section>
+      <title>Structure</title>
+
+      <section>
+        <title>File Structure</title>
+
+        <para>Pines has a strict and logical file structure. The system and
+        individual components have a similar file structure. Some less
+        important files and folders have been left out of the following list
+        for brevity.<itemizedlist>
+            <listitem>
+              <para><filename>components</filename> - Contains all currently
+              installed components.</para>
+            </listitem>
+
+            <listitem>
+              <para><filename>media</filename> - Contains uploaded and
+              installed media files.<itemizedlist>
+                  <listitem>
+                    <para><filename>images</filename> - Contains uploaded
+                    images.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><filename>logos</filename> - Contains logos,
+                    including Pines' default logo.</para>
+                  </listitem>
+                </itemizedlist></para>
+            </listitem>
+
+            <listitem>
+              <para><filename>system</filename> - Contains the Pines Core
+              code.<itemizedlist>
+                  <listitem>
+                    <para><filename>actions</filename> - Contains actions
+                    always available in Pines.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><filename>classes</filename> - Contains the core
+                    classes used by Pines.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><filename>init</filename> - Contains the system init
+                    scripts which build the Pines environment and control
+                    execution of scripts.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><filename>views</filename> - Contains views used by
+                    Pines Core.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><filename>defaults.php</filename> - The default
+                    configuration settings for Pines Core.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><filename>i01common.php</filename> - An init script
+                    which is run with the component init scripts. It sets up
+                    several shortcut functions and other useful
+                    functions.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><filename>info.php</filename> - The Pines Core
+                    information file. Contains information such as version
+                    number and core abilities.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><filename>menu.json</filename> - The main menu file.
+                    This sets up the main menu and its submenus.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><filename>offline.php</filename> - The file used to
+                    build the offline page.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><filename>template_error.php</filename> - The file
+                    used to inform of an error with the currently selected
+                    template.</para>
+                  </listitem>
+                </itemizedlist></para>
+            </listitem>
+
+            <listitem>
+              <para><filename>templates</filename> - Contains all currently
+              installed templates.</para>
+            </listitem>
+
+            <listitem>
+              <para><filename>index.php</filename> - The main controller
+              script. This sets up some constants, then immediately executes
+              the system init scripts.</para>
+            </listitem>
+          </itemizedlist></para>
+      </section>
+
+      <section>
+        <title>Object Structure</title>
+
+        <para>Pines is structured almost entirely around the Pines object,
+        <varname>$pines</varname>. The variable is created in the global scope
+        by the system init script, <filename>i30load_system.php</filename>. To
+        use the variable in any function or method, declare it using the
+        <keysym>global</keysym> keyword.</para>
+
+        <para><example>
+            <title>Using <varname>$pines</varname> in a function or
+            method.</title>
+
+            <programlisting>function example() {
+    global $pines;
+    $pines-&gt;something();
+}</programlisting>
+          </example></para>
+
+        <para>Several core services are loaded as variables of
+        <varname>$pines</varname>. See the <link linkend="core_services">Core
+        Services</link> section for an explanation of these
+        services.<itemizedlist>
+            <listitem>
+              <para><varname>$pines-&gt;info</varname></para>
+            </listitem>
+
+            <listitem>
+              <para><varname>$pines-&gt;config</varname></para>
+            </listitem>
+
+            <listitem>
+              <para><varname>$pines-&gt;hook</varname></para>
+            </listitem>
+
+            <listitem>
+              <para><varname>$pines-&gt;depend</varname></para>
+            </listitem>
+
+            <listitem>
+              <para><varname>$pines-&gt;menu</varname></para>
+            </listitem>
+
+            <listitem>
+              <para><varname>$pines-&gt;page</varname></para>
+            </listitem>
+          </itemizedlist></para>
+
+        <para><varname>$pines</varname> also contains some useful
+        variables.<itemizedlist>
+            <listitem>
+              <para><varname>$pines-&gt;components</varname> - An array of the
+              enabled components.</para>
+            </listitem>
+
+            <listitem>
+              <para><varname>$pines-&gt;all_components</varname> - An array of
+              all installed components.</para>
+            </listitem>
+
+            <listitem>
+              <para><varname>$pines-&gt;services</varname> - An array of the
+              provided system services.</para>
+            </listitem>
+
+            <listitem>
+              <para><varname>$pines-&gt;request_component</varname> - The
+              requested component. This is passed as the request variable
+              "option".</para>
+            </listitem>
+
+            <listitem>
+              <para><varname>$pines-&gt;request_action</varname> - The
+              requested action. This is passed as the request variable
+              "action".</para>
+            </listitem>
+
+            <listitem>
+              <para><varname>$pines-&gt;component</varname> - The currently
+              running or most recently called component/option.</para>
+            </listitem>
+
+            <listitem>
+              <para><varname>$pines-&gt;action</varname> - The currently
+              running or most recently called action.</para>
+            </listitem>
+          </itemizedlist></para>
+
+        <para>The following variables are not loaded until after the component
+        init scripts are run.<itemizedlist>
+            <listitem>
+              <para><varname>$pines-&gt;current_template</varname> - The name
+              of the current template.</para>
+            </listitem>
+
+            <listitem>
+              <para><varname>$pines-&gt;template</varname> - The current
+              template object.</para>
+            </listitem>
+          </itemizedlist></para>
+      </section>
+    </section>
+
+    <section xml:id="core_services">
+      <title>Core Services</title>
+
+      <section>
+        <title>Config (<classname>config</classname> class)</title>
+
+        <para>The config service loads configuration for both Pines and any
+        components. The configuration for Pines is always loaded, and
+        components' configuration is loaded the first time it is accessed
+        during each script run. Config will start by loading the
+        <filename>defaults.php</filename> file (if it exists) in the
+        component's directory. The return value from this file is an array
+        which is used to load configuration variables. Each array entry should
+        be an associative array containing the following entries:<itemizedlist>
+            <listitem>
+              <para>name - The configuration option's name. This is used to
+              access it from code.</para>
+            </listitem>
+
+            <listitem>
+              <para>cname - A canonical name. This is displayed to the user
+              when setting the option.</para>
+            </listitem>
+
+            <listitem>
+              <para>description - A description of the configuration
+              option.</para>
+            </listitem>
+
+            <listitem>
+              <para>value - The default value of the configuration
+              option.</para>
+            </listitem>
+
+            <listitem>
+              <para>options - (Optional) An array of the possible values of
+              the option.</para>
+            </listitem>
+
+            <listitem>
+              <para>peruser - (Optional) A boolean determining whether the
+              option can be set on a per user basis.</para>
+            </listitem>
+          </itemizedlist></para>
+
+        <para><caution>
+            <para>Calling a function in a <filename>defaults.php</filename>
+            file will use extra resources when the configuration variable for
+            the component is first accessed on each request, even if the
+            configuration has been set to a non-default value.</para>
+          </caution></para>
+
+        <para>Config will then load the <filename>config.php</filename> file
+        (if it exists) in the component's directory. This file is generated by
+        the configurator service and stores user specified configuration. The
+        file is structured the same, except that each entry only contains
+        "name" and "value".</para>
+
+        <para>The configuration is built using these files, and placed into an
+        object named after the component on the first attempted access of the
+        object. Pines' configuration options are placed in the config object
+        itself.<example>
+            <title>Accessing Configuration for Pines and Components</title>
+
+            <programlisting>// Access Pines' "system_name" configuration option:
+echo $pines-&gt;config-&gt;system_name;
+
+// Access a component's "website_name" configuration option:
+echo $pines-&gt;config-&gt;com_example-&gt;website_name;</programlisting>
+
+            <caution>
+              <para>Configuration options are not cleaned or checked (except
+              when an options array is used). When you are inserting them into
+              HTML, they should be escaped with
+              <function>htmlspecialchars()</function>.</para>
+            </caution>
+          </example></para>
+      </section>
+
+      <section>
+        <title>Depend (<classname>depend</classname> class)</title>
+
+        <para>The depend service manages and runs dependency checkers. It
+        includes several dependency checkers by default.<itemizedlist>
+            <listitem>
+              <para>ability - Check that the current user has certain
+              abilities.</para>
+            </listitem>
+
+            <listitem>
+              <para>action - Check the currently running or originally
+              requested action.</para>
+            </listitem>
+
+            <listitem>
+              <para>class - Check whether classes exist.</para>
+            </listitem>
+
+            <listitem>
+              <para>clientip - Check the client's IP address.</para>
+            </listitem>
+
+            <listitem>
+              <para>component - Check whether components are installed,
+              enabled, and are certain versions.</para>
+            </listitem>
+
+            <listitem>
+              <para>function - Check whether functions exist.</para>
+            </listitem>
+
+            <listitem>
+              <para>host - Check the requested server hostname. Uses the
+              hostname provided by the client in the HTTP request.</para>
+            </listitem>
+
+            <listitem>
+              <para>option - Check the currently running or originally
+              requested component.</para>
+            </listitem>
+
+            <listitem>
+              <para>php - Check PHP's version.</para>
+            </listitem>
+
+            <listitem>
+              <para>pines - Check Pine's version.</para>
+            </listitem>
+
+            <listitem>
+              <para>service - Check the available system services.</para>
+            </listitem>
+          </itemizedlist></para>
+
+        <para>To check a dependency, use the <methodname>check()</methodname>
+        method. It will return true if the value passes the check, or false if
+        it does not.<example>
+            <title>Using the Dependency Checker</title>
+
+            <programlisting>if (!$pines-&gt;depend-&gt;check('component', 'com_example&gt;=2.0|com_sample')) {
+    pines_notice('This feature is only available when you have com_example 2.0 or greater, or com_sample.');
+    return;
+}</programlisting>
+          </example></para>
+
+        <para></para>
+      </section>
+
+      <section>
+        <title>Hook (<classname>hook</classname> class)</title>
+
+        <para></para>
+      </section>
+
+      <section>
+        <title>Info (<classname>info</classname> class)</title>
+
+        <para></para>
+      </section>
+
+      <section>
+        <title>Menu (<classname>menu</classname> class)</title>
+
+        <para></para>
+      </section>
+
+      <section>
+        <title>Page (<classname>page</classname> class)</title>
+
+        <para></para>
+      </section>
+    </section>
+
+    <section>
+      <title>Core Functions</title>
+
+      <para>Pines' core includes several functions. Most of these functions
+      are just shortcuts to common functions of the Pines object and
+      services.<itemizedlist>
+          <listitem>
+            <para><function>action</function> - Execute a component's
+            action.</para>
+          </listitem>
+
+          <listitem>
+            <para><function>clean_checkbox</function> - Clean the name of a
+            checkbox to use in an HTML form.</para>
+          </listitem>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </itemizedlist></para>
+
+      <section>
+        <title>Pines Object</title>
+
+        <para></para>
+      </section>
+    </section>
+
+    <section>
+      <title>Core Classes</title>
+
+      <section>
+        <title>Module</title>
+
+        <para></para>
+      </section>
+    </section>
+
+    <section>
+      <title>Order of Execution</title>
+
+      <para></para>
+    </section>
+  </chapter>
+
+  <chapter>
+    <title>System Services</title>
+
+    <section>
+      <title>Configurator</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Editor</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Entity Manager</title>
+
+      <para><example>
+          <title>Accessing the Entity Manager</title>
+
+          <programlisting>function example() {
+    global $pines;
+    $pines-&gt;entity_manager
+}</programlisting>
+        </example></para>
+    </section>
+
+    <section>
+      <title>Icons</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Log Manager</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Template</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Uploader</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>User Manager</title>
+
+      <para></para>
+    </section>
+  </chapter>
+
+  <chapter>
+    <title>Special Classes</title>
+
+    <section>
+      <title>Configurator Component</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Component</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Entity</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Group</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>User</title>
+
+      <para></para>
+    </section>
+  </chapter>
+
+  <chapter>
+    <title>Components</title>
+
+    <section>
+      <title>Component Design</title>
+
+      <para></para>
+    </section>
+  </chapter>
+
+  <chapter>
+    <title>Templates</title>
+
+    <section>
+      <title>Template Design</title>
+
+      <para></para>
+    </section>
+  </chapter>
+
+  <chapter>
+    <title>Packaging</title>
+
+    <para></para>
+  </chapter>
+</book>
