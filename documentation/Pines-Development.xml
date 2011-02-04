@@ -528,6 +528,289 @@ else
       </section>
     </section>
 
+    <section>
+      <title>Pines Object</title>
+
+      <para>As well as containing services and variables, the Pines object
+      (<varname>$pines</varname>) also includes several useful methods.</para>
+
+      <section>
+        <title>Running an Action</title>
+
+        <para>To run an action, use the <methodname>action</methodname>
+        method. Actions are run automatically when requested in the URL by the
+        client. The "option" request variable determines the component to
+        which the action belongs, and the "action" request variable determines
+        which action to run. The action is run by the system init script
+        <filename>i60action.php</filename>.</para>
+
+        <para>Sometimes, actions need to be run manually in code. For example,
+        the default action (<filename>default.php</filename> in a component's
+        <filename>action</filename> directory) can be used to direct the user
+        to a common action by calling <methodname>action</methodname>.</para>
+
+        <para>When an action is run, <methodname>action</methodname> will look
+        in the component's <filename>action</filename> directory for a file
+        with the same name as the desired action (with .php appended). If the
+        desired component is "system", Pines will instead look in the system's
+        <filename>action</filename> directory. If no action was specified,
+        <methodname>action</methodname> will look for a
+        <filename>default.php</filename> file. If no component was specified,
+        <methodname>action</methodname> will use the default component
+        specified in Pines' configuration. Once the correct file is found,
+        <methodname>action</methodname> will run the file. The
+        <varname>$pines</varname> variable is already included when the file
+        is run, so there is no need to include it with the
+        <keysym>global</keysym> keyword.<note>
+            <para>Since actions are run inside a function, they are not in the
+            global scope. This means actions don't have to clean up variables
+            and need not worry about naming collisions.</para>
+          </note></para>
+
+        <para>If no action file was found for the given arguments,
+        <methodname>action</methodname> will return the string "error_404".
+        Otherwise, it will return the value returned by the action file. If
+        <filename>i60action.php</filename> receives "error_404" when it runs
+        the requested action, it will attach a module with the system's
+        "error_404" view into the page's "content" position and send a 404
+        HTTP status code. This means your action can return the string
+        "error_404" if the requested information is not found and a 404 error
+        will be sent to the client.<example>
+            <title>Manually Running an Action</title>
+
+            <programlisting>// Run a specific action.
+$pines-&gt;action('com_example', 'widgets/list');
+
+// Run a component's default action.
+$pines-&gt;action('com_example');
+
+// Run the default component's default action.
+$pines-&gt;action();</programlisting>
+          </example></para>
+      </section>
+
+      <section>
+        <title>Checking an IP Address</title>
+
+        <para>There are three methods of checking whether an IP address is on
+        a given network in the Pines object.</para>
+
+        <simplesect>
+          <title>Using CIDR Notation</title>
+
+          <para>You can use <methodname>check_ip_cidr</methodname> to check an
+          IP address using the CIDR notation of a network.<example>
+              <title>Checking an IP Using CIDR Notation</title>
+
+              <programlisting>$good = $pines-&gt;check_ip_cidr('192.168.0.5', '192.168/24'); // Returns true.
+
+$bad = $pines-&gt;check_ip_cidr('192.168.1.5', '192.168/24'); // Returns false.</programlisting>
+            </example></para>
+        </simplesect>
+
+        <simplesect>
+          <title>Using an IP Range</title>
+
+          <para>You can use <methodname>check_ip_range</methodname> to check
+          an IP address using an IP range.<example>
+              <title>Checking an IP Using an IP Range</title>
+
+              <programlisting>$good = $pines-&gt;check_ip_range('192.168.0.5', '192.168.0.0', '192.168.0.255'); // Returns true.
+
+$bad = $pines-&gt;check_ip_range('192.168.1.5', '192.168.0.0', '192.168.0.255'); // Returns false.</programlisting>
+            </example></para>
+        </simplesect>
+
+        <simplesect>
+          <title>Using a Subnet Mask</title>
+
+          <para>You can use <methodname>check_ip_subnet</methodname> to check
+          an IP address using the subnet mask of a network.<example>
+              <title>Checking an IP Using a Subnet Mask</title>
+
+              <programlisting>$good = $pines-&gt;check_ip_subnet('192.168.0.5', '192.168.0.0', '255.255.255.0'); // Returns true.
+
+$bad = $pines-&gt;check_ip_subnet('192.168.1.5', '192.168.0.0', '255.255.255.0'); // Returns false.</programlisting>
+            </example></para>
+        </simplesect>
+      </section>
+
+      <section>
+        <title>Formatting Output</title>
+
+        <para>There are several types of content that need to be formatted
+        correctly before being output to the user. The Pines object provides
+        functions to allow easy formatting of this data.</para>
+
+        <section>
+          <title>Formatting Content</title>
+
+          <para>To format content, use
+          <methodname>format_content</methodname>. By itself,
+          <methodname>format_content</methodname> does nothing. Its purpose is
+          to provide a way for components to alter content before it is shown
+          to the client. By using this method to format your component's
+          content before outputting it, you allow other components to use the
+          hooking system to provide special alterations to your content. This
+          is meant to provide things like string replacements, inline modules,
+          HTML cleansers, etc. This does not mean you should always run
+          content through this method. Certain types of content, such as page
+          text, blog post text, product descriptions, etc are appropriate for
+          content formatting. However, content such as user comments, forum
+          posts, etc may allow an unprivileged user to use dangerous services
+          if run through the formatter. A good idea may be to use a
+          configuration option to allow certain content to be altered by other
+          components. Generally only user provided content should ever be
+          formatted. Content like your component's forms should most likely
+          never be formatted.<example>
+              <title>Formatting Content for Output</title>
+
+              <programlisting>&lt;div&gt;
+    &lt;?php echo $pines-&gt;format_content($post-&gt;content); ?&gt;
+&lt;/div&gt;</programlisting>
+            </example></para>
+
+          <para>As mentioned, components can hook this function to provide
+          special alterations to content. See the <link
+          linkend="hook">Hook</link> section in <link
+          linkend="core_services">Core Services</link> for information about
+          hooks.<example>
+              <title>Using a Hook to Alter Content</title>
+
+              <programlisting>// Replace the word "Pines" with "Barbecue".
+function com_example__replace(&amp;$arguments) {
+    $arguments[0] = str_replace('Pines', 'Barbecue', $arguments[0]);
+}
+
+$pines-&gt;hook-&gt;add_callback('$pines-&gt;format_content', -10, 'com_example__replace');</programlisting>
+            </example></para>
+        </section>
+
+        <section>
+          <title>Formatting a Date / Time</title>
+
+          <para>To format a date or time using a timestamp, use
+          <methodname>format_date</methodname>. The current user's timezone is
+          automatically loaded by the user manager and used for calculations.
+          You can also pass <methodname>format_date</methodname> a timezone to
+          use. When using a custom format, any format recognized by the
+          <methodname>format</methodname> method of the
+          <classname>DateTime</classname> class can be used.
+          <methodname>format_date</methodname> supports the following
+          types:<itemizedlist>
+              <listitem>
+                <para>full_sort - <code>"Y-m-d H:i T"</code> - Date and time,
+                big endian and 24 hour format so it is sortable.</para>
+              </listitem>
+
+              <listitem>
+                <para>full_long - <code>"l, F j, Y g:i A T"</code> - Date and
+                time, long format.</para>
+              </listitem>
+
+              <listitem>
+                <para>full_med - <code>"j M Y g:i A T"</code> - Date and time,
+                medium format.</para>
+              </listitem>
+
+              <listitem>
+                <para>full_short - <code>"n/d/Y g:i A T"</code> - Date and
+                time, short format.</para>
+              </listitem>
+
+              <listitem>
+                <para>date_sort - <code>"Y-m-d"</code> - Only the date, big
+                endian so it is sortable.</para>
+              </listitem>
+
+              <listitem>
+                <para>date_long - <code>"l, F j, Y"</code> - Only the date,
+                long format.</para>
+              </listitem>
+
+              <listitem>
+                <para>date_med - <code>"j M Y"</code> - Only the date, medium
+                format.</para>
+              </listitem>
+
+              <listitem>
+                <para>date_short - <code>"n/d/Y"</code> - Only the date, short
+                format.</para>
+              </listitem>
+
+              <listitem>
+                <para>time_sort - <code>"H:i T"</code> - Only the time, 24
+                hour format so it is sortable.</para>
+              </listitem>
+
+              <listitem>
+                <para>time_long - <code>"g:i:s A T"</code> - Only the time,
+                long format.</para>
+              </listitem>
+
+              <listitem>
+                <para>time_med - <code>"g:i:s A"</code> - Only the time,
+                medium format.</para>
+              </listitem>
+
+              <listitem>
+                <para>time_short - <code>"g:i A"</code> - Only the time, short
+                format.</para>
+              </listitem>
+
+              <listitem>
+                <para>custom - Use whatever is passed in
+                <varname>$format</varname>.</para>
+              </listitem>
+            </itemizedlist><example>
+              <title>Formatting a Date</title>
+
+              <programlisting>&lt;div&gt;
+    &lt;?php echo $pines-&gt;format_date($timestamp, 'custom', 'l jS \of F Y h:i:s A', 'America/Los_Angeles'); ?&gt;
+&lt;/div&gt;</programlisting>
+            </example></para>
+        </section>
+
+        <section>
+          <title>Formatting a Phone Number</title>
+
+          <para>To format a phone number, use
+          <methodname>format_phone</methodname>. It uses US phone number
+          format. E.g. "(800) 555-1234 x56".<example>
+              <title>Formatting a Phone Number</title>
+
+              <programlisting>&lt;div&gt;
+    &lt;?php echo $pines-&gt;format_phone('1800555123456'); ?&gt;
+&lt;/div&gt;</programlisting>
+            </example></para>
+        </section>
+      </section>
+
+      <section>
+        <title>Redirecting the User</title>
+
+        <para>The Pines object includes <methodname>redirect</methodname>, a
+        method to redirect users to a different URL. Using this method ensures
+        that any messages and errors that are queued to be displayed to the
+        user will be displayed when the user reaches the destination URL,
+        assuming that URL is also handled by the same Pines installation. The
+        HTTP status code returned to the client can be changed and defaults to
+        303 See Other.<example>
+            <title>Redirecting the User</title>
+
+            <programlisting>// Notices and errors will be saved.
+pines_notice('You have been redirected here.');
+$pines-&gt;redirect(pines_url('com_example', 'widgets/list'));
+
+// Redirect to the homepage.
+$pines-&gt;redirect(pines_url());
+
+// Use a permanent redirection code.
+$pines-&gt;redirect(pines_url('com_example', 'widgets/list'), 301);</programlisting>
+          </example></para>
+      </section>
+    </section>
+
     <section xml:id="core_services">
       <title>Core Services</title>
 
@@ -600,14 +883,14 @@ echo $pines-&gt;config-&gt;com_example-&gt;website_name;
 
 // Access a template's "tagline" configuration option:
 echo $pines-&gt;config-&gt;tpl_green-&gt;tagline;</programlisting>
-
-            <caution>
-              <para>Configuration options are not cleaned or checked (except
-              when an options array is used). When you are inserting them into
-              HTML, they should be escaped with
-              <function>htmlspecialchars()</function>.</para>
-            </caution>
           </example></para>
+
+        <caution>
+          <para>Configuration options are not cleaned or checked (except when
+          an options array is used). When you are inserting them into HTML,
+          they should be escaped with
+          <function>htmlspecialchars()</function>.</para>
+        </caution>
       </section>
 
       <section>
@@ -757,7 +1040,7 @@ $pines-&gt;depend-&gt;checkers['something'] = 'com_example__check_something';</p
         </note>
       </section>
 
-      <section>
+      <section xml:id="hook">
         <title>Hook (<classname>hook</classname> class)</title>
 
         <para>The hook service provides method hooking for the entire
@@ -1290,7 +1573,7 @@ $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
 
         <para>The page is rendered when the system init script
         <filename>i90render.php</filename> calls
-        <methodname>render()</methodname>. If the page is overriden, the
+        <methodname>render()</methodname>. If the page is overridden, the
         override document is returned. Otherwise, each module is rendered
         individually, then the template's <filename>template.php</filename>
         file is run. Because each module is rendered before the page, a module
@@ -1311,12 +1594,12 @@ $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
     <section>
       <title>Core Functions</title>
 
-      <para>Pines' core includes several functions. Most of these functions
-      are just shortcuts to common functions of the Pines object and
+      <para>Pines Core includes several functions. Most of these functions are
+      just shortcuts to common methods of the Pines object and system
       services.<itemizedlist>
           <listitem>
-            <para><function>action</function> - Execute a component's
-            action.</para>
+            <para><function>action</function> - Shortcut to
+            <code>$pines-&gt;action()</code>.</para>
           </listitem>
 
           <listitem>
@@ -1325,15 +1608,83 @@ $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
           </listitem>
 
           <listitem>
-            <para></para>
+            <para><function>clean_filename</function> - Clean a filename, so
+            it doesn't refer to any parent directories.</para>
+          </listitem>
+
+          <listitem>
+            <para><function>format_content</function> - Shortcut to
+            <code>$pines-&gt;format_content()</code>.</para>
+          </listitem>
+
+          <listitem>
+            <para><function>format_date</function> - Shortcut to
+            <code>$pines-&gt;format_date()</code>.</para>
+          </listitem>
+
+          <listitem>
+            <para><function>format_phone</function> - Shortcut to
+            <code>$pines-&gt;format_phone()</code>.</para>
+          </listitem>
+
+          <listitem>
+            <para><function>gatekeeper</function> - Shortcut to
+            <code>$pines-&gt;user_manager-&gt;gatekeeper()</code>.<note>
+                <para>If no user manager is installed,
+                <function>gatekeeper</function> returns true.</para>
+              </note></para>
+          </listitem>
+
+          <listitem>
+            <para><function>is_clean_filename</function> - Check whether a
+            filename refers to any parent directories.</para>
+          </listitem>
+
+          <listitem>
+            <para><function>pines_depend</function> - Shortcut to
+            <code>$pines-&gt;depend-&gt;check()</code>.</para>
+          </listitem>
+
+          <listitem>
+            <para><function>pines_error</function> - Shortcut to
+            <code>$pines-&gt;page-&gt;error()</code>.</para>
+          </listitem>
+
+          <listitem>
+            <para><function>pines_log</function> - Shortcut to
+            <code>$pines-&gt;log_manager-&gt;log()</code>.<note>
+                <para>If no log manager is installed,
+                <function>pines_log</function> returns true.</para>
+              </note></para>
+          </listitem>
+
+          <listitem>
+            <para><function>pines_notice</function> - Shortcut to
+            <code>$pines-&gt;page-&gt;notice()</code>.</para>
+          </listitem>
+
+          <listitem>
+            <para><function>pines_url</function> - Shortcut to
+            <code>$pines-&gt;template-&gt;url()</code>.<note>
+                <para>If there is no current template,
+                <function>pines_url</function> returns null.</para>
+              </note></para>
+          </listitem>
+
+          <listitem>
+            <para><function>punt_user</function> - Shortcut to
+            <code>$pines-&gt;user_manager-&gt;punt_user()</code>.<note>
+                <para>If no user manager is installed
+                <function>punt_user</function> redirects the user to the
+                homepage.</para>
+              </note></para>
+          </listitem>
+
+          <listitem>
+            <para><function>redirect</function> - Shortcut to
+            <code>$pines-&gt;redirect()</code>.</para>
           </listitem>
         </itemizedlist></para>
-
-      <section>
-        <title>Pines Object</title>
-
-        <para></para>
-      </section>
     </section>
 
     <section>
