@@ -17,141 +17,193 @@
       </affiliation>
     </author>
 
-    <pubdate></pubdate>
+    <copyright>
+      <year>2010</year>
+
+      <holder>Hunter Perrin. All rights reserved.</holder>
+    </copyright>
   </info>
 
-  <chapter>
-    <title>Introduction</title>
+  <preface>
+    <title>Preface</title>
 
     <para></para>
-  </chapter>
+  </preface>
 
-  <chapter>
-    <title>Getting Started</title>
+  <part>
+    <title>The Pines Framework</title>
 
-    <section>
-      <title>Setting Up an Environment</title>
-
-      <para></para>
-    </section>
-
-    <section>
-      <title>Getting Pines</title>
-
-      <para>There are several sites which host Pines, and Pines related
-      software.<itemizedlist>
-          <listitem>
-            <para>http://sourceforge.net/projects/pines/ - The Pines project
-            page on SourceForge. This is where almost everything about Pines
-            can be found.</para>
-          </listitem>
-
-          <listitem>
-            <para>http://pines.sourceforge.net/ - Pines' main website.</para>
-          </listitem>
-
-          <listitem>
-            <para>http://pines.sourceforge.net/pines-docs/ - Pines API
-            Documentation. This can be very helpful to have handy while you
-            are learning Pines development. Before using Pines' advanced
-            features, I recommend reading through the related API
-            documentation to ensure you have a firm understanding of how
-            Pines' features work and how to use them.</para>
-          </listitem>
-
-          <listitem>
-            <para>http://www.sciactive.com/ - Pines' main developer's
-            website.</para>
-          </listitem>
-
-          <listitem>
-            <para>http://www.pinesplaza.com/ - The official Pines Repository.
-            Pines components and templates are hosted and distributed here.
-            You can get a free account and distribute your software through
-            Pines Plaza.</para>
-          </listitem>
-        </itemizedlist></para>
-
-      <para>Pines, and its related projects are available in Mercurial
-      repositories from SourceForge.<itemizedlist>
-          <listitem>
-            <para>http://pines.hg.sourceforge.net:8000/hgroot/pines/pines -
-            Main repository. Contains Pines Core, and official
-            components.</para>
-          </listitem>
-
-          <listitem>
-            <para>http://pines.hg.sourceforge.net:8000/hgroot/pines/pform -
-            Pines Form.</para>
-          </listitem>
-
-          <listitem>
-            <para>http://pines.hg.sourceforge.net:8000/hgroot/pines/pgrid -
-            Pines Grid.</para>
-          </listitem>
-
-          <listitem>
-            <para>http://pines.hg.sourceforge.net:8000/hgroot/pines/pnotify -
-            Pines Notify.</para>
-          </listitem>
-
-          <listitem>
-            <para>http://pines.hg.sourceforge.net:8000/hgroot/pines/ptags -
-            Pines Tags.</para>
-          </listitem>
-
-          <listitem>
-            <para>http://pines.hg.sourceforge.net:8000/hgroot/pines/tools -
-            Build tools, documentation, logo sources, and other various
-            tools.</para>
-          </listitem>
-
-          <listitem>
-            <para>http://pines.hg.sourceforge.net:8000/hgroot/pines/cash-drawer
-            - Pines POS Cash Drawer Firefox Extension</para>
-          </listitem>
-        </itemizedlist></para>
-
-      <para>To get a local copy of Pines for testing or development, clone the
-      Mercurial repository.</para>
-
-      <para><programlisting>mkdir pines
-hg clone http://pines.hg.sourceforge.net:8000/hgroot/pines/pines pines</programlisting></para>
-
-      <para>To update your local repository and get the latest code, pull
-      changes and update.<programlisting>hg pull
-hg up</programlisting></para>
-
-      <para>I recommend using a Mercurial GUI to make using the repository
-      easier. I use TortoiseHG (http://tortoisehg.org/).</para>
-    </section>
-
-    <section>
-      <title>Coding Style</title>
-
-      <note>
-        <para>This coding style is the style used by Pines Core and the
-        SciActive maintained components/templates. If you are submitting a
-        patch, please keep it written in this style. In your own
-        components/templates you are free to use whatever style you
-        like.</para>
-      </note>
+    <chapter>
+      <title>Pines</title>
 
       <section>
-        <title>Indentation</title>
+        <title>What is Pines?</title>
 
-        <para>Indentation is done with one tab character. The examples in this
-        book use four space characters, simply because the program used to
-        write it does not allow tabs. Cases in a switch are indented.
-        Arguments of a function call are indented once, with the exception of
-        entity manager queries, which should be indented twice. This is in
-        order to accurately and quickly find and understand entity manager
-        queries in a function. In each selector of an entity manager query,
-        the selector type should be placed on the line with the opening
-        "array(".<example>
-            <title>Indentation</title>
+        <para></para>
+      </section>
+    </chapter>
 
-            <programlisting>if ($var) {
+    <chapter>
+      <title>Getting Started</title>
+
+      <section>
+        <title>Setting Up an Environment</title>
+
+        <para>The first and most important thing you need to develop for Pines
+        is a web server. Pines is designed for Apache on Linux, but it will
+        work fine on most setups. If you are planning on using the entity
+        manager, which is the easiest way to store and manipulate data in
+        Pines, you will also most likely need a database server. MySQL works
+        well with Pines, and is officially supported by SciActive. I recommend
+        using an IDE, such as NetBeans or Eclipse. Both have great PHP
+        support. Once you have Pines set up and you are ready to make your own
+        components/templates, you can use symlinks to test them with different
+        Pines setups.</para>
+      </section>
+
+      <section>
+        <title>Getting Pines</title>
+
+        <para>There are several sites which host Pines, and Pines related
+        software.<itemizedlist>
+            <listitem>
+              <para><link
+              xlink:href="http://sourceforge.net/projects/pines/">http://sourceforge.net/projects/pines/</link></para>
+
+              <para>The Pines project page on SourceForge. This is where
+              almost everything about Pines can be found.</para>
+            </listitem>
+
+            <listitem>
+              <para><link
+              xlink:href="http://pines.sourceforge.net/">http://pines.sourceforge.net/</link></para>
+
+              <para>Pines' main website.</para>
+            </listitem>
+
+            <listitem>
+              <para><link
+              xlink:href="http://pines.sourceforge.net/pines-docs/">http://pines.sourceforge.net/pines-docs/</link></para>
+
+              <para>Pines API Documentation. This can be very helpful to have
+              handy while you are learning Pines development. Before using
+              Pines' advanced features, I recommend reading through the
+              related API documentation to ensure you have a firm
+              understanding of how Pines' features work and how to use
+              them.</para>
+            </listitem>
+
+            <listitem>
+              <para><link
+              xlink:href="http://www.sciactive.com/">http://www.sciactive.com/</link></para>
+
+              <para>Pines' main developer's website.</para>
+            </listitem>
+
+            <listitem>
+              <para><link
+              xlink:href="http://www.pinesplaza.com/">http://www.pinesplaza.com/</link></para>
+
+              <para>The official Pines Repository. Pines components and
+              templates are hosted and distributed here. You can get a free
+              account and distribute your software through Pines Plaza.</para>
+            </listitem>
+          </itemizedlist></para>
+
+        <para>Pines, and its related projects are available in Mercurial
+        repositories from SourceForge.<itemizedlist>
+            <listitem>
+              <para><link
+              xlink:href="http://pines.hg.sourceforge.net:8000/hgroot/pines/pines">http://pines.hg.sourceforge.net:8000/hgroot/pines/pines</link></para>
+
+              <para>Main repository. Contains Pines Core, and official
+              components.</para>
+            </listitem>
+
+            <listitem>
+              <para><link
+              xlink:href="http://pines.hg.sourceforge.net:8000/hgroot/pines/pform">http://pines.hg.sourceforge.net:8000/hgroot/pines/pform</link></para>
+
+              <para>Pines Form.</para>
+            </listitem>
+
+            <listitem>
+              <para><link
+              xlink:href="http://pines.hg.sourceforge.net:8000/hgroot/pines/pgrid">http://pines.hg.sourceforge.net:8000/hgroot/pines/pgrid</link></para>
+
+              <para>Pines Grid.</para>
+            </listitem>
+
+            <listitem>
+              <para><link
+              xlink:href="http://pines.hg.sourceforge.net:8000/hgroot/pines/pnotify">http://pines.hg.sourceforge.net:8000/hgroot/pines/pnotify</link></para>
+
+              <para>Pines Notify.</para>
+            </listitem>
+
+            <listitem>
+              <para><link
+              xlink:href="http://pines.hg.sourceforge.net:8000/hgroot/pines/ptags">http://pines.hg.sourceforge.net:8000/hgroot/pines/ptags</link></para>
+
+              <para>Pines Tags.</para>
+            </listitem>
+
+            <listitem>
+              <para><link
+              xlink:href="http://pines.hg.sourceforge.net:8000/hgroot/pines/tools">http://pines.hg.sourceforge.net:8000/hgroot/pines/tools</link></para>
+
+              <para>Build tools, documentation, logo sources, and other
+              various tools.</para>
+            </listitem>
+
+            <listitem>
+              <para><link
+              xlink:href="http://pines.hg.sourceforge.net:8000/hgroot/pines/cash-drawer">http://pines.hg.sourceforge.net:8000/hgroot/pines/cash-drawer</link></para>
+
+              <para>Pines POS Cash Drawer Firefox Extension</para>
+            </listitem>
+          </itemizedlist></para>
+
+        <para>To get a local copy of Pines for testing or development, clone
+        the Mercurial repository.</para>
+
+        <para><programlisting language="sh">mkdir pines
+hg clone http://pines.hg.sourceforge.net:8000/hgroot/pines/pines pines</programlisting></para>
+
+        <para>To update your local repository and get the latest code, pull
+        changes and update.<programlisting language="sh">hg pull
+hg up</programlisting></para>
+
+        <para>I recommend using a Mercurial GUI to make using the repository
+        easier. I use TortoiseHG (http://tortoisehg.org/).</para>
+      </section>
+
+      <section>
+        <title>Coding Style</title>
+
+        <note>
+          <para>This coding style is the style used by Pines Core and the
+          SciActive maintained components/templates. If you are submitting a
+          patch, please keep it written in this style. In your own
+          components/templates you are free to use whatever style you like,
+          but you must conform to the naming guidelines.</para>
+        </note>
+
+        <section>
+          <title>Indentation</title>
+
+          <para>Indentation is done with one tab character. The examples in
+          this book use four space characters, simply because the program used
+          to write it does not allow tabs. Cases in a switch are indented.
+          Arguments of a function call are indented once, with the exception
+          of entity manager queries, which should be indented twice. This is
+          in order to accurately and quickly find and understand entity
+          manager queries in a function. In each selector of an entity manager
+          query, the selector type should be placed on the line with the
+          opening "array(".<example>
+              <title>Indentation</title>
+
+              <programlisting language="php">if ($var) {
     // Something
 }
 
@@ -184,23 +236,24 @@ $pines-&gt;entity_manager-&gt;get_entities(
             'data' =&gt; array('something', true)
         )
     );</programlisting>
-          </example></para>
-      </section>
+            </example></para>
+        </section>
 
-      <section>
-        <title>Brackets and Parentheses</title>
+        <section>
+          <title>Brackets and Parentheses</title>
 
-        <para>Opening brackets are placed on the same line. Closing brackets
-        are placed on a new line. If you break parentheses, indent the
-        contained lines. The while in a do while loop is placed on the same
-        line as the closing bracket. In PHP, one line ifs can use no brackets.
-        Ifs with an else block must use brackets. In JavaScript (in order to
-        reduce file size) brackets are not required in this case.</para>
+          <para>Opening brackets are placed on the same line. Closing brackets
+          are placed on a new line. If you break parentheses, indent the
+          contained lines. The while in a do while loop is placed on the same
+          line as the closing bracket. In PHP, one line ifs can use no
+          brackets. Ifs with an else block must use brackets. In JavaScript
+          (in order to reduce file size) brackets are not required in this
+          case.</para>
 
-        <para><example>
-            <title>Brackets and Parentheses</title>
+          <para><example>
+              <title>Brackets and Parentheses</title>
 
-            <programlisting>if ($var) {
+              <programlisting language="php">if ($var) {
     one_thing();
     another_thing();
 }
@@ -245,52 +298,53 @@ else if (somethingelse)
     do_that();
 else
     do_those();</programlisting>
-          </example></para>
-      </section>
+            </example></para>
+        </section>
 
-      <section>
-        <title>Naming</title>
+        <section>
+          <title>Naming</title>
 
-        <para>Names in Pines always use lowercase, and words are separated by
-        underscores.</para>
+          <para>Names in Pines always use lowercase, and words are separated
+          by underscores.</para>
 
-        <para>Component names start with "com_" and don't contain any
-        underscores after that. Component names can only contain letters,
-        numbers, and the underscore. A component's class shares its name with
-        the component. Other than a few special classes, like
-        <classname>user</classname> and <classname>entity</classname>, that
-        are provided by services, classes are prefixed with their component's
-        name. E.g. <classname>com_example_widget</classname>.</para>
+          <para>Component names start with "com_" and don't contain any
+          underscores after that. Component names can only contain letters,
+          numbers, and the underscore. A component's class shares its name
+          with the component. Other than a few special classes, like
+          <classname>user</classname> and <classname>entity</classname>, that
+          are provided by services, classes are prefixed with their
+          component's name. E.g.
+          <classname>com_example_widget</classname>.</para>
 
-        <para>Templates are the same, except "tpl_" is used instead of
-        "com_".</para>
+          <para>Templates are the same, except "tpl_" is used instead of
+          "com_".</para>
 
-        <para>Action names only contain letters, numbers, and underscores.
-        Actions which the user sees (i.e. Not JSON only actions) do not
-        contain underscores.</para>
+          <para>Action names only contain letters, numbers, and underscores.
+          Actions which the user sees (i.e. Not JSON only actions) do not
+          contain underscores.</para>
 
-        <para>View names can contain any valid filename character, but try to
-        only use letters, numbers, underscores, and dashes.</para>
+          <para>View names can contain any valid filename character, but try
+          to only use letters, numbers, underscores, and dashes.</para>
 
-        <para>Entity tags cannot contain commas. The only tag that begins with
-        "com_" should be the name of the component that uses it.</para>
+          <para>Entity tags cannot contain commas. The only tag that begins
+          with "com_" should be the name of the component that uses it.</para>
 
-        <para>Components' functions should be prefixed with their component's
-        name, followed by two underscores, then the name. E.g.
-        <function>com_example__do_something()</function>. This is only for
-        functions, not for methods.</para>
-      </section>
+          <para>Components' functions should be prefixed with their
+          component's name, followed by two underscores, then the name. E.g.
+          <function>com_example__do_something()</function>. This is only for
+          functions, not for methods.</para>
+        </section>
 
-      <section>
-        <title>Commenting</title>
+        <section>
+          <title>Commenting</title>
 
-        <para>Pines uses both C89 (/*...*/) and C99 (//...) style comments.
-        Comments should have a space after the comment mark. Code which is
-        commented out should not. C89 style is preferred for longer
-        comments.<example>
-            <title>Comments</title>
+          <para>Pines uses both C89 (/*...*/) and C99 (//...) style comments.
+          Comments should have a space after the comment mark. Code which is
+          commented out should not. C89 style is preferred for longer
+          comments.<example>
+              <title>Comments</title>
 
-            <programlisting>// This is a short comment.
+              <programlisting language="php">// This is a short comment.
 
 /*
  * This is a long comment which is
@@ -300,285 +354,329 @@ else
  */
 
 // However if it's not too long,
-// then this is also acceptable.</programlisting>
-          </example></para>
+// then this is also acceptable.
 
-        <para>Pines uses phpDocumentor (http://www.phpdoc.org) to generate API
-        documentation. Files, functions, classes, interfaces, properties,
-        methods, constants, and requires/includes that are part of Pines Core
-        or SciActive's components should be commented using phpDoc style
-        comment blocks using the package "Pines". Each component and template
-        is a subpackage of "Pines".</para>
-      </section>
-    </section>
+// Don't use a leading space when commenting out code.
+//$pines-&gt;com_example-&gt;something();</programlisting>
+            </example></para>
 
-    <section>
-      <title>Building Pines</title>
-
-      <para></para>
-    </section>
-  </chapter>
-
-  <chapter>
-    <title>Pines Core</title>
-
-    <section>
-      <title>Structure</title>
-
-      <section>
-        <title>File Structure</title>
-
-        <para>Pines has a strict and logical file structure. The system and
-        individual components have a similar file structure. Some less
-        important files and folders have been left out of the following list
-        for brevity.<itemizedlist>
-            <listitem>
-              <para><filename>components</filename> - Contains all currently
-              installed components.</para>
-            </listitem>
-
-            <listitem>
-              <para><filename>media</filename> - Contains uploaded and
-              installed media files.<itemizedlist>
-                  <listitem>
-                    <para><filename>images</filename> - Contains uploaded
-                    images.</para>
-                  </listitem>
-
-                  <listitem>
-                    <para><filename>logos</filename> - Contains logos,
-                    including Pines' default logo.</para>
-                  </listitem>
-                </itemizedlist></para>
-            </listitem>
-
-            <listitem>
-              <para><filename>system</filename> - Contains the Pines Core
-              code.<itemizedlist>
-                  <listitem>
-                    <para><filename>actions</filename> - Contains actions
-                    always available in Pines.</para>
-                  </listitem>
-
-                  <listitem>
-                    <para><filename>classes</filename> - Contains the core
-                    classes used by Pines.</para>
-                  </listitem>
-
-                  <listitem>
-                    <para><filename>init</filename> - Contains the system init
-                    scripts which build the Pines environment and control
-                    execution of scripts.</para>
-                  </listitem>
-
-                  <listitem>
-                    <para><filename>views</filename> - Contains views used by
-                    Pines Core.</para>
-                  </listitem>
-
-                  <listitem>
-                    <para><filename>defaults.php</filename> - The default
-                    configuration settings for Pines Core.</para>
-                  </listitem>
-
-                  <listitem>
-                    <para><filename>i01common.php</filename> - An init script
-                    which is run with the component init scripts. It sets up
-                    several shortcut functions and other useful
-                    functions.</para>
-                  </listitem>
-
-                  <listitem>
-                    <para><filename>info.php</filename> - The Pines Core
-                    information file. Contains information such as version
-                    number and core abilities.</para>
-                  </listitem>
-
-                  <listitem>
-                    <para><filename>menu.json</filename> - The main menu file.
-                    This sets up the main menu and its submenus.</para>
-                  </listitem>
-
-                  <listitem>
-                    <para><filename>offline.php</filename> - The file used to
-                    build the offline page.</para>
-                  </listitem>
-
-                  <listitem>
-                    <para><filename>template_error.php</filename> - The file
-                    used to inform of an error with the currently selected
-                    template.</para>
-                  </listitem>
-                </itemizedlist></para>
-            </listitem>
-
-            <listitem>
-              <para><filename>templates</filename> - Contains all currently
-              installed templates.</para>
-            </listitem>
-
-            <listitem>
-              <para><filename>index.php</filename> - The main controller
-              script. This sets up some constants, then immediately executes
-              the system init scripts.</para>
-            </listitem>
-          </itemizedlist></para>
+          <para>Pines uses phpDocumentor (http://www.phpdoc.org) to generate
+          API documentation. Files, functions, classes, interfaces,
+          properties, methods, constants, and requires/includes that are part
+          of Pines Core or SciActive's components should be commented using
+          phpDoc style comment blocks using the package "Pines". Each
+          component and template is a subpackage of "Pines".</para>
+        </section>
       </section>
 
       <section>
-        <title>Object Structure</title>
+        <title>Building Pines</title>
 
-        <para>Pines is structured almost entirely around the Pines object,
-        <varname>$pines</varname>. The variable is created in the global scope
-        by the system init script, <filename>i30load_system.php</filename>. To
-        use the variable in any function or method, declare it using the
-        <keysym>global</keysym> keyword.</para>
+        <para>To build a custom release of Pines, you will need to clone the
+        "tools" repository. There, you will find the
+        <filename>build-tools/buildrelease.php</filename> file. Point your
+        browser to this script to use the release builder. The directory you
+        enter should be in the directory above the "tools" repository
+        clone.</para>
 
-        <para><example>
-            <title>Using <varname>$pines</varname> in a function or
-            method.</title>
+        <para>In the build tools, you will also find scripts to package Pines'
+        jQuery plugins and to generate an icon component's CSS.</para>
+      </section>
+    </chapter>
 
-            <programlisting>function example() {
+    <chapter>
+      <title>Pines Core</title>
+
+      <section>
+        <title>Structure</title>
+
+        <section>
+          <title>File Structure</title>
+
+          <para>Pines has a strict and logical file structure. The system and
+          individual components have a similar file structure. Some less
+          important files and folders have been left out of the following list
+          for brevity.<itemizedlist>
+              <listitem>
+                <para><filename>components</filename> - Contains all currently
+                installed components.</para>
+              </listitem>
+
+              <listitem>
+                <para><filename>media</filename> - Contains uploaded and
+                installed media files.<itemizedlist>
+                    <listitem>
+                      <para><filename>images</filename> - Contains uploaded
+                      images.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para><filename>logos</filename> - Contains logos,
+                      including Pines' default logo.</para>
+                    </listitem>
+                  </itemizedlist></para>
+              </listitem>
+
+              <listitem>
+                <para><filename>system</filename> - Contains the Pines Core
+                code.<itemizedlist>
+                    <listitem>
+                      <para><filename>actions</filename> - Contains actions
+                      always available in Pines.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para><filename>classes</filename> - Contains the core
+                      classes used by Pines.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para><filename>init</filename> - Contains the system
+                      init scripts which build the Pines environment and
+                      control execution of scripts.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para><filename>views</filename> - Contains views used
+                      by Pines Core.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para><filename>defaults.php</filename> - The default
+                      configuration settings for Pines Core.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para><filename>i01common.php</filename> - An init
+                      script which is run with the component init scripts. It
+                      sets up several shortcut functions and other useful
+                      functions.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para><filename>info.php</filename> - The Pines Core
+                      information file. Contains information such as version
+                      number and core abilities.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para><filename>menu.json</filename> - The main menu
+                      file. This sets up the main menu and its
+                      submenus.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para><filename>offline.php</filename> - The file used
+                      to build the offline page.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para><filename>template_error.php</filename> - The file
+                      used to inform of an error with the currently selected
+                      template.</para>
+                    </listitem>
+                  </itemizedlist></para>
+              </listitem>
+
+              <listitem>
+                <para><filename>templates</filename> - Contains all currently
+                installed templates.</para>
+              </listitem>
+
+              <listitem>
+                <para><filename>index.php</filename> - The main controller
+                script. This sets up some constants, then immediately executes
+                the system init scripts.</para>
+              </listitem>
+            </itemizedlist></para>
+        </section>
+
+        <section>
+          <title>Object Structure</title>
+
+          <para>Pines is structured almost entirely around the Pines object,
+          <varname>$pines</varname>. The variable is created in the global
+          scope by the system init script,
+          <filename>i30load_system.php</filename>. To use the variable in any
+          function or method, declare it using the <keysym>global</keysym>
+          keyword.</para>
+
+          <para><example>
+              <title>Using <varname>$pines</varname> in a function or
+              method.</title>
+
+              <programlisting language="php">function example() {
     global $pines;
     $pines-&gt;something();
 }</programlisting>
-          </example></para>
+            </example></para>
 
-        <para>Several core services are loaded as variables of
-        <varname>$pines</varname>. See the <link linkend="core_services">Core
-        Services</link> section for an explanation of these
-        services.<itemizedlist>
-            <listitem>
-              <para><varname>$pines-&gt;info</varname></para>
-            </listitem>
+          <para>Several core services are loaded as variables of
+          <varname>$pines</varname>. See the <link
+          linkend="core_services">Core Services</link> section for an
+          explanation of these services.<itemizedlist>
+              <listitem>
+                <para><varname>$pines-&gt;info</varname></para>
+              </listitem>
 
-            <listitem>
-              <para><varname>$pines-&gt;config</varname></para>
-            </listitem>
+              <listitem>
+                <para><varname>$pines-&gt;config</varname></para>
+              </listitem>
 
-            <listitem>
-              <para><varname>$pines-&gt;hook</varname></para>
-            </listitem>
+              <listitem>
+                <para><varname>$pines-&gt;hook</varname></para>
+              </listitem>
 
-            <listitem>
-              <para><varname>$pines-&gt;depend</varname></para>
-            </listitem>
+              <listitem>
+                <para><varname>$pines-&gt;depend</varname></para>
+              </listitem>
 
-            <listitem>
-              <para><varname>$pines-&gt;menu</varname></para>
-            </listitem>
+              <listitem>
+                <para><varname>$pines-&gt;menu</varname></para>
+              </listitem>
 
-            <listitem>
-              <para><varname>$pines-&gt;page</varname></para>
-            </listitem>
-          </itemizedlist></para>
+              <listitem>
+                <para><varname>$pines-&gt;page</varname></para>
+              </listitem>
+            </itemizedlist></para>
 
-        <para><varname>$pines</varname> also contains some useful
-        variables.<itemizedlist>
-            <listitem>
-              <para><varname>$pines-&gt;components</varname> - An array of the
-              enabled components.</para>
-            </listitem>
+          <para><varname>$pines</varname> also contains some useful
+          variables.<itemizedlist>
+              <listitem>
+                <para><varname>$pines-&gt;components</varname></para>
 
-            <listitem>
-              <para><varname>$pines-&gt;all_components</varname> - An array of
-              all installed components.</para>
-            </listitem>
+                <simplelist>
+                  <member>An array of the enabled components.</member>
+                </simplelist>
+              </listitem>
 
-            <listitem>
-              <para><varname>$pines-&gt;services</varname> - An array of the
-              provided system services.</para>
-            </listitem>
+              <listitem>
+                <para><varname>$pines-&gt;all_components</varname></para>
 
-            <listitem>
-              <para><varname>$pines-&gt;request_component</varname> - The
-              requested component. This is passed as the request variable
-              "option".</para>
-            </listitem>
+                <simplelist>
+                  <member>An array of all installed components.</member>
+                </simplelist>
+              </listitem>
 
-            <listitem>
-              <para><varname>$pines-&gt;request_action</varname> - The
-              requested action. This is passed as the request variable
-              "action".</para>
-            </listitem>
+              <listitem>
+                <para><varname>$pines-&gt;services</varname></para>
 
-            <listitem>
-              <para><varname>$pines-&gt;component</varname> - The currently
-              running or most recently called component/option.</para>
-            </listitem>
+                <simplelist>
+                  <member>An array of the provided system services.</member>
+                </simplelist>
+              </listitem>
 
-            <listitem>
-              <para><varname>$pines-&gt;action</varname> - The currently
-              running or most recently called action.</para>
-            </listitem>
-          </itemizedlist></para>
+              <listitem>
+                <para><varname>$pines-&gt;request_component</varname></para>
 
-        <para>The following variables are not loaded until after the component
-        init scripts are run.<itemizedlist>
-            <listitem>
-              <para><varname>$pines-&gt;current_template</varname> - The name
-              of the current template.</para>
-            </listitem>
+                <simplelist>
+                  <member>The requested component. This is passed as the
+                  request variable "option".</member>
+                </simplelist>
+              </listitem>
 
-            <listitem>
-              <para><varname>$pines-&gt;template</varname> - The current
-              template object.</para>
-            </listitem>
-          </itemizedlist></para>
+              <listitem>
+                <para><varname>$pines-&gt;request_action</varname></para>
+
+                <simplelist>
+                  <member>The requested action. This is passed as the request
+                  variable "action".</member>
+                </simplelist>
+              </listitem>
+
+              <listitem>
+                <para><varname>$pines-&gt;component</varname></para>
+
+                <simplelist>
+                  <member>The currently running or most recently called
+                  component/option.</member>
+                </simplelist>
+              </listitem>
+
+              <listitem>
+                <para><varname>$pines-&gt;action</varname></para>
+
+                <simplelist>
+                  <member>The currently running or most recently called
+                  action.</member>
+                </simplelist>
+              </listitem>
+            </itemizedlist></para>
+
+          <para>The following variables are not loaded until after the
+          component init scripts are run.<itemizedlist>
+              <listitem>
+                <para><varname>$pines-&gt;current_template</varname></para>
+
+                <simplelist>
+                  <member>The name of the current template.</member>
+                </simplelist>
+              </listitem>
+
+              <listitem>
+                <para><varname>$pines-&gt;template</varname></para>
+
+                <simplelist>
+                  <member>The current template object.</member>
+                </simplelist>
+              </listitem>
+            </itemizedlist></para>
+        </section>
       </section>
-    </section>
-
-    <section>
-      <title>Pines Object</title>
-
-      <para>As well as containing services and variables, the Pines object
-      (<varname>$pines</varname>) also includes several useful methods.</para>
 
       <section>
-        <title>Running an Action</title>
+        <title>Pines Object</title>
 
-        <para>To run an action, use the <methodname>action</methodname>
-        method. Actions are run automatically when requested in the URL by the
-        client. The "option" request variable determines the component to
-        which the action belongs, and the "action" request variable determines
-        which action to run. The action is run by the system init script
-        <filename>i60action.php</filename>.</para>
+        <para>As well as containing services and variables, the Pines object
+        (<varname>$pines</varname>) also includes several useful
+        methods.</para>
 
-        <para>Sometimes, actions need to be run manually in code. For example,
-        the default action (<filename>default.php</filename> in a component's
-        <filename>action</filename> directory) can be used to direct the user
-        to a common action by calling <methodname>action</methodname>.</para>
+        <section>
+          <title>Running an Action</title>
 
-        <para>When an action is run, <methodname>action</methodname> will look
-        in the component's <filename>action</filename> directory for a file
-        with the same name as the desired action (with .php appended). If the
-        desired component is "system", Pines will instead look in the system's
-        <filename>action</filename> directory. If no action was specified,
-        <methodname>action</methodname> will look for a
-        <filename>default.php</filename> file. If no component was specified,
-        <methodname>action</methodname> will use the default component
-        specified in Pines' configuration. Once the correct file is found,
-        <methodname>action</methodname> will run the file. The
-        <varname>$pines</varname> variable is already included when the file
-        is run, so there is no need to include it with the
-        <keysym>global</keysym> keyword.<note>
-            <para>Since actions are run inside a function, they are not in the
-            global scope. This means actions don't have to clean up variables
-            and need not worry about naming collisions.</para>
-          </note></para>
+          <para>To run an action, use the <methodname>action</methodname>
+          method. Actions are run automatically when requested in the URL by
+          the client. The "option" request variable determines the component
+          to which the action belongs, and the "action" request variable
+          determines which action to run. The action is run by the system init
+          script <filename>i60action.php</filename>.</para>
 
-        <para>If no action file was found for the given arguments,
-        <methodname>action</methodname> will return the string "error_404".
-        Otherwise, it will return the value returned by the action file. If
-        <filename>i60action.php</filename> receives "error_404" when it runs
-        the requested action, it will attach a module with the system's
-        "error_404" view into the page's "content" position and send a 404
-        HTTP status code. This means your action can return the string
-        "error_404" if the requested information is not found and a 404 error
-        will be sent to the client.<example>
-            <title>Manually Running an Action</title>
+          <para>Sometimes, actions need to be run manually in code. For
+          example, the default action (<filename>default.php</filename> in a
+          component's <filename>action</filename> directory) can be used to
+          direct the user to a common action by calling
+          <methodname>action</methodname>.</para>
 
-            <programlisting>// Run a specific action.
+          <para>When an action is run, <methodname>action</methodname> will
+          look in the component's <filename>action</filename> directory for a
+          file with the same name as the desired action (with .php appended).
+          If the desired component is "system", Pines will instead look in the
+          system's <filename>action</filename> directory. If no action was
+          specified, <methodname>action</methodname> will look for a
+          <filename>default.php</filename> file. If no component was
+          specified, <methodname>action</methodname> will use the default
+          component specified in Pines' configuration. Once the correct file
+          is found, <methodname>action</methodname> will run the file. The
+          <varname>$pines</varname> variable is already included when the file
+          is run, so there is no need to include it with the
+          <keysym>global</keysym> keyword.<note>
+              <para>Since actions are run inside a function, they are not in
+              the global scope. This means actions don't have to clean up
+              variables and need not worry about naming collisions.</para>
+            </note></para>
+
+          <para>If no action file was found for the given arguments,
+          <methodname>action</methodname> will return the string "error_404".
+          Otherwise, it will return the value returned by the action file. If
+          <filename>i60action.php</filename> receives "error_404" when it runs
+          the requested action, it will attach a module with the system's
+          "error_404" view into the page's "content" position and send a 404
+          HTTP status code. This means your action can return the string
+          "error_404" if the requested information is not found and a 404
+          error will be sent to the client.<example>
+              <title>Manually Running an Action</title>
+
+              <programlisting language="php">// Run a specific action.
 $pines-&gt;action('com_example', 'widgets/list');
 
 // Run a component's default action.
@@ -586,219 +684,284 @@ $pines-&gt;action('com_example');
 
 // Run the default component's default action.
 $pines-&gt;action();</programlisting>
-          </example></para>
-      </section>
-
-      <section>
-        <title>Checking an IP Address</title>
-
-        <para>There are three methods of checking whether an IP address is on
-        a given network in the Pines object.</para>
-
-        <simplesect>
-          <title>Using CIDR Notation</title>
-
-          <para>You can use <methodname>check_ip_cidr</methodname> to check an
-          IP address using the CIDR notation of a network.<example>
-              <title>Checking an IP Using CIDR Notation</title>
-
-              <programlisting>$good = $pines-&gt;check_ip_cidr('192.168.0.5', '192.168/24'); // Returns true.
-
-$bad = $pines-&gt;check_ip_cidr('192.168.1.5', '192.168/24'); // Returns false.</programlisting>
             </example></para>
-        </simplesect>
-
-        <simplesect>
-          <title>Using an IP Range</title>
-
-          <para>You can use <methodname>check_ip_range</methodname> to check
-          an IP address using an IP range.<example>
-              <title>Checking an IP Using an IP Range</title>
-
-              <programlisting>$good = $pines-&gt;check_ip_range('192.168.0.5', '192.168.0.0', '192.168.0.255'); // Returns true.
-
-$bad = $pines-&gt;check_ip_range('192.168.1.5', '192.168.0.0', '192.168.0.255'); // Returns false.</programlisting>
-            </example></para>
-        </simplesect>
-
-        <simplesect>
-          <title>Using a Subnet Mask</title>
-
-          <para>You can use <methodname>check_ip_subnet</methodname> to check
-          an IP address using the subnet mask of a network.<example>
-              <title>Checking an IP Using a Subnet Mask</title>
-
-              <programlisting>$good = $pines-&gt;check_ip_subnet('192.168.0.5', '192.168.0.0', '255.255.255.0'); // Returns true.
-
-$bad = $pines-&gt;check_ip_subnet('192.168.1.5', '192.168.0.0', '255.255.255.0'); // Returns false.</programlisting>
-            </example></para>
-        </simplesect>
-      </section>
-
-      <section>
-        <title>Formatting Output</title>
-
-        <para>There are several types of content that need to be formatted
-        correctly before being output to the user. The Pines object provides
-        functions to allow easy formatting of this data.</para>
+        </section>
 
         <section>
-          <title>Formatting Content</title>
+          <title>Checking an IP Address</title>
 
-          <para>To format content, use
-          <methodname>format_content</methodname>. By itself,
-          <methodname>format_content</methodname> does nothing. Its purpose is
-          to provide a way for components to alter content before it is shown
-          to the client. By using this method to format your component's
-          content before outputting it, you allow other components to use the
-          hooking system to provide special alterations to your content. This
-          is meant to provide things like string replacements, inline modules,
-          HTML cleansers, etc. This does not mean you should always run
-          content through this method. Certain types of content, such as page
-          text, blog post text, product descriptions, etc are appropriate for
-          content formatting. However, content such as user comments, forum
-          posts, etc may allow an unprivileged user to use dangerous services
-          if run through the formatter. A good idea may be to use a
-          configuration option to allow certain content to be altered by other
-          components. Generally only user provided content should ever be
-          formatted. Content like your component's forms should most likely
-          never be formatted.<example>
-              <title>Formatting Content for Output</title>
+          <para>There are three methods of checking whether an IP address is
+          on a given network in the Pines object.</para>
 
-              <programlisting>&lt;div&gt;
+          <simplesect>
+            <title>Using CIDR Notation</title>
+
+            <para>You can use <methodname>check_ip_cidr</methodname> to check
+            an IP address using the CIDR notation of a network.<example>
+                <title>Checking an IP Using CIDR Notation</title>
+
+                <programlisting language="php">$good = $pines-&gt;check_ip_cidr('192.168.0.5', '192.168/24'); // Returns true.
+
+$bad = $pines-&gt;check_ip_cidr('192.168.1.5', '192.168/24'); // Returns false.</programlisting>
+              </example></para>
+          </simplesect>
+
+          <simplesect>
+            <title>Using an IP Range</title>
+
+            <para>You can use <methodname>check_ip_range</methodname> to check
+            an IP address using an IP range.<example>
+                <title>Checking an IP Using an IP Range</title>
+
+                <programlisting language="php">$good = $pines-&gt;check_ip_range('192.168.0.5', '192.168.0.0', '192.168.0.255'); // Returns true.
+
+$bad = $pines-&gt;check_ip_range('192.168.1.5', '192.168.0.0', '192.168.0.255'); // Returns false.</programlisting>
+              </example></para>
+          </simplesect>
+
+          <simplesect>
+            <title>Using a Subnet Mask</title>
+
+            <para>You can use <methodname>check_ip_subnet</methodname> to
+            check an IP address using the subnet mask of a network.<example>
+                <title>Checking an IP Using a Subnet Mask</title>
+
+                <programlisting language="php">$good = $pines-&gt;check_ip_subnet('192.168.0.5', '192.168.0.0', '255.255.255.0'); // Returns true.
+
+$bad = $pines-&gt;check_ip_subnet('192.168.1.5', '192.168.0.0', '255.255.255.0'); // Returns false.</programlisting>
+              </example></para>
+          </simplesect>
+        </section>
+
+        <section>
+          <title>Formatting Output</title>
+
+          <para>There are several types of content that need to be formatted
+          correctly before being output to the user. The Pines object provides
+          functions to allow easy formatting of this data.</para>
+
+          <section>
+            <title>Formatting Content</title>
+
+            <para>To format content, use
+            <methodname>format_content</methodname>. By itself,
+            <methodname>format_content</methodname> does nothing. Its purpose
+            is to provide a way for components to alter content before it is
+            shown to the client. By using this method to format your
+            component's content before outputting it, you allow other
+            components to use the hooking system to provide special
+            alterations to your content. This is meant to provide things like
+            string replacements, inline modules, HTML cleansers, etc. This
+            does not mean you should always run content through this method.
+            Certain types of content, such as page text, blog post text,
+            product descriptions, etc are appropriate for content formatting.
+            However, content such as user comments, forum posts, etc may allow
+            an unprivileged user to use dangerous services if run through the
+            formatter. A good idea may be to use a configuration option to
+            allow certain content to be altered by other components. Generally
+            only user provided content should ever be formatted. Content like
+            your component's forms should most likely never be
+            formatted.<example>
+                <title>Formatting Content for Output</title>
+
+                <programlisting language="php">&lt;div&gt;
     &lt;?php echo $pines-&gt;format_content($post-&gt;content); ?&gt;
 &lt;/div&gt;</programlisting>
-            </example></para>
+              </example></para>
 
-          <para>As mentioned, components can hook this function to provide
-          special alterations to content. See the <link
-          linkend="hook">Hook</link> section in <link
-          linkend="core_services">Core Services</link> for information about
-          hooks.<example>
-              <title>Using a Hook to Alter Content</title>
+            <para>As mentioned, components can hook this function to provide
+            special alterations to content. See the <link
+            linkend="hook">Hook</link> section in <link
+            linkend="core_services">Core Services</link> for information about
+            hooks.<example>
+                <title>Using a Hook to Alter Content</title>
 
-              <programlisting>// Replace the word "Pines" with "Barbecue".
+                <programlisting language="php">// Replace the word "Pines" with "Barbecue".
 function com_example__replace(&amp;$arguments) {
     $arguments[0] = str_replace('Pines', 'Barbecue', $arguments[0]);
 }
 
 $pines-&gt;hook-&gt;add_callback('$pines-&gt;format_content', -10, 'com_example__replace');</programlisting>
-            </example></para>
-        </section>
+              </example></para>
+          </section>
 
-        <section>
-          <title>Formatting a Date / Time</title>
+          <section>
+            <title>Formatting a Date / Time</title>
 
-          <para>To format a date or time using a timestamp, use
-          <methodname>format_date</methodname>. The current user's timezone is
-          automatically loaded by the user manager and used for calculations.
-          You can also pass <methodname>format_date</methodname> a timezone to
-          use. When using a custom format, any format recognized by the
-          <methodname>format</methodname> method of the
-          <classname>DateTime</classname> class can be used.
-          <methodname>format_date</methodname> supports the following
-          types:<itemizedlist>
-              <listitem>
-                <para>full_sort - <code>"Y-m-d H:i T"</code> - Date and time,
-                big endian and 24 hour format so it is sortable.</para>
-              </listitem>
+            <para>To format a date or time using a timestamp, use
+            <methodname>format_date</methodname>. The current user's timezone
+            is automatically loaded by the user manager and used for
+            calculations. You can also pass
+            <methodname>format_date</methodname> a timezone to use. When using
+            a custom format, any format recognized by the
+            <methodname>format</methodname> method of the
+            <classname>DateTime</classname> class can be used.
+            <methodname>format_date</methodname> supports several format
+            types.<table>
+                <title>Date Format Types</title>
 
-              <listitem>
-                <para>full_long - <code>"l, F j, Y g:i A T"</code> - Date and
-                time, long format.</para>
-              </listitem>
+                <tgroup cols="3">
+                  <colspec colnum="2" colwidth="2*" />
 
-              <listitem>
-                <para>full_med - <code>"j M Y g:i A T"</code> - Date and time,
-                medium format.</para>
-              </listitem>
+                  <colspec colnum="3" colwidth="4*" />
 
-              <listitem>
-                <para>full_short - <code>"n/d/Y g:i A T"</code> - Date and
-                time, short format.</para>
-              </listitem>
+                  <thead>
+                    <row>
+                      <entry>Type</entry>
 
-              <listitem>
-                <para>date_sort - <code>"Y-m-d"</code> - Only the date, big
-                endian so it is sortable.</para>
-              </listitem>
+                      <entry>Format Code</entry>
 
-              <listitem>
-                <para>date_long - <code>"l, F j, Y"</code> - Only the date,
-                long format.</para>
-              </listitem>
+                      <entry>Description</entry>
+                    </row>
+                  </thead>
 
-              <listitem>
-                <para>date_med - <code>"j M Y"</code> - Only the date, medium
-                format.</para>
-              </listitem>
+                  <tbody>
+                    <row>
+                      <entry>full_sort</entry>
 
-              <listitem>
-                <para>date_short - <code>"n/d/Y"</code> - Only the date, short
-                format.</para>
-              </listitem>
+                      <entry><code>Y-m-d H:i T</code></entry>
 
-              <listitem>
-                <para>time_sort - <code>"H:i T"</code> - Only the time, 24
-                hour format so it is sortable.</para>
-              </listitem>
+                      <entry>Date and time, big endian and 24 hour format so
+                      it is sortable.</entry>
+                    </row>
 
-              <listitem>
-                <para>time_long - <code>"g:i:s A T"</code> - Only the time,
-                long format.</para>
-              </listitem>
+                    <row>
+                      <entry>full_long</entry>
 
-              <listitem>
-                <para>time_med - <code>"g:i:s A"</code> - Only the time,
-                medium format.</para>
-              </listitem>
+                      <entry><code>l, F j, Y g:i A T</code></entry>
 
-              <listitem>
-                <para>time_short - <code>"g:i A"</code> - Only the time, short
-                format.</para>
-              </listitem>
+                      <entry>Date and time, long format.</entry>
+                    </row>
 
-              <listitem>
-                <para>custom - Use whatever is passed in
-                <varname>$format</varname>.</para>
-              </listitem>
-            </itemizedlist><example>
-              <title>Formatting a Date</title>
+                    <row>
+                      <entry>full_med</entry>
 
-              <programlisting>&lt;div&gt;
+                      <entry><code>j M Y g:i A T</code></entry>
+
+                      <entry>Date and time, medium format.</entry>
+                    </row>
+
+                    <row>
+                      <entry>full_short</entry>
+
+                      <entry><code>n/d/Y g:i A T</code></entry>
+
+                      <entry>Date and time, short format.</entry>
+                    </row>
+
+                    <row>
+                      <entry>date_sort</entry>
+
+                      <entry><code>Y-m-d</code></entry>
+
+                      <entry>Only the date, big endian so it is
+                      sortable.</entry>
+                    </row>
+
+                    <row>
+                      <entry>date_long</entry>
+
+                      <entry><code>l, F j, Y</code></entry>
+
+                      <entry>Only the date, long format.</entry>
+                    </row>
+
+                    <row>
+                      <entry>date_med</entry>
+
+                      <entry><code>j M Y</code></entry>
+
+                      <entry>Only the date, medium format.</entry>
+                    </row>
+
+                    <row>
+                      <entry>date_short</entry>
+
+                      <entry><code>n/d/Y</code></entry>
+
+                      <entry>Only the date, short format.</entry>
+                    </row>
+
+                    <row>
+                      <entry>time_sort</entry>
+
+                      <entry><code>H:i T</code></entry>
+
+                      <entry>Only the time, 24 hour format so it is
+                      sortable.</entry>
+                    </row>
+
+                    <row>
+                      <entry>time_long</entry>
+
+                      <entry><code>g:i:s A T</code></entry>
+
+                      <entry>Only the time, long format.</entry>
+                    </row>
+
+                    <row>
+                      <entry>time_med</entry>
+
+                      <entry><code>g:i:s A</code></entry>
+
+                      <entry>Only the time, medium format.</entry>
+                    </row>
+
+                    <row>
+                      <entry>time_short</entry>
+
+                      <entry><code>g:i A</code></entry>
+
+                      <entry>Only the time, short format.</entry>
+                    </row>
+
+                    <row>
+                      <entry>custom</entry>
+
+                      <entry>(Contents of <varname>$format</varname>)</entry>
+
+                      <entry>Use whatever is passed in
+                      <varname>$format</varname>.</entry>
+                    </row>
+                  </tbody>
+                </tgroup>
+              </table><example>
+                <title>Formatting a Date</title>
+
+                <programlisting language="php">&lt;div&gt;
     &lt;?php echo $pines-&gt;format_date($timestamp, 'custom', 'l jS \of F Y h:i:s A', 'America/Los_Angeles'); ?&gt;
 &lt;/div&gt;</programlisting>
-            </example></para>
+              </example></para>
+          </section>
+
+          <section>
+            <title>Formatting a Phone Number</title>
+
+            <para>To format a phone number, use
+            <methodname>format_phone</methodname>. It uses US phone number
+            format. E.g. "(800) 555-1234 x56".<example>
+                <title>Formatting a Phone Number</title>
+
+                <programlisting language="php">&lt;div&gt;
+    &lt;?php echo $pines-&gt;format_phone('1800555123456'); ?&gt;
+&lt;/div&gt;</programlisting>
+              </example></para>
+          </section>
         </section>
 
         <section>
-          <title>Formatting a Phone Number</title>
+          <title>Redirecting the User</title>
 
-          <para>To format a phone number, use
-          <methodname>format_phone</methodname>. It uses US phone number
-          format. E.g. "(800) 555-1234 x56".<example>
-              <title>Formatting a Phone Number</title>
+          <para>The Pines object includes <methodname>redirect</methodname>, a
+          method to redirect users to a different URL. Using this method
+          ensures that any messages and errors that are queued to be displayed
+          to the user will be displayed when the user reaches the destination
+          URL, assuming that URL is also handled by the same Pines
+          installation. The HTTP status code returned to the client can be
+          changed and defaults to 303 See Other.<example>
+              <title>Redirecting the User</title>
 
-              <programlisting>&lt;div&gt;
-    &lt;?php echo $pines-&gt;format_phone('1800555123456'); ?&gt;
-&lt;/div&gt;</programlisting>
-            </example></para>
-        </section>
-      </section>
-
-      <section>
-        <title>Redirecting the User</title>
-
-        <para>The Pines object includes <methodname>redirect</methodname>, a
-        method to redirect users to a different URL. Using this method ensures
-        that any messages and errors that are queued to be displayed to the
-        user will be displayed when the user reaches the destination URL,
-        assuming that URL is also handled by the same Pines installation. The
-        HTTP status code returned to the client can be changed and defaults to
-        303 See Other.<example>
-            <title>Redirecting the User</title>
-
-            <programlisting>// Notices and errors will be saved.
+              <programlisting language="php">// Notices and errors will be saved.
 pines_notice('You have been redirected here.');
 $pines-&gt;redirect(pines_url('com_example', 'widgets/list'));
 
@@ -807,75 +970,118 @@ $pines-&gt;redirect(pines_url());
 
 // Use a permanent redirection code.
 $pines-&gt;redirect(pines_url('com_example', 'widgets/list'), 301);</programlisting>
-          </example></para>
+            </example></para>
+        </section>
       </section>
-    </section>
 
-    <section xml:id="core_services">
-      <title>Core Services</title>
+      <section xml:id="core_services">
+        <title>Core Services</title>
 
-      <section>
-        <title>Config (<classname>config</classname> class)</title>
+        <section>
+          <title>Config (<classname>config</classname> class)</title>
 
-        <para>The config service loads configuration for both Pines and any
-        components/templates. The configuration for Pines is always loaded,
-        and components' configuration is loaded the first time it is accessed
-        during each script run. Config will start by loading the
-        <filename>defaults.php</filename> file (if it exists) in the
-        component's directory. The return value from this file is an array
-        which is used to load configuration variables. Each array entry should
-        be an associative array containing the following entries:<itemizedlist>
-            <listitem>
-              <para>name - The configuration option's name. This is used to
-              access it from code.</para>
-            </listitem>
+          <para>The config service loads configuration for both Pines and any
+          components/templates. The configuration for Pines is always loaded,
+          and components' configuration is loaded the first time it is
+          accessed during each script run. Config will start by loading the
+          <filename>defaults.php</filename> file (if it exists) in the
+          component's directory. The return value from this file is an array
+          which is used to load configuration variables.</para>
 
-            <listitem>
-              <para>cname - A canonical name. This is displayed to the user
-              when setting the option.</para>
-            </listitem>
+          <para>Each array entry should be an associative array containing the
+          following entries:<informaltable>
+              <tgroup cols="3">
+                <colspec colnum="3" colwidth="5*" />
 
-            <listitem>
-              <para>description - A description of the configuration
-              option.</para>
-            </listitem>
+                <thead>
+                  <row>
+                    <entry>Key</entry>
 
-            <listitem>
-              <para>value - The default value of the configuration
-              option.</para>
-            </listitem>
+                    <entry>Required</entry>
 
-            <listitem>
-              <para>options - (Optional) An array of the possible values of
-              the option.</para>
-            </listitem>
+                    <entry>Description</entry>
+                  </row>
+                </thead>
 
-            <listitem>
-              <para>peruser - (Optional) A boolean determining whether the
-              option can be set on a per user basis.</para>
-            </listitem>
-          </itemizedlist></para>
+                <tbody>
+                  <row>
+                    <entry>name</entry>
 
-        <para><caution>
-            <para>Calling a function in a <filename>defaults.php</filename>
-            file will use extra resources when the configuration variable for
-            the component is first accessed on each request, even if the
-            configuration has been set to a non-default value.</para>
-          </caution></para>
+                    <entry>Yes</entry>
 
-        <para>Config will then load the <filename>config.php</filename> file
-        (if it exists) in the component's directory. This file is generated by
-        the configurator service and stores user specified configuration. The
-        file is structured the same, except that each entry only contains
-        "name" and "value".</para>
+                    <entry>The configuration option's name. This is used to
+                    access it from code.</entry>
+                  </row>
 
-        <para>The configuration is built using these files, and placed into an
-        object named after the component on the first attempted access of the
-        object. Pines' configuration options are placed in the config object
-        itself.<example>
-            <title>Accessing Configuration for Pines and Components</title>
+                  <row>
+                    <entry>cname</entry>
 
-            <programlisting>// Access Pines' "system_name" configuration option:
+                    <entry>Yes</entry>
+
+                    <entry>A canonical name. This is displayed to the user
+                    when setting the option.</entry>
+                  </row>
+
+                  <row>
+                    <entry>description</entry>
+
+                    <entry>Yes</entry>
+
+                    <entry>A description of the configuration option.</entry>
+                  </row>
+
+                  <row>
+                    <entry>value</entry>
+
+                    <entry>Yes</entry>
+
+                    <entry>The default value of the configuration
+                    option.</entry>
+                  </row>
+
+                  <row>
+                    <entry>options</entry>
+
+                    <entry>No</entry>
+
+                    <entry>An array of the possible values of the
+                    option.</entry>
+                  </row>
+
+                  <row>
+                    <entry>peruser</entry>
+
+                    <entry>No</entry>
+
+                    <entry>A boolean determining whether the option can be set
+                    on a per user basis.</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </informaltable></para>
+
+          <para><tip>
+              <para>Calling a function in a <filename>defaults.php</filename>
+              file will use extra resources when the configuration variable
+              for the component is first accessed on each request, even if the
+              configuration has been set to a non-default value. To speed up
+              your component, avoid calling functions in
+              <filename>defaults.php</filename>.</para>
+            </tip></para>
+
+          <para>Config will then load the <filename>config.php</filename> file
+          (if it exists) in the component's directory. This file is generated
+          by the configurator service and stores user specified configuration.
+          The file is structured the same, except that each entry only
+          contains "name" and "value".</para>
+
+          <para>The configuration is built using these files, and placed into
+          an object named after the component on the first attempted access of
+          the object. Pines' configuration options are placed in the config
+          object itself.<example>
+              <title>Accessing Configuration for Pines and Components</title>
+
+              <programlisting language="php">// Access Pines' "system_name" configuration option:
 echo $pines-&gt;config-&gt;system_name;
 
 // Access a component's "website_name" configuration option:
@@ -883,91 +1089,131 @@ echo $pines-&gt;config-&gt;com_example-&gt;website_name;
 
 // Access a template's "tagline" configuration option:
 echo $pines-&gt;config-&gt;tpl_green-&gt;tagline;</programlisting>
-          </example></para>
+            </example></para>
 
-        <caution>
-          <para>Configuration options are not cleaned or checked (except when
-          an options array is used). When you are inserting them into HTML,
-          they should be escaped with
-          <function>htmlspecialchars()</function>.</para>
-        </caution>
-      </section>
+          <caution>
+            <para>Configuration options are not cleaned or checked (except
+            when an options array is used). When you are inserting them into
+            HTML, they should be escaped with
+            <function>htmlspecialchars()</function>.</para>
+          </caution>
+        </section>
 
-      <section>
-        <title>Depend (<classname>depend</classname> class)</title>
+        <section>
+          <title>Depend (<classname>depend</classname> class)</title>
 
-        <para>The depend service manages and runs dependency checkers. It
-        includes several dependency checkers by default.<itemizedlist>
-            <listitem>
-              <para>ability - Check that the current user has certain
-              abilities.</para>
-            </listitem>
+          <para>The depend service manages and runs dependency checkers. It
+          includes several dependency checkers by default.<table>
+              <title>Built In Dependency Checkers</title>
 
-            <listitem>
-              <para>action - Check the currently running or originally
-              requested action.</para>
-            </listitem>
+              <tgroup cols="2">
+                <colspec colnum="2" colwidth="5*" />
 
-            <listitem>
-              <para>class - Check whether classes exist.</para>
-            </listitem>
+                <thead>
+                  <row>
+                    <entry>Name</entry>
 
-            <listitem>
-              <para>clientip - Check the client's IP address.</para>
-            </listitem>
+                    <entry>Description</entry>
+                  </row>
+                </thead>
 
-            <listitem>
-              <para>component - Check whether components/templates are
-              installed, enabled, and are certain versions.</para>
-            </listitem>
+                <tbody>
+                  <row>
+                    <entry>ability</entry>
 
-            <listitem>
-              <para>function - Check whether functions exist.</para>
-            </listitem>
+                    <entry>Check that the current user has certain
+                    abilities.</entry>
+                  </row>
 
-            <listitem>
-              <para>host - Check the requested server hostname. Uses the
-              hostname provided by the client in the HTTP request.</para>
-            </listitem>
+                  <row>
+                    <entry>action</entry>
 
-            <listitem>
-              <para>option - Check the currently running or originally
-              requested component.</para>
-            </listitem>
+                    <entry>Check the currently running or originally requested
+                    action.</entry>
+                  </row>
 
-            <listitem>
-              <para>php - Check PHP's version.</para>
-            </listitem>
+                  <row>
+                    <entry>class</entry>
 
-            <listitem>
-              <para>pines - Check Pine's version.</para>
-            </listitem>
+                    <entry>Check whether classes exist.</entry>
+                  </row>
 
-            <listitem>
-              <para>service - Check the available system services.</para>
-            </listitem>
-          </itemizedlist></para>
+                  <row>
+                    <entry>clientip</entry>
 
-        <para>To check a dependency, use the <methodname>check()</methodname>
-        method. It will return true if the value passes the check, or false if
-        it does not.<example>
-            <title>Using the Dependency Checker</title>
+                    <entry>Check the client's IP address.</entry>
+                  </row>
 
-            <programlisting>if (!$pines-&gt;depend-&gt;check('component', 'com_example&gt;=2.0|com_sample')) {
+                  <row>
+                    <entry>component</entry>
+
+                    <entry>Check whether components/templates are installed,
+                    enabled, and are certain versions.</entry>
+                  </row>
+
+                  <row>
+                    <entry>function</entry>
+
+                    <entry>Check whether functions exist.</entry>
+                  </row>
+
+                  <row>
+                    <entry>host</entry>
+
+                    <entry>Check the requested server hostname. Uses the
+                    hostname provided by the client in the HTTP
+                    request.</entry>
+                  </row>
+
+                  <row>
+                    <entry>option</entry>
+
+                    <entry>Check the currently running or originally requested
+                    component.</entry>
+                  </row>
+
+                  <row>
+                    <entry>php</entry>
+
+                    <entry>Check PHP's version.</entry>
+                  </row>
+
+                  <row>
+                    <entry>pines</entry>
+
+                    <entry>Check Pine's version.</entry>
+                  </row>
+
+                  <row>
+                    <entry>service</entry>
+
+                    <entry>Check the available system services.</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table></para>
+
+          <para>To check a dependency, use the
+          <methodname>check()</methodname> method. It will return true if the
+          value passes the check, or false if it does not.<example>
+              <title>Using the Dependency Checker</title>
+
+              <programlisting language="php">if (!$pines-&gt;depend-&gt;check('component', 'com_example&gt;=2.0|com_sample')) {
     pines_notice('This feature is only available when you have com_example 2.0 or greater, or com_sample.');
     return;
 }</programlisting>
-          </example></para>
+            </example></para>
 
-        <para>Adding a new dependency checker is easy. Add a new entry to the
-        checkers variable, using the name of the checker as the key, and a
-        callback to the checker function as the value. The callback function
-        should return true if the check passes and false if it does not. This
-        should usually be done using an init script. That will ensure the
-        checker is available by the time an action is run.<example>
-            <title>Adding a New Checker</title>
+          <para>Adding a new dependency checker is easy. Add a new entry to
+          the checkers variable, using the name of the checker as the key, and
+          a callback to the checker function as the value. The callback
+          function should return true if the check passes and false if it does
+          not. This should usually be done using an init script. That will
+          ensure the checker is available by the time an action is
+          run.<example>
+              <title>Adding a New Checker</title>
 
-            <programlisting>function com_example__check_something($value) {
+              <programlisting language="php">function com_example__check_something($value) {
     return ($value == 'barbecue');
 }
 
@@ -975,28 +1221,28 @@ $pines-&gt;depend-&gt;checkers['something'] = 'com_example__check_something';
 
 // Call the new checker like this:
 // $pines-&gt;depend-&gt;check('something', 'a value'); // Would return false.</programlisting>
-          </example></para>
+            </example></para>
 
-        <warning>
-          <para>Since unprivileged users are often allowed to run custom
-          dependency checkers, it is important to not allow disclosure of
-          sensitive data using a checker. For example, an unprotected file
-          checker could be used to find files on the host machine.</para>
-        </warning>
+          <caution>
+            <para>Since unprivileged users are often allowed to run custom
+            dependency checkers, it is important to not allow disclosure of
+            sensitive data using a checker. For example, an unprotected file
+            checker could be used to find files on the host machine.</para>
+          </caution>
 
-        <warning>
-          <para>Be careful that a checker does not recursively call itself,
-          which could result in an infinite loop.</para>
-        </warning>
+          <caution>
+            <para>Be careful that a checker does not recursively call itself,
+            which could result in an infinite loop.</para>
+          </caution>
 
-        <para>All the built in dependency checkers use
-        <methodname>simple_parse()</methodname> to understand simple logic.
-        The syntax is simple, including and "&amp;", or "|", not "!", and
-        grouping using parentheses "()". Here's an example of how to use
-        <function>simple_parse()</function> in the example checker.<example>
-            <title>Using the Simple Parser</title>
+          <para>All the built in dependency checkers use
+          <methodname>simple_parse()</methodname> to understand simple logic.
+          The syntax is simple, including and "&amp;", or "|", not "!", and
+          grouping using parentheses "()". Here's an example of how to use
+          <function>simple_parse()</function> in the example checker.<example>
+              <title>Using the Simple Parser</title>
 
-            <programlisting>function com_example__check_something($value) {
+              <programlisting language="php">function com_example__check_something($value) {
     global $pines;
     if (
             strpos($value, '&amp;') !== false ||
@@ -1013,17 +1259,18 @@ $pines-&gt;depend-&gt;checkers['something'] = 'com_example__check_something';
 
 // Call the new checker like this:
 // $pines-&gt;depend-&gt;check('something', 'a value|barbecue'); // Would return true.</programlisting>
-          </example></para>
+            </example></para>
 
-        <para>If you'd like to include your checker in your component's class,
-        it is better to consider the resources used by including a callback
-        directly to your component's method. Component classes are loaded as
-        soon as the object is first accessed. Instead of using a callback to
-        the method, you can use a shortcut function to save Pines from loading
-        your component's class during each script run.<example>
-            <title>Using a Shortcut Function to a Method</title>
+          <para>If you'd like to include your checker in your component's
+          class, it is better to consider the resources used by including a
+          callback directly to your component's method. Component classes are
+          loaded as soon as the object is first accessed. Instead of using a
+          callback to the method, you can use a shortcut function to save
+          Pines from loading your component's class during each script
+          run.<example>
+              <title>Using a Shortcut Function to a Method</title>
 
-            <programlisting>// Using an extra function to call the real checker keeps the com_example
+              <programlisting language="php">// Using an extra function to call the real checker keeps the com_example
 // class from being loaded on each script run.
 function com_example__check_something($value) {
     global $pines;
@@ -1031,152 +1278,174 @@ function com_example__check_something($value) {
 }
 
 $pines-&gt;depend-&gt;checkers['something'] = 'com_example__check_something';</programlisting>
-          </example></para>
-
-        <note>
-          <para>Many things use the dependency checker, including menu
-          entries, the package manager, conditional groups, and conditional
-          configuration just to name a few.</para>
-        </note>
-      </section>
-
-      <section xml:id="hook">
-        <title>Hook (<classname>hook</classname> class)</title>
-
-        <para>The hook service provides method hooking for the entire
-        <varname>$pines</varname> object and most classes. Method hooking
-        allows a developer to intercept function calls and alter arguments,
-        alter return values, and change the actual function being
-        called.</para>
-
-        <simplesect>
-          <title>How Hooks Works</title>
-
-          <para>Hook uses a complex technique to override an object and allow
-          all its public methods to be hooked. When
-          <methodname>hook_object()</methodname> is called and passed an
-          object, it begins by using PHP's reflection API to analyze the
-          object and build a new object. The class used to build the new
-          object is the <classname>hook_override__NAMEHERE_</classname> class.
-          Hook will create a new class based on this class by replacing
-          "_NAMEHERE_" with the name of the class. Each method on the original
-          object is recreated in the new class. The replacement methods, when
-          called will run the callbacks associated with that hook and the
-          original method on the original object. Once the new class is
-          complete, it is loaded, and an object is created using it. The new
-          object stores the original object, and replaces the variable holding
-          that object. The new object now resides in place of the original
-          object.</para>
-
-          <para>When a variable is requested from the object, the new object
-          will pass the request directly to the original object. When the
-          object is requested as a string, invoked, or cloned it will also
-          request it from the original object. When the object is cloned, it
-          will hook the clone as well.</para>
-
-          <warning>
-            <para>Calls from within a method of the original class to another
-            method of the class will not be intercepted. This includes all
-            calls to private methods. Static methods cannot be hooked
-            either.</para>
-          </warning>
-
-          <warning>
-            <para>Functions which return or check the class name of the object
-            will use the class name of the new object, and could therefore
-            return unwanted results. For example, a hooked user object would
-            return false with <code>is_a($user, 'user')</code>. You can check
-            for the class <classname>hook_override_user</classname> or check
-            <classname>hook_override</classname> just to see if it is
-            hooked.</para>
-          </warning>
-        </simplesect>
-
-        <simplesect>
-          <title>How to Use Hooks</title>
-
-          <para>To hook an object, so calls to its methods can be intercepted,
-          use <methodname>hook_object()</methodname>. The prefix will be used
-          when setting up callbacks for the hooks.<example>
-              <title>Hooking an Object</title>
-
-              <programlisting>$widget = new com_example_widget;
-$pines-&gt;hook-&gt;hook_object($widget, 'com_example_widget-&gt;', false);</programlisting>
             </example></para>
 
           <note>
-            <para><varname>$pines</varname>, along with all objects within it
-            (except the hook, depend, config, and info services) are
-            automatically hooked. Most components are designed to
-            automatically hook their classes using the
-            <methodname>factory()</methodname> static method.</para>
+            <para>Many things use the dependency checker, including menu
+            entries, the package manager, conditional groups, and conditional
+            configuration just to name a few.</para>
           </note>
+        </section>
 
-          <para>To set up a callback, use
-          <methodname>add_callback()</methodname>. A callback is called either
-          before a method runs or after. The callback is passed an array of
-          arguments or return value which it can freely manipulate. If the
-          callback runs before the method and sets the arguments array to
-          false (or causes an error), the method will not be run. Callbacks
-          before a method are passed the arguments given when the method was
-          called, while callbacks after a method are passed the return value
-          (in an array) of that method.</para>
+        <section xml:id="hook">
+          <title>Hook (<classname>hook</classname> class)</title>
 
-          <para>The callback can receive up to 5 arguments, in this
-          order:<orderedlist>
-              <listitem>
-                <para><varname>&amp;$arguments</varname> - An array of either
-                arguments or a return value.</para>
-              </listitem>
+          <para>The hook service provides method hooking for the entire
+          <varname>$pines</varname> object and most classes. Method hooking
+          allows a developer to intercept function calls and alter arguments,
+          alter return values, and change the actual function being
+          called.</para>
 
-              <listitem>
-                <para><varname>$name</varname> - The name of the hook.</para>
-              </listitem>
+          <simplesect>
+            <title>How Hooks Works</title>
 
-              <listitem>
-                <para><varname>&amp;$object</varname> - The object on which
-                the hook caught a method call.</para>
-              </listitem>
+            <para>Hook uses a complex technique to override an object and
+            allow all its public methods to be hooked. When
+            <methodname>hook_object()</methodname> is called and passed an
+            object, it begins by using PHP's reflection API to analyze the
+            object and build a new object. The class used to build the new
+            object is the <classname>hook_override__NAMEHERE_</classname>
+            class. Hook will create a new class based on this class by
+            replacing "_NAMEHERE_" with the name of the class. Each method on
+            the original object is recreated in the new class. The replacement
+            methods, when called will run the callbacks associated with that
+            hook and the original method on the original object. Once the new
+            class is complete, it is loaded, and an object is created using
+            it. The new object stores the original object, and replaces the
+            variable holding that object. The new object now resides in place
+            of the original object.</para>
 
-              <listitem>
-                <para><varname>&amp;$function</varname> - A callback for the
-                method call which was caught. Altering this will cause a
-                different function/method to run.</para>
-              </listitem>
+            <para>When a variable is requested from the object, the new object
+            will pass the request directly to the original object. When the
+            object is requested as a string, invoked, or cloned it will also
+            request it from the original object. When the object is cloned, it
+            will hook the clone as well.</para>
 
-              <listitem>
-                <para><varname>&amp;$data</varname> - An array in which
-                callbacks can store data to communicate with later
-                callbacks.</para>
-              </listitem>
-            </orderedlist></para>
+            <caution>
+              <para>Calls from within a method of the original class to
+              another method of the class will not be intercepted. This
+              includes all calls to private methods. Static methods cannot be
+              hooked either.</para>
+            </caution>
 
-          <para>A hook is the name of whatever method it should catch. A hook
-          can also have an arbitrary name, but be wary that it may already
-          exist and it may result in your callback being falsely called. In
-          order to reduce the chance of this, always use a plus sign (+) and
-          your component's name to begin arbitrary hook names. E.g.
-          "+com_games_player_bonus".</para>
+            <caution>
+              <para>Functions which return or check the class name of the
+              object will use the class name of the new object, and could
+              therefore return unwanted results. For example, a hooked user
+              object would return false with <code>is_a($user, 'user')</code>.
+              You can check for the class
+              <classname>hook_override_user</classname> or check
+              <classname>hook_override</classname> just to see if it is
+              hooked.</para>
+            </caution>
+          </simplesect>
 
-          <para>If the hook is called explicitly, callbacks defined to run
-          before the hook will run immediately followed by callbacks defined
-          to run after.</para>
+          <simplesect>
+            <title>How to Use Hooks</title>
 
-          <para>A negative <varname>$order</varname> value means the callback
-          will be run before the method, while a positive value means it will
-          be run after. The smaller the order number, the sooner the callback
-          will be run. You can think of the order value as a timeline of
-          callbacks, zero (0) being the actual method being hooked.</para>
+            <para>To hook an object, so calls to its methods can be
+            intercepted, use <methodname>hook_object()</methodname>. The
+            prefix will be used when setting up callbacks for the
+            hooks.<example>
+                <title>Hooking an Object</title>
 
-          <para>Additional identical callbacks can be added in order to have a
-          callback called multiple times for one hook.</para>
+                <programlisting language="php">$widget = new com_example_widget;
+$pines-&gt;hook-&gt;hook_object($widget, 'com_example_widget-&gt;', false);</programlisting>
+              </example></para>
 
-          <para>The hook "all" is a pseudo hook which will run regardless of
-          what was actually caught. Callbacks attached to the "all" hook will
-          run before callbacks attached to the actual hook.<example>
-              <title>Adding a Callback to a Hook</title>
+            <note>
+              <para><varname>$pines</varname>, along with all objects within
+              it (except the hook, depend, config, and info services) are
+              automatically hooked. Most components are designed to
+              automatically hook their classes using the
+              <methodname>factory()</methodname> static method.</para>
+            </note>
 
-              <programlisting>function com_example__callback() {
+            <para>To set up a callback, use
+            <methodname>add_callback()</methodname>. A callback is called
+            either before a method runs or after. The callback is passed an
+            array of arguments or return value which it can freely manipulate.
+            If the callback runs before the method and sets the arguments
+            array to false (or causes an error), the method will not be run.
+            Callbacks before a method are passed the arguments given when the
+            method was called, while callbacks after a method are passed the
+            return value (in an array) of that method.</para>
+
+            <para>The callback can receive up to 5 arguments, in this
+            order:<orderedlist>
+                <listitem>
+                  <para><varname>&amp;$arguments</varname></para>
+
+                  <simplelist>
+                    <member>An array of either arguments or a return
+                    value.</member>
+                  </simplelist>
+                </listitem>
+
+                <listitem>
+                  <para><varname>$name</varname></para>
+
+                  <simplelist>
+                    <member>The name of the hook.</member>
+                  </simplelist>
+                </listitem>
+
+                <listitem>
+                  <para><varname>&amp;$object</varname></para>
+
+                  <simplelist>
+                    <member>The object on which the hook caught a method
+                    call.</member>
+                  </simplelist>
+                </listitem>
+
+                <listitem>
+                  <para><varname>&amp;$function</varname></para>
+
+                  <simplelist>
+                    <member>A callback for the method call which was caught.
+                    Altering this will cause a different function/method to
+                    run.</member>
+                  </simplelist>
+                </listitem>
+
+                <listitem>
+                  <para><varname>&amp;$data</varname></para>
+
+                  <simplelist>
+                    <member>An array in which callbacks can store data to
+                    communicate with later callbacks.</member>
+                  </simplelist>
+                </listitem>
+              </orderedlist></para>
+
+            <para>A hook is the name of whatever method it should catch. A
+            hook can also have an arbitrary name, but be wary that it may
+            already exist and it may result in your callback being falsely
+            called. In order to reduce the chance of this, always use a plus
+            sign (+) and your component's name to begin arbitrary hook names.
+            E.g. "+com_games_player_bonus".</para>
+
+            <para>If the hook is called explicitly, callbacks defined to run
+            before the hook will run immediately followed by callbacks defined
+            to run after.</para>
+
+            <para>A negative <varname>$order</varname> value means the
+            callback will be run before the method, while a positive value
+            means it will be run after. The smaller the order number, the
+            sooner the callback will be run. You can think of the order value
+            as a timeline of callbacks, zero (0) being the actual method being
+            hooked.</para>
+
+            <para>Additional identical callbacks can be added in order to have
+            a callback called multiple times for one hook.</para>
+
+            <para>The hook "all" is a pseudo hook which will run regardless of
+            what was actually caught. Callbacks attached to the "all" hook
+            will run before callbacks attached to the actual hook.<example>
+                <title>Adding a Callback to a Hook</title>
+
+                <programlisting language="php">function com_example__callback() {
     // Do something.
 }
 
@@ -1189,95 +1458,158 @@ $pines-&gt;hook-&gt;add_callback('com_example_widget-&gt;delete', -1, 'com_examp
 
 // Run the callback after every method call is caught.
 $pines-&gt;hook-&gt;add_callback('all', 10, 'com_example__callback');</programlisting>
-            </example></para>
+              </example></para>
 
-          <para>To manually run callbacks (without an originating function
-          call), use <methodname>run_callbacks()</methodname>.<example>
-              <title>Manually Run Callbacks</title>
+            <para>To manually run callbacks (without an originating function
+            call), use <methodname>run_callbacks()</methodname>.<example>
+                <title>Manually Run Callbacks</title>
 
-              <programlisting>$pines-&gt;hook-&gt;run_callbacks('+com_games_player_bonus');</programlisting>
-            </example></para>
-        </simplesect>
-      </section>
+                <programlisting language="php">$pines-&gt;hook-&gt;run_callbacks('+com_games_player_bonus');</programlisting>
+              </example></para>
+          </simplesect>
+        </section>
 
-      <section>
-        <title>Info (<classname>info</classname> class)</title>
+        <section>
+          <title>Info (<classname>info</classname> class)</title>
 
-        <para>The info service provides information about Pines and installed
-        components/templates. When Info is loaded, the
-        <filename>info.php</filename> file in the <filename>system</filename>
-        folder is retrieved. This file is used to fill variables in the info
-        object. Similarly, when a component's variable is accessed, Info will
-        look for an info.php file in the component's directory. It will use
-        this file to create an object for that component. The
-        <varname>template</varname> variable will contain the info of the
-        current template. The info file should return an associative array
-        with the following entries.<itemizedlist>
-            <listitem>
-              <para>name - The component's name. This is the name displayed to
-              the user.</para>
-            </listitem>
+          <para>The info service provides information about Pines and
+          installed components/templates. When Info is loaded, the
+          <filename>info.php</filename> file in the
+          <filename>system</filename> folder is retrieved. This file is used
+          to fill variables in the info object. Similarly, when a component's
+          variable is accessed, Info will look for an info.php file in the
+          component's directory. It will use this file to create an object for
+          that component. The <varname>template</varname> variable will
+          contain the info of the current template.</para>
 
-            <listitem>
-              <para>author - The component's author.</para>
-            </listitem>
+          <para>The info file should return an associative array with the
+          following entries.<informaltable>
+              <tgroup cols="3">
+                <colspec colnum="3" colwidth="5*" />
 
-            <listitem>
-              <para>version - The component's version.</para>
-            </listitem>
+                <thead>
+                  <row>
+                    <entry>Key</entry>
 
-            <listitem>
-              <para>license - (Optional) The URL or name of the license under
-              which the component is released.</para>
-            </listitem>
+                    <entry>Required</entry>
 
-            <listitem>
-              <para>website - (Optional) The URL of the component's
-              website.</para>
-            </listitem>
+                    <entry>Description</entry>
+                  </row>
+                </thead>
 
-            <listitem>
-              <para>services - (Optional) An array of the names of services
-              the component provides.</para>
-            </listitem>
+                <tbody>
+                  <row>
+                    <entry>name</entry>
 
-            <listitem>
-              <para>short_description - (Optional) A short description of the
-              component.</para>
-            </listitem>
+                    <entry>Yes</entry>
 
-            <listitem>
-              <para>description - (Optional) A description of the
-              component.</para>
-            </listitem>
+                    <entry>The component's name. This is the name displayed to
+                    the user.</entry>
+                  </row>
 
-            <listitem>
-              <para>depend - (Optional) An associative array of dependencies
-              which the component requires. The keys are the names of the
-              dependency checker to use.</para>
-            </listitem>
+                  <row>
+                    <entry>author</entry>
 
-            <listitem>
-              <para>conflict - (Optional) An associative array of dependencies
-              which the component conflicts with. The keys are the names of
-              the dependency checker to use.</para>
-            </listitem>
+                    <entry>Yes</entry>
 
-            <listitem>
-              <para>recommend - (Optional) An associative array of
-              dependencies which the component recommends. The keys are the
-              names of the dependency checker to use.</para>
-            </listitem>
+                    <entry>The component's author.</entry>
+                  </row>
 
-            <listitem>
-              <para>abilities - (Optional) An array of abilities used by the
-              component. Each array has three entries, a name, a title, and a
-              description, in that order.</para>
-            </listitem>
-          </itemizedlist><example>
-            <title>Example Info File</title>
+                  <row>
+                    <entry>version</entry>
 
-            <programlisting>defined('P_RUN') or die('Direct access prohibited');
+                    <entry>Yes</entry>
+
+                    <entry>The component's version.</entry>
+                  </row>
+
+                  <row>
+                    <entry>license</entry>
+
+                    <entry>No</entry>
+
+                    <entry>The URL or name of the license under which the
+                    component is released.</entry>
+                  </row>
+
+                  <row>
+                    <entry>website</entry>
+
+                    <entry>No</entry>
+
+                    <entry>The URL of the component's website.</entry>
+                  </row>
+
+                  <row>
+                    <entry>services</entry>
+
+                    <entry>No</entry>
+
+                    <entry>An array of the names of services the component
+                    provides.</entry>
+                  </row>
+
+                  <row>
+                    <entry>short_description</entry>
+
+                    <entry>No</entry>
+
+                    <entry>A short description of the component.</entry>
+                  </row>
+
+                  <row>
+                    <entry>description</entry>
+
+                    <entry>No</entry>
+
+                    <entry>A description of the component.</entry>
+                  </row>
+
+                  <row>
+                    <entry>depend</entry>
+
+                    <entry>No</entry>
+
+                    <entry>An associative array of dependencies which the
+                    component requires. The keys are the names of the
+                    dependency checker to use.</entry>
+                  </row>
+
+                  <row>
+                    <entry>conflict</entry>
+
+                    <entry>No</entry>
+
+                    <entry>An associative array of dependencies which the
+                    component conflicts with. The keys are the names of the
+                    dependency checker to use.</entry>
+                  </row>
+
+                  <row>
+                    <entry>recommend</entry>
+
+                    <entry>No</entry>
+
+                    <entry>An associative array of dependencies which the
+                    component recommends. The keys are the names of the
+                    dependency checker to use.</entry>
+                  </row>
+
+                  <row>
+                    <entry>abilities</entry>
+
+                    <entry>No</entry>
+
+                    <entry>An array of abilities used by the component. Each
+                    array has three entries, a name, a title, and a
+                    description, in that order.</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </informaltable><example>
+              <title>Example Info File</title>
+
+              <programlisting language="php">defined('P_RUN') or die('Direct access prohibited');
 
 return array(
     'name' =&gt; 'System Configurator',
@@ -1302,10 +1634,10 @@ return array(
         array('viewperuser', 'View Per User Configuration', 'Let the user see current per user/group configuration settings.')
     ),
 );</programlisting>
-          </example><example>
-            <title>Accessing Info for Pines and Components</title>
+            </example><example>
+              <title>Accessing Info for Pines and Components</title>
 
-            <programlisting>// Access Pines' "license" info entry:
+              <programlisting language="php">// Access Pines' "license" info entry:
 echo $pines-&gt;info-&gt;license;
 
 // Access a component's "description" info entry:
@@ -1313,95 +1645,177 @@ echo $pines-&gt;info-&gt;com_example-&gt;description;
 
 // Access a template's "version" info entry:
 echo $pines-&gt;info-&gt;tpl_green-&gt;version;</programlisting>
-          </example></para>
-      </section>
+            </example></para>
+        </section>
 
-      <section>
-        <title>Menu (<classname>menu</classname> class)</title>
+        <section>
+          <title>Menu (<classname>menu</classname> class)</title>
 
-        <para>The menu service builds and renders menus. In Pines, menus are
-        built using arrays, and these arrays are usually stored in JSON files.
-        Menu will begin by loading the <filename>menu.json</filename> file in
-        the <filename>system</filename> directory. This will set up the main
-        menu and its submenus. It will then load any
-        <filename>menu.json</filename> files found in all components'
-        directories. The JSON structure of a menu file is an array of objects
-        (because JSON doesn't support associative arrays) which are each
-        placed into the <varname>menu_arrays</varname> variable in the menu
-        object. Each entry is either a top level menu, or a menu entry.</para>
+          <para>The menu service builds and renders menus. In Pines, menus are
+          built using arrays, and these arrays are usually stored in JSON
+          files. Menu will begin by loading the <filename>menu.json</filename>
+          file in the <filename>system</filename> directory. This will set up
+          the main menu and its submenus. It will then load any
+          <filename>menu.json</filename> files found in all components'
+          directories. The JSON structure of a menu file is an array of
+          objects (because JSON doesn't support associative arrays) which are
+          each placed into the <varname>menu_arrays</varname> variable in the
+          menu object. Each entry is either a top level menu, or a menu
+          entry.</para>
 
-        <para>Top level menus require a position in which to place them, as
-        well as several other values:<itemizedlist>
-            <listitem>
-              <para>path - The name of the menus path.</para>
-            </listitem>
+          <para>Top level menus require a position in which to place them, as
+          well as several other values:<informaltable>
+              <tgroup cols="3">
+                <colspec colnum="3" colwidth="5*" />
 
-            <listitem>
-              <para>text - The text to title the menu's module.</para>
-            </listitem>
+                <thead>
+                  <row>
+                    <entry>Key</entry>
 
-            <listitem>
-              <para>position - The page position in which to place the
-              menu.</para>
-            </listitem>
+                    <entry>Required</entry>
 
-            <listitem>
-              <para>sort - (Optional) Boolean value of whether the menu short
-              be sorted alphabetically.</para>
-            </listitem>
+                    <entry>Description</entry>
+                  </row>
+                </thead>
 
-            <listitem>
-              <para>depend - (Optional) An associative array of dependencies
-              required to show the menu.</para>
-            </listitem>
-          </itemizedlist></para>
+                <tbody>
+                  <row>
+                    <entry>path</entry>
 
-        <para>Regular menu entries have these values:<itemizedlist>
-            <listitem>
-              <para>path - The path of this menu entry. Paths are hierarchical
-              like file paths, using forward slashes as separators.</para>
-            </listitem>
+                    <entry>Yes</entry>
 
-            <listitem>
-              <para>text - The text to show in the menu entry.</para>
-            </listitem>
+                    <entry>The name of the menus path.</entry>
+                  </row>
 
-            <listitem>
-              <para>sort - (Optional) Boolean value of whether the menu short
-              be sorted alphabetically.</para>
-            </listitem>
+                  <row>
+                    <entry>text</entry>
 
-            <listitem>
-              <para>href - (Optional) A URL, or an array of arguments to pass
-              to <function>pines_url()</function>, which the entry will link
-              to.</para>
-            </listitem>
+                    <entry>Yes</entry>
 
-            <listitem>
-              <para>target - (Optional) The HTML target of the link. Defaults
-              to "_self".</para>
-            </listitem>
+                    <entry>The text to title the menu's module.</entry>
+                  </row>
 
-            <listitem>
-              <para>onclick - (Optional) JavaScript which will run when the
-              entry is clicked.</para>
-            </listitem>
+                  <row>
+                    <entry>position</entry>
 
-            <listitem>
-              <para>depend - (Optional) An associative array of dependencies
-              required to show the entry.</para>
-            </listitem>
-          </itemizedlist></para>
+                    <entry>Yes</entry>
 
-        <para>An extra dependency called "children" can be used on menu
-        entries in order to show the menu only if it has visible
-        children.</para>
+                    <entry>The page position in which to place the
+                    menu.</entry>
+                  </row>
 
-        <para>To add a menu entry using code, you can insert it into the
-        <varname>menu_arrays</varname> variable.<example>
-            <title>Adding a Menu Entry Through Code</title>
+                  <row>
+                    <entry>depend</entry>
 
-            <programlisting>// Using pines_url().
+                    <entry>No</entry>
+
+                    <entry>Boolean value of whether the menu short be sorted
+                    alphabetically.</entry>
+                  </row>
+
+                  <row>
+                    <entry>website</entry>
+
+                    <entry>No</entry>
+
+                    <entry>An associative array of dependencies required to
+                    show the menu.</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </informaltable></para>
+
+          <para>Regular menu entries have these values:<informaltable>
+              <tgroup cols="3">
+                <colspec colnum="3" colwidth="5*" />
+
+                <thead>
+                  <row>
+                    <entry>Key</entry>
+
+                    <entry>Required</entry>
+
+                    <entry>Description</entry>
+                  </row>
+                </thead>
+
+                <tbody>
+                  <row>
+                    <entry>path</entry>
+
+                    <entry>Yes</entry>
+
+                    <entry>The path of this menu entry. Paths are hierarchical
+                    like file paths, using forward slashes as
+                    separators.</entry>
+                  </row>
+
+                  <row>
+                    <entry>text</entry>
+
+                    <entry>Yes</entry>
+
+                    <entry>The text to show in the menu entry.</entry>
+                  </row>
+
+                  <row>
+                    <entry>sort</entry>
+
+                    <entry>No</entry>
+
+                    <entry>Boolean value of whether the menu short be sorted
+                    alphabetically.</entry>
+                  </row>
+
+                  <row>
+                    <entry>href</entry>
+
+                    <entry>No</entry>
+
+                    <entry>A URL, or an array of arguments to pass to
+                    <function>pines_url()</function>, which the entry will
+                    link to.</entry>
+                  </row>
+
+                  <row>
+                    <entry>target</entry>
+
+                    <entry>No</entry>
+
+                    <entry>The HTML target of the link. Defaults to
+                    "_self".</entry>
+                  </row>
+
+                  <row>
+                    <entry>onclick</entry>
+
+                    <entry>No</entry>
+
+                    <entry>JavaScript which will run when the entry is
+                    clicked.</entry>
+                  </row>
+
+                  <row>
+                    <entry>depend</entry>
+
+                    <entry>No</entry>
+
+                    <entry>An associative array of dependencies required to
+                    show the entry.</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </informaltable></para>
+
+          <para>An extra dependency called "children" can be used on menu
+          entries in order to show the menu only if it has visible
+          children.</para>
+
+          <para>To add a menu entry using code, you can insert it into the
+          <varname>menu_arrays</varname> variable.<example>
+              <title>Adding a Menu Entry Through Code</title>
+
+              <programlisting language="php">// Using pines_url().
 $pines-&gt;menu-&gt;menu_arrays[] = array(
     'path' =&gt; 'main_menu/example',
     'text' =&gt; 'Example',
@@ -1418,28 +1832,28 @@ $pines-&gt;menu-&gt;menu_arrays[] = array(
         'ability' =&gt; ''
     )
 );</programlisting>
-          </example></para>
+            </example></para>
 
-        <para>The system init script i80menus.php is responsible for loading
-        the JSON files, by calling <methodname>add_json_file()</methodname>
-        for the system menu file, then each component's menu file. This means
-        that menu entries are not loaded until after all init/kill scripts and
-        requested actions have run. This means that if you need to alter a
-        component's menu entries (as opposed to just adding submenus and
-        entries), you must hook Menu's
-        <methodname>add_json_file()</methodname> or
-        <methodname>render()</methodname> method.</para>
+          <para>The system init script i80menus.php is responsible for loading
+          the JSON files, by calling <methodname>add_json_file()</methodname>
+          for the system menu file, then each component's menu file. This
+          means that menu entries are not loaded until after all init/kill
+          scripts and requested actions have run. This means that if you need
+          to alter a component's menu entries (as opposed to just adding
+          submenus and entries), you must hook Menu's
+          <methodname>add_json_file()</methodname> or
+          <methodname>render()</methodname> method.</para>
 
-        <para>Once all menu entries have been loaded,
-        <methodname>render()</methodname> will remove entries when their
-        dependencies are not met. It will convert the entries into
-        multi-dimensional arrays for each menu using their path values. It
-        then passes these arrays to the <methodname>menu()</methodname> method
-        of the current template and places the return value into a module in
-        the menu's requested position.<example>
-            <title>Example menu.json File</title>
+          <para>Once all menu entries have been loaded,
+          <methodname>render()</methodname> will remove entries when their
+          dependencies are not met. It will convert the entries into
+          multi-dimensional arrays for each menu using their path values. It
+          then passes these arrays to the <methodname>menu()</methodname>
+          method of the current template and places the return value into a
+          module in the menu's requested position.<example>
+              <title>Example menu.json File</title>
 
-            <programlisting>[
+              <programlisting>[
     {
         "path": "main_menu/other/example",
         "text": "Example",
@@ -1464,104 +1878,128 @@ $pines-&gt;menu-&gt;menu_arrays[] = array(
             }
         }
 ]</programlisting>
-          </example></para>
-      </section>
+            </example></para>
+        </section>
 
-      <section>
-        <title>Page (<classname>page</classname> class)</title>
+        <section>
+          <title>Page (<classname>page</classname> class)</title>
 
-        <para>The page service manages modules, notices, and errors, and
-        renders content to be output to the client by the template. Modules,
-        which are objects that use views to generate content, are attached to
-        Page in specific positions. A template's info object will have a list
-        of positions the template supports. Page uses PHP's output buffering
-        system to retrieve the output from modules and templates. Page also
-        controls the title of the page.</para>
+          <para>The page service manages modules, notices, and errors, and
+          renders content to be output to the client by the template. Modules,
+          which are objects that use views to generate content, are attached
+          to Page in specific positions. A template's info object will have a
+          list of positions the template supports. Page uses PHP's output
+          buffering system to retrieve the output from modules and templates.
+          Page also controls the title of the page.</para>
 
-        <para>Page has several methods for manipulating the page
-        title.<itemizedlist>
-            <listitem>
-              <para><methodname>title</methodname> - Append test to the
-              title.</para>
-            </listitem>
+          <para>Page has several methods for manipulating the page
+          title.<itemizedlist>
+              <listitem>
+                <para><methodname>title</methodname></para>
 
-            <listitem>
-              <para><methodname>title_set</methodname> - Replace the
-              title.</para>
-            </listitem>
+                <simplelist>
+                  <member>Append test to the title.</member>
+                </simplelist>
+              </listitem>
 
-            <listitem>
-              <para><methodname>title_pre</methodname> - Prepend text to the
-              title.</para>
-            </listitem>
+              <listitem>
+                <para><methodname>title_set</methodname></para>
 
-            <listitem>
-              <para><methodname>get_title</methodname> - Retrieve the
-              title.</para>
-            </listitem>
-          </itemizedlist></para>
+                <simplelist>
+                  <member>Replace the title.</member>
+                </simplelist>
+              </listitem>
 
-        <para>Page has several methods for displaying notices and errors to
-        the user. It is ultimately the responsibility of the template to
-        display the messages to the user.<itemizedlist>
-            <listitem>
-              <para><methodname>notice</methodname> - Add a notice to be
-              displayed to the user.</para>
-            </listitem>
+              <listitem>
+                <para><methodname>title_pre</methodname></para>
 
-            <listitem>
-              <para><methodname>get_notice</methodname> - Get the array of
-              notices.</para>
-            </listitem>
+                <simplelist>
+                  <member>Prepend text to the title.</member>
+                </simplelist>
+              </listitem>
 
-            <listitem>
-              <para><methodname>error</methodname> - Add an error to be
-              displayed to the user.</para>
-            </listitem>
+              <listitem>
+                <para><methodname>get_title</methodname></para>
 
-            <listitem>
-              <para><methodname>get_error</methodname> - Get the array of
-              errors.</para>
-            </listitem>
-          </itemizedlist></para>
+                <simplelist>
+                  <member>Retrieve the title.</member>
+                </simplelist>
+              </listitem>
+            </itemizedlist></para>
 
-        <para>Though module attachments are usually handled by the module when
-        it is created, you can manually attach a module to Page. The second
-        argument of <methodname>attach_module()</methodname> is the position
-        in which to place the module. You can also manually detach the module.
-        If the module is attached to the same position twice, it must likewise
-        be removed twice.<example>
-            <title>Manually Attaching and Detaching a Module</title>
+          <para>Page has several methods for displaying notices and errors to
+          the user. It is ultimately the responsibility of the template to
+          display the messages to the user.<itemizedlist>
+              <listitem>
+                <para><methodname>notice</methodname></para>
 
-            <programlisting>$module = new module;
+                <simplelist>
+                  <member>Add a notice to be displayed to the user.</member>
+                </simplelist>
+              </listitem>
+
+              <listitem>
+                <para><methodname>get_notice</methodname></para>
+
+                <simplelist>
+                  <member>Get the array of notices.</member>
+                </simplelist>
+              </listitem>
+
+              <listitem>
+                <para><methodname>error</methodname></para>
+
+                <simplelist>
+                  <member>Add an error to be displayed to the user.</member>
+                </simplelist>
+              </listitem>
+
+              <listitem>
+                <para><methodname>get_error</methodname></para>
+
+                <simplelist>
+                  <member>Get the array of errors.</member>
+                </simplelist>
+              </listitem>
+            </itemizedlist></para>
+
+          <para>Though module attachments are usually handled by the module
+          when it is created, you can manually attach a module to Page. The
+          second argument of <methodname>attach_module()</methodname> is the
+          position in which to place the module. You can also manually detach
+          the module. If the module is attached to the same position twice, it
+          must likewise be removed twice.<example>
+              <title>Manually Attaching and Detaching a Module</title>
+
+              <programlisting language="php">$module = new module;
 
 // Attach the module.
 $pines-&gt;page-&gt;attach_module($module, 'content');
 
 // Detach the module.
 $pines-&gt;page-&gt;detach_module($module, 'content');</programlisting>
-          </example></para>
+            </example></para>
 
-        <para>The template will need to place the module content in the
-        appropriate place on the page. To do this, templates use
-        <methodname>render_modules()</methodname>, providing a position. If
-        needed, the template can also provide a model, which will be used to
-        format the content as necessary.<example>
-            <title>Rendering the Modules in a Position Using a Model</title>
+          <para>The template will need to place the module content in the
+          appropriate place on the page. To do this, templates use
+          <methodname>render_modules()</methodname>, providing a position. If
+          needed, the template can also provide a model, which will be used to
+          format the content as necessary.<example>
+              <title>Rendering the Modules in a Position Using a Model</title>
 
-            <programlisting>&lt;div id="modules_left"&gt;
+              <programlisting language="php">&lt;div id="modules_left"&gt;
     &lt;?php echo $pines-&gt;page-&gt;render_modules('left', 'module_sidebar'); ?&gt;
 &lt;/div&gt;</programlisting>
-          </example></para>
+            </example></para>
 
-        <para>Under special circumstances, you may need to only output certain
-        data to the client. For example, when you are returning JSON data to
-        an AJAX request. To do this, set the <varname>override</varname>
-        variable to true, then pass the content to
-        <methodname>override_doc()</methodname>.<example>
-            <title>Overriding the Page</title>
+          <para>Under special circumstances, you may need to only output
+          certain data to the client. For example, when you are returning JSON
+          data to an AJAX request. To do this, set the
+          <varname>override</varname> variable to true, then pass the content
+          to <methodname>override_doc()</methodname>.<example>
+              <title>Overriding the Page</title>
 
-            <programlisting>// Turn override on.
+              <programlisting language="php">// Turn override on.
 $pines-&gt;page-&gt;override = true;
 
 // Output JSON data.
@@ -1569,186 +2007,273 @@ $pines-&gt;page-&gt;override_doc(json_encode($var));
 
 // If you need to retrieve the data:
 $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
-          </example></para>
+            </example></para>
 
-        <para>The page is rendered when the system init script
-        <filename>i90render.php</filename> calls
-        <methodname>render()</methodname>. If the page is overridden, the
-        override document is returned. Otherwise, each module is rendered
-        individually, then the template's <filename>template.php</filename>
-        file is run. Because each module is rendered before the page, a module
-        can cause another module to be attached to the page. However, that
-        module will ultimately be rendered during the page's rendering.
-        Therefore, if that module then causes another module to be attached in
-        a position that has already been rendered, the third module will not
-        be output to the user.</para>
+          <para>The page is rendered when the system init script
+          <filename>i90render.php</filename> calls
+          <methodname>render()</methodname>. If the page is overridden, the
+          override document is returned. Otherwise, each module is rendered
+          individually, then the template's <filename>template.php</filename>
+          file is run. Because each module is rendered before the page, a
+          module can cause another module to be attached to the page. However,
+          that module will ultimately be rendered during the page's rendering.
+          Therefore, if that module then causes another module to be attached
+          in a position that has already been rendered, the third module will
+          not be output to the user.</para>
 
-        <note>
-          <para>In order to allow it to be hooked,
-          <methodname>render()</methodname> only returns the page output. The
-          init script then echoes it to the user.</para>
-        </note>
+          <note>
+            <para>In order to allow it to be hooked,
+            <methodname>render()</methodname> only returns the page output.
+            The init script then echoes it to the user.</para>
+          </note>
+        </section>
       </section>
-    </section>
-
-    <section>
-      <title>Core Functions</title>
-
-      <para>Pines Core includes several functions. Most of these functions are
-      just shortcuts to common methods of the Pines object and system
-      services.<itemizedlist>
-          <listitem>
-            <para><function>action</function> - Shortcut to
-            <code>$pines-&gt;action()</code>.</para>
-          </listitem>
-
-          <listitem>
-            <para><function>clean_checkbox</function> - Clean the name of a
-            checkbox to use in an HTML form.</para>
-          </listitem>
-
-          <listitem>
-            <para><function>clean_filename</function> - Clean a filename, so
-            it doesn't refer to any parent directories.</para>
-          </listitem>
-
-          <listitem>
-            <para><function>format_content</function> - Shortcut to
-            <code>$pines-&gt;format_content()</code>.</para>
-          </listitem>
-
-          <listitem>
-            <para><function>format_date</function> - Shortcut to
-            <code>$pines-&gt;format_date()</code>.</para>
-          </listitem>
-
-          <listitem>
-            <para><function>format_phone</function> - Shortcut to
-            <code>$pines-&gt;format_phone()</code>.</para>
-          </listitem>
-
-          <listitem>
-            <para><function>gatekeeper</function> - Shortcut to
-            <code>$pines-&gt;user_manager-&gt;gatekeeper()</code>.<note>
-                <para>If no user manager is installed,
-                <function>gatekeeper</function> returns true.</para>
-              </note></para>
-          </listitem>
-
-          <listitem>
-            <para><function>is_clean_filename</function> - Check whether a
-            filename refers to any parent directories.</para>
-          </listitem>
-
-          <listitem>
-            <para><function>pines_depend</function> - Shortcut to
-            <code>$pines-&gt;depend-&gt;check()</code>.</para>
-          </listitem>
-
-          <listitem>
-            <para><function>pines_error</function> - Shortcut to
-            <code>$pines-&gt;page-&gt;error()</code>.</para>
-          </listitem>
-
-          <listitem>
-            <para><function>pines_log</function> - Shortcut to
-            <code>$pines-&gt;log_manager-&gt;log()</code>.<note>
-                <para>If no log manager is installed,
-                <function>pines_log</function> returns true.</para>
-              </note></para>
-          </listitem>
-
-          <listitem>
-            <para><function>pines_notice</function> - Shortcut to
-            <code>$pines-&gt;page-&gt;notice()</code>.</para>
-          </listitem>
-
-          <listitem>
-            <para><function>pines_url</function> - Shortcut to
-            <code>$pines-&gt;template-&gt;url()</code>.<note>
-                <para>If there is no current template,
-                <function>pines_url</function> returns null.</para>
-              </note></para>
-          </listitem>
-
-          <listitem>
-            <para><function>punt_user</function> - Shortcut to
-            <code>$pines-&gt;user_manager-&gt;punt_user()</code>.<note>
-                <para>If no user manager is installed
-                <function>punt_user</function> redirects the user to the
-                homepage.</para>
-              </note></para>
-          </listitem>
-
-          <listitem>
-            <para><function>redirect</function> - Shortcut to
-            <code>$pines-&gt;redirect()</code>.</para>
-          </listitem>
-        </itemizedlist></para>
-    </section>
-
-    <section>
-      <title>Core Classes</title>
 
       <section>
-        <title>Module</title>
+        <title>Core Functions</title>
+
+        <para>Pines Core includes several functions. Most of these functions
+        are just shortcuts to common methods of the Pines object and system
+        services.<table>
+            <title>Core Functions</title>
+
+            <tgroup cols="2">
+              <colspec colnum="2" colwidth="3*" />
+
+              <thead>
+                <row>
+                  <entry>Function</entry>
+
+                  <entry>Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry><function>action</function></entry>
+
+                  <entry>Shortcut to <code>$pines-&gt;action()</code>.</entry>
+                </row>
+
+                <row>
+                  <entry><function>clean_checkbox</function></entry>
+
+                  <entry>Clean the name of a checkbox to use in an HTML
+                  form.</entry>
+                </row>
+
+                <row>
+                  <entry><function>clean_filename</function></entry>
+
+                  <entry>Clean a filename, so it doesn't refer to any parent
+                  directories.</entry>
+                </row>
+
+                <row>
+                  <entry><function>format_content</function></entry>
+
+                  <entry>Shortcut to
+                  <code>$pines-&gt;format_content()</code>.</entry>
+                </row>
+
+                <row>
+                  <entry><function>format_date</function></entry>
+
+                  <entry>Shortcut to
+                  <code>$pines-&gt;format_date()</code>.</entry>
+                </row>
+
+                <row>
+                  <entry><function>format_phone</function></entry>
+
+                  <entry>Shortcut to
+                  <code>$pines-&gt;format_phone()</code>.</entry>
+                </row>
+
+                <row>
+                  <entry><function>gatekeeper</function></entry>
+
+                  <entry>Shortcut to
+                  <code>$pines-&gt;user_manager-&gt;gatekeeper()</code>. If no
+                  user manager is installed, <function>gatekeeper</function>
+                  returns true.</entry>
+                </row>
+
+                <row>
+                  <entry><function>is_clean_filename</function></entry>
+
+                  <entry>Check whether a filename refers to any parent
+                  directories.</entry>
+                </row>
+
+                <row>
+                  <entry><function>pines_depend</function></entry>
+
+                  <entry>Shortcut to
+                  <code>$pines-&gt;depend-&gt;check()</code>.</entry>
+                </row>
+
+                <row>
+                  <entry><function>pines_error</function></entry>
+
+                  <entry>Shortcut to
+                  <code>$pines-&gt;page-&gt;error()</code>.</entry>
+                </row>
+
+                <row>
+                  <entry><function>pines_log</function></entry>
+
+                  <entry>Shortcut to
+                  <code>$pines-&gt;log_manager-&gt;log()</code>. If no log
+                  manager is installed, <function>pines_log</function> returns
+                  true.</entry>
+                </row>
+
+                <row>
+                  <entry><function>pines_notice</function></entry>
+
+                  <entry>Shortcut to
+                  <code>$pines-&gt;page-&gt;notice()</code>.</entry>
+                </row>
+
+                <row>
+                  <entry><function>pines_url</function></entry>
+
+                  <entry>Shortcut to
+                  <code>$pines-&gt;template-&gt;url()</code>. If there is no
+                  current template, <function>pines_url</function> returns
+                  null.</entry>
+                </row>
+
+                <row>
+                  <entry><function>punt_user</function></entry>
+
+                  <entry>Shortcut to
+                  <code>$pines-&gt;user_manager-&gt;punt_user()</code>. If no
+                  user manager is installed <function>punt_user</function>
+                  redirects the user to the homepage.</entry>
+                </row>
+
+                <row>
+                  <entry><function>redirect</function></entry>
+
+                  <entry>Shortcut to
+                  <code>$pines-&gt;redirect()</code>.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
+
+      <section>
+        <title>Core Classes</title>
+
+        <section>
+          <title>Pines Base Class</title>
+
+          <para>The <classname>p_base</classname> class is a class which all
+          classes in Pines extend. When implementing a special class, like
+          <classname>entity</classname> or
+          <classname>configurator_component</classname>, it must extend
+          <classname>p_base</classname>. It may extend another class, like
+          <classname>template</classname>, which already extends
+          <classname>p_base</classname>.</para>
+        </section>
+
+        <section>
+          <title>Module</title>
+
+          <para></para>
+        </section>
+      </section>
+
+      <section>
+        <title>Order of Execution</title>
 
         <para></para>
       </section>
-    </section>
+    </chapter>
 
-    <section>
-      <title>Order of Execution</title>
-
-      <para></para>
-    </section>
-  </chapter>
-
-  <chapter>
-    <title>System Services</title>
-
-    <section>
-      <title>Creating a Service</title>
-
-      <para></para>
-    </section>
-
-    <section>
+    <chapter>
       <title>System Services</title>
 
       <section>
-        <title>Configurator</title>
+        <title>Creating a Service</title>
 
         <para></para>
       </section>
 
       <section>
-        <title>Editor</title>
+        <title>System Services</title>
 
-        <para></para>
-      </section>
+        <section>
+          <title>Configurator</title>
 
-      <section>
-        <title>Entity Manager</title>
+          <para></para>
+        </section>
 
-        <para><example>
-            <title>Accessing the Entity Manager</title>
+        <section>
+          <title>Editor</title>
 
-            <programlisting>function example() {
+          <para></para>
+        </section>
+
+        <section>
+          <title>Entity Manager</title>
+
+          <para><example>
+              <title>Accessing the Entity Manager</title>
+
+              <programlisting language="php">function example() {
     global $pines;
     $pines-&gt;entity_manager
 }</programlisting>
-          </example></para>
+            </example></para>
+        </section>
+
+        <section>
+          <title>Icons</title>
+
+          <para></para>
+        </section>
+
+        <section>
+          <title>Log Manager</title>
+
+          <para></para>
+        </section>
+
+        <section>
+          <title>Template</title>
+
+          <para></para>
+        </section>
+
+        <section>
+          <title>Uploader</title>
+
+          <para></para>
+        </section>
+
+        <section>
+          <title>User Manager</title>
+
+          <para></para>
+        </section>
       </section>
+    </chapter>
+
+    <chapter>
+      <title>Special Classes</title>
 
       <section>
-        <title>Icons</title>
+        <title>Component</title>
 
         <para></para>
       </section>
 
       <section>
-        <title>Log Manager</title>
+        <title>Configurator Component</title>
 
         <para></para>
       </section>
@@ -1760,94 +2285,62 @@ $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
       </section>
 
       <section>
-        <title>Uploader</title>
+        <title>Entity</title>
 
         <para></para>
       </section>
 
       <section>
-        <title>User Manager</title>
+        <title>Group</title>
 
         <para></para>
       </section>
-    </section>
-  </chapter>
 
-  <chapter>
-    <title>Special Classes</title>
+      <section>
+        <title>User</title>
 
-    <section>
-      <title>Pines Base Class</title>
+        <para></para>
+      </section>
+    </chapter>
+  </part>
 
-      <para></para>
-    </section>
+  <part>
+    <title>Application Development</title>
 
-    <section>
-      <title>Component</title>
+    <chapter>
+      <title>Components</title>
 
-      <para></para>
-    </section>
+      <section>
+        <title>Component Design</title>
 
-    <section>
-      <title>Configurator Component</title>
+        <para></para>
+      </section>
+    </chapter>
 
-      <para></para>
-    </section>
+    <chapter>
+      <title>Templates</title>
 
-    <section>
-      <title>Template</title>
+      <section>
+        <title>Template Design</title>
 
-      <para></para>
-    </section>
+        <para></para>
+      </section>
+    </chapter>
+  </part>
 
-    <section>
-      <title>Entity</title>
+  <part>
+    <title>Distribution</title>
 
-      <para></para>
-    </section>
-
-    <section>
-      <title>Group</title>
-
-      <para></para>
-    </section>
-
-    <section>
-      <title>User</title>
+    <chapter>
+      <title>Packaging</title>
 
       <para></para>
-    </section>
-  </chapter>
+    </chapter>
 
-  <chapter>
-    <title>Components</title>
-
-    <section>
-      <title>Component Design</title>
+    <chapter>
+      <title>Pines Plaza</title>
 
       <para></para>
-    </section>
-  </chapter>
-
-  <chapter>
-    <title>Templates</title>
-
-    <section>
-      <title>Template Design</title>
-
-      <para></para>
-    </section>
-  </chapter>
-
-  <chapter>
-    <title>Packaging</title>
-
-    <para></para>
-  </chapter>
-
-  <chapter>
-    <title>Pines Plaza</title>
-
-    <para></para>
-  </chapter>
+    </chapter>
+  </part>
 </book>
