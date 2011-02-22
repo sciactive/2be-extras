@@ -27,7 +27,17 @@
   <preface>
     <title>Preface</title>
 
-    <para></para>
+    <section>
+      <title>About This Book</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>How This Book is Organized</title>
+
+      <para></para>
+    </section>
   </preface>
 
   <part>
