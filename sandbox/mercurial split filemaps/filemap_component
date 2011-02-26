@@ -1,0 +1,53 @@
+#exclude favicon.ico
+#exclude htaccess.txt
+#exclude index.php
+#exclude INSTALL
+#exclude LICENSE
+#exclude media
+#exclude README
+#exclude system
+
+#exclude build-tools
+#exclude logo
+#exclude mmf-cash-drawer
+#exclude pform
+#exclude pgrid
+#exclude pnotify
+#exclude ptags
+#exclude sandbox
+#exclude views
+#exclude common.php
+#exclude configure.php
+#exclude dandelion.sql
+#exclude display.php
+#exclude load.php
+#exclude pines.sql
+#exclude TODO
+#exclude TODOLIST
+#exclude upload.php
+#exclude xroom.sql
+
+#exclude pines/INSTALL
+#exclude pines/LICENSE
+#exclude pines/README
+#exclude pines/favicon.ico
+#exclude pines/htaccess.txt
+#exclude pines/index.php
+#exclude pines/media
+#exclude pines/pines.sql
+#exclude pines/system
+#exclude pines/update.sql
+#exclude com_example
+#exclude pines
+
+include components
+include templates
+include pines/components
+include pines/templates
+include com_example
+
+rename components .
+rename pines/components pines
+
+rename templates .
+rename pines/templates pines
