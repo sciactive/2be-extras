@@ -18,7 +18,7 @@
     </author>
 
     <copyright>
-      <year>2010</year>
+      <year>2011</year>
 
       <holder>Hunter Perrin. All rights reserved.</holder>
     </copyright>
@@ -49,7 +49,105 @@
       <section>
         <title>What is Pines?</title>
 
-        <para></para>
+        <para>Pines is a MVC based PHP framework, designed to help produce
+        complex web applications rapidly. It is a full featured application
+        framework, which provides features not only unique to Pines as a
+        framework, but never before seen in PHP before. Pines is designed with
+        the developer in mind. This is reflected in the history of
+        Pines.</para>
+
+        <section>
+          <title>The History of Pines</title>
+
+          <para>Pines was started in the Fall of 2008 by myself, Hunter
+          Perrin. While taking my first PHP class, along with a French I
+          class, I developed a small PHP application to allow the
+          collaborative editing of a play script. The application was used for
+          my French class, then stowed away. Several months after that, I
+          started a new job, working as a web designer. There, they requested
+          me to find an application capable of sending newsletters to their
+          clients. I dug up the old application, and adapted it to send
+          emails. This incarnation was called Dandelion, and released under
+          the GNU Affero GPL.</para>
+
+          <para>After a year there, I took a new position. They had several
+          new ideas for web applications, which I slowly started building
+          using Dandelion. When the project started to really resemble a
+          framework, not just an application, we renamed it to Pines. Problem
+          after problem would arise, and solution after solution would be
+          built. All atop the Pines framework. Every feature in Pines has come
+          from the real need of a business environment. Pines has seen many
+          redesigns, and it barely resembles the early application.</para>
+
+          <para>Now Pines is a solid, well tested, and well documented
+          framework, suitable for building high demand enterprise
+          applications.</para>
+        </section>
+
+        <section>
+          <title>Features That Make Pines Unique</title>
+
+          <para>Pines has many features which are either vastly superior to
+          their counterparts in other frameworks, or have never been seen
+          before in PHP. Heres a list of a few features which make Pines stand
+          out in the ever expanding field of PHP frameworks.<itemizedlist>
+              <listitem>
+                <para>The Package Manager</para>
+
+                <simplelist>
+                  <member>The package manager resembles the package managers
+                  common in Linux. It handles dependencies, retrieves updates,
+                  checks signed code, and much more. This isn't necessarily
+                  uncommon in a PHP framework, but Pines' package manager is
+                  100% PHP code. That includes everything. The package
+                  downloading, dependency checker, code signing, even the
+                  package format is 100% PHP.</member>
+                </simplelist>
+              </listitem>
+
+              <listitem>
+                <para>The Slim Archive Format</para>
+
+                <simplelist>
+                  <member>The Slim archive format is the heart of the package
+                  manager. Using just PHP, Slim is able to rival other archive
+                  formats. Slim archives can even be built to self
+                  extract.</member>
+                </simplelist>
+              </listitem>
+
+              <listitem>
+                <para>The Hook System</para>
+
+                <simplelist>
+                  <member>Similar hook systems have been attempted by other
+                  frameworks, but Pines' hook system is unparalleled. It
+                  allows the developer to extend or even change <phrase
+                  role="bold">any</phrase> method in a component. This level
+                  of flexibility allows developers to collaborate and build
+                  like never before.</member>
+                </simplelist>
+              </listitem>
+
+              <listitem>
+                <para>The Entity Manager</para>
+
+                <simplelist>
+                  <member>The entity manager is an object-relational mapper,
+                  which provides developers with a very simple and very
+                  flexible way of saving, retrieving, and manipulating data.
+                  With a simple, yet powerful querying system, you can make a
+                  complex, portable application without ever writing a single
+                  SQL query. Complex data relations are easy to handle and
+                  easy to query.</member>
+                </simplelist>
+              </listitem>
+            </itemizedlist></para>
+
+          <para>Pines is full of features which make coding applications fast
+          and easy, yet it's flexible enough to fit almost any application.
+          Let's get started!</para>
+        </section>
       </section>
     </chapter>
 
@@ -124,10 +222,21 @@
         repositories from SourceForge.<itemizedlist>
             <listitem>
               <para><link
-              xlink:href="http://pines.hg.sourceforge.net:8000/hgroot/pines/pines">http://pines.hg.sourceforge.net:8000/hgroot/pines/pines</link></para>
+              xlink:href="http://pines.hg.sourceforge.net:8000/hgroot/pines/pines">http://pines.hg.sourceforge.net:8000/hgroot/pines/pines</link><emphasis
+              xlink:href="http://pines.hg.sourceforge.net:8000/hgroot/pines/pines">
+              or </emphasis><link
+              xlink:href="http://pines.hg.sourceforge.net:8000/hgroot/pines/core">http://pines.hg.sourceforge.net:8000/hgroot/pines/core</link></para>
 
-              <para>Main repository. Contains Pines Core, and official
-              components.</para>
+              <para>Pines Core repository. Contains the core system
+              files.</para>
+            </listitem>
+
+            <listitem>
+              <para><link
+              xlink:href="http://pines.hg.sourceforge.net:8000/hgroot/pines/components">http://pines.hg.sourceforge.net:8000/hgroot/pines/components</link></para>
+
+              <para>Pines Components repository. Contains official components
+              and templates.</para>
             </listitem>
 
             <listitem>
@@ -175,13 +284,38 @@
           </itemizedlist></para>
 
         <para>To get a local copy of Pines for testing or development, clone
-        the Mercurial repository.</para>
+        the Mercurial repositories.</para>
 
         <para><programlisting language="sh">mkdir pines
-hg clone http://pines.hg.sourceforge.net:8000/hgroot/pines/pines pines</programlisting></para>
+hg clone http://pines.hg.sourceforge.net:8000/hgroot/pines/pines pines
+
+mkdir components
+hg clone http://pines.hg.sourceforge.net:8000/hgroot/pines/components components</programlisting></para>
+
+        <para>Then create links to the components/templates under the correct
+        directories.</para>
+
+        <para><programlisting language="sh">cd pines/components/
+ln -s ../../components/com_* ./
+
+cd ../templates/
+ln -s ../../components/tpl_* ./</programlisting></para>
+
+        <para>You will need to unlink conflicting components, such as extra
+        entity managers. If you plan to use MySQL for example, you will need
+        to delete the links to com_pgentity and com_pgsql.</para>
+
+        <para><programlisting language="sh">cd pines/components/
+unlink com_pgentity
+unlink com_pgsql</programlisting></para>
 
         <para>To update your local repository and get the latest code, pull
-        changes and update.<programlisting language="sh">hg pull
+        changes and update.<programlisting language="sh">cd pines/
+hg pull
+hg up
+
+cd ../components/
+hg pull
 hg up</programlisting></para>
 
         <para>I recommend using a Mercurial GUI to make using the repository
@@ -255,10 +389,9 @@ $pines-&gt;entity_manager-&gt;get_entities(
           <para>Opening brackets are placed on the same line. Closing brackets
           are placed on a new line. If you break parentheses, indent the
           contained lines. The while in a do while loop is placed on the same
-          line as the closing bracket. In PHP, one line ifs can use no
-          brackets. Ifs with an else block must use brackets. In JavaScript
-          (in order to reduce file size) brackets are not required in this
-          case.</para>
+          line as the closing bracket. In PHP, one line if and else blocks can
+          either use brackets or not. In JavaScript (in order to reduce file
+          size) brackets are not recommended in this case.</para>
 
           <para><example>
               <title>Brackets and Parentheses</title>
@@ -271,7 +404,12 @@ $pines-&gt;entity_manager-&gt;get_entities(
 if ($var)
     one_thing();
 
-// Brackets should be used here when writing PHP!
+// This is fine.
+if ($var)
+    one_thing();
+else
+    another_thing();
+// Also fine.
 if ($var) {
     one_thing();
 } else {
@@ -279,7 +417,8 @@ if ($var) {
 }
 
 if ($var) {
-    // Something
+    one_thing();
+    another_thing();
 } elseif ($othervar) {
     // Something else
 } else {
@@ -298,16 +437,7 @@ if (
             $thatthing
         )
     )
-    do_something();
-
-// *** JAVASCRIPT ONLY ***
-
-if (something)
-    do_this();
-else if (somethingelse)
-    do_that();
-else
-    do_those();</programlisting>
+    do_something();</programlisting>
             </example></para>
         </section>
 
@@ -2193,14 +2323,565 @@ $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
         <section>
           <title>Module</title>
 
-          <para></para>
+          <para>The module class is used to generate content using a view and
+          place it into a page. Modules allow Pines to pass data from the
+          logic portion of a component to the presentation portion. This
+          allows the business logic to remain the same no matter which type of
+          page is being constructed (XHTML, RSS, etc.). Modules select the
+          proper view based on the format provided by the current
+          template.</para>
+
+          <para>Modules have several variables. However, the position and
+          order variables must be set by using the
+          <methodname>attach</methodname> method or the
+          constructor.<itemizedlist>
+              <listitem>
+                <para><varname>muid</varname></para>
+
+                <simplelist>
+                  <member>A unique ID available to views to allow the use of
+                  IDs in HTML. Generated with
+                  <function>mt_rand</function>.</member>
+                </simplelist>
+              </listitem>
+
+              <listitem>
+                <para><varname>title</varname></para>
+
+                <simplelist>
+                  <member>The module's title. This is usually set by the
+                  view.</member>
+                </simplelist>
+              </listitem>
+
+              <listitem>
+                <para><varname>note</varname></para>
+
+                <simplelist>
+                  <member>The module's note. This is usually set by the
+                  view.</member>
+                </simplelist>
+              </listitem>
+
+              <listitem>
+                <para><varname>classes</varname></para>
+
+                <simplelist>
+                  <member>A list of additional classes to be added to the
+                  module. This applies only to HTML modules.</member>
+                </simplelist>
+              </listitem>
+
+              <listitem>
+                <para><varname>content</varname></para>
+
+                <simplelist>
+                  <member>The modules content. This is almost always, but not
+                  necessarily, filled by the output of a view.</member>
+                </simplelist>
+              </listitem>
+
+              <listitem>
+                <para><varname>component</varname></para>
+
+                <simplelist>
+                  <member>The component which contains the view.</member>
+                </simplelist>
+              </listitem>
+
+              <listitem>
+                <para><varname>view</varname></para>
+
+                <simplelist>
+                  <member>The view from which the content will be
+                  retrieved.</member>
+                </simplelist>
+              </listitem>
+
+              <listitem>
+                <para><varname>position</varname></para>
+
+                <simplelist>
+                  <member>The position on the page in which the module is
+                  placed.</member>
+                </simplelist>
+              </listitem>
+
+              <listitem>
+                <para><varname>order</varname></para>
+
+                <simplelist>
+                  <member>The order in which the module is placed in the
+                  position.</member>
+                </simplelist>
+              </listitem>
+
+              <listitem>
+                <para><varname>show_title</varname></para>
+
+                <simplelist>
+                  <member>Whether or not the title and note of the module
+                  should be displayed.</member>
+                </simplelist>
+              </listitem>
+            </itemizedlist></para>
+
+          <para>When creating a module, the component, view, position, and
+          order can be specified in the constructor. Position and order are
+          optional. The order is not guaranteed and will be ignored if it is
+          already taken.<example>
+              <title>Creating a Module</title>
+
+              <programlisting language="php">// Add the widget form from com_example to the content part of the page.
+// Place in order as #2, so #0, and #1 come before it.
+$module = new module('com_example', 'widget/form', 'content', 2);</programlisting>
+            </example></para>
+
+          <para>You can also manually attach a module once it is
+          created.<example>
+              <title>Manually Attach an Existing Module</title>
+
+              <programlisting language="php">$module = new module('com_example', 'widget/form');
+if (isset($position))
+    $module-&gt;attach($position);
+else
+    $module-&gt;attach('content');</programlisting>
+            </example></para>
+
+          <para>You can use the module to generate content without putting it
+          into the page.<example>
+              <title>Using a Module to Render Content</title>
+
+              <programlisting language="php">$module = new module('com_example', 'widget/email');
+$email_body = $module-&gt;render();</programlisting>
+            </example><caution>
+              <para>Even though the module is not added to the page in this
+              example, it still uses the template's format to find the
+              view.</para>
+            </caution></para>
+
+          <para>Pines provides a blank view, which you can use if you want to
+          add content to the module manually.<example>
+              <title>Manually Creating the Module Content</title>
+
+              <programlisting language="php">// Of course, this example message would be much more suited to use pines_notice() or pines_error(),
+// but this is merely an example of what you could do.
+$module = new module('system', 'null', 'content');
+$module-&gt;title = 'Result';
+$module-&gt;content('The process '.($success ? 'finished successfully.' : 'encountered an error.'));
+
+// And we can retrieve the content to log it.
+pines_log($module-&gt;get_content());</programlisting>
+            </example></para>
+
+          <para>For more information about creating and using views, please
+          see the section <link linkend="views">Views</link> section.</para>
         </section>
       </section>
 
       <section>
         <title>Order of Execution</title>
 
-        <para></para>
+        <para>Pines is a very complex framework, and has many different
+        interacting parts. Understanding how these parts are loaded and when
+        they become available to use is important in developing successful
+        Pines software. If you are reading this book sequentially, you may be
+        unfamiliar with some of the terms used in this section. Since this
+        section is so important for Pines development, I recommend you come
+        back to this section after reading Part II, and read it again to
+        reinforce your understanding of the order in which Pines executes
+        various parts of the system.</para>
+
+        <para>Pines begins execution by a request to the
+        <filename>index.php</filename> file.<itemizedlist>
+            <listitem>
+              <para>Defines constants.<itemizedlist>
+                  <listitem>
+                    <para><constant>P_EXEC_TIME</constant> - The microtime
+                    when the script began executing.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><constant>P_RUN</constant> - Used to determine that
+                    Pines was executed properly through
+                    <filename>index.php</filename>.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><constant>P_BASE_PATH</constant> - The base path of
+                    the Pines installation.</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><constant>P_INDEX</constant> - The name of the index
+                    file. (Almost always
+                    <filename>index.php</filename>.)</para>
+                  </listitem>
+
+                  <listitem>
+                    <para><constant>P_SCRIPT_TIMING</constant> - Whether to
+                    use the script timing system. Change this value to help
+                    check for bottlenecks in your code.</para>
+                  </listitem>
+                </itemizedlist></para>
+            </listitem>
+
+            <listitem>
+              <para>Scans the <filename>system/init/</filename> directory for
+              the system init scripts, and executes them in order.<orderedlist>
+                  <listitem>
+                    <para><filename>i00timing.php</filename></para>
+
+                    <itemizedlist>
+                      <listitem>
+                        <para>Loads script timing functions. These functions
+                        will use the JavaScript console.log function to
+                        display timing information for various portions of the
+                        script run.</para>
+                      </listitem>
+                    </itemizedlist>
+                  </listitem>
+
+                  <listitem>
+                    <para><filename>i10functions.php</filename></para>
+
+                    <itemizedlist>
+                      <listitem>
+                        <para>Loads various functions used specifically by
+                        Pines Core.</para>
+                      </listitem>
+                    </itemizedlist>
+                  </listitem>
+
+                  <listitem>
+                    <para><filename>i20interfaces.php</filename><itemizedlist>
+                        <listitem>
+                          <para>Defines interfaces for system services and
+                          classes.</para>
+                        </listitem>
+                      </itemizedlist></para>
+                  </listitem>
+
+                  <listitem>
+                    <para><filename>i30load_system.php</filename><itemizedlist>
+                        <listitem>
+                          <para>Strips slashes from request variables. This
+                          ensures that request data always appears as if Magic
+                          Quotes are turned off.</para>
+                        </listitem>
+
+                        <listitem>
+                          <para>Loads system classes from
+                          <filename>system/classes/</filename>.</para>
+                        </listitem>
+
+                        <listitem>
+                          <para>Loads <varname>$pines</varname>.<itemizedlist>
+                              <listitem>
+                                <para>Loads config service.<itemizedlist>
+                                    <listitem>
+                                      <para>Loads system configuration.</para>
+                                    </listitem>
+
+                                    <listitem>
+                                      <para>Determines full and relative location using
+                                      client provided hostname, if they are not already
+                                      set by the config.</para>
+                                    </listitem>
+
+                                    <listitem>
+                                      <para>Sets
+                                      <varname>$pines-&gt;config-&gt;location</varname> to
+                                      static location, or relative location if static is
+                                      not set.</para>
+                                    </listitem>
+                                  </itemizedlist></para>
+                              </listitem>
+
+                              <listitem>
+                                <para>Loads info service.<itemizedlist>
+                                    <listitem>
+                                      <para>Loads system info.</para>
+                                    </listitem>
+                                  </itemizedlist></para>
+                              </listitem>
+
+                              <listitem>
+                                <para>Loads hook service.</para>
+                              </listitem>
+
+                              <listitem>
+                                <para>Loads depend service.<itemizedlist>
+                                    <listitem>
+                                      <para>Loads default dependency checkers.</para>
+                                    </listitem>
+                                  </itemizedlist></para>
+                              </listitem>
+
+                              <listitem>
+                                <para>Loads menu service.</para>
+                              </listitem>
+
+                              <listitem>
+                                <para>Loads page service.</para>
+                              </listitem>
+
+                              <listitem>
+                                <para>Checks system config.<itemizedlist>
+                                    <listitem>
+                                      <para>Determines current template from config
+                                      setting or request variable and sets it as the
+                                      template service.</para>
+                                    </listitem>
+
+                                    <listitem>
+                                      <para>Gets timezone from config and passes to
+                                      <varname>date_default_timezone_set</varname>.</para>
+                                    </listitem>
+
+                                    <listitem>
+                                      <para>If offline mode is turned on, loads
+                                      <filename>system/offline.php</filename>, which ends
+                                      execution here.</para>
+                                    </listitem>
+
+                                    <listitem>
+                                      <para>If the current template's class file is
+                                      missing, loads
+                                      <filename>system/template_error.php</filename>,
+                                      which ends execution here.</para>
+                                    </listitem>
+
+                                    <listitem>
+                                      <para>Adds current template's class file to the list
+                                      of class files.</para>
+                                    </listitem>
+                                  </itemizedlist></para>
+                              </listitem>
+
+                              <listitem>
+                                <para>Fills the lists of components and
+                                templates.</para>
+                              </listitem>
+
+                              <listitem>
+                                <para>Finds components' class files and adds them to
+                                the list of class files.</para>
+                              </listitem>
+
+                              <listitem>
+                                <para>Determines requested component and action,
+                                using URL rewriting if it is enabled.</para>
+                              </listitem>
+                            </itemizedlist></para>
+                        </listitem>
+                      </itemizedlist></para>
+                  </listitem>
+
+                  <listitem>
+                    <para><filename>i40init_system.php</filename><itemizedlist>
+                        <listitem>
+                          <para>Loads the class autoloader function. This
+                          function allows all component classes to be auto
+                          loaded the first time they are used.</para>
+                        </listitem>
+
+                        <listitem>
+                          <para>Hooks the <varname>$pines</varname>
+                          object.</para>
+                        </listitem>
+
+                        <listitem>
+                          <para>Starts a session.</para>
+                        </listitem>
+
+                        <listitem>
+                          <para>Displays any pending notices and errors found
+                          in the session and removes them from the session.
+                          This is part of the redirection system.</para>
+                        </listitem>
+                      </itemizedlist></para>
+                  </listitem>
+
+                  <listitem>
+                    <para><filename>i50init_components.php</filename><itemizedlist>
+                        <listitem>
+                          <para>Scans all components' init directories for
+                          init scripts.</para>
+                        </listitem>
+
+                        <listitem>
+                          <para>Adds the
+                          <filename>system/i01common.php</filename> file to
+                          the list.</para>
+                        </listitem>
+
+                        <listitem>
+                          <para>Sorts them by filename.</para>
+                        </listitem>
+
+                        <listitem>
+                          <para>Executes each init script in order. Some
+                          important events are noted below.<itemizedlist>
+                              <listitem>
+                                <para>i00_ : Common cleaning functions can be
+                                overridden here. However, shortcut functions (like
+                                <function>gatekeeper</function>) are not available
+                                yet.</para>
+                              </listitem>
+
+                              <listitem>
+                                <para>i01_ : Common functions are being defined
+                                here.</para>
+                              </listitem>
+
+                              <listitem>
+                                <para>i10_ : Components which provide system
+                                services should set themselves as the system service
+                                here.</para>
+                              </listitem>
+
+                              <listitem>
+                                <para>i11_ : The user manager should fill the
+                                session with user data here.</para>
+                              </listitem>
+
+                              <listitem>
+                                <para>i12_ and i13_ : Any component which may log
+                                the user out (such as a timer) should do it
+                                here.</para>
+                              </listitem>
+
+                              <listitem>
+                                <para>i14_ : Conditional and per user/group config
+                                should be loaded here.</para>
+                              </listitem>
+
+                              <listitem>
+                                <para>i15_ : Any component which may change the
+                                requested component/action should do it here.</para>
+                              </listitem>
+                            </itemizedlist></para>
+                        </listitem>
+
+                        <listitem>
+                          <para>Checks system config again in case config has
+                          changed. (Repeats same steps as
+                          <varname>$pines</varname> does when loading.)</para>
+                        </listitem>
+                      </itemizedlist></para>
+                  </listitem>
+
+                  <listitem>
+                    <para><filename>i60action.php</filename><itemizedlist>
+                        <listitem>
+                          <para>Runs <function>action</function>, using the
+                          requested component and action.</para>
+                        </listitem>
+
+                        <listitem>
+                          <para>If the string "error_404" is returned, issues
+                          a 404 HTTP status header and loads a module with
+                          "system" as component, "error_404" as view, and
+                          "content" as position.</para>
+                        </listitem>
+                      </itemizedlist></para>
+                  </listitem>
+
+                  <listitem>
+                    <para><filename>i70kill_components.php</filename><itemizedlist>
+                        <listitem>
+                          <para>Scans all components' init directories for
+                          kill scripts.</para>
+                        </listitem>
+
+                        <listitem>
+                          <para>Sorts them by filename.</para>
+                        </listitem>
+
+                        <listitem>
+                          <para>Executes each kill script in order.</para>
+                        </listitem>
+                      </itemizedlist></para>
+                  </listitem>
+
+                  <listitem>
+                    <para><filename>i80menus.php</filename><itemizedlist>
+                        <listitem>
+                          <para>Loads the menu file
+                          <filename>system/menu.json</filename>.</para>
+                        </listitem>
+
+                        <listitem>
+                          <para>Loads each component's
+                          <filename>menu.json</filename> file
+                          consecutively.</para>
+                        </listitem>
+
+                        <listitem>
+                          <para>Renders and attaches the menu.<itemizedlist>
+                              <listitem>
+                                <para>Calculates each menu entry's dependencies and
+                                builds a multidimensional array of menu items whose
+                                dependencies are met.</para>
+                              </listitem>
+
+                              <listitem>
+                                <para>Cleans each menu, removing any entry whose
+                                "children" dependency isn't met. Also removes some
+                                unnecessary data.</para>
+                              </listitem>
+
+                              <listitem>
+                                <para>Creates and attaches a module for each menu,
+                                the content of which is filled with the response of
+                                the <methodname>menu</methodname> method of the
+                                current template.</para>
+                              </listitem>
+                            </itemizedlist></para>
+                        </listitem>
+                      </itemizedlist></para>
+                  </listitem>
+
+                  <listitem>
+                    <para><filename>i90render.php</filename><itemizedlist>
+                        <listitem>
+                          <para>Calls the <methodname>render</methodname>
+                          method of the page.<itemizedlist>
+                              <listitem>
+                                <para>Returns the override document if override is
+                                set to true. (Does not do the steps immediately
+                                below.)</para>
+                              </listitem>
+
+                              <listitem>
+                                <para>Iterates through each position, calling
+                                <methodname>render</methodname> on all the modules
+                                in that position.</para>
+                              </listitem>
+
+                              <listitem>
+                                <para>Runs the <filename>template.php</filename>
+                                file of the current template.</para>
+                              </listitem>
+                            </itemizedlist></para>
+                        </listitem>
+
+                        <listitem>
+                          <para>Prints the response.</para>
+                        </listitem>
+                      </itemizedlist></para>
+                  </listitem>
+                </orderedlist></para>
+            </listitem>
+          </itemizedlist></para>
+
+        <para>As mentioned before, this section is very important for Pines
+        development. Knowing when certain features will be available for use
+        allows you to plan accordingly. Pines is very flexible, but it is also
+        very strictly structured. If you know Pines' execution path, debugging
+        will be much easier. Remember to come back to this section if you are
+        currently unfamiliar with the features discussed here.</para>
       </section>
     </chapter>
 
@@ -2322,6 +3003,12 @@ $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
 
       <section>
         <title>Component Design</title>
+
+        <para></para>
+      </section>
+
+      <section xml:id="views">
+        <title>Views</title>
 
         <para></para>
       </section>
