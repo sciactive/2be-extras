@@ -27,14 +27,41 @@
   <preface>
     <title>Preface</title>
 
-    <section>
-      <title>About This Book</title>
-
-      <para></para>
-    </section>
+    <para></para>
 
     <section>
       <title>How This Book is Organized</title>
+
+      <para>This book is divided into three parts, each dealing with a
+      different aspect of Pines development. Each part builds on the
+      information and instruction given in the previous part.</para>
+
+      <section>
+        <title>Part I: The Pines Framework</title>
+
+        <para>Part I focuses on getting acquainted with the Pines framework.
+        It provides information about Pines, how it works, and what is
+        provided by Pines. I discuss how to get Pines from the development
+        repositories. Pines Core, the system on which the framework is built,
+        is discussed in depth. System services, which provide additional
+        functionality for developers, are explained in detail.</para>
+      </section>
+
+      <section>
+        <title>Part II: Application Development</title>
+
+        <para></para>
+      </section>
+
+      <section>
+        <title>Part III: Distribution</title>
+
+        <para></para>
+      </section>
+    </section>
+
+    <section>
+      <title>Conventions Used in This Book</title>
 
       <para></para>
     </section>
@@ -56,98 +83,159 @@
         the developer in mind. This is reflected in the history of
         Pines.</para>
 
-        <section>
-          <title>The History of Pines</title>
+        <para>Pines' goal as a framework is to provide the developer with a
+        set of tools, which simplify the development of complex applications
+        and allow administrators to easily and quickly set up complex, secure
+        installations. One of the key aspects considered in Pines development
+        is customization. Pines has a long history of being customized for all
+        sorts of use, and that history has brought Pines some important tools.
+        The SciActive maintained configurator component, com_configure, is a
+        perfect example of Pines' obsession with customization, allowing the
+        administrator to provide different configuration based on users,
+        groups, and even dependency sets.</para>
 
-          <para>Pines was started in the Fall of 2008 by myself, Hunter
-          Perrin. While taking my first PHP class, along with a French I
-          class, I developed a small PHP application to allow the
-          collaborative editing of a play script. The application was used for
-          my French class, then stowed away. Several months after that, I
-          started a new job, working as a web designer. There, they requested
-          me to find an application capable of sending newsletters to their
-          clients. I dug up the old application, and adapted it to send
-          emails. This incarnation was called Dandelion, and released under
-          the GNU Affero GPL.</para>
+        <para>Pines strives to also provide this level of customization to its
+        developers. Many of the features available in Pines are provided
+        through system services, which can be implemented in many different
+        ways. For example, the entity manager, used to provide data storage
+        and retrieval, can use any number of different backends. Because Pines
+        defines a standard way of interacting with these system services,
+        developers can design their components once, and have it work with any
+        implementation of these system services. Developers can also extend
+        components to add features not available by default. For example, the
+        official user manager adds access control features to the entity
+        manager, which by default, has no considerations for users or groups.
+        Amazingly, this extension to the entity manager is accomplished
+        without altering any of its code. The user manager uses method hooking
+        to alter the functionality of the entity manager. This level of
+        flexibility allows developers to create complex, scalable applications
+        with ease.</para>
+      </section>
 
-          <para>After a year there, I took a new position. They had several
-          new ideas for web applications, which I slowly started building
-          using Dandelion. When the project started to really resemble a
-          framework, not just an application, we renamed it to Pines. Problem
-          after problem would arise, and solution after solution would be
-          built. All atop the Pines framework. Every feature in Pines has come
-          from the real need of a business environment. Pines has seen many
-          redesigns, and it barely resembles the early application.</para>
+      <section>
+        <title>The History of Pines</title>
 
-          <para>Now Pines is a solid, well tested, and well documented
-          framework, suitable for building high demand enterprise
-          applications.</para>
-        </section>
+        <para>Pines was started in the Fall of 2008 by myself, Hunter Perrin.
+        While taking my first PHP class, along with a French I class, I
+        developed a small PHP application to allow the collaborative editing
+        of a play script. The application was used for my French class, then
+        stowed away. Several months after that, I started a new job, working
+        as a web designer. There, they requested me to find an application
+        capable of sending newsletters to their clients. I dug up the old
+        application, and adapted it to send emails. This incarnation was
+        called Dandelion, and released under the GNU Affero GPL.</para>
 
-        <section>
-          <title>Features That Make Pines Unique</title>
+        <para>After a year there, I took a new position. They had several new
+        ideas for web applications, which I slowly started building using
+        Dandelion. When the project started to really resemble a framework,
+        not just an application, we renamed it to Pines. Problem after problem
+        would arise, and solution after solution would be built. All atop the
+        Pines framework. Every feature in Pines has come from the real need of
+        a business environment. Pines has seen many redesigns, and it barely
+        resembles the early application.</para>
 
-          <para>Pines has many features which are either vastly superior to
-          their counterparts in other frameworks, or have never been seen
-          before in PHP. Heres a list of a few features which make Pines stand
-          out in the ever expanding field of PHP frameworks.<itemizedlist>
-              <listitem>
-                <para>The Package Manager</para>
+        <para>Now Pines is a solid, well tested, and well documented
+        framework, suitable for building high demand enterprise
+        applications.</para>
+      </section>
 
-                <simplelist>
-                  <member>The package manager resembles the package managers
+      <section>
+        <title>Implications of Pines' License, The GNU AGPL</title>
+
+        <para>Pines is, and always will be, free and open source software.
+        This means that anyone can freely redistribute Pines, obtain the
+        source code for study or modification, and create derived works (under
+        the same license). It is released under the GNU AGPL, which places
+        certain requirements on use of Pines software.</para>
+
+        <para>If you modify any of Pines' source code (including the SciActive
+        maintained components), and use this modified code to run a server,
+        which users can access, your modified code must be freely available to
+        these users. This does not mean that you must release any custom
+        components you create, just any modifications to Pines' core or
+        official components.</para>
+
+        <para>You are free to make modifications and not release them to the
+        public, but any users which access the system on which the modified
+        code runs must have access to the code.</para>
+
+        <para>If you would like to change Pines' behavior without modifying
+        its code, you can use the hook system to accomplish almost any needed
+        change. Because a component can be licensed under any license, you do
+        not necessarily have to distribute this source code.</para>
+      </section>
+
+      <section>
+        <title>Features That Make Pines Unique</title>
+
+        <para>Pines has many features which are either vastly superior to
+        their counterparts in other frameworks, or have never been seen before
+        in PHP. This is a list of just a few features that make Pines stand
+        out in the ever expanding field of PHP frameworks.<itemizedlist>
+            <listitem>
+              <para>The Package Manager</para>
+
+              <itemizedlist>
+                <listitem>
+                  <para>The package manager resembles the package managers
                   common in Linux. It handles dependencies, retrieves updates,
                   checks signed code, and much more. This isn't necessarily
                   uncommon in a PHP framework, but Pines' package manager is
                   100% PHP code. That includes everything. The package
                   downloading, dependency checker, code signing, even the
-                  package format is 100% PHP.</member>
-                </simplelist>
-              </listitem>
+                  package format is 100% PHP.</para>
+                </listitem>
+              </itemizedlist>
+            </listitem>
 
-              <listitem>
-                <para>The Slim Archive Format</para>
+            <listitem>
+              <para>The Slim Archive Format</para>
 
-                <simplelist>
-                  <member>The Slim archive format is the heart of the package
+              <itemizedlist>
+                <listitem>
+                  <para>The Slim archive format is the heart of the package
                   manager. Using just PHP, Slim is able to rival other archive
                   formats. Slim archives can even be built to self
-                  extract.</member>
-                </simplelist>
-              </listitem>
+                  extract.</para>
+                </listitem>
+              </itemizedlist>
+            </listitem>
 
-              <listitem>
-                <para>The Hook System</para>
+            <listitem>
+              <para>The Hook System</para>
 
-                <simplelist>
-                  <member>Similar hook systems have been attempted by other
+              <itemizedlist>
+                <listitem>
+                  <para>Similar hook systems have been attempted by other
                   frameworks, but Pines' hook system is unparalleled. It
                   allows the developer to extend or even change <phrase
                   role="bold">any</phrase> method in a component. This level
                   of flexibility allows developers to collaborate and build
-                  like never before.</member>
-                </simplelist>
-              </listitem>
+                  like never before.</para>
+                </listitem>
+              </itemizedlist>
+            </listitem>
 
-              <listitem>
-                <para>The Entity Manager</para>
+            <listitem>
+              <para>The Entity Manager</para>
 
-                <simplelist>
-                  <member>The entity manager is an object-relational mapper,
+              <itemizedlist>
+                <listitem>
+                  <para>The entity manager is an object-relational mapper,
                   which provides developers with a very simple and very
                   flexible way of saving, retrieving, and manipulating data.
                   With a simple, yet powerful querying system, you can make a
                   complex, portable application without ever writing a single
                   SQL query. Complex data relations are easy to handle and
-                  easy to query.</member>
-                </simplelist>
-              </listitem>
-            </itemizedlist></para>
+                  easy to query.</para>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+          </itemizedlist></para>
 
-          <para>Pines is full of features which make coding applications fast
-          and easy, yet it's flexible enough to fit almost any application.
-          Let's get started!</para>
-        </section>
+        <para>Pines is full of features which make coding applications fast
+        and easy, yet it's flexible enough to fit almost any application.
+        Let's get started!</para>
       </section>
     </chapter>
 
@@ -1126,10 +1214,11 @@ $pines-&gt;redirect(pines_url('com_example', 'widgets/list'), 301);</programlist
           accessed during each script run. Config will start by loading the
           <filename>defaults.php</filename> file (if it exists) in the
           component's directory. The return value from this file is an array
-          which is used to load configuration variables.</para>
+          which is used to load configuration variables. Each array entry
+          should be an associative array containing the following
+          entries:<table>
+              <title>Config Array Entries</title>
 
-          <para>Each array entry should be an associative array containing the
-          following entries:<informaltable>
               <tgroup cols="3">
                 <colspec colnum="3" colwidth="5*" />
 
@@ -1198,7 +1287,7 @@ $pines-&gt;redirect(pines_url('com_example', 'widgets/list'), 301);</programlist
                   </row>
                 </tbody>
               </tgroup>
-            </informaltable></para>
+            </table></para>
 
           <para><tip>
               <para>Calling a function in a <filename>defaults.php</filename>
@@ -1620,10 +1709,10 @@ $pines-&gt;hook-&gt;add_callback('all', 10, 'com_example__callback');</programli
           variable is accessed, Info will look for an info.php file in the
           component's directory. It will use this file to create an object for
           that component. The <varname>template</varname> variable will
-          contain the info of the current template.</para>
+          contain the info of the current template. The info file should
+          return an associative array with the following entries:<table>
+              <title>Info Array Entries</title>
 
-          <para>The info file should return an associative array with the
-          following entries.<informaltable>
               <tgroup cols="3">
                 <colspec colnum="3" colwidth="5*" />
 
@@ -1746,7 +1835,7 @@ $pines-&gt;hook-&gt;add_callback('all', 10, 'com_example__callback');</programli
                   </row>
                 </tbody>
               </tgroup>
-            </informaltable><example>
+            </table><example>
               <title>Example Info File</title>
 
               <programlisting language="php">defined('P_RUN') or die('Direct access prohibited');
@@ -1800,11 +1889,11 @@ echo $pines-&gt;info-&gt;tpl_green-&gt;version;</programlisting>
           directories. The JSON structure of a menu file is an array of
           objects (because JSON doesn't support associative arrays) which are
           each placed into the <varname>menu_arrays</varname> variable in the
-          menu object. Each entry is either a top level menu, or a menu
-          entry.</para>
+          menu object. Each entry is either a top level menu, or a menu entry.
+          Top level menus require a position in which to place them, as well
+          as several other values:<table>
+              <title>Top Level Menu Array Entries</title>
 
-          <para>Top level menus require a position in which to place them, as
-          well as several other values:<informaltable>
               <tgroup cols="3">
                 <colspec colnum="3" colwidth="5*" />
 
@@ -1845,7 +1934,7 @@ echo $pines-&gt;info-&gt;tpl_green-&gt;version;</programlisting>
                   </row>
 
                   <row>
-                    <entry>depend</entry>
+                    <entry>sort</entry>
 
                     <entry>No</entry>
 
@@ -1854,7 +1943,7 @@ echo $pines-&gt;info-&gt;tpl_green-&gt;version;</programlisting>
                   </row>
 
                   <row>
-                    <entry>website</entry>
+                    <entry>depend</entry>
 
                     <entry>No</entry>
 
@@ -1863,9 +1952,11 @@ echo $pines-&gt;info-&gt;tpl_green-&gt;version;</programlisting>
                   </row>
                 </tbody>
               </tgroup>
-            </informaltable></para>
+            </table></para>
 
-          <para>Regular menu entries have these values:<informaltable>
+          <para>Regular menu entries have these values:<table>
+              <title>Regular Menu Array Entries</title>
+
               <tgroup cols="3">
                 <colspec colnum="3" colwidth="5*" />
 
@@ -1945,7 +2036,7 @@ echo $pines-&gt;info-&gt;tpl_green-&gt;version;</programlisting>
                   </row>
                 </tbody>
               </tgroup>
-            </informaltable></para>
+            </table></para>
 
           <para>An extra dependency called "children" can be used on menu
           entries in order to show the menu only if it has visible
@@ -2318,6 +2409,68 @@ $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
           <classname>p_base</classname>. It may extend another class, like
           <classname>template</classname>, which already extends
           <classname>p_base</classname>.</para>
+        </section>
+
+        <section>
+          <title>Component</title>
+
+          <para>The <classname>component</classname> class is a class which
+          all components' main classes extend.</para>
+        </section>
+
+        <section>
+          <title>Template</title>
+
+          <para>The template class is a class which all templates' main
+          classes extend. This class itself is fairly empty, consisting mostly
+          of basic methods and variables just to satisfy the interface's
+          requirements. It does, however, include the standard implementation
+          of the <methodname>url</methodname> method. This is what is called
+          when using the shortcut function <function>pines_url</function>
+          (unless the current template implements it).</para>
+
+          <para>The <methodname>url</methodname> method accepts up to four
+          arguments, in this order:<orderedlist>
+              <listitem>
+                <para><varname>$component</varname></para>
+
+                <simplelist>
+                  <member>The name of the component that the URL should
+                  request.</member>
+                </simplelist>
+              </listitem>
+
+              <listitem>
+                <para><varname>$action</varname></para>
+
+                <simplelist>
+                  <member>The name of the action that the URL should
+                  request.</member>
+                </simplelist>
+              </listitem>
+
+              <listitem>
+                <para><varname>$params</varname></para>
+
+                <simplelist>
+                  <member>An associative array of parameters to place in the
+                  URL's query string.</member>
+                </simplelist>
+              </listitem>
+
+              <listitem>
+                <para><varname>$full_location</varname></para>
+
+                <simplelist>
+                  <member>Whether to use the full location, instead of the
+                  relative location. For links in email, RSS feeds, and
+                  similar contexts, a full location should be used.</member>
+                </simplelist>
+              </listitem>
+            </orderedlist></para>
+
+          <para>If <methodname>url</methodname> is called with no arguments,
+          it will return the relative URL of the index page.</para>
         </section>
 
         <section>
@@ -2888,11 +3041,11 @@ pines_log($module-&gt;get_content());</programlisting>
     <chapter>
       <title>System Services</title>
 
-      <section>
-        <title>Creating a Service</title>
-
-        <para></para>
-      </section>
+      <para>System services provide many features, and allow these features to
+      be implemented in many different ways. System services are not provided
+      by Pines Core. They are, however, well defined and must conform to
+      certain guidelines to ensure that any component designed to use them
+      will work with any implementation.</para>
 
       <section>
         <title>System Services</title>
@@ -2901,6 +3054,12 @@ pines_log($module-&gt;get_content());</programlisting>
           <title>Configurator</title>
 
           <para></para>
+
+          <section>
+            <title>Configurator Component</title>
+
+            <para></para>
+          </section>
         </section>
 
         <section>
@@ -2912,14 +3071,13 @@ pines_log($module-&gt;get_content());</programlisting>
         <section>
           <title>Entity Manager</title>
 
-          <para><example>
-              <title>Accessing the Entity Manager</title>
+          <para></para>
 
-              <programlisting language="php">function example() {
-    global $pines;
-    $pines-&gt;entity_manager
-}</programlisting>
-            </example></para>
+          <section>
+            <title>Entity</title>
+
+            <para></para>
+          </section>
         </section>
 
         <section>
@@ -2950,47 +3108,33 @@ pines_log($module-&gt;get_content());</programlisting>
           <title>User Manager</title>
 
           <para></para>
+
+          <section>
+            <title>User</title>
+
+            <para></para>
+          </section>
+
+          <section>
+            <title>Group</title>
+
+            <para></para>
+          </section>
         </section>
       </section>
-    </chapter>
-
-    <chapter>
-      <title>Special Classes</title>
 
       <section>
-        <title>Component</title>
+        <title>Creating a Service</title>
 
-        <para></para>
-      </section>
+        <para>Creating a system service for Pines can be a complex process,
+        and certain rules must be followed to ensure it works with all
+        components. All system services have an interface, which their main
+        class must implement. Some services have additional classes which must
+        be provided. These classes also have interfaces which must be
+        implemented.</para>
 
-      <section>
-        <title>Configurator Component</title>
-
-        <para></para>
-      </section>
-
-      <section>
-        <title>Template</title>
-
-        <para></para>
-      </section>
-
-      <section>
-        <title>Entity</title>
-
-        <para></para>
-      </section>
-
-      <section>
-        <title>Group</title>
-
-        <para></para>
-      </section>
-
-      <section>
-        <title>User</title>
-
-        <para></para>
+        <para>Interfaces are defined in the
+        <filename>system/init/i20interfaces.php</filename> file.</para>
       </section>
     </chapter>
   </part>
