@@ -21,25 +21,23 @@ if (isset($_REQUEST['directory'])) {
 			header("Content-Disposition: attachment; filename=\"$file.php\"");
 
 			$arc->write('php://output');
-			exit;
 			break;
 		case "Build .tar.gz":
-			$archive = `cd $directory && tar -czf - --exclude-vcs *`;
 			header('Content-Type: application/x-gzip');
 			header("Content-Disposition: attachment; filename=\"$file.tar.gz\"");
+			print `cd $directory && tar -czhf - --exclude-vcs *`;
 			break;
 		case "Build .tar.bz2":
-			$archive = `cd $directory && tar -cjf - --exclude-vcs *`;
 			header('Content-Type: application/x-bzip-compressed-tar');
 			header("Content-Disposition: attachment; filename=\"$file.tar.bz2\"");
+			print `cd $directory && tar -cjhf - --exclude-vcs *`;
 			break;
 		case "Build .zip":
-			$archive = `cd $directory && find ./* | egrep -v ".svn" | zip - -@`;
 			header('Content-Type: application/zip');
 			header("Content-Disposition: attachment; filename=\"$file.zip\"");
+			print `cd $directory && find -L ./* | egrep -v ".svn" | zip - -@`;
 			break;
 	}
-	print $archive;
 	exit;
 }
 echo '<?xml version="1.0" encoding="UTF-8" standalone="no" ?>'; ?>
