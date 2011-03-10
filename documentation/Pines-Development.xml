@@ -175,61 +175,43 @@
             <listitem>
               <para>The Package Manager</para>
 
-              <itemizedlist>
-                <listitem>
-                  <para>The package manager resembles the package managers
-                  common in Linux. It handles dependencies, retrieves updates,
-                  checks signed code, and much more. This isn't necessarily
-                  uncommon in a PHP framework, but Pines' package manager is
-                  100% PHP code. That includes everything. The package
-                  downloading, dependency checker, code signing, even the
-                  package format is 100% PHP.</para>
-                </listitem>
-              </itemizedlist>
+              <para>The package manager resembles the package managers common
+              in Linux. It handles dependencies, retrieves updates, checks
+              signed code, and much more. This isn't necessarily uncommon in a
+              PHP framework, but Pines' package manager is 100% PHP code. That
+              includes everything. The package downloading, dependency
+              checker, code signing, even the package format is 100%
+              PHP.</para>
             </listitem>
 
             <listitem>
               <para>The Slim Archive Format</para>
 
-              <itemizedlist>
-                <listitem>
-                  <para>The Slim archive format is the heart of the package
-                  manager. Using just PHP, Slim is able to rival other archive
-                  formats. Slim archives can even be built to self
-                  extract.</para>
-                </listitem>
-              </itemizedlist>
+              <para>The Slim archive format is the heart of the package
+              manager. Using just PHP, Slim is able to rival other archive
+              formats. Slim archives can even be built to self extract.</para>
             </listitem>
 
             <listitem>
               <para>The Hook System</para>
 
-              <itemizedlist>
-                <listitem>
-                  <para>Similar hook systems have been attempted by other
-                  frameworks, but Pines' hook system is unparalleled. It
-                  allows the developer to extend or even change <phrase
-                  role="bold">any</phrase> method in a component. This level
-                  of flexibility allows developers to collaborate and build
-                  like never before.</para>
-                </listitem>
-              </itemizedlist>
+              <para>Similar hook systems have been attempted by other
+              frameworks, but Pines' hook system is unparalleled. It allows
+              the developer to extend or even change <phrase
+              role="bold">any</phrase> method in a component. This level of
+              flexibility allows developers to collaborate and build like
+              never before.</para>
             </listitem>
 
             <listitem>
               <para>The Entity Manager</para>
 
-              <itemizedlist>
-                <listitem>
-                  <para>The entity manager is an object-relational mapper,
-                  which provides developers with a very simple and very
-                  flexible way of saving, retrieving, and manipulating data.
-                  With a simple, yet powerful querying system, you can make a
-                  complex, portable application without ever writing a single
-                  SQL query. Complex data relations are easy to handle and
-                  easy to query.</para>
-                </listitem>
-              </itemizedlist>
+              <para>The entity manager is an object-relational mapper, which
+              provides developers with a very simple and very flexible way of
+              saving, retrieving, and manipulating data. With a simple, yet
+              powerful querying system, you can make a complex, portable
+              application without ever writing a single SQL query. Complex
+              data relations are easy to handle and easy to query.</para>
             </listitem>
           </itemizedlist></para>
 
@@ -773,61 +755,47 @@ if (
               <listitem>
                 <para><varname>$pines-&gt;components</varname></para>
 
-                <simplelist>
-                  <member>An array of the enabled components.</member>
-                </simplelist>
+                <para>An array of the enabled components.</para>
               </listitem>
 
               <listitem>
                 <para><varname>$pines-&gt;all_components</varname></para>
 
-                <simplelist>
-                  <member>An array of all installed components.</member>
-                </simplelist>
+                <para>An array of all installed components.</para>
               </listitem>
 
               <listitem>
                 <para><varname>$pines-&gt;services</varname></para>
 
-                <simplelist>
-                  <member>An array of the provided system services.</member>
-                </simplelist>
+                <para>An array of the provided system services.</para>
               </listitem>
 
               <listitem>
                 <para><varname>$pines-&gt;request_component</varname></para>
 
-                <simplelist>
-                  <member>The requested component. This is passed as the
-                  request variable "option".</member>
-                </simplelist>
+                <para>The requested component. This is passed as the request
+                variable "option".</para>
               </listitem>
 
               <listitem>
                 <para><varname>$pines-&gt;request_action</varname></para>
 
-                <simplelist>
-                  <member>The requested action. This is passed as the request
-                  variable "action".</member>
-                </simplelist>
+                <para>The requested action. This is passed as the request
+                variable "action".</para>
               </listitem>
 
               <listitem>
                 <para><varname>$pines-&gt;component</varname></para>
 
-                <simplelist>
-                  <member>The currently running or most recently called
-                  component/option.</member>
-                </simplelist>
+                <para>The currently running or most recently called
+                component/option.</para>
               </listitem>
 
               <listitem>
                 <para><varname>$pines-&gt;action</varname></para>
 
-                <simplelist>
-                  <member>The currently running or most recently called
-                  action.</member>
-                </simplelist>
+                <para>The currently running or most recently called
+                action.</para>
               </listitem>
             </itemizedlist></para>
 
@@ -836,17 +804,13 @@ if (
               <listitem>
                 <para><varname>$pines-&gt;current_template</varname></para>
 
-                <simplelist>
-                  <member>The name of the current template.</member>
-                </simplelist>
+                <para>The name of the current template.</para>
               </listitem>
 
               <listitem>
                 <para><varname>$pines-&gt;template</varname></para>
 
-                <simplelist>
-                  <member>The current template object.</member>
-                </simplelist>
+                <para>The current template object.</para>
               </listitem>
             </itemizedlist></para>
         </section>
@@ -1605,46 +1569,35 @@ $pines-&gt;hook-&gt;hook_object($widget, 'com_example_widget-&gt;', false);</pro
                 <listitem>
                   <para><varname>&amp;$arguments</varname></para>
 
-                  <simplelist>
-                    <member>An array of either arguments or a return
-                    value.</member>
-                  </simplelist>
+                  <para>An array of either arguments or a return value.</para>
                 </listitem>
 
                 <listitem>
                   <para><varname>$name</varname></para>
 
-                  <simplelist>
-                    <member>The name of the hook.</member>
-                  </simplelist>
+                  <para>The name of the hook.</para>
                 </listitem>
 
                 <listitem>
                   <para><varname>&amp;$object</varname></para>
 
-                  <simplelist>
-                    <member>The object on which the hook caught a method
-                    call.</member>
-                  </simplelist>
+                  <para>The object on which the hook caught a method
+                  call.</para>
                 </listitem>
 
                 <listitem>
                   <para><varname>&amp;$function</varname></para>
 
-                  <simplelist>
-                    <member>A callback for the method call which was caught.
-                    Altering this will cause a different function/method to
-                    run.</member>
-                  </simplelist>
+                  <para>A callback for the method call which was caught.
+                  Altering this will cause a different function/method to
+                  run.</para>
                 </listitem>
 
                 <listitem>
                   <para><varname>&amp;$data</varname></para>
 
-                  <simplelist>
-                    <member>An array in which callbacks can store data to
-                    communicate with later callbacks.</member>
-                  </simplelist>
+                  <para>An array in which callbacks can store data to
+                  communicate with later callbacks.</para>
                 </listitem>
               </orderedlist></para>
 
@@ -2128,33 +2081,25 @@ $pines-&gt;menu-&gt;menu_arrays[] = array(
               <listitem>
                 <para><methodname>title</methodname></para>
 
-                <simplelist>
-                  <member>Append test to the title.</member>
-                </simplelist>
+                <para>Append test to the title.</para>
               </listitem>
 
               <listitem>
                 <para><methodname>title_set</methodname></para>
 
-                <simplelist>
-                  <member>Replace the title.</member>
-                </simplelist>
+                <para>Replace the title.</para>
               </listitem>
 
               <listitem>
                 <para><methodname>title_pre</methodname></para>
 
-                <simplelist>
-                  <member>Prepend text to the title.</member>
-                </simplelist>
+                <para>Prepend text to the title.</para>
               </listitem>
 
               <listitem>
                 <para><methodname>get_title</methodname></para>
 
-                <simplelist>
-                  <member>Retrieve the title.</member>
-                </simplelist>
+                <para>Retrieve the title.</para>
               </listitem>
             </itemizedlist></para>
 
@@ -2164,33 +2109,25 @@ $pines-&gt;menu-&gt;menu_arrays[] = array(
               <listitem>
                 <para><methodname>notice</methodname></para>
 
-                <simplelist>
-                  <member>Add a notice to be displayed to the user.</member>
-                </simplelist>
+                <para>Add a notice to be displayed to the user.</para>
               </listitem>
 
               <listitem>
                 <para><methodname>get_notice</methodname></para>
 
-                <simplelist>
-                  <member>Get the array of notices.</member>
-                </simplelist>
+                <para>Get the array of notices.</para>
               </listitem>
 
               <listitem>
                 <para><methodname>error</methodname></para>
 
-                <simplelist>
-                  <member>Add an error to be displayed to the user.</member>
-                </simplelist>
+                <para>Add an error to be displayed to the user.</para>
               </listitem>
 
               <listitem>
                 <para><methodname>get_error</methodname></para>
 
-                <simplelist>
-                  <member>Get the array of errors.</member>
-                </simplelist>
+                <para>Get the array of errors.</para>
               </listitem>
             </itemizedlist></para>
 
@@ -2434,38 +2371,30 @@ $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
               <listitem>
                 <para><varname>$component</varname></para>
 
-                <simplelist>
-                  <member>The name of the component that the URL should
-                  request.</member>
-                </simplelist>
+                <para>The name of the component that the URL should
+                request.</para>
               </listitem>
 
               <listitem>
                 <para><varname>$action</varname></para>
 
-                <simplelist>
-                  <member>The name of the action that the URL should
-                  request.</member>
-                </simplelist>
+                <para>The name of the action that the URL should
+                request.</para>
               </listitem>
 
               <listitem>
                 <para><varname>$params</varname></para>
 
-                <simplelist>
-                  <member>An associative array of parameters to place in the
-                  URL's query string.</member>
-                </simplelist>
+                <para>An associative array of parameters to place in the URL's
+                query string.</para>
               </listitem>
 
               <listitem>
                 <para><varname>$full_location</varname></para>
 
-                <simplelist>
-                  <member>Whether to use the full location, instead of the
-                  relative location. For links in email, RSS feeds, and
-                  similar contexts, a full location should be used.</member>
-                </simplelist>
+                <para>Whether to use the full location, instead of the
+                relative location. For links in email, RSS feeds, and similar
+                contexts, a full location should be used.</para>
               </listitem>
             </orderedlist></para>
 
@@ -2491,91 +2420,70 @@ $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
               <listitem>
                 <para><varname>muid</varname></para>
 
-                <simplelist>
-                  <member>A unique ID available to views to allow the use of
-                  IDs in HTML. Generated with
-                  <function>mt_rand</function>.</member>
-                </simplelist>
+                <para>A unique ID available to views to allow the use of IDs
+                in HTML. Generated with <function>mt_rand</function>.</para>
               </listitem>
 
               <listitem>
                 <para><varname>title</varname></para>
 
-                <simplelist>
-                  <member>The module's title. This is usually set by the
-                  view.</member>
-                </simplelist>
+                <para>The module's title. This is usually set by the
+                view.</para>
               </listitem>
 
               <listitem>
                 <para><varname>note</varname></para>
 
-                <simplelist>
-                  <member>The module's note. This is usually set by the
-                  view.</member>
-                </simplelist>
+                <para>The module's note. This is usually set by the
+                view.</para>
               </listitem>
 
               <listitem>
                 <para><varname>classes</varname></para>
 
-                <simplelist>
-                  <member>A list of additional classes to be added to the
-                  module. This applies only to HTML modules.</member>
-                </simplelist>
+                <para>A list of additional classes to be added to the module.
+                This applies only to HTML modules.</para>
               </listitem>
 
               <listitem>
                 <para><varname>content</varname></para>
 
-                <simplelist>
-                  <member>The modules content. This is almost always, but not
-                  necessarily, filled by the output of a view.</member>
-                </simplelist>
+                <para>The modules content. This is almost always, but not
+                necessarily, filled by the output of a view.</para>
               </listitem>
 
               <listitem>
                 <para><varname>component</varname></para>
 
-                <simplelist>
-                  <member>The component which contains the view.</member>
-                </simplelist>
+                <para>The component which contains the view.</para>
               </listitem>
 
               <listitem>
                 <para><varname>view</varname></para>
 
-                <simplelist>
-                  <member>The view from which the content will be
-                  retrieved.</member>
-                </simplelist>
+                <para>The view from which the content will be
+                retrieved.</para>
               </listitem>
 
               <listitem>
                 <para><varname>position</varname></para>
 
-                <simplelist>
-                  <member>The position on the page in which the module is
-                  placed.</member>
-                </simplelist>
+                <para>The position on the page in which the module is
+                placed.</para>
               </listitem>
 
               <listitem>
                 <para><varname>order</varname></para>
 
-                <simplelist>
-                  <member>The order in which the module is placed in the
-                  position.</member>
-                </simplelist>
+                <para>The order in which the module is placed in the
+                position.</para>
               </listitem>
 
               <listitem>
                 <para><varname>show_title</varname></para>
 
-                <simplelist>
-                  <member>Whether or not the title and note of the module
-                  should be displayed.</member>
-                </simplelist>
+                <para>Whether or not the title and note of the module should
+                be displayed.</para>
               </listitem>
             </itemizedlist></para>
 

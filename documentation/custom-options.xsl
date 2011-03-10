@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding="iso-8859-1"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version='1.0'>
 
-<!-- We want the TOC links in the titles, and in blue. -->
-<!--<xsl:param name="latex.hyperparam">colorlinks,linkcolor=blue,pdfstartview=FitH</xsl:param>-->
+<!-- Layout Parameters -->
+<xsl:param name="latex.class.options">letterpaper</xsl:param>
 
 <!-- Hide the list of collaborators, revhistory, examples -->
 <xsl:param name="doc.collab.show">0</xsl:param>
@@ -13,6 +13,12 @@
 <xsl:param name="table.in.float" select="'0'"/>
 
 <!-- DocBook like description -->
+<xsl:param name="term.breakline">1</xsl:param>
+
+<!-- Don't hyphenate terms -->
+<xsl:param name="monoseq.hyphenation">nohyphen</xsl:param>
+
+<!-- Break lines after terms of a varlist -->
 <xsl:param name="term.breakline">1</xsl:param>
 
 <!-- Fonts -->
