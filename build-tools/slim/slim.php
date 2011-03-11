@@ -9,6 +9,7 @@
  * @copyright SciActive.com
  * @link http://sciactive.com/
  */
+defined('P_RUN') or die('Direct access prohibited');
 
 /**
  * Slim archiving class.
@@ -464,6 +465,15 @@ class slim extends p_base {
 		$this->ext = (array) $this->header['ext'];
 		$this->stream_offset = ftell($fhandle);
 		return fclose($fhandle);
+	}
+
+	/**
+	 * Get an array of information about files in the archive.
+	 *
+	 * @return array File information.
+	 */
+	public function get_current_files() {
+		return $this->header['files'];
 	}
 
 	/**
