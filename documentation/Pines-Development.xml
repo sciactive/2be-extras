@@ -1490,7 +1490,7 @@ $pines-&gt;depend-&gt;checkers['something'] = 'com_example__check_something';</p
           called.</para>
 
           <simplesect>
-            <title>How Hooks Works</title>
+            <title>How Hook Works</title>
 
             <para>Hook uses a complex technique to override an object and
             allow all its public methods to be hooked. When
@@ -3044,6 +3044,12 @@ pines_log($module-&gt;get_content());</programlisting>
         <para>Interfaces are defined in the
         <filename>system/init/i20interfaces.php</filename> file.</para>
       </section>
+    </chapter>
+
+    <chapter>
+      <title>Pines JavaScript Object</title>
+
+      <para></para>
     </chapter>
   </part>
 
