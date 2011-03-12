@@ -27,7 +27,7 @@
 </xsl:text>
   <xsl:text>\setsansfont{Linux Biolinum O}
 </xsl:text>
-  <xsl:text>\setmonofont[Scale=MatchLowercase]{FreeMono}
+  <xsl:text>\setmonofont[Scale=MatchLowercase,HyphenChar=None]{FreeMono}
 </xsl:text>
 </xsl:param>
 
@@ -37,7 +37,7 @@
 </xsl:text>
   <xsl:text>\setsansfont[Scale=MatchLowercase]{Linux Biolinum O}
 </xsl:text>
-  <xsl:text>\setmonofont[Scale=MatchLowercase]{DejaVu Sans Mono}
+  <xsl:text>\setmonofont[Scale=MatchLowercase,HyphenChar=None]{DejaVu Sans Mono}
 </xsl:text>
 </xsl:param>
 
@@ -46,7 +46,7 @@
 </xsl:text>
   <xsl:text>\setsansfont{Linux Biolinum O}
 </xsl:text>
-  <xsl:text>\setmonofont[Scale=MatchLowercase]{FreeMono}
+  <xsl:text>\setmonofont[Scale=MatchLowercase,HyphenChar=None]{FreeMono}
 </xsl:text>
 </xsl:param>
 -->
@@ -57,7 +57,7 @@
 </xsl:text>
   <xsl:text>\setsansfont{Lucida Sans}
 </xsl:text>
-  <xsl:text>\setmonofont{Courier New}
+  <xsl:text>\setmonofont[HyphenChar=None]{Courier New}
 </xsl:text>
 </xsl:param>
 
@@ -66,7 +66,7 @@
 </xsl:text>
   <xsl:text>\setsansfont{DejaVu Sans}
 </xsl:text>
-  <xsl:text>\setmonofont{Courier New}
+  <xsl:text>\setmonofont[HyphenChar=None]{Courier New}
 </xsl:text>
 </xsl:param>
 
@@ -75,7 +75,7 @@
 </xsl:text>
   <xsl:text>\setsansfont[Scale=MatchLowercase]{Myriad Pro}
 </xsl:text>
-  <xsl:text>\setmonofont[Scale=MatchLowercase]{Courier New}
+  <xsl:text>\setmonofont[Scale=MatchLowercase,HyphenChar=None]{Courier New}
 </xsl:text>
 </xsl:param>
 -->
@@ -86,7 +86,7 @@
 </xsl:text>
   <xsl:text>\setsansfont[Scale=MatchLowercase]{Lucida Sans}
 </xsl:text>
-  <xsl:text>\setmonofont[Scale=MatchLowercase]{Lucida Console}
+  <xsl:text>\setmonofont[Scale=MatchLowercase,HyphenChar=None]{Lucida Console}
 </xsl:text>
 </xsl:param>
 -->

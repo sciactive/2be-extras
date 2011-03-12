@@ -2358,13 +2358,14 @@ $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
         <section>
           <title>Template</title>
 
-          <para>The template class is a class which all templates' main
-          classes extend. This class itself is fairly empty, consisting mostly
-          of basic methods and variables just to satisfy the interface's
-          requirements. It does, however, include the standard implementation
-          of the <methodname>url</methodname> method. This is what is called
-          when using the shortcut function <function>pines_url</function>
-          (unless the current template implements it).</para>
+          <para>The <classname>template</classname> class is a class which all
+          templates' main classes extend. This class itself is fairly empty,
+          consisting mostly of basic methods and variables just to satisfy the
+          interface's requirements. It does, however, include the standard
+          implementation of the <methodname>url</methodname> method. This is
+          what is called when using the shortcut function
+          <function>pines_url</function> (unless the current template
+          implements it).</para>
 
           <para>The <methodname>url</methodname> method accepts up to four
           arguments, in this order:<orderedlist>
@@ -2405,13 +2406,13 @@ $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
         <section>
           <title>Module</title>
 
-          <para>The module class is used to generate content using a view and
-          place it into a page. Modules allow Pines to pass data from the
-          logic portion of a component to the presentation portion. This
-          allows the business logic to remain the same no matter which type of
-          page is being constructed (XHTML, RSS, etc.). Modules select the
-          proper view based on the format provided by the current
-          template.</para>
+          <para>The <classname>module</classname> class is used to generate
+          content using a view and place it into a page. Modules allow Pines
+          to pass data from the logic portion of a component to the
+          presentation portion. This allows the business logic to remain the
+          same no matter which type of page is being constructed (XHTML, RSS,
+          etc.). Modules select the proper view based on the format provided
+          by the current template.</para>
 
           <para>Modules have several variables. However, the position and
           order variables must be set by using the
@@ -2961,19 +2962,192 @@ pines_log($module-&gt;get_content());</programlisting>
         <section>
           <title>Configurator</title>
 
-          <para></para>
+          <para>The configurator service allows the user and other components
+          to edit/save configuration and enable/disable components. In Pines,
+          a component is disabled by prepending a period (.) to its
+          directory's name.</para>
+
+          <para>The configurator itself has a few useful methods:<itemizedlist>
+              <listitem>
+                <para><methodname>disable_component</methodname></para>
+
+                <para>Disables a component. This is accomplished by prepending
+                a dot to its directory's name. Accepts the name of the
+                component as the only argument.</para>
+              </listitem>
+
+              <listitem>
+                <para><methodname>enable_component</methodname></para>
+
+                <para>Enables a component. This is accomplished by removing
+                the dot from the beginning of its directory's name. Accepts
+                the name of the component as the only argument.</para>
+              </listitem>
+
+              <listitem>
+                <para><methodname>list_components</methodname></para>
+
+                <para>Creates and attaches a module which lists configurable
+                components. It also returns the created module.</para>
+              </listitem>
+            </itemizedlist><example>
+              <title>Enabling and Disabling Components</title>
+
+              <programlisting language="php">// Enable the component com_good.
+$pines-&gt;configurator-&gt;enable_component('com_good');
+
+// Disable the component com_bad.
+$pines-&gt;configurator-&gt;disable_component('com_bad');</programlisting>
+            </example></para>
 
           <section>
             <title>Configurator Component</title>
 
-            <para></para>
+            <para>The configurator also provides a class for retrieving and
+            manipulating a component's configuration. This class is the
+            <classname>configurator_component</classname> class. It provides
+            the static method <methodname>factory</methodname>, which accepts
+            the component's name as the only argument and returns a new
+            instance of <classname>configurator_component</classname> for the
+            provided component. The class constructor also accepts this
+            argument.</para>
+
+            <para>The component configurator class provides some useful
+            methods:<itemizedlist>
+                <listitem>
+                  <para><methodname>get_full_config_array</methodname></para>
+
+                  <para>Get a full config array. (With defaults
+                  replaced.)</para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>is_configurable</methodname></para>
+
+                  <para>Check if a component is configurable.</para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>is_disabled</methodname></para>
+
+                  <para>Check if a component is disabled.</para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>print_form</methodname></para>
+
+                  <para>Print a form to edit the configuration.</para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>print_view</methodname></para>
+
+                  <para>Print a view of the configuration.</para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>save_config</methodname></para>
+
+                  <para>Write the configuration to the config file.</para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>set_config</methodname></para>
+
+                  <para>Set the current config by providing an array of key
+                  =&gt; values. Any value not provided will be set back to
+                  default.</para>
+                </listitem>
+              </itemizedlist><example>
+                <title>Changing a Component's Configuration</title>
+
+                <programlisting language="php">// Load the component's configuration.
+$conf = configurator_component::factory('com_example');
+// Set the new configuration.
+$conf-&gt;set_config(array(
+    'host' =&gt; $host,
+    'user' =&gt; $user,
+    'password' =&gt; $password,
+    'database' =&gt; $database
+));
+// Save the new configuration to disk.
+$conf-&gt;save_config();</programlisting>
+              </example></para>
+
+            <para>When the configuration is saved, the configurator creates a
+            <filename>config.php</filename> file in the component's directory
+            (if it does not already exist), and saves a script to the file,
+            which returns the configuration values as an array of associative
+            arrays. Each associative array contains an entry called "name" and
+            an entry called "value". The config service uses this file when
+            building the component's configuration, replacing values from
+            <filename>defaults.php</filename> with the values from this
+            file.<example>
+                <title>Typical config.php File</title>
+
+                <programlisting language="php">&lt;?php
+defined('P_RUN') or die('Direct access prohibited');
+return array (
+  0 =&gt; 
+  array (
+    'name' =&gt; 'string',
+    'value' =&gt; 'dsgsdfgfg',
+  ),
+  1 =&gt;
+  array (
+    'name' =&gt; 'multi_float',
+    'value' =&gt; 
+    array (
+      0 =&gt; 9.33,
+      1 =&gt; 8.4,
+    ),
+  ),
+);
+?&gt;</programlisting>
+              </example></para>
           </section>
         </section>
 
         <section>
           <title>Editor</title>
 
-          <para></para>
+          <para>The editor service provides a more friendly HTML editor for
+          the user. When editing some sort of content, which is to be
+          displayed in a page or email, a textarea is usually not the best
+          solution. The editor service provides a method which allows the
+          system administrator to choose between multiple HTML editors to
+          provide for the system's users.</para>
+
+          <para>Once the editor is loaded, it will transform any textareas
+          with the class "peditor" or "peditor-simple" into HTML editors. If
+          it provides a simplified editor, textareas with the class
+          "peditor-simple" will use this editor instead.</para>
+
+          <para>The editor has one method, <methodname>load</methodname>,
+          which loads the editor. This method should be called from a view, to
+          ensure it is only called when outputting HTML.<example>
+              <title>Using the Editor Service in a View</title>
+
+              <programlisting language="php">&lt;?php
+/**
+ * Prints editors.
+ *
+ * @license http://www.gnu.org/licenses/agpl-3.0.html
+ * @author Hunter Perrin &lt;hunter@sciactive.com&gt;
+ * @copyright SciActive.com
+ * @link http://sciactive.com/
+ */
+defined('P_RUN') or die('Direct access prohibited');
+$this-&gt;title = 'Editors';
+// Load the editor.
+$pines-&gt;editor-&gt;load();
+?&gt;
+&lt;div&gt;Regular Editor&lt;/div&gt;
+&lt;div&gt;&lt;textarea rows="3" cols="35" class="peditor"&gt;&lt;/textarea&gt;&lt;/div&gt;
+&lt;br /&gt;
+&lt;div&gt;Simple Editor&lt;/div&gt;
+&lt;div&gt;&lt;textarea rows="3" cols="35" class="peditor-simple"&gt;&lt;/textarea&gt;&lt;/div&gt;</programlisting>
+            </example></para>
         </section>
 
         <section>
@@ -3043,6 +3217,52 @@ pines_log($module-&gt;get_content());</programlisting>
 
         <para>Interfaces are defined in the
         <filename>system/init/i20interfaces.php</filename> file.</para>
+
+        <para>In order to implement a service, one of the component's classes
+        (usually its main class) must extend the
+        <classname>component</classname> class and implement the appropriate
+        interface for the service.</para>
+
+        <para>A component which implements a service must inform Pines that it
+        is providing the service. To do this, the component uses an init
+        script with the number 10. In the init script, it sets the service's
+        variable under <varname>$pines</varname> to a string containing the
+        class name. For example, if a component, com_xmlentity, is providing
+        the entity manager service, it would have something like the following
+        in an init script such as <filename>i10set.php</filename>.<example>
+            <title>Setting a Component as a System Service in an Init
+            Script</title>
+
+            <programlisting language="php">&lt;?php
+/**
+ * Set the system entity manager.
+ *
+ * @license http://www.gnu.org/licenses/agpl-3.0.html
+ * @author Hunter Perrin &lt;hunter@sciactive.com&gt;
+ * @copyright SciActive.com
+ * @link http://sciactive.com/
+ */
+defined('P_RUN') or die('Direct access prohibited');
+
+/**
+ * The entity manager.
+ * @global com_xmlentity $pines-&gt;entity_manager
+ */
+$pines-&gt;entity_manager = 'com_xmlentity';
+
+?&gt;</programlisting>
+          </example></para>
+
+        <para>The first time this variable is accessed, Pines will recognize
+        it as a system service and load a new instance of the class into the
+        variable. A component can implement any number of services.</para>
+
+        <para>The one exception to these practices is the template service.
+        Templates do not have to use an init script, but can only provide the
+        template service. They also must use their main class, which only
+        needs to extend the <classname>template</classname> class. The
+        <classname>template</classname> class already implements
+        <interfacename>template_interface</interfacename>.</para>
       </section>
     </chapter>
 
