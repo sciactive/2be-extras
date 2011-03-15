@@ -292,8 +292,7 @@
         repositories from SourceForge.<itemizedlist>
             <listitem>
               <para><link
-              xlink:href="http://pines.hg.sourceforge.net:8000/hgroot/pines/pines">http://pines.hg.sourceforge.net:8000/hgroot/pines/pines</link><emphasis
-              xlink:href="http://pines.hg.sourceforge.net:8000/hgroot/pines/pines">
+              xlink:href="http://pines.hg.sourceforge.net:8000/hgroot/pines/pines">http://pines.hg.sourceforge.net:8000/hgroot/pines/pines</link><emphasis>
               or </emphasis><link
               xlink:href="http://pines.hg.sourceforge.net:8000/hgroot/pines/core">http://pines.hg.sourceforge.net:8000/hgroot/pines/core</link></para>
 
