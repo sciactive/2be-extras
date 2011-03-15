@@ -641,6 +641,11 @@ if (
                     </listitem>
 
                     <listitem>
+                      <para><filename>includes</filename> - Contains Pines
+                      JavaScript files.</para>
+                    </listitem>
+
+                    <listitem>
                       <para><filename>init</filename> - Contains the system
                       init scripts which build the Pines environment and
                       control execution of scripts.</para>
@@ -1804,7 +1809,7 @@ return array(
     'description' =&gt; 'Allows you to edit your system\'s configuration and the configuration of any installed components.',
     'depend' =&gt; array(
         'pines' =&gt; '&lt;2',
-        'component' =&gt; 'com_jquery&amp;com_ptags&amp;com_pgrid'
+        'component' =&gt; 'com_jquery&amp;com_ptags&amp;com_pgrid&amp;com_pform'
     ),
     'recommend' =&gt; array(
         'service' =&gt; 'entity_manager&amp;user_manager'
@@ -2967,7 +2972,8 @@ pines_log($module-&gt;get_content());</programlisting>
           a component is disabled by prepending a period (.) to its
           directory's name.</para>
 
-          <para>The configurator itself has a few useful methods:<itemizedlist>
+          <para>The configurator itself has the following
+          methods:<itemizedlist>
               <listitem>
                 <para><methodname>disable_component</methodname></para>
 
@@ -3012,7 +3018,7 @@ $pines-&gt;configurator-&gt;disable_component('com_bad');</programlisting>
             provided component. The class constructor also accepts this
             argument.</para>
 
-            <para>The component configurator class provides some useful
+            <para>The component configurator class provides these
             methods:<itemizedlist>
                 <listitem>
                   <para><methodname>get_full_config_array</methodname></para>
@@ -3153,10 +3159,88 @@ $pines-&gt;editor-&gt;load();
         <section>
           <title>Entity Manager</title>
 
-          <para></para>
+          <para>The entity manager service provides database abstraction for
+          Pines. Data in Pines is based on objects called entities. An entity
+          is an object which can hold any type of data available in PHP,
+          including other entities. All entity classes (and therefore all
+          entities) inherit the <classname>entity</classname> class.</para>
+
+          <para>Components can freely access the database if they wish,
+          however it is strongly discouraged, as this prevents portability and
+          extensibility. Using entities to store data has several benefits for
+          both developers and site operators.<itemizedlist>
+              <listitem>
+                <para>Site operators can choose which database backend to use,
+                based on their own needs.</para>
+              </listitem>
+
+              <listitem>
+                <para>Moving from one database to another, backing up and
+                restoring a database, and mirroring databases is much easier
+                through an entity manager.</para>
+              </listitem>
+
+              <listitem>
+                <para>Data storage is much easier.</para>
+              </listitem>
+
+              <listitem>
+                <para>Data querying is much easier.</para>
+              </listitem>
+
+              <listitem>
+                <para>A component can store data in another component's
+                entities and extend its functionality.</para>
+              </listitem>
+
+              <listitem>
+                <para>The user manager provides access control for all
+                entities automatically.</para>
+              </listitem>
+            </itemizedlist></para>
+
+          <para>Entities are not strictly structured, so data of any type can
+          be added and saved just by assigning a variable on the entity and
+          calling <function>save()</function>. This makes data manipulation in
+          Pines very easy.</para>
+
+          <para>All entities are given a globally unique identifier (GUID),
+          which is an integer. No entities in the same Pines installation will
+          ever have the same GUID. The entity manager also provides UIDs,
+          which can be used to number certain types of entities (or
+          practically anything else). UIDs can be used to provide a more
+          visibly pleasing identifier for entities.</para>
+
+          <para>Entities are organized with tags. For example, if a component,
+          com_blog, wanted to store posts using an entity, it may add the tags
+          "com_blog" and "post" to all new instances. This allows components
+          to determine and select their entities from other components'
+          entities.</para>
+
+          <para>An entity's class is usually named by appending to their
+          component's name. In the previous example, the class would probably
+          be called <classname>com_blog_post</classname>. When selecting
+          entities with the entity manager, the class used to retrieve them
+          must be specified, or the <classname>entity</classname> class will
+          be used. If an entity is referenced in another entity's variable,
+          the class is saved along with the GUID. When this variable is
+          accessed later, the entity manager will retrieve the referenced
+          entity using the saved class.</para>
+
+          <para>The entity manager has the following methods:<itemizedlist>
+              <listitem>
+                <para></para>
+              </listitem>
+            </itemizedlist></para>
 
           <section>
             <title>Entity</title>
+
+            <para></para>
+          </section>
+
+          <section>
+            <title>Entity Querying</title>
 
             <para></para>
           </section>
