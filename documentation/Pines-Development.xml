@@ -2541,7 +2541,7 @@ pines_log($module-&gt;get_content());</programlisting>
             </example></para>
 
           <para>For more information about creating and using views, please
-          see the section <link linkend="views">Views</link> section.</para>
+          see the <link linkend="views">Views</link> section.</para>
         </section>
       </section>
 
