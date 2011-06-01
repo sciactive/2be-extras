@@ -2222,12 +2222,6 @@ $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
 
               <tbody>
                 <row>
-                  <entry><function>action</function></entry>
-
-                  <entry>Shortcut to <code>$pines-&gt;action()</code>.</entry>
-                </row>
-
-                <row>
                   <entry><function>clean_checkbox</function></entry>
 
                   <entry>Clean the name of a checkbox to use in an HTML
@@ -2279,6 +2273,12 @@ $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
                 </row>
 
                 <row>
+                  <entry><function>pines_action</function></entry>
+
+                  <entry>Shortcut to <code>$pines-&gt;action()</code>.</entry>
+                </row>
+
+                <row>
                   <entry><function>pines_depend</function></entry>
 
                   <entry>Shortcut to
@@ -2309,6 +2309,13 @@ $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
                 </row>
 
                 <row>
+                  <entry><function>pines_redirect</function></entry>
+
+                  <entry>Shortcut to
+                  <code>$pines-&gt;redirect()</code>.</entry>
+                </row>
+
+                <row>
                   <entry><function>pines_url</function></entry>
 
                   <entry>Shortcut to
@@ -2325,13 +2332,6 @@ $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
                   user manager is installed <function>punt_user</function>
                   redirects the user to the homepage.</entry>
                 </row>
-
-                <row>
-                  <entry><function>redirect</function></entry>
-
-                  <entry>Shortcut to
-                  <code>$pines-&gt;redirect()</code>.</entry>
-                </row>
               </tbody>
             </tgroup>
           </table></para>
@@ -2339,18 +2339,6 @@ $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
 
       <section>
         <title>Core Classes</title>
-
-        <section>
-          <title>Pines Base Class</title>
-
-          <para>The <classname>p_base</classname> class is a class which all
-          classes in Pines extend. When implementing a special class, like
-          <classname>entity</classname> or
-          <classname>configurator_component</classname>, it must extend
-          <classname>p_base</classname>. It may extend another class, like
-          <classname>template</classname>, which already extends
-          <classname>p_base</classname>.</para>
-        </section>
 
         <section>
           <title>Component</title>
@@ -3175,7 +3163,7 @@ $pines-&gt;editor-&gt;load();
 
               <listitem>
                 <para>Moving from one database to another, backing up and
-                restoring a database, and mirroring databases is much easier
+                restoring a database, and mirroring databases are much easier
                 through an entity manager.</para>
               </listitem>
 
