@@ -21,7 +21,7 @@ defined('P_RUN') or die('Direct access prohibited');
  * @package Pines
  * @subpackage com_slim
  */
-class slim extends p_base {
+class slim {
 	/**
 	 * Slim file format version.
 	 */
@@ -46,6 +46,12 @@ class slim extends p_base {
 	 * @var array
 	 */
 	private $files = array();
+	/**
+	 * The entries (virtual files) to be written to the archive.
+	 *
+	 * @var array
+	 */
+	private $entries = array();
 	/**
 	 * The offset in bytes of the beginning of the file stream.
 	 *
@@ -160,6 +166,14 @@ class slim extends p_base {
 	 * @var bool
 	 */
 	public $file_integrity = false;
+	/**
+	 * Don't extract files into parent directories.
+	 *
+	 * This causes '..' directories to be changed to '__' (two underscores).
+	 *
+	 * @var bool
+	 */
+	public $no_parents = true;
 
 	/**
 	 * Add a slash to the end of a path, if it's not already there.
@@ -272,9 +286,9 @@ class slim extends p_base {
 				}
 				break;
 			default:
-				if ($whence == SEEK_CUR){
+				if ($whence == SEEK_CUR) {
 					return fseek($handle, $this->stream_offset + $offset);
-				} else if (isset($whence)) {
+				} elseif (isset($whence)) {
 					return fseek($handle, $offset, $whence);
 				} else {
 					return fseek($handle, $offset);
@@ -337,6 +351,79 @@ class slim extends p_base {
 		$this->files[] = $this->make_path($path);
 		return true;
 	}
+	
+	/**
+	 * Add an entry directly to the archive.
+	 *
+	 * You can add files and directories that don't actually exist using this
+	 * function. The entry path must be relative to the root of the archive.
+	 * (Absolute paths will be cleaned.)
+	 *
+	 * The entry array requires at least the following entries:
+	 *
+	 * - "type" - The type of entry. One of "link", "file", or "dir".
+	 * - "path" - The path of the entry.
+	 *
+	 * If "type" is "link", the following entry is required:
+	 *
+	 * - "target" - The target of the symlink.
+	 *
+	 * If "type" is "file", the following entry is required:
+	 *
+	 * - "data" - The contents of the file.
+	 *
+	 * The following entries are optional:
+	 *
+	 * - "uid" - The user id of the entry. (preserve_owner)
+	 * - "gid" - The group id of the entry. (preserve_owner)
+	 * - "mode" - The protection mode of the entry. (preserve_mode)
+	 * - "atime" - The last access time of the entry. (preserve_times)
+	 * - "mtime" - The last modified time of the entry. (preserve_times)
+	 *
+	 * Be sure to add any parent directories first, before adding the entries
+	 * they contain.
+	 *
+	 * @param array $entry The entry array.
+	 * @return bool True on success, false on failure.
+	 */
+	public function add_entry($entry) {
+		if (empty($entry) || !isset($entry['type']) || !isset($entry['path']) || $entry['path'] == '')
+			return false;
+		$new_entry = array(
+			'type' => $entry['type'],
+			'path' => preg_replace('/^\/+/', '', $entry['path'])
+		);
+		switch ($entry['type']) {
+			case 'link':
+				if (!isset($entry['target']) || $entry['target'] == '')
+					return false;
+				$new_entry['target'] = $entry['target'];
+				break;
+			case 'file':
+				if (!isset($entry['data']))
+					return false;
+				$new_entry['data'] = (string) $entry['data'];
+				break;
+			case 'dir':
+				$new_entry['path'] = $this->add_slash($new_entry['path']);
+				break;
+			default:
+				return false;
+				break;
+		}
+		if (isset($entry['uid']))
+			$new_entry['uid'] = (int) $entry['uid'];
+		if (isset($entry['gid']))
+			$new_entry['gid'] = (int) $entry['gid'];
+		if (isset($entry['mode']))
+			$new_entry['mode'] = (int) $entry['mode'];
+		if (isset($entry['atime']))
+			$new_entry['atime'] = (int) $entry['atime'];
+		if (isset($entry['mtime']))
+			$new_entry['mtime'] = (int) $entry['mtime'];
+		$this->entries[] = $new_entry;
+		return true;
+	}
 
 	/**
 	 * Write the archive to a file.
@@ -361,6 +448,7 @@ class slim extends p_base {
 		$this->header['ichk'] = (bool) $this->file_integrity;
 		$this->header['ext'] = (array) $this->ext;
 		$offset = 0.00;
+		// Handle real files.
 		foreach ($this->files as $cur_file) {
 			$cur_path = $this->make_path($cur_file, false);
 			if (is_link($cur_file)) {
@@ -403,6 +491,40 @@ class slim extends p_base {
 			}
 			$this->header['files'][] = $new_array;
 		}
+		// Handle virtual files.
+		foreach ($this->entries as $cur_entry) {
+			$new_array = array(
+				'type' => $cur_entry['type'],
+				'path' => $cur_entry['path']
+			);
+			switch ($cur_entry['type']) {
+				case 'link':
+					$new_array['target'] = $cur_entry['target'];
+					break;
+				case 'file':
+					$new_array['offset'] = $offset;
+					$new_array['size'] = (float) sprintf("%u", strlen($cur_entry['data']));
+					if ($this->file_integrity)
+						$new_array['md5'] = md5($cur_entry['data']);
+					$offset += $new_array['size'];
+					break;
+			}
+			if ($this->preserve_owner) {
+				if (isset($cur_entry['uid']))
+					$new_array['uid'] = (int) $cur_entry['uid'];
+				if (isset($cur_entry['gid']))
+					$new_array['gid'] = (int) $cur_entry['gid'];
+			}
+			if ($this->preserve_mode && isset($cur_entry['mode']))
+				$new_array['mode'] = (int) $cur_entry['mode'];
+			if ($this->preserve_times) {
+				if (isset($cur_entry['atime']))
+					$new_array['atime'] = (int) $cur_entry['atime'];
+				if (isset($cur_entry['mtime']))
+					$new_array['mtime'] = (int) $cur_entry['mtime'];
+			}
+			$this->header['files'][] = $new_array;
+		}
 		if (!($fhandle = fopen($filename, 'w')))
 			return false;
 		$header = $this->header_compression ? 'D'.gzdeflate(json_encode($this->header), $this->header_compression_level) : json_encode($this->header);
@@ -417,6 +539,11 @@ class slim extends p_base {
 				return false;
 			@set_time_limit(21600);
 			stream_copy_to_stream($fread, $fhandle);
+		}
+		foreach ($this->entries as $cur_entry) {
+			if ($cur_entry['type'] != 'file')
+				continue;
+			fwrite($fhandle, $cur_entry['data']);
 		}
 		return fclose($fhandle);
 	}
@@ -531,6 +658,8 @@ class slim extends p_base {
 			if (isset($filter) && !$this->path_filter($cur_entry['path'], $filter))
 				continue;
 			$cur_path = $this->make_path($cur_entry['path']);
+			if ($this->no_parents)
+				$cur_path = preg_replace('/(^|\/)\.\.(\/|$)/S', '__', $cur_path);
 			switch ($cur_entry['type']) {
 				case 'file':
 					$this->fseek($fhandle, $cur_entry['offset'], SEEK_CUR);

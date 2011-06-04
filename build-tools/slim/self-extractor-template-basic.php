@@ -1,4 +1,4 @@
-<?php
+<?php //slim1.0
 class slim{
 const slim_version='1.0';
 private$h=array(),$s,$c;
@@ -200,4 +200,13 @@ $e=$e&&fclose($h);
 return$e;
 }
 }
-?>
+$a=new slim;
+if(!$a->read(__FILE__))
+die('Error.');
+if($a->extract())
+header('Location: '.str_replace(basename(__FILE__),'',$_SERVER['REQUEST_URI']));
+else
+echo"Error during extraction. All files may not have extracted correctly.";
+if(!$a->metadata['keep_self'])
+unlink(__FILE__);
+__halt_compiler();
