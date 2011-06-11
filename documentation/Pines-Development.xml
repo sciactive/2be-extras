@@ -79,9 +79,8 @@
         <para>Pines is a MVC based PHP framework, designed to help produce
         complex web applications rapidly. It is a full featured application
         framework, which provides features not only unique to Pines as a
-        framework, but never before seen in PHP before. Pines is designed with
-        the developer in mind. This is reflected in the history of
-        Pines.</para>
+        framework, but never before seen in PHP. Pines is designed with the
+        developer in mind. This is reflected in the history of Pines.</para>
 
         <para>Pines' goal as a framework is to provide the developer with a
         set of tools, which simplify the development of complex applications
@@ -858,7 +857,8 @@ if (
           <keysym>global</keysym> keyword.<note>
               <para>Since actions are run inside a function, they are not in
               the global scope. This means actions don't have to clean up
-              variables and need not worry about naming collisions.</para>
+              variables and need not worry about naming collisions, unlike
+              init scripts, which will be discussed later.</para>
             </note></para>
 
           <para>If no action file was found for the given arguments,
@@ -884,49 +884,109 @@ $pines-&gt;action();</programlisting>
         </section>
 
         <section>
-          <title>Checking an IP Address</title>
+          <title>Accessing Sessions</title>
 
-          <para>There are three methods of checking whether an IP address is
-          on a given network in the Pines object.</para>
+          <para>Sessions in Pines are handled exclusively through the
+          <methodname>session</methodname> method. Using this method, you can
+          access an existing session for reading or writing, and close or
+          destroy it. Using this method to open a session for reading allows
+          asynchronous requests to Pines to respond quickly, without
+          blocking.</para>
 
-          <simplesect>
-            <title>Using CIDR Notation</title>
+          <para>If you've never experienced blocking in PHP sessions, it
+          occurs when a script has a session open for writing, and another
+          script (or the same one in a different request) tries to open the
+          same session. The second script will pause execution until the first
+          script either closes the session or exits.</para>
 
-            <para>You can use <methodname>check_ip_cidr</methodname> to check
-            an IP address using the CIDR notation of a network.<example>
-                <title>Checking an IP Using CIDR Notation</title>
+          <para>The <methodname>session</methodname> method takes one
+          argument, the access type requested. It can be one of the
+          following:<itemizedlist>
+              <listitem>
+                <para>read</para>
 
-                <programlisting language="php">$good = $pines-&gt;check_ip_cidr('192.168.0.5', '192.168/24'); // Returns true.
+                <para>Open the session for reading only. This is the
+                default.</para>
+              </listitem>
 
-$bad = $pines-&gt;check_ip_cidr('192.168.1.5', '192.168/24'); // Returns false.</programlisting>
-              </example></para>
-          </simplesect>
+              <listitem>
+                <para>write</para>
 
-          <simplesect>
-            <title>Using an IP Range</title>
+                <para>Open the session for reading and writing.</para>
+              </listitem>
 
-            <para>You can use <methodname>check_ip_range</methodname> to check
-            an IP address using an IP range.<example>
-                <title>Checking an IP Using an IP Range</title>
+              <listitem>
+                <para>close</para>
 
-                <programlisting language="php">$good = $pines-&gt;check_ip_range('192.168.0.5', '192.168.0.0', '192.168.0.255'); // Returns true.
+                <para>Close a session that was opened for writing. The session
+                remains open for reading.</para>
+              </listitem>
 
-$bad = $pines-&gt;check_ip_range('192.168.1.5', '192.168.0.0', '192.168.0.255'); // Returns false.</programlisting>
-              </example></para>
-          </simplesect>
+              <listitem>
+                <para>destroy</para>
 
-          <simplesect>
-            <title>Using a Subnet Mask</title>
+                <para>Unset and destroy a session.</para>
+              </listitem>
+            </itemizedlist></para>
 
-            <para>You can use <methodname>check_ip_subnet</methodname> to
-            check an IP address using the subnet mask of a network.<example>
-                <title>Checking an IP Using a Subnet Mask</title>
+          <para>If you open a session for writing, you should always close it
+          once you don't need write access anymore.<example>
+              <title>Reading Session Data</title>
 
-                <programlisting language="php">$good = $pines-&gt;check_ip_subnet('192.168.0.5', '192.168.0.0', '255.255.255.0'); // Returns true.
+              <programlisting language="php">// Open the session for reading.
+$pines-&gt;session('read');
 
-$bad = $pines-&gt;check_ip_subnet('192.168.1.5', '192.168.0.0', '255.255.255.0'); // Returns false.</programlisting>
-              </example></para>
-          </simplesect>
+// Also works.
+//$pines-&gt;session();
+
+// Now the session variable is full of the session data.
+echo $_SESSION['messages'];</programlisting>
+            </example><example>
+              <title>Writing Session Data</title>
+
+              <programlisting language="php">// Open the session for writing.
+$pines-&gt;session('write');
+// Now use the session variable normally.
+$_SESSION['messages'] = '';
+
+foreach ($messages as $cur_message) {
+    if (empty($cur_message)) {
+        // If you exit out of the script, remember to close the session.
+        $pines-&gt;session('close');
+        pines_error('Broken message encountered.');
+        return;
+    }
+    $_SESSION['messages'] .= " $cur_message";
+}
+
+// Now that we're done, close the session.
+$pines-&gt;session('close');
+pines_notice('Messages saved.');</programlisting>
+            </example></para>
+        </section>
+
+        <section>
+          <title>Redirecting the User</title>
+
+          <para>The Pines object includes <methodname>redirect</methodname>, a
+          method to redirect users to a different URL. Using this method
+          ensures that any messages and errors that are queued to be displayed
+          to the user will be displayed when the user reaches the destination
+          URL, assuming that URL is also handled by the same Pines
+          installation. The HTTP status code returned to the client can be
+          changed and defaults to 303 See Other.<example>
+              <title>Redirecting the User</title>
+
+              <programlisting language="php">// Notices and errors will be saved.
+pines_notice('You have been redirected here.');
+$pines-&gt;redirect(pines_url('com_example', 'widgets/list'));
+
+// Redirect to the homepage.
+$pines-&gt;redirect(pines_url());
+
+// Use a permanent redirection code.
+$pines-&gt;redirect(pines_url('com_example', 'widgets/list'), 301);</programlisting>
+            </example></para>
         </section>
 
         <section>
@@ -1146,27 +1206,49 @@ $pines-&gt;hook-&gt;add_callback('$pines-&gt;format_content', -10, 'com_example_
         </section>
 
         <section>
-          <title>Redirecting the User</title>
+          <title>Checking an IP Address</title>
 
-          <para>The Pines object includes <methodname>redirect</methodname>, a
-          method to redirect users to a different URL. Using this method
-          ensures that any messages and errors that are queued to be displayed
-          to the user will be displayed when the user reaches the destination
-          URL, assuming that URL is also handled by the same Pines
-          installation. The HTTP status code returned to the client can be
-          changed and defaults to 303 See Other.<example>
-              <title>Redirecting the User</title>
+          <para>There are three methods of checking whether an IP address is
+          on a given network in the Pines object.</para>
 
-              <programlisting language="php">// Notices and errors will be saved.
-pines_notice('You have been redirected here.');
-$pines-&gt;redirect(pines_url('com_example', 'widgets/list'));
+          <simplesect>
+            <title>Using CIDR Notation</title>
 
-// Redirect to the homepage.
-$pines-&gt;redirect(pines_url());
+            <para>You can use <methodname>check_ip_cidr</methodname> to check
+            an IP address using the CIDR notation of a network.<example>
+                <title>Checking an IP Using CIDR Notation</title>
 
-// Use a permanent redirection code.
-$pines-&gt;redirect(pines_url('com_example', 'widgets/list'), 301);</programlisting>
-            </example></para>
+                <programlisting language="php">$good = $pines-&gt;check_ip_cidr('192.168.0.5', '192.168/24'); // Returns true.
+
+$bad = $pines-&gt;check_ip_cidr('192.168.1.5', '192.168/24'); // Returns false.</programlisting>
+              </example></para>
+          </simplesect>
+
+          <simplesect>
+            <title>Using an IP Range</title>
+
+            <para>You can use <methodname>check_ip_range</methodname> to check
+            an IP address using an IP range.<example>
+                <title>Checking an IP Using an IP Range</title>
+
+                <programlisting language="php">$good = $pines-&gt;check_ip_range('192.168.0.5', '192.168.0.0', '192.168.0.255'); // Returns true.
+
+$bad = $pines-&gt;check_ip_range('192.168.1.5', '192.168.0.0', '192.168.0.255'); // Returns false.</programlisting>
+              </example></para>
+          </simplesect>
+
+          <simplesect>
+            <title>Using a Subnet Mask</title>
+
+            <para>You can use <methodname>check_ip_subnet</methodname> to
+            check an IP address using the subnet mask of a network.<example>
+                <title>Checking an IP Using a Subnet Mask</title>
+
+                <programlisting language="php">$good = $pines-&gt;check_ip_subnet('192.168.0.5', '192.168.0.0', '255.255.255.0'); // Returns true.
+
+$bad = $pines-&gt;check_ip_subnet('192.168.1.5', '192.168.0.0', '255.255.255.0'); // Returns false.</programlisting>
+              </example></para>
+          </simplesect>
         </section>
       </section>
 
@@ -3168,11 +3250,11 @@ $pines-&gt;editor-&gt;load();
               </listitem>
 
               <listitem>
-                <para>Data storage is much easier.</para>
+                <para>Data storage is much easier and faster to code.</para>
               </listitem>
 
               <listitem>
-                <para>Data querying is much easier.</para>
+                <para>Data querying is much easier and faster to code.</para>
               </listitem>
 
               <listitem>
@@ -3201,7 +3283,7 @@ $pines-&gt;editor-&gt;load();
           <para>Entities are organized with tags. For example, if a component,
           com_blog, wanted to store posts using an entity, it may add the tags
           "com_blog" and "post" to all new instances. This allows components
-          to determine and select their entities from other components'
+          to select and differentiate their entities from other components'
           entities.</para>
 
           <para>An entity's class is usually named by appending to their
@@ -3212,7 +3294,11 @@ $pines-&gt;editor-&gt;load();
           be used. If an entity is referenced in another entity's variable,
           the class is saved along with the GUID. When this variable is
           accessed later, the entity manager will retrieve the referenced
-          entity using the saved class.</para>
+          entity using the saved class.<warning>
+              <para>When changing an entity's class name, any entities
+              referencing it must be resaved after setting the reference again
+              using the new class name.</para>
+            </warning></para>
 
           <para>The entity manager has the following methods:<itemizedlist>
               <listitem>
