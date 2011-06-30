@@ -3228,94 +3228,465 @@ $pines-&gt;editor-&gt;load();
         <section>
           <title>Entity Manager</title>
 
-          <para>The entity manager service provides database abstraction for
-          Pines. Data in Pines is based on objects called entities. An entity
-          is an object which can hold any type of data available in PHP,
-          including other entities. All entity classes (and therefore all
-          entities) inherit the <classname>entity</classname> class.</para>
-
-          <para>Components can freely access the database if they wish,
-          however it is strongly discouraged, as this prevents portability and
-          extensibility. Using entities to store data has several benefits for
-          both developers and site operators.<itemizedlist>
-              <listitem>
-                <para>Site operators can choose which database backend to use,
-                based on their own needs.</para>
-              </listitem>
-
-              <listitem>
-                <para>Moving from one database to another, backing up and
-                restoring a database, and mirroring databases are much easier
-                through an entity manager.</para>
-              </listitem>
-
-              <listitem>
-                <para>Data storage is much easier and faster to code.</para>
-              </listitem>
-
-              <listitem>
-                <para>Data querying is much easier and faster to code.</para>
-              </listitem>
-
-              <listitem>
-                <para>A component can store data in another component's
-                entities and extend its functionality.</para>
-              </listitem>
-
-              <listitem>
-                <para>The user manager provides access control for all
-                entities automatically.</para>
-              </listitem>
-            </itemizedlist></para>
-
-          <para>Entities are not strictly structured, so data of any type can
-          be added and saved just by assigning a variable on the entity and
-          calling <function>save()</function>. This makes data manipulation in
-          Pines very easy.</para>
-
-          <para>All entities are given a globally unique identifier (GUID),
-          which is an integer. No entities in the same Pines installation will
-          ever have the same GUID. The entity manager also provides UIDs,
-          which can be used to number certain types of entities (or
-          practically anything else). UIDs can be used to provide a more
-          visibly pleasing identifier for entities.</para>
-
-          <para>Entities are organized with tags. For example, if a component,
-          com_blog, wanted to store posts using an entity, it may add the tags
-          "com_blog" and "post" to all new instances. This allows components
-          to select and differentiate their entities from other components'
-          entities.</para>
-
-          <para>An entity's class is usually named by appending to their
-          component's name. In the previous example, the class would probably
-          be called <classname>com_blog_post</classname>. When selecting
-          entities with the entity manager, the class used to retrieve them
-          must be specified, or the <classname>entity</classname> class will
-          be used. If an entity is referenced in another entity's variable,
-          the class is saved along with the GUID. When this variable is
-          accessed later, the entity manager will retrieve the referenced
-          entity using the saved class.<warning>
-              <para>When changing an entity's class name, any entities
-              referencing it must be resaved after setting the reference again
-              using the new class name.</para>
-            </warning></para>
-
-          <para>The entity manager has the following methods:<itemizedlist>
-              <listitem>
-                <para></para>
-              </listitem>
-            </itemizedlist></para>
+          <para>Go brew some coffee or drink an energy drink, cause this is
+          without a doubt, the most complex and important part of Pines!
+          Understanding the entity manager lets you build complex
+          relationships between data as easily as setting the value of a
+          property.</para>
 
           <section>
-            <title>Entity</title>
+            <title>Introduction</title>
 
-            <para></para>
+            <para>The entity manager service provides database abstraction for
+            Pines. Data in Pines is based on objects called entities. An
+            entity is an object which can hold any type of data available in
+            PHP, including other entities. All entity classes (and therefore
+            all entities) inherit the <classname>entity</classname>
+            class.</para>
+
+            <para>Components can freely access the database if they wish,
+            however it is strongly discouraged, as this prevents portability
+            and extensibility. Using entities to store data has several
+            benefits for both developers and site operators.<itemizedlist>
+                <listitem>
+                  <para>Site operators can choose which database backend to
+                  use, based on their own needs.</para>
+                </listitem>
+
+                <listitem>
+                  <para>Moving from one database to another, backing up and
+                  restoring a database, and mirroring databases are much
+                  easier through an entity manager.</para>
+                </listitem>
+
+                <listitem>
+                  <para>Data storage is much easier and faster to code.</para>
+                </listitem>
+
+                <listitem>
+                  <para>Data querying is much easier and faster to
+                  code.</para>
+                </listitem>
+
+                <listitem>
+                  <para>A component can store data in another component's
+                  entities and extend its functionality.</para>
+                </listitem>
+
+                <listitem>
+                  <para>The user manager provides access control for all
+                  entities automatically.</para>
+                </listitem>
+              </itemizedlist></para>
+
+            <para>Entities are not strictly structured, so data of any type
+            can be added and saved just by assigning a variable on the entity
+            and calling <function>save()</function>. This makes data
+            manipulation in Pines very easy.</para>
+
+            <para>All entities are given a globally unique identifier (GUID),
+            which is an integer. No entities in the same Pines installation
+            will ever have the same GUID. The entity manager also provides
+            UIDs, which can be used to number certain types of entities (or
+            practically anything else). UIDs can be used to provide a more
+            visibly pleasing identifier for entities.</para>
+
+            <para>Entities are organized with tags. For example, if a
+            component, com_blog, wanted to store posts using an entity, it may
+            add the tags "com_blog" and "post" to all new instances. This
+            allows components to select and differentiate their entities from
+            other components' entities.</para>
+
+            <para>An entity's class is usually named by appending to their
+            component's name. In the previous example, the class would
+            probably be called <classname>com_blog_post</classname>. When
+            selecting entities with the entity manager, the class used to
+            retrieve them must be specified, or the
+            <classname>entity</classname> class will be used. If an entity is
+            referenced in another entity's variable, the class is saved along
+            with the GUID. When this variable is accessed later, the entity
+            manager will retrieve the referenced entity using the saved
+            class.<warning>
+                <para>When changing an entity's class name, any entities
+                referencing it must be resaved after setting the reference
+                again using the new class name.</para>
+              </warning></para>
+          </section>
+
+          <section>
+            <title>Creating Entities</title>
+
+            <para>To create an entity, call the
+            <methodname>factory</methodname> static method of an entity's
+            class. The <classname>entity</classname> class takes a list of
+            tags as arguments. However, if an author chooses, the
+            <methodname>factory</methodname> method of an inheriting class can
+            take any other arguments. It will usually take only one argument,
+            a GUID. It would return the entity with the GUID or, if it didn't
+            exist or no GUID was provided, a new entity. The
+            <methodname>factory</methodname> method is used instead of the
+            <keysym>new</keysym> keyword to provide entities a chance to set
+            up hooking on their objects.<example>
+                <title>Creating an Entity</title>
+
+                <programlisting language="php">// Using the entity class.
+$new_entity = entity::factory();
+
+// Using a custom class.
+$blog_post = com_blog_post::factory();</programlisting>
+              </example></para>
+
+            <para>Much like blogs in many blogging systems, entities are
+            organized using tags. Entity tags are not supposed to be added by
+            the user, as this could allow them to create or manipulate users,
+            groups, configurations, etc. It may seem inviting to use the
+            entity tags to store user provided data, but don't! Though not
+            strictly necessary, it is <emphasis role="bold">highly
+            recommended</emphasis> to give every entity your component creates
+            a tag indentical to your component's name, such as
+            'com_xmlparser'. You don't want to accidentally get another
+            component's entities.</para>
+
+            <para>Be very cautious when saving an entity in another entity's
+            variable. If the referenced entity is newly created and does not
+            have a GUID, the entity manager will not be able to retrieve it
+            later. Always save the referenced entity first.<example>
+                <title>Saving a Referenced Entity the Wrong Way</title>
+
+                <programlisting language="php">$entity = entity::factory();
+$entity-&gt;foo = entity::factory();
+
+$entity-&gt;save(); // foo hasn't been saved yet.
+$entity-&gt;foo-&gt;bar = 'It works!';
+$entity-&gt;foo-&gt;save();
+
+$guid = $entity-&gt;guid;
+unset($entity);
+$entity = $pines-&gt;entity_manager-&gt;get_entity(array(), array('&amp;', 'guid' =&gt; $guid));
+
+isset($entity-&gt;foo-&gt;guid); // FALSE
+echo $entity-&gt;foo-&gt;bar; // Outputs nothing.</programlisting>
+              </example><example>
+                <title>Saving a Referenced Entity the Right Way</title>
+
+                <programlisting language="php">$entity = entity::factory();
+$entity-&gt;foo = entity::factory();
+
+$entity-&gt;foo-&gt;bar = 'It works!';
+$entity-&gt;foo-&gt;save();
+$entity-&gt;save(); // now foo has been saved.
+
+$guid = $entity-&gt;guid;
+unset($entity);
+$entity = $pines-&gt;entity_manager-&gt;get_entity(array(), array('&amp;', 'guid' =&gt; $guid));
+
+isset($entity-&gt;foo-&gt;guid); // TRUE
+echo $entity-&gt;foo-&gt;bar; // Outputs 'It works!'.</programlisting>
+              </example></para>
+
+            <para>Since the reference entity's class name is stored in the
+            reference on the entity's first save and used to retrieve the
+            reference entity using the same class, if you change the class
+            name in an update, you need to reassign the reference entity and
+            save to storage.</para>
+
+            <para>When an entity is loaded, it does not request its referenced
+            entities from the entity manager. This is done the first time the
+            variable/array is accessed. The referenced entity is then stored
+            in a cache, so if it is altered elsewhere, then accessed again
+            through the variable, the changes will <emphasis
+            role="bold">not</emphasis> be there. Therefore, you should take
+            great care when accessing entities from multiple variables. If you
+            might be using a referenced entity again later in the code
+            execution (after some other processing occurs), it's recommended
+            to call <methodname>clear_cache</methodname>.</para>
+          </section>
+
+          <section>
+            <title>Entities</title>
+
+            <para>As mentioned before, entities are organized using tags. To
+            add, remove, and check tags, the methods
+            <methodname>add_tag</methodname>,
+            <methodname>remove_tag</methodname>, and
+            <methodname>has_tag</methodname> are used, respectively. Each
+            takes any number of tags or an array of tags as arguments.<example>
+                <title>Manipulating Entity Tags</title>
+
+                <programlisting language="php">$entity = entity::factory();
+
+$entity-&gt;add_tag('com_foobar', 'foo', 'bar');
+$entity-&gt;has_tag('foo'); // TRUE
+
+$entity-&gt;remove_tag('foo', 'bar');
+$entity-&gt;has_tag('foo'); // FALSE</programlisting>
+              </example></para>
+
+            <para>To clear the cache of referenced entities, so that the next
+            time one is accessed it will be pulled from the database, use the
+            <methodname>clear_cache</methodname> method.<example>
+                <title>Clearing the Reference Entity Cache</title>
+
+                <programlisting language="php">$entity = entity::factory();
+$entity-&gt;foo = entity::factory();
+$entity-&gt;foo-&gt;bar = 'Old value.';
+$entity-&gt;foo-&gt;save();
+$entity-&gt;save();
+
+$entity = $pines-&gt;entity_manager-&gt;get_entity(array(), array('&amp;', 'guid' =&gt; $entity-&gt;guid));
+
+$inst_of_foo = $pines-&gt;entity_manager-&gt;get_entity(array(), array('&amp;', 'guid' =&gt; $entity-&gt;foo-&gt;guid));
+$inst_of_foo-&gt;bar = 'New value.';
+$inst_of_foo-&gt;save();
+
+echo $entity-&gt;foo-&gt;bar; // Outputs 'Old value.'
+$entity-&gt;clear_cache();
+echo $entity-&gt;foo-&gt;bar; // Outputs 'New value.'</programlisting>
+              </example></para>
+
+            <para>Much like clearing the entity cache, you may need to refresh
+            the entity's own data. Use the <methodname>refresh</methodname>
+            method for this.<example>
+                <title>Refreshing an Entity's Data</title>
+
+                <programlisting language="php">$entity = entity::factory();
+$entity-&gt;foo = 'Old value.';
+$entity-&gt;save();
+
+$inst_of_ent = $pines-&gt;entity_manager-&gt;get_entity(array(), array('&amp;', 'guid' =&gt; $entity-&gt;guid));
+$inst_of_ent-&gt;foo = 'New value.';
+$inst_of_ent-&gt;save();
+
+echo $entity-&gt;foo; // Outputs 'Old value.'
+$entity-&gt;refresh();
+echo $entity-&gt;foo; // Outputs 'New value.'</programlisting>
+              </example></para>
+
+            <para>As you've already seen in the examples, to save an entity,
+            use the <methodname>save</methodname> method. Likewise, to delete
+            the entity, use the <methodname>delete</methodname> method. You
+            can also call the <methodname>save_entity</methodname>,
+            <methodname>delete_entity</methodname>, and
+            <methodname>delete_entity_by_id</methodname> methods of the entity
+            manager itself. Entities use these methods themselves. This allows
+            hooking of all entity saves and deletes.<example>
+                <title>Different Ways of Saving and Deleting Entities</title>
+
+                <programlisting language="php">$entity = entity::factory();
+
+// Save the entity.
+$entity-&gt;save();
+// or
+$pines-&gt;entity_manager-&gt;save_entity($entity);
+
+// Delete the entity.
+$entity-&gt;delete();
+// or
+$pines-&gt;entity_manager-&gt;delete_entity($entity);
+// or
+$pines-&gt;entity_manager-&gt;delete_entity_by_id($entity-&gt;guid);</programlisting>
+              </example></para>
+
+            <para>Several methods are provided by entities to find and compare
+            them with other data. Entities cannot simply be checked using the
+            == operator. It will almost always fail because of things like
+            entity caching and sleeping references.<itemizedlist>
+                <listitem>
+                  <para><methodname>is</methodname></para>
+
+                  <para>Perform a less strict comparison of two entities. To
+                  return true, the entity and the object passed must meet the
+                  following criteria:<simplelist>
+                      <member>They must be entities.</member>
+
+                      <member>They must have equal GUIDs. (Or both can have no
+                      GUID.)</member>
+
+                      <member>If they have no GUIDs, their data must be
+                      equal.</member>
+                    </simplelist></para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>equals</methodname></para>
+
+                  <para>Perform a more strict comparison of two entities. To
+                  return true, the entity and the object passed must meet the
+                  following criteria:<simplelist>
+                      <member>They must be entities.</member>
+
+                      <member>They must have equal GUIDs. (Or both can have no
+                      GUID.)</member>
+
+                      <member>They must be instances of the same
+                      class.</member>
+
+                      <member>Their data must be equal.</member>
+                    </simplelist></para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>in_array</methodname></para>
+
+                  <para>Check whether the entity is in an array. Takes two
+                  arguments, the array and a boolean
+                  <varname>$strict</varname>. If <varname>$strict</varname> is
+                  false, the function uses <methodname>is</methodname> to
+                  compare, and if it's true, the function uses
+                  <methodname>equals</methodname>.</para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>array_search</methodname></para>
+
+                  <para>Search an array for the entity and return the
+                  corresponding key. Takes two arguments, the array and a
+                  boolean <varname>$strict</varname>. If
+                  <varname>$strict</varname> is false, the function uses
+                  <methodname>is</methodname> to compare, and if it's true,
+                  the function uses <methodname>equals</methodname>.</para>
+                </listitem>
+              </itemizedlist><example>
+                <title>Comparing Entities</title>
+
+                <programlisting language="php">$entity = entity::factory();
+
+$entity-&gt;is($entity); // TRUE
+
+
+$array = array('foo' =&gt; null, 'bar' =&gt; $entity);
+
+echo $entity-&gt;array_search($array); // Outputs 'bar'</programlisting>
+              </example></para>
+
+            <para>There are three functions to sort entities. Each one uses a
+            different method of sorting.</para>
+
+            <para><itemizedlist>
+                <listitem>
+                  <para><methodname>hsort</methodname></para>
+
+                  <para>Sort an array of entities hierarchically by a
+                  specified property's value.</para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>psort</methodname></para>
+
+                  <para>Sort an array of entities by parent and a specified
+                  property's value. If they have the same parent, their own
+                  value is used.</para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>sort</methodname></para>
+
+                  <para>Sort an array of entities by a specified property's
+                  value.</para>
+                </listitem>
+              </itemizedlist><example>
+                <title>Sorting Entities</title>
+
+                <programlisting language="php">$cats = $pines-&gt;entity_manager-&gt;get_entities(
+        array('class' =&gt; com_foobar_category),
+        array('&amp;',
+            'tag' =&gt; array('com_foobar', 'category')
+        )
+    );
+
+$case_sensitive = false;
+$reverse = false;
+
+// Sort categories hierarchically by their name.
+$pines-&gt;entity_manager-&gt;hsort($cats, 'name', 'parent', $case_sensitive, $reverse);
+
+// Sort categories by their parent's name.
+$pines-&gt;entity_manager-&gt;psort($cats, 'name', 'parent', $case_sensitive, $reverse);
+
+// Sort categories by their name.
+$pines-&gt;entity_manager-&gt;sort($cats, 'name', $case_sensitive, $reverse);</programlisting>
+              </example></para>
           </section>
 
           <section>
             <title>Entity Querying</title>
 
-            <para></para>
+            <para>The entity manager has the following methods for querying
+            entities:<itemizedlist>
+                <listitem>
+                  <para><methodname>get_entities</methodname></para>
+
+                  <para></para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>get_entity</methodname></para>
+
+                  <para></para>
+                </listitem>
+              </itemizedlist></para>
+          </section>
+
+          <section>
+            <title>Exporting and Importing Entities</title>
+
+            <para>The entity manager has the following methods for exporting
+            and importing entities:<itemizedlist>
+                <listitem>
+                  <para><methodname>export</methodname></para>
+
+                  <para></para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>export_print</methodname></para>
+
+                  <para></para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>import</methodname></para>
+
+                  <para></para>
+                </listitem>
+              </itemizedlist></para>
+          </section>
+
+          <section>
+            <title>UIDs</title>
+
+            <para>The entity manager has the following methods for handling
+            UIDs:<itemizedlist>
+                <listitem>
+                  <para><methodname>delete_uid</methodname></para>
+
+                  <para></para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>get_uid</methodname></para>
+
+                  <para></para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>new_uid</methodname></para>
+
+                  <para></para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>rename_uid</methodname></para>
+
+                  <para></para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>set_uid</methodname></para>
+
+                  <para></para>
+                </listitem>
+              </itemizedlist></para>
           </section>
         </section>
 
