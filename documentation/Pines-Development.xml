@@ -412,8 +412,8 @@ hg up</programlisting></para>
           in order to accurately and quickly find and understand entity
           manager queries in a function. In each selector of an entity manager
           query, the selector type should be placed on the line with the
-          opening "array(".<example>
-              <title>Indentation</title>
+          opening "array(".<informalexample>
+              <bridgehead>Indentation</bridgehead>
 
               <programlisting language="php">if ($var) {
     // Something
@@ -448,7 +448,7 @@ $pines-&gt;entity_manager-&gt;get_entities(
             'data' =&gt; array('something', true)
         )
     );</programlisting>
-            </example></para>
+            </informalexample></para>
         </section>
 
         <section>
@@ -461,8 +461,8 @@ $pines-&gt;entity_manager-&gt;get_entities(
           either use brackets or not. In JavaScript (in order to reduce file
           size) brackets are not recommended in this case.</para>
 
-          <para><example>
-              <title>Brackets and Parentheses</title>
+          <para><informalexample>
+              <bridgehead>Brackets and Parentheses</bridgehead>
 
               <programlisting language="php">if ($var) {
     one_thing();
@@ -506,7 +506,7 @@ if (
         )
     )
     do_something();</programlisting>
-            </example></para>
+            </informalexample></para>
         </section>
 
         <section>
@@ -549,8 +549,8 @@ if (
           <para>Pines uses both C89 (/*...*/) and C99 (//...) style comments.
           Comments should have a space after the comment mark. Code which is
           commented out should not. C89 style is preferred for longer
-          comments.<example>
-              <title>Comments</title>
+          comments.<informalexample>
+              <bridgehead>Comments</bridgehead>
 
               <programlisting language="php">// This is a short comment.
 
@@ -566,7 +566,7 @@ if (
 
 // Don't use a leading space when commenting out code.
 //$pines-&gt;com_example-&gt;something();</programlisting>
-            </example></para>
+            </informalexample></para>
 
           <para>Pines uses phpDocumentor (http://www.phpdoc.org) to generate
           API documentation. Files, functions, classes, interfaces,
@@ -714,15 +714,15 @@ if (
           function or method, declare it using the <keysym>global</keysym>
           keyword.</para>
 
-          <para><example>
-              <title>Using <varname>$pines</varname> in a function or
-              method.</title>
+          <para><informalexample>
+              <bridgehead>Using <varname>$pines</varname> in a function or
+              method.</bridgehead>
 
               <programlisting language="php">function example() {
     global $pines;
     $pines-&gt;something();
 }</programlisting>
-            </example></para>
+            </informalexample></para>
 
           <para>Several core services are loaded as variables of
           <varname>$pines</varname>. See the <link
@@ -869,8 +869,8 @@ if (
           "error_404" view into the page's "content" position and send a 404
           HTTP status code. This means your action can return the string
           "error_404" if the requested information is not found and a 404
-          error will be sent to the client.<example>
-              <title>Manually Running an Action</title>
+          error will be sent to the client.<informalexample>
+              <bridgehead>Manually Running an Action</bridgehead>
 
               <programlisting language="php">// Run a specific action.
 $pines-&gt;action('com_example', 'widgets/list');
@@ -880,7 +880,7 @@ $pines-&gt;action('com_example');
 
 // Run the default component's default action.
 $pines-&gt;action();</programlisting>
-            </example></para>
+            </informalexample></para>
         </section>
 
         <section>
@@ -930,8 +930,8 @@ $pines-&gt;action();</programlisting>
             </itemizedlist></para>
 
           <para>If you open a session for writing, you should always close it
-          once you don't need write access anymore.<example>
-              <title>Reading Session Data</title>
+          once you don't need write access anymore.<informalexample>
+              <bridgehead>Reading Session Data</bridgehead>
 
               <programlisting language="php">// Open the session for reading.
 $pines-&gt;session('read');
@@ -941,8 +941,8 @@ $pines-&gt;session('read');
 
 // Now the session variable is full of the session data.
 echo $_SESSION['messages'];</programlisting>
-            </example><example>
-              <title>Writing Session Data</title>
+            </informalexample><informalexample>
+              <bridgehead>Writing Session Data</bridgehead>
 
               <programlisting language="php">// Open the session for writing.
 $pines-&gt;session('write');
@@ -962,7 +962,7 @@ foreach ($messages as $cur_message) {
 // Now that we're done, close the session.
 $pines-&gt;session('close');
 pines_notice('Messages saved.');</programlisting>
-            </example></para>
+            </informalexample></para>
         </section>
 
         <section>
@@ -974,8 +974,8 @@ pines_notice('Messages saved.');</programlisting>
           to the user will be displayed when the user reaches the destination
           URL, assuming that URL is also handled by the same Pines
           installation. The HTTP status code returned to the client can be
-          changed and defaults to 303 See Other.<example>
-              <title>Redirecting the User</title>
+          changed and defaults to 303 See Other.<informalexample>
+              <bridgehead>Redirecting the User</bridgehead>
 
               <programlisting language="php">// Notices and errors will be saved.
 pines_notice('You have been redirected here.');
@@ -986,7 +986,7 @@ $pines-&gt;redirect(pines_url());
 
 // Use a permanent redirection code.
 $pines-&gt;redirect(pines_url('com_example', 'widgets/list'), 301);</programlisting>
-            </example></para>
+            </informalexample></para>
         </section>
 
         <section>
@@ -1017,20 +1017,20 @@ $pines-&gt;redirect(pines_url('com_example', 'widgets/list'), 301);</programlist
             allow certain content to be altered by other components. Generally
             only user provided content should ever be formatted. Content like
             your component's forms should most likely never be
-            formatted.<example>
-                <title>Formatting Content for Output</title>
+            formatted.<informalexample>
+                <bridgehead>Formatting Content for Output</bridgehead>
 
                 <programlisting language="php">&lt;div&gt;
     &lt;?php echo $pines-&gt;format_content($post-&gt;content); ?&gt;
 &lt;/div&gt;</programlisting>
-              </example></para>
+              </informalexample></para>
 
             <para>As mentioned, components can hook this function to provide
             special alterations to content. See the <link
             linkend="hook">Hook</link> section in <link
             linkend="core_services">Core Services</link> for information about
-            hooks.<example>
-                <title>Using a Hook to Alter Content</title>
+            hooks.<informalexample>
+                <bridgehead>Using a Hook to Alter Content</bridgehead>
 
                 <programlisting language="php">// Replace the word "Pines" with "Barbecue".
 function com_example__replace(&amp;$arguments) {
@@ -1038,7 +1038,7 @@ function com_example__replace(&amp;$arguments) {
 }
 
 $pines-&gt;hook-&gt;add_callback('$pines-&gt;format_content', -10, 'com_example__replace');</programlisting>
-              </example></para>
+              </informalexample></para>
           </section>
 
           <section>
@@ -1181,13 +1181,13 @@ $pines-&gt;hook-&gt;add_callback('$pines-&gt;format_content', -10, 'com_example_
                     </row>
                   </tbody>
                 </tgroup>
-              </table><example>
-                <title>Formatting a Date</title>
+              </table><informalexample>
+                <bridgehead>Formatting a Date</bridgehead>
 
                 <programlisting language="php">&lt;div&gt;
     &lt;?php echo $pines-&gt;format_date($timestamp, 'custom', 'l jS \of F Y h:i:s A', 'America/Los_Angeles'); ?&gt;
 &lt;/div&gt;</programlisting>
-              </example></para>
+              </informalexample></para>
           </section>
 
           <section>
@@ -1195,13 +1195,13 @@ $pines-&gt;hook-&gt;add_callback('$pines-&gt;format_content', -10, 'com_example_
 
             <para>To format a phone number, use
             <methodname>format_phone</methodname>. It uses US phone number
-            format. E.g. "(800) 555-1234 x56".<example>
-                <title>Formatting a Phone Number</title>
+            format. E.g. "(800) 555-1234 x56".<informalexample>
+                <bridgehead>Formatting a Phone Number</bridgehead>
 
                 <programlisting language="php">&lt;div&gt;
     &lt;?php echo $pines-&gt;format_phone('1800555123456'); ?&gt;
 &lt;/div&gt;</programlisting>
-              </example></para>
+              </informalexample></para>
           </section>
         </section>
 
@@ -1215,39 +1215,41 @@ $pines-&gt;hook-&gt;add_callback('$pines-&gt;format_content', -10, 'com_example_
             <title>Using CIDR Notation</title>
 
             <para>You can use <methodname>check_ip_cidr</methodname> to check
-            an IP address using the CIDR notation of a network.<example>
-                <title>Checking an IP Using CIDR Notation</title>
+            an IP address using the CIDR notation of a
+            network.<informalexample>
+                <bridgehead>Checking an IP Using CIDR Notation</bridgehead>
 
                 <programlisting language="php">$good = $pines-&gt;check_ip_cidr('192.168.0.5', '192.168/24'); // Returns true.
 
 $bad = $pines-&gt;check_ip_cidr('192.168.1.5', '192.168/24'); // Returns false.</programlisting>
-              </example></para>
+              </informalexample></para>
           </simplesect>
 
           <simplesect>
             <title>Using an IP Range</title>
 
             <para>You can use <methodname>check_ip_range</methodname> to check
-            an IP address using an IP range.<example>
-                <title>Checking an IP Using an IP Range</title>
+            an IP address using an IP range.<informalexample>
+                <bridgehead>Checking an IP Using an IP Range</bridgehead>
 
                 <programlisting language="php">$good = $pines-&gt;check_ip_range('192.168.0.5', '192.168.0.0', '192.168.0.255'); // Returns true.
 
 $bad = $pines-&gt;check_ip_range('192.168.1.5', '192.168.0.0', '192.168.0.255'); // Returns false.</programlisting>
-              </example></para>
+              </informalexample></para>
           </simplesect>
 
           <simplesect>
             <title>Using a Subnet Mask</title>
 
             <para>You can use <methodname>check_ip_subnet</methodname> to
-            check an IP address using the subnet mask of a network.<example>
-                <title>Checking an IP Using a Subnet Mask</title>
+            check an IP address using the subnet mask of a
+            network.<informalexample>
+                <bridgehead>Checking an IP Using a Subnet Mask</bridgehead>
 
                 <programlisting language="php">$good = $pines-&gt;check_ip_subnet('192.168.0.5', '192.168.0.0', '255.255.255.0'); // Returns true.
 
 $bad = $pines-&gt;check_ip_subnet('192.168.1.5', '192.168.0.0', '255.255.255.0'); // Returns false.</programlisting>
-              </example></para>
+              </informalexample></para>
           </simplesect>
         </section>
       </section>
@@ -1357,8 +1359,9 @@ $bad = $pines-&gt;check_ip_subnet('192.168.1.5', '192.168.0.0', '255.255.255.0')
           <para>The configuration is built using these files, and placed into
           an object named after the component on the first attempted access of
           the object. Pines' configuration options are placed in the config
-          object itself.<example>
-              <title>Accessing Configuration for Pines and Components</title>
+          object itself.<informalexample>
+              <bridgehead>Accessing Configuration for Pines and
+              Components</bridgehead>
 
               <programlisting language="php">// Access Pines' "system_name" configuration option:
 echo $pines-&gt;config-&gt;system_name;
@@ -1368,7 +1371,7 @@ echo $pines-&gt;config-&gt;com_example-&gt;website_name;
 
 // Access a template's "tagline" configuration option:
 echo $pines-&gt;config-&gt;tpl_green-&gt;tagline;</programlisting>
-            </example></para>
+            </informalexample></para>
 
           <caution>
             <para>Configuration options are not cleaned or checked (except
@@ -1474,14 +1477,14 @@ echo $pines-&gt;config-&gt;tpl_green-&gt;tagline;</programlisting>
 
           <para>To check a dependency, use the
           <methodname>check()</methodname> method. It will return true if the
-          value passes the check, or false if it does not.<example>
-              <title>Using the Dependency Checker</title>
+          value passes the check, or false if it does not.<informalexample>
+              <bridgehead>Using the Dependency Checker</bridgehead>
 
               <programlisting language="php">if (!$pines-&gt;depend-&gt;check('component', 'com_example&gt;=2.0|com_sample')) {
     pines_notice('This feature is only available when you have com_example 2.0 or greater, or com_sample.');
     return;
 }</programlisting>
-            </example></para>
+            </informalexample></para>
 
           <para>Adding a new dependency checker is easy. Add a new entry to
           the checkers variable, using the name of the checker as the key, and
@@ -1489,8 +1492,8 @@ echo $pines-&gt;config-&gt;tpl_green-&gt;tagline;</programlisting>
           function should return true if the check passes and false if it does
           not. This should usually be done using an init script. That will
           ensure the checker is available by the time an action is
-          run.<example>
-              <title>Adding a New Checker</title>
+          run.<informalexample>
+              <bridgehead>Adding a New Checker</bridgehead>
 
               <programlisting language="php">function com_example__check_something($value) {
     return ($value == 'barbecue');
@@ -1500,7 +1503,7 @@ $pines-&gt;depend-&gt;checkers['something'] = 'com_example__check_something';
 
 // Call the new checker like this:
 // $pines-&gt;depend-&gt;check('something', 'a value'); // Would return false.</programlisting>
-            </example></para>
+            </informalexample></para>
 
           <caution>
             <para>Since unprivileged users are often allowed to run custom
@@ -1518,8 +1521,9 @@ $pines-&gt;depend-&gt;checkers['something'] = 'com_example__check_something';
           <methodname>simple_parse()</methodname> to understand simple logic.
           The syntax is simple, including and "&amp;", or "|", not "!", and
           grouping using parentheses "()". Here's an example of how to use
-          <function>simple_parse()</function> in the example checker.<example>
-              <title>Using the Simple Parser</title>
+          <function>simple_parse()</function> in the example
+          checker.<informalexample>
+              <bridgehead>Using the Simple Parser</bridgehead>
 
               <programlisting language="php">function com_example__check_something($value) {
     global $pines;
@@ -1538,7 +1542,7 @@ $pines-&gt;depend-&gt;checkers['something'] = 'com_example__check_something';
 
 // Call the new checker like this:
 // $pines-&gt;depend-&gt;check('something', 'a value|barbecue'); // Would return true.</programlisting>
-            </example></para>
+            </informalexample></para>
 
           <para>If you'd like to include your checker in your component's
           class, it is better to consider the resources used by including a
@@ -1546,8 +1550,8 @@ $pines-&gt;depend-&gt;checkers['something'] = 'com_example__check_something';
           loaded as soon as the object is first accessed. Instead of using a
           callback to the method, you can use a shortcut function to save
           Pines from loading your component's class during each script
-          run.<example>
-              <title>Using a Shortcut Function to a Method</title>
+          run.<informalexample>
+              <bridgehead>Using a Shortcut Function to a Method</bridgehead>
 
               <programlisting language="php">// Using an extra function to call the real checker keeps the com_example
 // class from being loaded on each script run.
@@ -1557,7 +1561,7 @@ function com_example__check_something($value) {
 }
 
 $pines-&gt;depend-&gt;checkers['something'] = 'com_example__check_something';</programlisting>
-            </example></para>
+            </informalexample></para>
 
           <note>
             <para>Many things use the dependency checker, including menu
@@ -1625,12 +1629,12 @@ $pines-&gt;depend-&gt;checkers['something'] = 'com_example__check_something';</p
             <para>To hook an object, so calls to its methods can be
             intercepted, use <methodname>hook_object()</methodname>. The
             prefix will be used when setting up callbacks for the
-            hooks.<example>
-                <title>Hooking an Object</title>
+            hooks.<informalexample>
+                <bridgehead>Hooking an Object</bridgehead>
 
                 <programlisting language="php">$widget = new com_example_widget;
 $pines-&gt;hook-&gt;hook_object($widget, 'com_example_widget-&gt;', false);</programlisting>
-              </example></para>
+              </informalexample></para>
 
             <note>
               <para><varname>$pines</varname>, along with all objects within
@@ -1710,8 +1714,9 @@ $pines-&gt;hook-&gt;hook_object($widget, 'com_example_widget-&gt;', false);</pro
 
             <para>The hook "all" is a pseudo hook which will run regardless of
             what was actually caught. Callbacks attached to the "all" hook
-            will run before callbacks attached to the actual hook.<example>
-                <title>Adding a Callback to a Hook</title>
+            will run before callbacks attached to the actual
+            hook.<informalexample>
+                <bridgehead>Adding a Callback to a Hook</bridgehead>
 
                 <programlisting language="php">function com_example__callback() {
     // Do something.
@@ -1726,14 +1731,15 @@ $pines-&gt;hook-&gt;add_callback('com_example_widget-&gt;delete', -1, 'com_examp
 
 // Run the callback after every method call is caught.
 $pines-&gt;hook-&gt;add_callback('all', 10, 'com_example__callback');</programlisting>
-              </example></para>
+              </informalexample></para>
 
             <para>To manually run callbacks (without an originating function
-            call), use <methodname>run_callbacks()</methodname>.<example>
-                <title>Manually Run Callbacks</title>
+            call), use
+            <methodname>run_callbacks()</methodname>.<informalexample>
+                <bridgehead>Manually Run Callbacks</bridgehead>
 
                 <programlisting language="php">$pines-&gt;hook-&gt;run_callbacks('+com_games_player_bonus');</programlisting>
-              </example></para>
+              </informalexample></para>
           </simplesect>
         </section>
 
@@ -1874,8 +1880,8 @@ $pines-&gt;hook-&gt;add_callback('all', 10, 'com_example__callback');</programli
                   </row>
                 </tbody>
               </tgroup>
-            </table><example>
-              <title>Example Info File</title>
+            </table><informalexample>
+              <bridgehead>Example Info File</bridgehead>
 
               <programlisting language="php">defined('P_RUN') or die('Direct access prohibited');
 
@@ -1902,8 +1908,8 @@ return array(
         array('viewperuser', 'View Per User Configuration', 'Let the user see current per user/group configuration settings.')
     ),
 );</programlisting>
-            </example><example>
-              <title>Accessing Info for Pines and Components</title>
+            </informalexample><informalexample>
+              <bridgehead>Accessing Info for Pines and Components</bridgehead>
 
               <programlisting language="php">// Access Pines' "license" info entry:
 echo $pines-&gt;info-&gt;license;
@@ -1913,7 +1919,7 @@ echo $pines-&gt;info-&gt;com_example-&gt;description;
 
 // Access a template's "version" info entry:
 echo $pines-&gt;info-&gt;tpl_green-&gt;version;</programlisting>
-            </example></para>
+            </informalexample></para>
         </section>
 
         <section>
@@ -2082,8 +2088,8 @@ echo $pines-&gt;info-&gt;tpl_green-&gt;version;</programlisting>
           children.</para>
 
           <para>To add a menu entry using code, you can insert it into the
-          <varname>menu_arrays</varname> variable.<example>
-              <title>Adding a Menu Entry Through Code</title>
+          <varname>menu_arrays</varname> variable.<informalexample>
+              <bridgehead>Adding a Menu Entry Through Code</bridgehead>
 
               <programlisting language="php">// Using pines_url().
 $pines-&gt;menu-&gt;menu_arrays[] = array(
@@ -2102,7 +2108,7 @@ $pines-&gt;menu-&gt;menu_arrays[] = array(
         'ability' =&gt; ''
     )
 );</programlisting>
-            </example></para>
+            </informalexample></para>
 
           <para>The system init script i80menus.php is responsible for loading
           the JSON files, by calling <methodname>add_json_file()</methodname>
@@ -2120,8 +2126,8 @@ $pines-&gt;menu-&gt;menu_arrays[] = array(
           multi-dimensional arrays for each menu using their path values. It
           then passes these arrays to the <methodname>menu()</methodname>
           method of the current template and places the return value into a
-          module in the menu's requested position.<example>
-              <title>Example menu.json File</title>
+          module in the menu's requested position.<informalexample>
+              <bridgehead>Example menu.json File</bridgehead>
 
               <programlisting>[
     {
@@ -2148,7 +2154,7 @@ $pines-&gt;menu-&gt;menu_arrays[] = array(
             }
         }
 ]</programlisting>
-            </example></para>
+            </informalexample></para>
         </section>
 
         <section>
@@ -2222,8 +2228,9 @@ $pines-&gt;menu-&gt;menu_arrays[] = array(
           second argument of <methodname>attach_module()</methodname> is the
           position in which to place the module. You can also manually detach
           the module. If the module is attached to the same position twice, it
-          must likewise be removed twice.<example>
-              <title>Manually Attaching and Detaching a Module</title>
+          must likewise be removed twice.<informalexample>
+              <bridgehead>Manually Attaching and Detaching a
+              Module</bridgehead>
 
               <programlisting language="php">$module = new module;
 
@@ -2232,26 +2239,27 @@ $pines-&gt;page-&gt;attach_module($module, 'content');
 
 // Detach the module.
 $pines-&gt;page-&gt;detach_module($module, 'content');</programlisting>
-            </example></para>
+            </informalexample></para>
 
           <para>The template will need to place the module content in the
           appropriate place on the page. To do this, templates use
           <methodname>render_modules()</methodname>, providing a position. If
           needed, the template can also provide a model, which will be used to
-          format the content as necessary.<example>
-              <title>Rendering the Modules in a Position Using a Model</title>
+          format the content as necessary.<informalexample>
+              <bridgehead>Rendering the Modules in a Position Using a
+              Model</bridgehead>
 
               <programlisting language="php">&lt;div id="modules_left"&gt;
     &lt;?php echo $pines-&gt;page-&gt;render_modules('left', 'module_sidebar'); ?&gt;
 &lt;/div&gt;</programlisting>
-            </example></para>
+            </informalexample></para>
 
           <para>Under special circumstances, you may need to only output
           certain data to the client. For example, when you are returning JSON
           data to an AJAX request. To do this, set the
           <varname>override</varname> variable to true, then pass the content
-          to <methodname>override_doc()</methodname>.<example>
-              <title>Overriding the Page</title>
+          to <methodname>override_doc()</methodname>.<informalexample>
+              <bridgehead>Overriding the Page</bridgehead>
 
               <programlisting language="php">// Turn override on.
 $pines-&gt;page-&gt;override = true;
@@ -2261,7 +2269,7 @@ $pines-&gt;page-&gt;override_doc(json_encode($var));
 
 // If you need to retrieve the data:
 $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
-            </example></para>
+            </informalexample></para>
 
           <para>The page is rendered when the system init script
           <filename>i90render.php</filename> calls
@@ -2565,40 +2573,40 @@ $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
           <para>When creating a module, the component, view, position, and
           order can be specified in the constructor. Position and order are
           optional. The order is not guaranteed and will be ignored if it is
-          already taken.<example>
-              <title>Creating a Module</title>
+          already taken.<informalexample>
+              <bridgehead>Creating a Module</bridgehead>
 
               <programlisting language="php">// Add the widget form from com_example to the content part of the page.
 // Place in order as #2, so #0, and #1 come before it.
 $module = new module('com_example', 'widget/form', 'content', 2);</programlisting>
-            </example></para>
+            </informalexample></para>
 
           <para>You can also manually attach a module once it is
-          created.<example>
-              <title>Manually Attach an Existing Module</title>
+          created.<informalexample>
+              <bridgehead>Manually Attach an Existing Module</bridgehead>
 
               <programlisting language="php">$module = new module('com_example', 'widget/form');
 if (isset($position))
     $module-&gt;attach($position);
 else
     $module-&gt;attach('content');</programlisting>
-            </example></para>
+            </informalexample></para>
 
           <para>You can use the module to generate content without putting it
-          into the page.<example>
-              <title>Using a Module to Render Content</title>
+          into the page.<informalexample>
+              <bridgehead>Using a Module to Render Content</bridgehead>
 
               <programlisting language="php">$module = new module('com_example', 'widget/email');
 $email_body = $module-&gt;render();</programlisting>
-            </example><caution>
+            </informalexample><caution>
               <para>Even though the module is not added to the page in this
               example, it still uses the template's format to find the
               view.</para>
             </caution></para>
 
           <para>Pines provides a blank view, which you can use if you want to
-          add content to the module manually.<example>
-              <title>Manually Creating the Module Content</title>
+          add content to the module manually.<informalexample>
+              <bridgehead>Manually Creating the Module Content</bridgehead>
 
               <programlisting language="php">// Of course, this example message would be much more suited to use pines_notice() or pines_error(),
 // but this is merely an example of what you could do.
@@ -2608,7 +2616,7 @@ $module-&gt;content('The process '.($success ? 'finished successfully.' : 'encou
 
 // And we can retrieve the content to log it.
 pines_log($module-&gt;get_content());</programlisting>
-            </example></para>
+            </informalexample></para>
 
           <para>For more information about creating and using views, please
           see the <link linkend="views">Views</link> section.</para>
@@ -3065,15 +3073,15 @@ pines_log($module-&gt;get_content());</programlisting>
                 <para>Creates and attaches a module which lists configurable
                 components. It also returns the created module.</para>
               </listitem>
-            </itemizedlist><example>
-              <title>Enabling and Disabling Components</title>
+            </itemizedlist><informalexample>
+              <bridgehead>Enabling and Disabling Components</bridgehead>
 
               <programlisting language="php">// Enable the component com_good.
 $pines-&gt;configurator-&gt;enable_component('com_good');
 
 // Disable the component com_bad.
 $pines-&gt;configurator-&gt;disable_component('com_bad');</programlisting>
-            </example></para>
+            </informalexample></para>
 
           <section>
             <title>Configurator Component</title>
@@ -3133,8 +3141,8 @@ $pines-&gt;configurator-&gt;disable_component('com_bad');</programlisting>
                   =&gt; values. Any value not provided will be set back to
                   default.</para>
                 </listitem>
-              </itemizedlist><example>
-                <title>Changing a Component's Configuration</title>
+              </itemizedlist><informalexample>
+                <bridgehead>Changing a Component's Configuration</bridgehead>
 
                 <programlisting language="php">// Load the component's configuration.
 $conf = configurator_component::factory('com_example');
@@ -3147,7 +3155,7 @@ $conf-&gt;set_config(array(
 ));
 // Save the new configuration to disk.
 $conf-&gt;save_config();</programlisting>
-              </example></para>
+              </informalexample></para>
 
             <para>When the configuration is saved, the configurator creates a
             <filename>config.php</filename> file in the component's directory
@@ -3157,8 +3165,8 @@ $conf-&gt;save_config();</programlisting>
             an entry called "value". The config service uses this file when
             building the component's configuration, replacing values from
             <filename>defaults.php</filename> with the values from this
-            file.<example>
-                <title>Typical config.php File</title>
+            file.<informalexample>
+                <bridgehead>Typical config.php File</bridgehead>
 
                 <programlisting language="php">&lt;?php
 defined('P_RUN') or die('Direct access prohibited');
@@ -3179,7 +3187,7 @@ return array (
   ),
 );
 ?&gt;</programlisting>
-              </example></para>
+              </informalexample></para>
           </section>
         </section>
 
@@ -3200,8 +3208,8 @@ return array (
 
           <para>The editor has one method, <methodname>load</methodname>,
           which loads the editor. This method should be called from a view, to
-          ensure it is only called when outputting HTML.<example>
-              <title>Using the Editor Service in a View</title>
+          ensure it is only called when outputting HTML.<informalexample>
+              <bridgehead>Using the Editor Service in a View</bridgehead>
 
               <programlisting language="php">&lt;?php
 /**
@@ -3222,7 +3230,7 @@ $pines-&gt;editor-&gt;load();
 &lt;br /&gt;
 &lt;div&gt;Simple Editor&lt;/div&gt;
 &lt;div&gt;&lt;textarea rows="3" cols="35" class="peditor-simple"&gt;&lt;/textarea&gt;&lt;/div&gt;</programlisting>
-            </example></para>
+            </informalexample></para>
         </section>
 
         <section>
@@ -3326,15 +3334,15 @@ $pines-&gt;editor-&gt;load();
             exist or no GUID was provided, a new entity. The
             <methodname>factory</methodname> method is used instead of the
             <keysym>new</keysym> keyword to provide entities a chance to set
-            up hooking on their objects.<example>
-                <title>Creating an Entity</title>
+            up hooking on their objects.<informalexample>
+                <bridgehead>Creating an Entity</bridgehead>
 
                 <programlisting language="php">// Using the entity class.
 $new_entity = entity::factory();
 
 // Using a custom class.
 $blog_post = com_blog_post::factory();</programlisting>
-              </example></para>
+              </informalexample></para>
 
             <para>Much like blogs in many blogging systems, entities are
             organized using tags. Entity tags are not supposed to be added by
@@ -3343,15 +3351,16 @@ $blog_post = com_blog_post::factory();</programlisting>
             entity tags to store user provided data, but don't! Though not
             strictly necessary, it is <emphasis role="bold">highly
             recommended</emphasis> to give every entity your component creates
-            a tag indentical to your component's name, such as
-            'com_xmlparser'. You don't want to accidentally get another
-            component's entities.</para>
+            a tag identical to your component's name, such as 'com_xmlparser'.
+            You don't want to accidentally get another component's
+            entities.</para>
 
             <para>Be very cautious when saving an entity in another entity's
             variable. If the referenced entity is newly created and does not
             have a GUID, the entity manager will not be able to retrieve it
-            later. Always save the referenced entity first.<example>
-                <title>Saving a Referenced Entity the Wrong Way</title>
+            later. Always save the referenced entity first.<informalexample>
+                <bridgehead>Saving a Referenced Entity the Wrong
+                Way</bridgehead>
 
                 <programlisting language="php">$entity = entity::factory();
 $entity-&gt;foo = entity::factory();
@@ -3364,10 +3373,11 @@ $guid = $entity-&gt;guid;
 unset($entity);
 $entity = $pines-&gt;entity_manager-&gt;get_entity(array(), array('&amp;', 'guid' =&gt; $guid));
 
-isset($entity-&gt;foo-&gt;guid); // FALSE
+isset($entity-&gt;foo-&gt;guid); // False
 echo $entity-&gt;foo-&gt;bar; // Outputs nothing.</programlisting>
-              </example><example>
-                <title>Saving a Referenced Entity the Right Way</title>
+              </informalexample><informalexample>
+                <bridgehead>Saving a Referenced Entity the Right
+                Way</bridgehead>
 
                 <programlisting language="php">$entity = entity::factory();
 $entity-&gt;foo = entity::factory();
@@ -3380,9 +3390,9 @@ $guid = $entity-&gt;guid;
 unset($entity);
 $entity = $pines-&gt;entity_manager-&gt;get_entity(array(), array('&amp;', 'guid' =&gt; $guid));
 
-isset($entity-&gt;foo-&gt;guid); // TRUE
+isset($entity-&gt;foo-&gt;guid); // True
 echo $entity-&gt;foo-&gt;bar; // Outputs 'It works!'.</programlisting>
-              </example></para>
+              </informalexample></para>
 
             <para>Since the reference entity's class name is stored in the
             reference on the entity's first save and used to retrieve the
@@ -3410,22 +3420,23 @@ echo $entity-&gt;foo-&gt;bar; // Outputs 'It works!'.</programlisting>
             <methodname>add_tag</methodname>,
             <methodname>remove_tag</methodname>, and
             <methodname>has_tag</methodname> are used, respectively. Each
-            takes any number of tags or an array of tags as arguments.<example>
-                <title>Manipulating Entity Tags</title>
+            takes any number of tags or an array of tags as
+            arguments.<informalexample>
+                <bridgehead>Manipulating Entity Tags</bridgehead>
 
                 <programlisting language="php">$entity = entity::factory();
 
 $entity-&gt;add_tag('com_foobar', 'foo', 'bar');
-$entity-&gt;has_tag('foo'); // TRUE
+$entity-&gt;has_tag('foo'); // True
 
 $entity-&gt;remove_tag('foo', 'bar');
-$entity-&gt;has_tag('foo'); // FALSE</programlisting>
-              </example></para>
+$entity-&gt;has_tag('foo'); // False</programlisting>
+              </informalexample></para>
 
             <para>To clear the cache of referenced entities, so that the next
             time one is accessed it will be pulled from the database, use the
-            <methodname>clear_cache</methodname> method.<example>
-                <title>Clearing the Reference Entity Cache</title>
+            <methodname>clear_cache</methodname> method.<informalexample>
+                <bridgehead>Clearing the Reference Entity Cache</bridgehead>
 
                 <programlisting language="php">$entity = entity::factory();
 $entity-&gt;foo = entity::factory();
@@ -3442,12 +3453,12 @@ $inst_of_foo-&gt;save();
 echo $entity-&gt;foo-&gt;bar; // Outputs 'Old value.'
 $entity-&gt;clear_cache();
 echo $entity-&gt;foo-&gt;bar; // Outputs 'New value.'</programlisting>
-              </example></para>
+              </informalexample></para>
 
             <para>Much like clearing the entity cache, you may need to refresh
             the entity's own data. Use the <methodname>refresh</methodname>
-            method for this.<example>
-                <title>Refreshing an Entity's Data</title>
+            method for this.<informalexample>
+                <bridgehead>Refreshing an Entity's Data</bridgehead>
 
                 <programlisting language="php">$entity = entity::factory();
 $entity-&gt;foo = 'Old value.';
@@ -3460,7 +3471,7 @@ $inst_of_ent-&gt;save();
 echo $entity-&gt;foo; // Outputs 'Old value.'
 $entity-&gt;refresh();
 echo $entity-&gt;foo; // Outputs 'New value.'</programlisting>
-              </example></para>
+              </informalexample></para>
 
             <para>As you've already seen in the examples, to save an entity,
             use the <methodname>save</methodname> method. Likewise, to delete
@@ -3469,8 +3480,9 @@ echo $entity-&gt;foo; // Outputs 'New value.'</programlisting>
             <methodname>delete_entity</methodname>, and
             <methodname>delete_entity_by_id</methodname> methods of the entity
             manager itself. Entities use these methods themselves. This allows
-            hooking of all entity saves and deletes.<example>
-                <title>Different Ways of Saving and Deleting Entities</title>
+            hooking of all entity saves and deletes.<informalexample>
+                <bridgehead>Different Ways of Saving and Deleting
+                Entities</bridgehead>
 
                 <programlisting language="php">$entity = entity::factory();
 
@@ -3485,7 +3497,7 @@ $entity-&gt;delete();
 $pines-&gt;entity_manager-&gt;delete_entity($entity);
 // or
 $pines-&gt;entity_manager-&gt;delete_entity_by_id($entity-&gt;guid);</programlisting>
-              </example></para>
+              </informalexample></para>
 
             <para>Several methods are provided by entities to find and compare
             them with other data. Entities cannot simply be checked using the
@@ -3546,18 +3558,18 @@ $pines-&gt;entity_manager-&gt;delete_entity_by_id($entity-&gt;guid);</programlis
                   <methodname>is</methodname> to compare, and if it's true,
                   the function uses <methodname>equals</methodname>.</para>
                 </listitem>
-              </itemizedlist><example>
-                <title>Comparing Entities</title>
+              </itemizedlist><informalexample>
+                <bridgehead>Comparing Entities</bridgehead>
 
                 <programlisting language="php">$entity = entity::factory();
 
-$entity-&gt;is($entity); // TRUE
+$entity-&gt;is($entity); // True
 
 
 $array = array('foo' =&gt; null, 'bar' =&gt; $entity);
 
 echo $entity-&gt;array_search($array); // Outputs 'bar'</programlisting>
-              </example></para>
+              </informalexample></para>
 
             <para>There are three functions to sort entities. Each one uses a
             different method of sorting.</para>
@@ -3584,8 +3596,8 @@ echo $entity-&gt;array_search($array); // Outputs 'bar'</programlisting>
                   <para>Sort an array of entities by a specified property's
                   value.</para>
                 </listitem>
-              </itemizedlist><example>
-                <title>Sorting Entities</title>
+              </itemizedlist><informalexample>
+                <bridgehead>Sorting Entities</bridgehead>
 
                 <programlisting language="php">$cats = $pines-&gt;entity_manager-&gt;get_entities(
         array('class' =&gt; com_foobar_category),
@@ -3605,26 +3617,513 @@ $pines-&gt;entity_manager-&gt;psort($cats, 'name', 'parent', $case_sensitive, $r
 
 // Sort categories by their name.
 $pines-&gt;entity_manager-&gt;sort($cats, 'name', $case_sensitive, $reverse);</programlisting>
-              </example></para>
+              </informalexample></para>
           </section>
 
           <section>
             <title>Entity Querying</title>
 
-            <para>The entity manager has the following methods for querying
-            entities:<itemizedlist>
-                <listitem>
-                  <para><methodname>get_entities</methodname></para>
+            <para>The real power behind the entity manager is the entity
+            querying system. After all, what's the use of having complex data
+            and relationships if you can't find it?</para>
 
-                  <para></para>
-                </listitem>
+            <para>The simplest way to get an entity is usually its
+            <methodname>factory</methodname> static method. Almost all
+            entities provided by SciActive maintained components use a
+            <methodname>factory</methodname> that takes a GUID as an argument.
+            However, the author of an entity's class can use whatever they
+            like as arguments. For example, the <classname>user</classname>
+            class takes either a GUID or a username. Usually the method will
+            return a brand new entity if the queried entity is not found.<tip>
+                <para>If you're using a user provided value as the GUID,
+                casting it to an int will ensure it is evaluated as a GUID.
+                Also, non-numeric values will be evaluated as 0, resulting in
+                a new entity, since no entity has GUID 0. Then you can
+                determine if it was found by checking that
+                <varname>guid</varname> is set.</para>
+              </tip><informalexample>
+                <bridgehead>Getting Entities Using the Factory
+                Method</bridgehead>
 
-                <listitem>
-                  <para><methodname>get_entity</methodname></para>
+                <programlisting language="php">// Most entities use a GUID.
+$baz = com_foobar_baz::factory((int) $_REQUEST['id']);
 
-                  <para></para>
-                </listitem>
-              </itemizedlist></para>
+if (!isset($baz-&gt;guid)) {
+    pines_notice('The specified baz cannot be found!');
+    return;
+}
+
+// When selecting a user, you can use a GUID or a username.
+$cron_user = user::factory('cron');
+
+if (!isset($cron_user-&gt;guid)) {
+    pines_notice('Can\'t find the cron user! Have you created one yet?');
+    return;
+}
+
+// If the script made it to this point, both $baz and $cron_user were found!
+pines_notice('Hooray! I found the baz you wanted and the cron user!');</programlisting>
+              </informalexample></para>
+
+            <para>The really powerful way of querying entities is the entity
+            manager's <methodname>get_entities</methodname> and
+            <methodname>get_entity</methodname> methods.</para>
+
+            <para>The first argument to these functions is an options array.
+            It is an associative array of key value pairs signifying options.
+            The options array can be empty, in which case the
+            <classname>entity</classname> class will be used for returned
+            entities. The following is a list of options which all entity
+            managers support.<table>
+                <title>Entity Querying Options</title>
+
+                <tgroup cols="4">
+                  <colspec colnum="4" colwidth="7*" />
+
+                  <thead>
+                    <row>
+                      <entry>Option</entry>
+
+                      <entry>Type</entry>
+
+                      <entry>Default</entry>
+
+                      <entry>Description</entry>
+                    </row>
+                  </thead>
+
+                  <tbody>
+                    <row>
+                      <entry>class</entry>
+
+                      <entry>string</entry>
+
+                      <entry>"entity"</entry>
+
+                      <entry>The class to create each entity with. It must
+                      have a <methodname>factory</methodname> static method
+                      that returns a new instance.</entry>
+                    </row>
+
+                    <row>
+                      <entry>limit</entry>
+
+                      <entry>int</entry>
+
+                      <entry>null</entry>
+
+                      <entry>The limit of entities to be returned. Not needed
+                      when using <methodname>get_entity</methodname>, as it
+                      always returns only one.</entry>
+                    </row>
+
+                    <row>
+                      <entry>offset</entry>
+
+                      <entry>int</entry>
+
+                      <entry>0</entry>
+
+                      <entry>The offset from the oldest (or newest if
+                      reversed) matching entity to start retrieving.</entry>
+                    </row>
+
+                    <row>
+                      <entry>reverse</entry>
+
+                      <entry>bool</entry>
+
+                      <entry>false</entry>
+
+                      <entry>If true, entities will be retrieved from newest
+                      to oldest. Therefore, offset will be from the newest
+                      entity.</entry>
+                    </row>
+
+                    <row>
+                      <entry>skip_ac</entry>
+
+                      <entry>bool</entry>
+
+                      <entry>false</entry>
+
+                      <entry>If true, the user manager will not filter
+                      returned entities according to access controls.</entry>
+                    </row>
+                  </tbody>
+                </tgroup>
+              </table><note>
+                <para>When using skip_ac, any referenced entities, when
+                accessed, will also be retrieved using skip_ac.</para>
+              </note></para>
+
+            <para>A component or entity manager implementation is free to add
+            extra options, but it should prepend the component's name to the
+            name of the option. For example, if your component,
+            com_entityversions, wants to add the option "date", it should use
+            "com_entityversions_date".</para>
+
+            <para>Every argument following the options array is a selector. A
+            selector is an associative array of criteria. An entity must pass
+            each selector's criteria to be returned. The first member of the
+            array (the value at index 0) is the type of selector, which
+            determines how the criteria are matched against an entity's
+            data.<table>
+                <title>Entity Selector Types</title>
+
+                <tgroup cols="3">
+                  <colspec colnum="3" colwidth="6*" />
+
+                  <thead>
+                    <row>
+                      <entry>Type</entry>
+
+                      <entry>Name</entry>
+
+                      <entry>Description</entry>
+                    </row>
+                  </thead>
+
+                  <tbody>
+                    <row>
+                      <entry>&amp;</entry>
+
+                      <entry>And</entry>
+
+                      <entry>All values in the selector must be true.</entry>
+                    </row>
+
+                    <row>
+                      <entry>|</entry>
+
+                      <entry>Or</entry>
+
+                      <entry>At least one value in the selector must be
+                      true.</entry>
+                    </row>
+
+                    <row>
+                      <entry>!&amp;</entry>
+
+                      <entry>Not And</entry>
+
+                      <entry>All values in the selector must be false.</entry>
+                    </row>
+
+                    <row>
+                      <entry>!|</entry>
+
+                      <entry>Not Or</entry>
+
+                      <entry>At least one value in the selector must be
+                      false.</entry>
+                    </row>
+                  </tbody>
+                </tgroup>
+              </table></para>
+
+            <para>The following members of the array are the criteria of the
+            selector. They must be in the form <code>$selector['name'] =
+            $value</code>, or <code>$selector['name'] = array($value1,
+            $value2,...)</code>.<table>
+                <title>Entity Selector Criteria</title>
+
+                <tgroup cols="5">
+                  <colspec colnum="2" colwidth="2*" />
+
+                  <colspec colnum="3" colwidth="4*" />
+
+                  <colspec colnum="4" colwidth="4*" />
+
+                  <colspec colnum="5" colwidth="8*" />
+
+                  <thead>
+                    <row>
+                      <entry>Name</entry>
+
+                      <entry>Value</entry>
+
+                      <entry>Condition</entry>
+
+                      <entry>Example Selector</entry>
+
+                      <entry>Matching Entity</entry>
+                    </row>
+                  </thead>
+
+                  <tbody>
+                    <row>
+                      <entry>guid</entry>
+
+                      <entry>A GUID.</entry>
+
+                      <entry>True if the entity's GUID is equal.</entry>
+
+                      <entry><code>array('&amp;', 'guid' =&gt;
+                      12)</code></entry>
+
+                      <entry><code language="php">$entity-&gt;guid =
+                      12;</code></entry>
+                    </row>
+
+                    <row>
+                      <entry>tag</entry>
+
+                      <entry>A tag.</entry>
+
+                      <entry>True if the entity has the tag.</entry>
+
+                      <entry><code>array('&amp;', 'tag' =&gt;
+                      'com_foobar')</code></entry>
+
+                      <entry><code
+                      language="php">$entity-&gt;add_tag('com_foobar');</code></entry>
+                    </row>
+
+                    <row>
+                      <entry>isset</entry>
+
+                      <entry>A name.</entry>
+
+                      <entry>True if the named variable exists and is not
+                      null.</entry>
+
+                      <entry><code>array('&amp;', 'isset' =&gt;
+                      'foo')</code></entry>
+
+                      <entry><code language="php">$entity-&gt;foo =
+                      0;</code></entry>
+                    </row>
+
+                    <row>
+                      <entry>data</entry>
+
+                      <entry>An array with a name, then value.</entry>
+
+                      <entry>True if the named variable is defined and
+                      equal.</entry>
+
+                      <entry><code>array('&amp;', 'data' =&gt; array('foo',
+                      false))</code></entry>
+
+                      <entry><code language="php">$entity-&gt;foo =
+                      0;</code></entry>
+                    </row>
+
+                    <row>
+                      <entry>strict</entry>
+
+                      <entry>An array with a name, then value.</entry>
+
+                      <entry>True if the named variable is defined and
+                      identical.</entry>
+
+                      <entry><code>array('&amp;', 'strict' =&gt; array('foo',
+                      0))</code></entry>
+
+                      <entry><code language="php">$entity-&gt;foo =
+                      0;</code></entry>
+                    </row>
+
+                    <row>
+                      <entry>array</entry>
+
+                      <entry>An array with a name, then value.</entry>
+
+                      <entry>True if the named variable is an array containing
+                      the value. Uses in_array().</entry>
+
+                      <entry><code>array('&amp;', 'array' =&gt; array('foo',
+                      'bar'))</code></entry>
+
+                      <entry><code language="php">$entity-&gt;foo =
+                      array('bar', 'baz');</code></entry>
+                    </row>
+
+                    <row>
+                      <entry>match</entry>
+
+                      <entry>An array with a name, then regular
+                      expression.</entry>
+
+                      <entry>True if the named variable matches. Uses
+                      preg_match().</entry>
+
+                      <entry><code>array('&amp;', 'match' =&gt; array('foo',
+                      '/bar/'))</code></entry>
+
+                      <entry><code language="php">$entity-&gt;foo =
+                      'foobarbaz';</code></entry>
+                    </row>
+
+                    <row>
+                      <entry>gt</entry>
+
+                      <entry>An array with a name, then value.</entry>
+
+                      <entry>True if the named variable is greater than the
+                      value.</entry>
+
+                      <entry><code>array('&amp;', 'gt' =&gt; array('foo',
+                      5))</code></entry>
+
+                      <entry><code language="php">$entity-&gt;foo =
+                      6;</code></entry>
+                    </row>
+
+                    <row>
+                      <entry>gte</entry>
+
+                      <entry>An array with a name, then value.</entry>
+
+                      <entry>True if the named variable is greater than or
+                      equal to the value.</entry>
+
+                      <entry><code>array('&amp;', 'gte' =&gt; array('foo',
+                      6))</code></entry>
+
+                      <entry><code language="php">$entity-&gt;foo =
+                      6;</code></entry>
+                    </row>
+
+                    <row>
+                      <entry>lt</entry>
+
+                      <entry>An array with a name, then value.</entry>
+
+                      <entry>True if the named variable is less than the
+                      value.</entry>
+
+                      <entry><code>array('&amp;', 'lt' =&gt; array('foo',
+                      7))</code></entry>
+
+                      <entry><code language="php">$entity-&gt;foo =
+                      6;</code></entry>
+                    </row>
+
+                    <row>
+                      <entry>lte</entry>
+
+                      <entry>An array with a name, then value.</entry>
+
+                      <entry>True if the named variable is less than or equal
+                      to the value.</entry>
+
+                      <entry><code>array('&amp;', 'lte' =&gt; array('foo',
+                      6))</code></entry>
+
+                      <entry><code language="php">$entity-&gt;foo =
+                      6;</code></entry>
+                    </row>
+
+                    <row>
+                      <entry>ref</entry>
+
+                      <entry>An array with a name, then either a entity, or a
+                      GUID.</entry>
+
+                      <entry>True if the named variable is the entity or an
+                      array containing the entity.</entry>
+
+                      <entry><code>array('&amp;', 'ref' =&gt; array('foo',
+                      12))</code></entry>
+
+                      <entry><code language="php">$entity-&gt;foo =
+                      com_foobar_baz::factory(12);</code></entry>
+                    </row>
+                  </tbody>
+                </tgroup>
+              </table></para>
+
+            <para>So putting it all together, you can specify any of the
+            options, and any number of selectors to find the exact entities
+            you want.<informalexample>
+                <bridgehead>Getting Entities by Querying</bridgehead>
+
+                <programlisting language="php">// Get all entities using the entity class.
+$entities = $pines-&gt;entity_manager-&gt;get_entities();
+
+// Get only the first entity.
+$entity = $pines-&gt;entity_manager-&gt;get_entity();
+
+// Get the last entity.
+$entity = $pines-&gt;entity_manager-&gt;get_entity(array('reverse' =&gt; true));
+
+// Get all baz entities, using the com_foobar_baz class.
+$entities = $pines-&gt;entity_manager-&gt;get_entities(
+        array('class' =&gt; com_foobar_baz),
+        array('&amp;',
+            'tag' =&gt; array('com_foobar', 'baz')
+        )
+    );
+
+// Get the five newest baz entities.
+$entities = $pines-&gt;entity_manager-&gt;get_entities(
+        array('class' =&gt; com_foobar_baz, 'reverse' =&gt; true, 'limit' =&gt; 5),
+        array('&amp;',
+            'tag' =&gt; array('com_foobar', 'baz')
+        )
+    );
+
+// Get baz entities with names.
+$entities = $pines-&gt;entity_manager-&gt;get_entities(
+        array('class' =&gt; com_foobar_baz),
+        array('&amp;',
+            'tag' =&gt; array('com_foobar', 'baz'),
+            'isset' =&gt; 'name'
+        )
+    );
+
+// Get baz entities with either first names or last names.
+$entities = $pines-&gt;entity_manager-&gt;get_entities(
+        array('class' =&gt; com_foobar_baz),
+        array('&amp;',
+            'tag' =&gt; array('com_foobar', 'baz')
+        ),
+        array('|',
+            'isset' =&gt; array('first_name', 'last_name')
+        )
+    );
+
+// Get baz entities with names, who either make not greater than 8 dollars pay or are under 22.
+$entities = $pines-&gt;entity_manager-&gt;get_entities(
+        array('class' =&gt; com_foobar_baz),
+        array('&amp;',
+            'tag' =&gt; array('com_foobar', 'baz'),
+            'isset' =&gt; 'name'
+        ),
+        array('!|', // at least one must be false
+            'gte' =&gt; array('age', 22),
+            'gt' =&gt; array('pay', 8)
+        )
+    );
+
+// Get baz entities named Clark, James, Chris, Christopher, Jake, or Jacob.
+$entities = $pines-&gt;entity_manager-&gt;get_entities(
+        array('class' =&gt; com_foobar_baz),
+        array('&amp;',
+            'tag' =&gt; array('com_foobar', 'baz')
+        ),
+        array('|',
+            'strict' =&gt; array(
+                array('name', 'Clark'),
+                array('name', 'James')
+            ),
+            'match' =&gt; array(
+                array('name', '/Chris(topher)?/'),
+                array('name', '/Ja(ke|cob)/')
+            )
+        )
+    );
+
+// Get all baz entities, regardless of whether the logged in user has access to them.
+$entities = $pines-&gt;entity_manager-&gt;get_entities(
+        array('class' =&gt; com_foobar_baz, 'skip_ac' =&gt; true),
+        array('&amp;',
+            'tag' =&gt; array('com_foobar', 'baz')
+        )
+    );</programlisting>
+              </informalexample></para>
           </section>
 
           <section>
@@ -3757,9 +4256,10 @@ $pines-&gt;entity_manager-&gt;sort($cats, 'name', $case_sensitive, $reverse);</p
         variable under <varname>$pines</varname> to a string containing the
         class name. For example, if a component, com_xmlentity, is providing
         the entity manager service, it would have something like the following
-        in an init script such as <filename>i10set.php</filename>.<example>
-            <title>Setting a Component as a System Service in an Init
-            Script</title>
+        in an init script such as
+        <filename>i10set.php</filename>.<informalexample>
+            <bridgehead>Setting a Component as a System Service in an Init
+            Script</bridgehead>
 
             <programlisting language="php">&lt;?php
 /**
@@ -3779,7 +4279,7 @@ defined('P_RUN') or die('Direct access prohibited');
 $pines-&gt;entity_manager = 'com_xmlentity';
 
 ?&gt;</programlisting>
-          </example></para>
+          </informalexample></para>
 
         <para>The first time this variable is accessed, Pines will recognize
         it as a system service and load a new instance of the class into the
