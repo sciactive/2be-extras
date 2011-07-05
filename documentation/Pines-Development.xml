@@ -3314,11 +3314,11 @@ $pines-&gt;editor-&gt;load();
             referenced in another entity's variable, the class is saved along
             with the GUID. When this variable is accessed later, the entity
             manager will retrieve the referenced entity using the saved
-            class.<warning>
+            class.<caution>
                 <para>When changing an entity's class name, any entities
                 referencing it must be resaved after setting the reference
                 again using the new class name.</para>
-              </warning></para>
+              </caution></para>
           </section>
 
           <section>
@@ -4085,6 +4085,15 @@ $entities = $pines-&gt;entity_manager-&gt;get_entities(
         )
     );
 
+// Get baz entities created since yesterday.
+$entities = $pines-&gt;entity_manager-&gt;get_entities(
+        array('class' =&gt; com_foobar_baz),
+        array('&amp;',
+            'tag' =&gt; array('com_foobar', 'baz'),
+            'gt' =&gt; array('p_cdate', strtotime('-1 day'))
+        )
+    );
+
 // Get baz entities with names, who either make not greater than 8 dollars pay or are under 22.
 $entities = $pines-&gt;entity_manager-&gt;get_entities(
         array('class' =&gt; com_foobar_baz),
@@ -4129,63 +4138,162 @@ $entities = $pines-&gt;entity_manager-&gt;get_entities(
           <section>
             <title>Exporting and Importing Entities</title>
 
+            <para>All entity managers provide a method for exporting and
+            importing entities. This makes it very easy to backup, restore,
+            duplicate, and move an entire database of entities, even with
+            different database backends.</para>
+
             <para>The entity manager has the following methods for exporting
             and importing entities:<itemizedlist>
                 <listitem>
                   <para><methodname>export</methodname></para>
 
-                  <para></para>
+                  <para>Export entities to a file.</para>
                 </listitem>
 
                 <listitem>
                   <para><methodname>export_print</methodname></para>
 
-                  <para></para>
+                  <para>Export entities to the client as a downloadable
+                  file.</para>
                 </listitem>
 
                 <listitem>
                   <para><methodname>import</methodname></para>
 
-                  <para></para>
+                  <para>Import entities from a file.</para>
                 </listitem>
-              </itemizedlist></para>
+              </itemizedlist><informalexample>
+                <bridgehead>Exporting and Importing Entities with the Entity
+                Manager</bridgehead>
+
+                <programlisting language="php">// Export entities to a file.
+$pines-&gt;entity_manager-&gt;export($filename);
+
+// Export entities to the client.
+@set_time_limit(3600); // Make sure the script doesn't terminate before the entities are exported.
+$pines-&gt;entity_manager-&gt;export_print();
+
+// Import entities from a file.
+$pines-&gt;entity_manager-&gt;import($filename);</programlisting>
+              </informalexample></para>
+
+            <para>The format of an entity export file is simple, and readable
+            by all entity managers. The file extension, PEX, stands for Pines
+            Entity eXchange. Here is an example of an exported entity
+            file.<informalexample>
+                <bridgehead>Example Entity Export File (PEX)</bridgehead>
+
+                <programlisting># Pines Entity Export
+# com_pgentity version 1.0.0
+# sciactive.com
+#
+# Generation Time: Tue, 05 Jul 2011 09:56:14 -0700
+# Pines Version: 0.94.0beta
+
+#
+# UIDs
+#
+
+&lt;com_sales_sale&gt;[1]
+#
+# Entities
+#
+
+{1}[com_user,user,enabled]
+    p_cdate="d:1309884676.464271068572998046875;"
+    p_mdate="d:1309884676.464293003082275390625;"
+    abilities="a:2:{i:0;s:10:\"system\/all\";i:1;s:14:\"com_user\/login\";}"
+    groups="a:0:{}"
+    inherit_abilities="b:1;"
+    address_type="s:2:\"us\";"
+    addresses="a:0:{}"
+    attributes="a:0:{}"
+    username="s:5:\"admin\";"
+    salt="s:32:\"7d5bc9dc81c200444e53d1d10ecc420a\";"
+    password="s:32:\"f066801b0b70491f397ad37b51b7e278\";"
+    name_first="s:6:\"Hunter\";"
+    name_middle="s:0:\"\";"
+    name_last="s:6:\"Perrin\";"
+    name="s:13:\"Hunter Perrin\";"
+    email="s:20:\"hunter@sciactive.com\";"
+    phone="s:0:\"\";"
+    fax="s:0:\"\";"
+    timezone="s:0:\"\";"
+    address_1="s:0:\"\";"
+    address_2="s:0:\"\";"
+    city="s:0:\"\";"
+    state="s:0:\"\";"
+    zip="s:0:\"\";"
+    address_international="s:0:\"\";"</programlisting>
+              </informalexample></para>
           </section>
 
           <section>
             <title>UIDs</title>
+
+            <para>UIDs provide an easier way for users to identify entities.
+            UIDs are just sequential numbers and can be used for anything you
+            like, not just entities. As opposed to a GUID, which is a unique
+            ID for all entities, a UID is only unique for its own sequence.
+            This allows them to stay small in a database filled with other
+            entities.</para>
+
+            <para>UIDs can be named anything. A good naming convention, in
+            order to avoid conflicts, is to use your component's name, a
+            slash, then a descriptive name of the sequence being identified
+            for non-entity sequences, and the name of the entity's class for
+            entity sequences. E.g. "com_example/widget_hits" or
+            "com_hrm_employee".</para>
 
             <para>The entity manager has the following methods for handling
             UIDs:<itemizedlist>
                 <listitem>
                   <para><methodname>delete_uid</methodname></para>
 
-                  <para></para>
+                  <para>Delete a unique ID from the system.</para>
                 </listitem>
 
                 <listitem>
                   <para><methodname>get_uid</methodname></para>
 
-                  <para></para>
+                  <para>Get the current value of a unique ID.</para>
                 </listitem>
 
                 <listitem>
                   <para><methodname>new_uid</methodname></para>
 
-                  <para></para>
+                  <para>Increment or create a unique ID and return the new
+                  value.</para>
                 </listitem>
 
                 <listitem>
                   <para><methodname>rename_uid</methodname></para>
 
-                  <para></para>
+                  <para>Rename a unique ID.</para>
                 </listitem>
 
                 <listitem>
                   <para><methodname>set_uid</methodname></para>
 
-                  <para></para>
+                  <para>Set the value of a unique ID.</para>
                 </listitem>
-              </itemizedlist></para>
+              </itemizedlist><informalexample>
+                <bridgehead>Using UIDs</bridgehead>
+
+                <programlisting language="php">// Create a new entity.
+$entity = com_foobar_baz::factory();
+
+// Now give it a more friendly ID than GUID.
+$entity-&gt;id = $pines-&gt;entity_manager-&gt;new_uid('com_foobar_baz');
+$entity-&gt;save();</programlisting>
+              </informalexample></para>
+
+            <caution>
+              <para>If a UID is incremented for an entity, and the entity
+              cannot be saved, there is no safe, and therefore, no recommended
+              way to decrement the UID back to its previous value.</para>
+            </caution>
           </section>
         </section>
 
