@@ -4300,7 +4300,30 @@ $entity-&gt;save();</programlisting>
         <section>
           <title>Icons</title>
 
-          <para></para>
+          <para>The icon service provides a set of icons available to use
+          through CSS classes. Pines Icons come in two sizes, 16x16 and 32x32.
+          To use an icon, you add the class of the icon, such as
+          <classname>picon-document-edit</classname>, to an HTML element. This
+          will use the icon's 16x16 size. To use the 32x32 size, add another
+          class, <classname>picon-32</classname>.</para>
+
+          <para>The icon service has one method,
+          <methodname>load</methodname>, which loads the icon CSS. This method
+          should be called from a view, to ensure it is only called when
+          outputting HTML.<informalexample>
+              <bridgehead>Using the Icon Service</bridgehead>
+
+              <programlisting language="php">&lt;?php
+defined('P_RUN') or die('Direct access prohibited');
+$pines-&gt;icons-&gt;load();
+?&gt;
+&lt;div style="float: left; width: 32px; height: 32px; margin: 1em;" class="picon-32 picon-document-sign"&gt;&lt;/div&gt;
+&lt;p&gt;Your order can't be shipped until your contract is signed.&lt;/p&gt;
+
+&lt;button type="button" class="ui-state-default ui-corner-all"&gt;
+    &lt;span class="picon-dialog-ok" style="background-repeat: no-repeat; padding-left: 18px;"&gt;Go&lt;/span&gt;
+&lt;/button&gt;</programlisting>
+            </informalexample></para>
         </section>
 
         <section>
