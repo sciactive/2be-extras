@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>3.6. Order of Execution</title><link rel="stylesheet" href="docbook.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.75.2" /><link rel="home" href="index.html" title="Pines Development" /><link rel="up" href="ch03.html" title="Chapter 3. Pines Core" /><link rel="prev" href="ch03s05.html" title="3.5. Core Classes" /><link rel="next" href="ch04.html" title="Chapter 4. System Services" /></head><body><a xmlns:fo="http://www.w3.org/1999/XSL/Format" href="index.html"><div class="header">Pines Development</div></a><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.6. Order of Execution</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03s05.html">Prev</a> </td><th width="60%" align="center">Chapter 3. Pines Core</th><td width="20%" align="right"> <a accesskey="n" href="ch04.html">Next</a></td></tr></table><hr /></div><div class="section" title="3.6. Order of Execution"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id1191796"></a>3.6. Order of Execution</h2></div></div></div>
+        
+
+        <p>Pines is a very complex framework, and has many different
+        interacting parts. Understanding how these parts are loaded and when
+        they become available to use is important in developing successful
+        Pines software. If you are reading this book sequentially, you may be
+        unfamiliar with some of the terms used in this section. Since this
+        section is so important for Pines development, I recommend you come
+        back to this section after reading Part II, and read it again to
+        reinforce your understanding of the order in which Pines executes
+        various parts of the system.</p>
+
+        <p>Pines begins execution by a request to the
+        <code class="filename">index.php</code> file.</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+              <p>Defines constants.</p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
+                    <p><code class="constant">P_EXEC_TIME</code> - The microtime
+                    when the script began executing.</p>
+                  </li><li class="listitem">
+                    <p><code class="constant">P_RUN</code> - Used to determine that
+                    Pines was executed properly through
+                    <code class="filename">index.php</code>.</p>
+                  </li><li class="listitem">
+                    <p><code class="constant">P_BASE_PATH</code> - The base path of
+                    the Pines installation.</p>
+                  </li><li class="listitem">
+                    <p><code class="constant">P_INDEX</code> - The name of the index
+                    file. (Almost always
+                    <code class="filename">index.php</code>.)</p>
+                  </li><li class="listitem">
+                    <p><code class="constant">P_SCRIPT_TIMING</code> - Whether to
+                    use the script timing system. Change this value to help
+                    check for bottlenecks in your code.</p>
+                  </li></ul></div>
+            </li><li class="listitem">
+              <p>Scans the <code class="filename">system/init/</code> directory for
+              the system init scripts, and executes them in order.</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+                    <p><code class="filename">i00timing.php</code></p>
+
+                    <div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
+                        <p>Loads script timing functions. These functions
+                        will use the JavaScript console.log function to
+                        display timing information for various portions of the
+                        script run.</p>
+                      </li></ul></div>
+                  </li><li class="listitem">
+                    <p><code class="filename">i10functions.php</code></p>
+
+                    <div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
+                        <p>Loads various functions used specifically by
+                        Pines Core.</p>
+                      </li></ul></div>
+                  </li><li class="listitem">
+                    <p><code class="filename">i20interfaces.php</code></p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
+                          <p>Defines interfaces for system services and
+                          classes.</p>
+                        </li></ul></div>
+                  </li><li class="listitem">
+                    <p><code class="filename">i30load_system.php</code></p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
+                          <p>Strips slashes from request variables. This
+                          ensures that request data always appears as if Magic
+                          Quotes are turned off.</p>
+                        </li><li class="listitem">
+                          <p>Loads system classes from
+                          <code class="filename">system/classes/</code>.</p>
+                        </li><li class="listitem">
+                          <p>Loads <code class="varname">$pines</code>.</p><div class="itemizedlist"><ul class="itemizedlist" type="square"><li class="listitem">
+                                <p>Loads config service.</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+                                      <p>Loads system configuration.</p>
+                                    </li><li class="listitem">
+                                      <p>Determines full and relative location using
+                                      client provided hostname, if they are not already
+                                      set by the config.</p>
+                                    </li><li class="listitem">
+                                      <p>Sets
+                                      <code class="varname">$pines-&gt;config-&gt;location</code> to
+                                      static location, or relative location if static is
+                                      not set.</p>
+                                    </li></ul></div>
+                              </li><li class="listitem">
+                                <p>Loads info service.</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+                                      <p>Loads system info.</p>
+                                    </li></ul></div>
+                              </li><li class="listitem">
+                                <p>Loads hook service.</p>
+                              </li><li class="listitem">
+                                <p>Loads depend service.</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+                                      <p>Loads default dependency checkers.</p>
+                                    </li></ul></div>
+                              </li><li class="listitem">
+                                <p>Loads menu service.</p>
+                              </li><li class="listitem">
+                                <p>Loads page service.</p>
+                              </li><li class="listitem">
+                                <p>Checks system config.</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+                                      <p>Determines current template from config
+                                      setting or request variable and sets it as the
+                                      template service.</p>
+                                    </li><li class="listitem">
+                                      <p>Gets timezone from config and passes to
+                                      <code class="varname">date_default_timezone_set</code>.</p>
+                                    </li><li class="listitem">
+                                      <p>If offline mode is turned on, loads
+                                      <code class="filename">system/offline.php</code>, which ends
+                                      execution here.</p>
+                                    </li><li class="listitem">
+                                      <p>If the current template's class file is
+                                      missing, loads
+                                      <code class="filename">system/template_error.php</code>,
+                                      which ends execution here.</p>
+                                    </li><li class="listitem">
+                                      <p>Adds current template's class file to the list
+                                      of class files.</p>
+                                    </li></ul></div>
+                              </li><li class="listitem">
+                                <p>Fills the lists of components and
+                                templates.</p>
+                              </li><li class="listitem">
+                                <p>Finds components' class files and adds them to
+                                the list of class files.</p>
+                              </li><li class="listitem">
+                                <p>Determines requested component and action,
+                                using URL rewriting if it is enabled.</p>
+                              </li></ul></div>
+                        </li></ul></div>
+                  </li><li class="listitem">
+                    <p><code class="filename">i40init_system.php</code></p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
+                          <p>Loads the class autoloader function. This
+                          function allows all component classes to be auto
+                          loaded the first time they are used.</p>
+                        </li><li class="listitem">
+                          <p>Hooks the <code class="varname">$pines</code>
+                          object.</p>
+                        </li><li class="listitem">
+                          <p>Starts a session.</p>
+                        </li><li class="listitem">
+                          <p>Displays any pending notices and errors found
+                          in the session and removes them from the session.
+                          This is part of the redirection system.</p>
+                        </li></ul></div>
+                  </li><li class="listitem">
+                    <p><code class="filename">i50init_components.php</code></p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
+                          <p>Scans all components' init directories for
+                          init scripts.</p>
+                        </li><li class="listitem">
+                          <p>Adds the
+                          <code class="filename">system/i01common.php</code> file to
+                          the list.</p>
+                        </li><li class="listitem">
+                          <p>Sorts them by filename.</p>
+                        </li><li class="listitem">
+                          <p>Executes each init script in order. Some
+                          important events are noted below.</p><div class="itemizedlist"><ul class="itemizedlist" type="square"><li class="listitem">
+                                <p>i00_ : Common cleaning functions can be
+                                overridden here. However, shortcut functions (like
+                                <code class="function">gatekeeper</code>) are not available
+                                yet.</p>
+                              </li><li class="listitem">
+                                <p>i01_ : Common functions are being defined
+                                here.</p>
+                              </li><li class="listitem">
+                                <p>i10_ : Components which provide system
+                                services should set themselves as the system service
+                                here.</p>
+                              </li><li class="listitem">
+                                <p>i11_ : The user manager should fill the
+                                session with user data here.</p>
+                              </li><li class="listitem">
+                                <p>i12_ and i13_ : Any component which may log
+                                the user out (such as a timer) should do it
+                                here.</p>
+                              </li><li class="listitem">
+                                <p>i14_ : Conditional and per user/group config
+                                should be loaded here.</p>
+                              </li><li class="listitem">
+                                <p>i15_ : Any component which may change the
+                                requested component/action should do it here.</p>
+                              </li></ul></div>
+                        </li><li class="listitem">
+                          <p>Checks system config again in case config has
+                          changed. (Repeats same steps as
+                          <code class="varname">$pines</code> does when loading.)</p>
+                        </li></ul></div>
+                  </li><li class="listitem">
+                    <p><code class="filename">i60action.php</code></p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
+                          <p>Runs <code class="function">action</code>, using the
+                          requested component and action.</p>
+                        </li><li class="listitem">
+                          <p>If the string "error_404" is returned, issues
+                          a 404 HTTP status header and loads a module with
+                          "system" as component, "error_404" as view, and
+                          "content" as position.</p>
+                        </li></ul></div>
+                  </li><li class="listitem">
+                    <p><code class="filename">i70kill_components.php</code></p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
+                          <p>Scans all components' init directories for
+                          kill scripts.</p>
+                        </li><li class="listitem">
+                          <p>Sorts them by filename.</p>
+                        </li><li class="listitem">
+                          <p>Executes each kill script in order.</p>
+                        </li></ul></div>
+                  </li><li class="listitem">
+                    <p><code class="filename">i80menus.php</code></p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
+                          <p>Loads the menu file
+                          <code class="filename">system/menu.json</code>.</p>
+                        </li><li class="listitem">
+                          <p>Loads each component's
+                          <code class="filename">menu.json</code> file
+                          consecutively.</p>
+                        </li><li class="listitem">
+                          <p>Renders and attaches the menu.</p><div class="itemizedlist"><ul class="itemizedlist" type="square"><li class="listitem">
+                                <p>Calculates each menu entry's dependencies and
+                                builds a multidimensional array of menu items whose
+                                dependencies are met.</p>
+                              </li><li class="listitem">
+                                <p>Cleans each menu, removing any entry whose
+                                "children" dependency isn't met. Also removes some
+                                unnecessary data.</p>
+                              </li><li class="listitem">
+                                <p>Creates and attaches a module for each menu,
+                                the content of which is filled with the response of
+                                the <code class="methodname">menu</code> method of the
+                                current template.</p>
+                              </li></ul></div>
+                        </li></ul></div>
+                  </li><li class="listitem">
+                    <p><code class="filename">i90render.php</code></p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
+                          <p>Calls the <code class="methodname">render</code>
+                          method of the page.</p><div class="itemizedlist"><ul class="itemizedlist" type="square"><li class="listitem">
+                                <p>Returns the override document if override is
+                                set to true. (Does not do the steps immediately
+                                below.)</p>
+                              </li><li class="listitem">
+                                <p>Iterates through each position, calling
+                                <code class="methodname">render</code> on all the modules
+                                in that position.</p>
+                              </li><li class="listitem">
+                                <p>Runs the <code class="filename">template.php</code>
+                                file of the current template.</p>
+                              </li></ul></div>
+                        </li><li class="listitem">
+                          <p>Prints the response.</p>
+                        </li></ul></div>
+                  </li></ol></div>
+            </li></ul></div>
+
+        <p>As mentioned before, this section is very important for Pines
+        development. Knowing when certain features will be available for use
+        allows you to plan accordingly. Pines is very flexible, but it is also
+        very strictly structured. If you know Pines' execution path, debugging
+        will be much easier. Remember to come back to this section if you are
+        currently unfamiliar with the features discussed here.</p>
+      </div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s05.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.5. Core Classes </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 4. System Services</td></tr></table></div></body></html>

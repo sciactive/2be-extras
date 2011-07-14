@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Chapter 3. Pines Core</title><link rel="stylesheet" href="docbook.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.75.2" /><link rel="home" href="index.html" title="Pines Development" /><link rel="up" href="pt01.html" title="Part I. The Pines Framework" /><link rel="prev" href="ch02s04.html" title="2.4. Building Pines" /><link rel="next" href="ch03s02.html" title="3.2. Pines Object" /></head><body><a xmlns:fo="http://www.w3.org/1999/XSL/Format" href="index.html"><div class="header">Pines Development</div></a><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 3. Pines Core</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s04.html">Prev</a> </td><th width="60%" align="center">Part I. The Pines Framework</th><td width="20%" align="right"> <a accesskey="n" href="ch03s02.html">Next</a></td></tr></table><hr /></div><div class="chapter" title="Chapter 3. Pines Core"><div class="titlepage"><div><div><h2 class="title"><a id="id1188098"></a>Chapter 3. Pines Core</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="ch03.html#id1188106">3.1. Structure</a></span></dt><dd><dl><dt><span class="section"><a href="ch03.html#id1188113">3.1.1. File Structure</a></span></dt><dt><span class="section"><a href="ch03.html#id1188332">3.1.2. Object Structure</a></span></dt></dl></dd><dt><span class="section"><a href="ch03s02.html">3.2. Pines Object</a></span></dt><dd><dl><dt><span class="section"><a href="ch03s02.html#id1188591">3.2.1. Running an Action</a></span></dt><dt><span class="section"><a href="ch03s02.html#id1188700">3.2.2. Accessing Sessions</a></span></dt><dt><span class="section"><a href="ch03s02.html#id1188815">3.2.3. Redirecting the User</a></span></dt><dt><span class="section"><a href="ch03s02.html#id1188848">3.2.4. Formatting Output</a></span></dt><dt><span class="section"><a href="ch03s02.html#id1189277">3.2.5. Checking an IP Address</a></span></dt></dl></dd><dt><span class="section"><a href="core_services.html">3.3. Core Services</a></span></dt><dd><dl><dt><span class="section"><a href="core_services.html#id1189387">3.3.1. Config (<code class="classname">config</code> class)</a></span></dt><dt><span class="section"><a href="core_services.html#id1189613">3.3.2. Depend (<code class="classname">depend</code> class)</a></span></dt><dt><span class="section"><a href="core_services.html#hook">3.3.3. Hook (<code class="classname">hook</code> class)</a></span></dt><dt><span class="section"><a href="core_services.html#id1190196">3.3.4. Info (<code class="classname">info</code> class)</a></span></dt><dt><span class="section"><a href="core_services.html#id1190496">3.3.5. Menu (<code class="classname">menu</code> class)</a></span></dt><dt><span class="section"><a href="core_services.html#id1190882">3.3.6. Page (<code class="classname">page</code> class)</a></span></dt></dl></dd><dt><span class="section"><a href="ch03s04.html">3.4. Core Functions</a></span></dt><dt><span class="section"><a href="ch03s05.html">3.5. Core Classes</a></span></dt><dd><dl><dt><span class="section"><a href="ch03s05.html#id1191427">3.5.1. Component</a></span></dt><dt><span class="section"><a href="ch03s05.html#id1191444">3.5.2. Template</a></span></dt><dt><span class="section"><a href="ch03s05.html#id1191541">3.5.3. Module</a></span></dt></dl></dd><dt><span class="section"><a href="ch03s06.html">3.6. Order of Execution</a></span></dt></dl></div>
+      
+
+      <div class="section" title="3.1. Structure"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id1188106"></a>3.1. Structure</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="ch03.html#id1188113">3.1.1. File Structure</a></span></dt><dt><span class="section"><a href="ch03.html#id1188332">3.1.2. Object Structure</a></span></dt></dl></div>
+        
+
+        <div class="section" title="3.1.1. File Structure"><div class="titlepage"><div><div><h3 class="title"><a id="id1188113"></a>3.1.1. File Structure</h3></div></div></div>
+          
+
+          <p>Pines has a strict and logical file structure. The system and
+          individual components have a similar file structure. Some less
+          important files and folders have been left out of the following list
+          for brevity.</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+                <p><code class="filename">components</code> - Contains all currently
+                installed components.</p>
+              </li><li class="listitem">
+                <p><code class="filename">media</code> - Contains uploaded and
+                installed media files.</p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
+                      <p><code class="filename">images</code> - Contains uploaded
+                      images.</p>
+                    </li><li class="listitem">
+                      <p><code class="filename">logos</code> - Contains logos,
+                      including Pines' default logo.</p>
+                    </li></ul></div>
+              </li><li class="listitem">
+                <p><code class="filename">system</code> - Contains the Pines Core
+                code.</p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
+                      <p><code class="filename">actions</code> - Contains actions
+                      always available in Pines.</p>
+                    </li><li class="listitem">
+                      <p><code class="filename">classes</code> - Contains the core
+                      classes used by Pines.</p>
+                    </li><li class="listitem">
+                      <p><code class="filename">includes</code> - Contains Pines
+                      JavaScript files.</p>
+                    </li><li class="listitem">
+                      <p><code class="filename">init</code> - Contains the system
+                      init scripts which build the Pines environment and
+                      control execution of scripts.</p>
+                    </li><li class="listitem">
+                      <p><code class="filename">views</code> - Contains views used
+                      by Pines Core.</p>
+                    </li><li class="listitem">
+                      <p><code class="filename">defaults.php</code> - The default
+                      configuration settings for Pines Core.</p>
+                    </li><li class="listitem">
+                      <p><code class="filename">i01common.php</code> - An init
+                      script which is run with the component init scripts. It
+                      sets up several shortcut functions and other useful
+                      functions.</p>
+                    </li><li class="listitem">
+                      <p><code class="filename">info.php</code> - The Pines Core
+                      information file. Contains information such as version
+                      number and core abilities.</p>
+                    </li><li class="listitem">
+                      <p><code class="filename">menu.json</code> - The main menu
+                      file. This sets up the main menu and its
+                      submenus.</p>
+                    </li><li class="listitem">
+                      <p><code class="filename">offline.php</code> - The file used
+                      to build the offline page.</p>
+                    </li><li class="listitem">
+                      <p><code class="filename">template_error.php</code> - The file
+                      used to inform of an error with the currently selected
+                      template.</p>
+                    </li></ul></div>
+              </li><li class="listitem">
+                <p><code class="filename">templates</code> - Contains all currently
+                installed templates.</p>
+              </li><li class="listitem">
+                <p><code class="filename">index.php</code> - The main controller
+                script. This sets up some constants, then immediately executes
+                the system init scripts.</p>
+              </li></ul></div>
+        </div>
+
+        <div class="section" title="3.1.2. Object Structure"><div class="titlepage"><div><div><h3 class="title"><a id="id1188332"></a>3.1.2. Object Structure</h3></div></div></div>
+          
+
+          <p>Pines is structured almost entirely around the Pines object,
+          <code class="varname">$pines</code>. The variable is created in the global
+          scope by the system init script,
+          <code class="filename">i30load_system.php</code>. To use the variable in any
+          function or method, declare it using the <span class="keysym">global</span>
+          keyword.</p>
+
+          <div class="informalexample">
+              <h4><a id="id1188358"></a>Using <code class="varname">$pines</code> in a function or
+              method.</h4>
+
+              <pre class="programlisting">function example() {
+    global $pines;
+    $pines-&gt;something();
+}</pre>
+            </div>
+
+          <p>Several core services are loaded as variables of
+          <code class="varname">$pines</code>. See the <a class="link" href="core_services.html" title="3.3. Core Services">Core Services</a> section for an
+          explanation of these services.</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+                <p><code class="varname">$pines-&gt;info</code></p>
+              </li><li class="listitem">
+                <p><code class="varname">$pines-&gt;config</code></p>
+              </li><li class="listitem">
+                <p><code class="varname">$pines-&gt;hook</code></p>
+              </li><li class="listitem">
+                <p><code class="varname">$pines-&gt;depend</code></p>
+              </li><li class="listitem">
+                <p><code class="varname">$pines-&gt;menu</code></p>
+              </li><li class="listitem">
+                <p><code class="varname">$pines-&gt;page</code></p>
+              </li></ul></div>
+
+          <p><code class="varname">$pines</code> also contains some useful
+          variables.</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+                <p><code class="varname">$pines-&gt;components</code></p>
+
+                <p>An array of the enabled components.</p>
+              </li><li class="listitem">
+                <p><code class="varname">$pines-&gt;all_components</code></p>
+
+                <p>An array of all installed components.</p>
+              </li><li class="listitem">
+                <p><code class="varname">$pines-&gt;services</code></p>
+
+                <p>An array of the provided system services.</p>
+              </li><li class="listitem">
+                <p><code class="varname">$pines-&gt;request_component</code></p>
+
+                <p>The requested component. This is passed as the request
+                variable "option".</p>
+              </li><li class="listitem">
+                <p><code class="varname">$pines-&gt;request_action</code></p>
+
+                <p>The requested action. This is passed as the request
+                variable "action".</p>
+              </li><li class="listitem">
+                <p><code class="varname">$pines-&gt;component</code></p>
+
+                <p>The currently running or most recently called
+                component/option.</p>
+              </li><li class="listitem">
+                <p><code class="varname">$pines-&gt;action</code></p>
+
+                <p>The currently running or most recently called
+                action.</p>
+              </li></ul></div>
+
+          <p>The following variables are not loaded until after the
+          component init scripts are run.</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+                <p><code class="varname">$pines-&gt;current_template</code></p>
+
+                <p>The name of the current template.</p>
+              </li><li class="listitem">
+                <p><code class="varname">$pines-&gt;template</code></p>
+
+                <p>The current template object.</p>
+              </li></ul></div>
+        </div>
+      </div>
+
+      
+
+      
+
+      
+
+      
+
+      
+    </div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s04.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="pt01.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch03s02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.4. Building Pines </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 3.2. Pines Object</td></tr></table></div></body></html>

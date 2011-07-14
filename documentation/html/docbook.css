@@ -1,0 +1,122 @@
+/*@import url('base.css');*/
+
+@font-face {
+    font-family: 'LinuxLibertineORegular';
+    src: url('fonts/linlibertine_re-webfont.eot');
+    src: url('fonts/linlibertine_re-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/linlibertine_re-webfont.woff') format('woff'),
+         url('fonts/linlibertine_re-webfont.ttf') format('truetype'),
+         url('fonts/linlibertine_re-webfont.svg#LinuxLibertineORegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'LinuxBiolinumORegular';
+    src: url('fonts/biolinum_re-0.4.1ro-webfont.eot');
+    src: url('fonts/biolinum_re-0.4.1ro-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/biolinum_re-0.4.1ro-webfont.woff') format('woff'),
+         url('fonts/biolinum_re-0.4.1ro-webfont.ttf') format('truetype'),
+         url('fonts/biolinum_re-0.4.1ro-webfont.svg#LinuxBiolinumORegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'FreeMonoMedium';
+    src: url('fonts/freemono-webfont.eot');
+    src: url('fonts/freemono-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/freemono-webfont.woff') format('woff'),
+         url('fonts/freemono-webfont.ttf') format('truetype'),
+         url('fonts/freemono-webfont.svg#FreeMonoMedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+	font-family: 'LinuxLibertineORegular', serif;
+	background: transparent url('watermark-small.png') no-repeat fixed bottom right;
+}
+
+h1, h2, h3, h4, h5, h6, th, .header {
+	font-family: 'LinuxBiolinumORegular', sans-serif;
+}
+
+/* Fix YUI base styles *
+.navheader th, .navheader td,
+.navfooter th, .navfooter td,
+.tip th, .tip td,
+.note th, .note td,
+.caution th, .caution td,
+.warning th, .warning td {
+	border: 0 none;
+}
+.toc dl {
+	margin: .2em 0;
+}
+th[align=left] {
+	text-align: left;
+}
+table {
+	margin-bottom: 0;
+}
+/**/
+
+.header {
+	float: left;
+	height: 32px;
+	margin: .4em;
+	padding-left: 40px;
+	background: transparent url('icon.png') no-repeat left center;
+	font-size: 32px;
+	line-height: 32px;
+	color: black;
+	text-decoration: none;
+}
+.navheader {
+	clear: both;
+}
+
+code, .command, .filename {
+	font-family: 'FreeMonoMedium', monospace;
+}
+
+.emphasis {
+	font-style: italic;
+}
+
+.keysym {
+	color: blue;
+	font-weight: bold;
+}
+
+.screen {
+	font-family: 'FreeMonoMedium', monospace;
+	font-size: 1em;
+	display: block;
+	padding: 10px;
+	border: 1px solid #bbb;
+	background-color: #eee;
+	color: #000;
+	overflow: auto;
+	border-radius: 2.5px;
+	-moz-border-radius: 2.5px;
+	margin: 0.5em 2em;
+}
+
+.programlisting {
+	font-family: 'FreeMonoMedium', monospace;
+	font-size: 1em;
+	display: block;
+	padding: 10px;
+	border: 1px solid #bbb;
+	background-color: #ddd;
+	color: #000;
+	overflow: auto;
+	border-radius: 2.5px;
+	-moz-border-radius: 2.5px;
+	margin: 0.5em 2em;
+}
+
+.copyright {
+	text-align: right;
+	font-size: .7em;
+}

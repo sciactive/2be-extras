@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>2.3. Coding Style</title><link rel="stylesheet" href="docbook.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.75.2" /><link rel="home" href="index.html" title="Pines Development" /><link rel="up" href="ch02.html" title="Chapter 2. Getting Started" /><link rel="prev" href="ch02s02.html" title="2.2. Getting Pines" /><link rel="next" href="ch02s04.html" title="2.4. Building Pines" /></head><body><a xmlns:fo="http://www.w3.org/1999/XSL/Format" href="index.html"><div class="header">Pines Development</div></a><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.3. Coding Style</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s02.html">Prev</a> </td><th width="60%" align="center">Chapter 2. Getting Started</th><td width="20%" align="right"> <a accesskey="n" href="ch02s04.html">Next</a></td></tr></table><hr /></div><div class="section" title="2.3. Coding Style"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id1187917"></a>2.3. Coding Style</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="ch02s03.html#id1187933">2.3.1. Indentation</a></span></dt><dt><span class="section"><a href="ch02s03.html#id1187962">2.3.2. Brackets and Parentheses</a></span></dt><dt><span class="section"><a href="ch02s03.html#id1187993">2.3.3. Naming</a></span></dt><dt><span class="section"><a href="ch02s03.html#id1188044">2.3.4. Commenting</a></span></dt></dl></div>
+        
+
+        <div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="note.png" /></td><th align="left">Note</th></tr><tr><td align="left" valign="top">
+          <p>This coding style is the style used by Pines Core and the
+          SciActive maintained components/templates. If you are submitting a
+          patch, please keep it written in this style. In your own
+          components/templates you are free to use whatever style you like,
+          but you must conform to the naming guidelines.</p>
+        </td></tr></table></div>
+
+        <div class="section" title="2.3.1. Indentation"><div class="titlepage"><div><div><h3 class="title"><a id="id1187933"></a>2.3.1. Indentation</h3></div></div></div>
+          
+
+          <p>Indentation is done with one tab character. The examples in
+          this book use four space characters, simply because the program used
+          to write it does not allow tabs. Cases in a switch are indented.
+          Arguments of a function call are indented once, with the exception
+          of entity manager queries, which should be indented twice. This is
+          in order to accurately and quickly find and understand entity
+          manager queries in a function. In each selector of an entity manager
+          query, the selector type should be placed on the line with the
+          opening "array(".</p><div class="informalexample">
+              <h4><a id="id1187948"></a>Indentation</h4>
+
+              <pre class="programlisting">if ($var) {
+    // Something
+}
+
+if ($var)
+    do_something();
+
+switch ($var) {
+    case 'barbecue':
+        echo 'what?';
+        break;
+    case 'something':
+    default:
+        echo 'that\'s normal';
+        break;
+}
+
+// Typical function call.
+$pines-&gt;something(
+    $arg1,
+    $arg2
+);
+
+// Entity manager query.
+$pines-&gt;entity_manager-&gt;get_entities(
+        array('class' =&gt; entity),
+        array('&amp;',
+            'tag' =&gt; array('some', 'tags')
+        ),
+        array('!&amp;',
+            'data' =&gt; array('something', true)
+        )
+    );</pre>
+            </div>
+        </div>
+
+        <div class="section" title="2.3.2. Brackets and Parentheses"><div class="titlepage"><div><div><h3 class="title"><a id="id1187962"></a>2.3.2. Brackets and Parentheses</h3></div></div></div>
+          
+
+          <p>Opening brackets are placed on the same line. Closing brackets
+          are placed on a new line. If you break parentheses, indent the
+          contained lines. The while in a do while loop is placed on the same
+          line as the closing bracket. In PHP, one line if and else blocks can
+          either use brackets or not. In JavaScript (in order to reduce file
+          size) brackets are not recommended in this case.</p>
+
+          <div class="informalexample">
+              <h4><a id="id1187978"></a>Brackets and Parentheses</h4>
+
+              <pre class="programlisting">if ($var) {
+    one_thing();
+    another_thing();
+}
+
+if ($var)
+    one_thing();
+
+// This is fine.
+if ($var)
+    one_thing();
+else
+    another_thing();
+// Also fine.
+if ($var) {
+    one_thing();
+} else {
+    another_thing();
+}
+
+if ($var) {
+    one_thing();
+    another_thing();
+} elseif ($othervar) {
+    // Something else
+} else {
+    // Something different
+}
+
+function something($arg1, $arg2 = null) {
+    // Something
+}
+
+if (
+        $athing &amp;&amp;
+        $anotherthing &amp;&amp;
+        (
+            $thisthing ||
+            $thatthing
+        )
+    )
+    do_something();</pre>
+            </div>
+        </div>
+
+        <div class="section" title="2.3.3. Naming"><div class="titlepage"><div><div><h3 class="title"><a id="id1187993"></a>2.3.3. Naming</h3></div></div></div>
+          
+
+          <p>Names in Pines always use lowercase, and words are separated
+          by underscores.</p>
+
+          <p>Component names start with "com_" and don't contain any
+          underscores after that. Component names can only contain letters,
+          numbers, and the underscore. A component's class shares its name
+          with the component. Other than a few special classes, like
+          <code class="classname">user</code> and <code class="classname">entity</code>, that
+          are provided by services, classes are prefixed with their
+          component's name. E.g.
+          <code class="classname">com_example_widget</code>.</p>
+
+          <p>Templates are the same, except "tpl_" is used instead of
+          "com_".</p>
+
+          <p>Action names only contain letters, numbers, and underscores.
+          Actions which the user sees (i.e. Not JSON only actions) do not
+          contain underscores.</p>
+
+          <p>View names can contain any valid filename character, but try
+          to only use letters, numbers, underscores, and dashes.</p>
+
+          <p>Entity tags cannot contain commas. The only tag that begins
+          with "com_" should be the name of the component that uses it.</p>
+
+          <p>Components' functions should be prefixed with their
+          component's name, followed by two underscores, then the name. E.g.
+          <code class="function">com_example__do_something()</code>. This is only for
+          functions, not for methods.</p>
+        </div>
+
+        <div class="section" title="2.3.4. Commenting"><div class="titlepage"><div><div><h3 class="title"><a id="id1188044"></a>2.3.4. Commenting</h3></div></div></div>
+          
+
+          <p>Pines uses both C89 (/*...*/) and C99 (//...) style comments.
+          Comments should have a space after the comment mark. Code which is
+          commented out should not. C89 style is preferred for longer
+          comments.</p><div class="informalexample">
+              <h4><a id="id1188055"></a>Comments</h4>
+
+              <pre class="programlisting">// This is a short comment.
+
+/*
+ * This is a long comment which is
+ * too long to fit on one line, so
+ * it's been commented using C89
+ * style comments.
+ */
+
+// However if it's not too long,
+// then this is also acceptable.
+
+// Don't use a leading space when commenting out code.
+//$pines-&gt;com_example-&gt;something();</pre>
+            </div>
+
+          <p>Pines uses phpDocumentor (http://www.phpdoc.org) to generate
+          API documentation. Files, functions, classes, interfaces,
+          properties, methods, constants, and requires/includes that are part
+          of Pines Core or SciActive's components should be commented using
+          phpDoc style comment blocks using the package "Pines". Each
+          component and template is a subpackage of "Pines".</p>
+        </div>
+      </div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02s04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.2. Getting Pines </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 2.4. Building Pines</td></tr></table></div></body></html>

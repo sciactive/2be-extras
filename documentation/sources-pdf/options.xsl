@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version='1.0'>
 
 <!-- Override templates -->
-<xsl:import href="custom-stylesheet.xsl"/>
+<xsl:import href="stylesheet.xsl"/>
 
 <!-- Layout Parameters -->
 <xsl:param name="latex.class.options">letterpaper</xsl:param>
