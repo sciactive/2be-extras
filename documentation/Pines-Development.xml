@@ -4329,7 +4329,70 @@ $pines-&gt;icons-&gt;load();
         <section>
           <title>Log Manager</title>
 
-          <para></para>
+          <para>The log manager service provides an easy and simple logging
+          feature for Pines. The default log manager can use the hook system
+          to log all calls to an object under <varname>$pines</varname>. The
+          log manager has no restriction on the backend it can use, so log
+          managers can be made for flat files, MySQL, PostgreSQL, MSSQL,
+          Oracle, etc.</para>
+
+          <para>The log manager has one method, <methodname>log</methodname>,
+          which takes two arguments, the log entry and the level of the entry.
+          The level can be one of the following, ordered in increasing
+          severity.<itemizedlist>
+              <listitem>
+                <para>debug</para>
+
+                <para>Provide information that could be useful while
+                debugging.</para>
+              </listitem>
+
+              <listitem>
+                <para>info</para>
+
+                <para>Provide information that might be useful for a user.
+                This is the default.</para>
+              </listitem>
+
+              <listitem>
+                <para>notice</para>
+
+                <para>Provide notice of an event or action that has occured
+                that the user may want to know.</para>
+              </listitem>
+
+              <listitem>
+                <para>warning</para>
+
+                <para>Warn the user of something that may be wrong, but not
+                necessarily an error.</para>
+              </listitem>
+
+              <listitem>
+                <para>error</para>
+
+                <para>Provide notice of an error that has occured.</para>
+              </listitem>
+
+              <listitem>
+                <para>fatal</para>
+
+                <para>Provide notice of an error, from which the script cannot
+                recover.</para>
+              </listitem>
+            </itemizedlist><informalexample>
+              <bridgehead>Making an Entry in the Log</bridgehead>
+
+              <programlisting language="php">$user = user::factory();
+$user-&gt;username = 'bob';
+$user-&gt;password('changeme');
+
+$pines-&gt;log_manager-&gt;log('Trying to save a new user.'); // The log level defaults to info.
+if ($user-&gt;save())
+    $pines-&gt;log_manager-&gt;log("Saved user {$user-&gt;username}.", 'notice');
+else
+    $pines-&gt;log_manager-&gt;log("Couldn't save user {$user-&gt;username}.", 'error');</programlisting>
+            </informalexample></para>
         </section>
 
         <section>
