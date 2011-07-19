@@ -1299,8 +1299,8 @@ $bad = $pines-&gt;check_ip_subnet('192.168.1.5', '192.168.0.0', '255.255.255.0')
 
                     <entry>Yes</entry>
 
-                    <entry>A canonical name. This is displayed to the user
-                    when setting the option.</entry>
+                    <entry>A common name. This is displayed to the user when
+                    setting the option.</entry>
                   </row>
 
                   <row>
@@ -2483,6 +2483,10 @@ $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
 
           <para>If <methodname>url</methodname> is called with no arguments,
           it will return the relative URL of the index page.</para>
+
+          <para>For more information on templates, see the <link
+          linkend="template_service">Template Service</link> section and <link
+          linkend="templates">Templates</link> in Part II.</para>
         </section>
 
         <section>
@@ -4357,7 +4361,7 @@ $pines-&gt;icons-&gt;load();
               <listitem>
                 <para>notice</para>
 
-                <para>Provide notice of an event or action that has occured
+                <para>Provide notice of an event or action that has occurred
                 that the user may want to know.</para>
               </listitem>
 
@@ -4371,7 +4375,7 @@ $pines-&gt;icons-&gt;load();
               <listitem>
                 <para>error</para>
 
-                <para>Provide notice of an error that has occured.</para>
+                <para>Provide notice of an error that has occurred.</para>
               </listitem>
 
               <listitem>
@@ -4395,22 +4399,342 @@ else
             </informalexample></para>
         </section>
 
-        <section>
+        <section xml:id="template_service">
           <title>Template</title>
 
-          <para></para>
+          <para>The template service is a special service, which does not have
+          to declare itself as the template service. Instead, Pines reads the
+          configuration and determines the template. The template builds the
+          layout and design of the page and inserts the content from any
+          modules attached to the page. It also has the responsibility of
+          building the output of the menus. Templates will be discussed in
+          much greater depth in Part II.</para>
+
+          <para>The template only has two methods.<itemizedlist>
+              <listitem>
+                <para><methodname>menu</methodname></para>
+
+                <para>Formats a menu so it can be printed into content.</para>
+              </listitem>
+
+              <listitem>
+                <para><methodname>url</methodname></para>
+
+                <para>Creates a URL, utilizing the Pines URL rewriting setup.
+                Has the following arguments:<orderedlist>
+                    <listitem>
+                      <para>The name of the component to be requested by the
+                      URL.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>The name of the action to be requested by the
+                      URL.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>An associative array of parameters to be used as
+                      query data in the URL.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>Boolean determining if the URL should be a full
+                      URL. Otherwise, it will be a URL relative to the server
+                      of the Pines installation.</para>
+                    </listitem>
+                  </orderedlist></para>
+              </listitem>
+            </itemizedlist><informalexample>
+              <bridgehead>Formatting a URL Using the Template
+              Service</bridgehead>
+
+              <programlisting language="php">// A URL suitable for a link on a page in Pines.
+$link = $pines-&gt;template-&gt;url('com_example', 'widget/edit', array('id' =&gt; $widget-&gt;guid));
+
+// A URL suitable for a link in an external page or an email.
+$link = $pines-&gt;template-&gt;url('com_example', 'widget/edit', array('id' =&gt; $widget-&gt;guid), true);
+
+// The URL of the home page of the Pines installation.
+$link = $pines-&gt;template-&gt;url();</programlisting>
+            </informalexample></para>
+
+          <para>Templates also have some variables which define how output is
+          constructed/viewed.<itemizedlist>
+              <listitem>
+                <para><varname>editor_css</varname></para>
+
+                <para>The location of a stylesheet to be used by WYSIWYG
+                editors.</para>
+              </listitem>
+
+              <listitem>
+                <para><varname>format</varname></para>
+
+                <para>The format of the template. This format is used by Pines
+                to find the view when a module is being rendered.</para>
+              </listitem>
+            </itemizedlist></para>
+
+          <para>The template format uses dashes to separate its parts, and
+          describes the language, format, version, etc. of the view. The
+          following is some example formats and a description of their
+          language and what they're for.<itemizedlist>
+              <listitem>
+                <para>html-desktop-5</para>
+
+                <para>HTML 5 for desktops.</para>
+              </listitem>
+
+              <listitem>
+                <para>html-mobile-4-01</para>
+
+                <para>HTML 4.01 for mobile screens.</para>
+              </listitem>
+
+              <listitem>
+                <para>html-desktop-xhtml-1-0-strict</para>
+
+                <para>XHTML 1.0 Strict for desktops.</para>
+              </listitem>
+
+              <listitem>
+                <para>rss-2-0</para>
+
+                <para>RSS 2.0.</para>
+              </listitem>
+            </itemizedlist></para>
+
+          <para>For more information on templates, you can see <link
+          linkend="templates">Templates</link> in Part II.</para>
         </section>
 
         <section>
           <title>Uploader</title>
 
-          <para></para>
+          <para>The uploader service provides a convenient way for the user to
+          upload and manage files on the server. The intent of the uploader
+          service is to allow files to be uploaded and selected using an Ajax
+          enabled interface for ease of use.</para>
+
+          <para>Once the uploader is loaded, it will transform any text inputs
+          with the class "puploader" into Ajax file uploaders/selectors. To
+          use the uploader in a view, call the <methodname>load</methodname>
+          method. This method should be called from a view, to ensure it is
+          only called when outputting HTML.<informalexample>
+              <bridgehead>Using the Uploader Service in a View</bridgehead>
+
+              <programlisting language="php">&lt;?php
+/**
+ * Prints an uploader.
+ *
+ * @license http://www.gnu.org/licenses/agpl-3.0.html
+ * @author Hunter Perrin &lt;hunter@sciactive.com&gt;
+ * @copyright SciActive.com
+ * @link http://sciactive.com/
+ */
+defined('P_RUN') or die('Direct access prohibited');
+$this-&gt;title = 'Uploader';
+// Load the uploader.
+$pines-&gt;uploader-&gt;load();
+?&gt;
+&lt;div&gt;Upload a File&lt;/div&gt;
+&lt;div&gt;&lt;input class="puploader" name="upload_file" type="text" value="" /&gt;&lt;/div&gt;</programlisting>
+            </informalexample></para>
+
+          <para>The value of the field when the form is submitted will be the
+          relative URL of the selected file. After receiving the path of the
+          file, it should <emphasis role="bold">always</emphasis> be checked
+          using the <methodname>check</methodname> method of the uploader
+          service. This will verify that the user didn't maliciously alter the
+          URL. It can then be translated to a real file path using the
+          <methodname>real</methodname> method, and back to a URL again with
+          the <methodname>url</methodname> method. The
+          <methodname>url</methodname> method takes an extra argument, which
+          determines whether a full URL should be returned instead of a
+          relative URL.<informalexample>
+              <bridgehead>Verifying and Using a URL Returned by the
+              Uploader</bridgehead>
+
+              <programlisting language="php">$file_url = $_REQUEST['upload_file'];
+
+// The first step is always checking the file URL.
+if (!$pines-&gt;uploader-&gt;check($file_url)) {
+    pines_notice('Invalid file path submitted!');
+    return;
+}
+
+// Now get the real file path.
+$file_path = $pines-&gt;uploader-&gt;real($file_url);
+
+// And the full URL of the file.
+$file_url_full = $pines-&gt;uploader-&gt;url($file_path, true);</programlisting>
+            </informalexample><warning>
+              <para>Using a submitted URL without first checking it could
+              allow a user to bypass safety features and exploit a server,
+              potentially giving them access to confidential
+              information.</para>
+            </warning></para>
         </section>
 
         <section>
           <title>User Manager</title>
 
-          <para></para>
+          <para>The user manager service is one of Pines' most powerful
+          features. It has many features and responsibilities, designed to
+          separate and protect data. Fully understanding the user manager will
+          allow you to create complex systems which function safely in a
+          multi-user environment.</para>
+
+          <para>The user manager has several methods to help access and
+          organize user and group data.<itemizedlist>
+              <listitem>
+                <para><methodname>fill_session</methodname></para>
+
+                <para>Fill the <varname>$_SESSION['user']</varname> variable
+                with the logged in user's data. It also sets the default
+                timezone used by date functions to the user's timezone.</para>
+              </listitem>
+
+              <listitem>
+                <para><methodname>get_groups</methodname></para>
+
+                <para>Get the system's groups. It takes one argument, which,
+                when true, will cause it to return both disabled and enabled
+                groups, rather than just enabled groups.</para>
+              </listitem>
+
+              <listitem>
+                <para><methodname>get_users</methodname></para>
+
+                <para>Get the system's users. It takes one argument, which,
+                when true, will cause it to return both disabled and enabled
+                users, rather than just enabled users.</para>
+              </listitem>
+
+              <listitem>
+                <para><methodname>group_sort</methodname></para>
+
+                <para>Sort an array of groups hierarchically. An additional
+                property of the groups can be used to sort them under their
+                parents. It takes up to four arguments:<orderedlist>
+                    <listitem>
+                      <para>The array of groups.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>The name of the property to sort groups by. Null
+                      for no additional sorting.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>Boolean, determines whether to sort case
+                      sensitively.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>Boolean, determines whether to reverse the sort
+                      order.</para>
+                    </listitem>
+                  </orderedlist></para>
+              </listitem>
+
+              <listitem>
+                <para><methodname>login</methodname></para>
+
+                <para>Logs the given user into the system. Takes only one
+                argument, the user.</para>
+              </listitem>
+
+              <listitem>
+                <para><methodname>logout</methodname></para>
+
+                <para>Logs the current user out of the system.</para>
+              </listitem>
+
+              <listitem>
+                <para><methodname>print_login</methodname></para>
+
+                <para>Creates and attaches a module which lets the user log
+                in. Takes up to two arguments, the position of the new module,
+                and a URL to which the user will be redirected after logging
+                in.</para>
+              </listitem>
+
+              <listitem>
+                <para><methodname>punt_user</methodname></para>
+
+                <para>Kick the user out of the current page. This method
+                completely terminates execution of the script when it is
+                called. Code after this method is called will not run. Though
+                not required, user managers will usually give the user an
+                opportunity to log in and return to the page, if they are not
+                currently logged in. This method takes up to two arguments, a
+                message to display to the user, and the URL they should use to
+                retry after logging in. If no message is given, a generic
+                message will be displayed. To prevent a message, use an empty
+                string.</para>
+              </listitem>
+            </itemizedlist></para>
+
+          <para>Two of the methods of the user manager,
+          <methodname>gatekeeper</methodname> and
+          <methodname>punt_user</methodname>, have shortcut functions to make
+          calling them easier. Unlike most shortcut functions in Pines, which
+          have "pines_" prepended to their names, these two functions have
+          identical names as their method counterparts.</para>
+
+          <para>Access control is one of the features heavily considered since
+          the beginning of Pines' development. As such, the user manager has
+          some unique and powerful systems of access control.</para>
+
+          <section>
+            <title>Access Control Systems</title>
+
+            <para>This section discusses the different types of access control
+            that the user manager service provides. A component is not
+            required to utilize these systems, but they will certainly make
+            designing a safe, functional, multi-user component much easier.
+            When developing Pines, SciActive always considers good access
+            control very important. If you plan on contributing code to
+            SciActive maintained components or Pines Core, please take the
+            time to learn and understand these access control systems very
+            well.</para>
+
+            <section>
+              <title>Abilities</title>
+
+              <para>Abilities define what a user is allowed to do. Abilities
+              can be given to both users and groups. When a user is in a group
+              or groups that have abilities and the user is set to inherit
+              abilities, the user manager will act as though the user has the
+              sum of his own abilities and the abilities of all his
+              groups.</para>
+
+              <para>The user manager has to be told what abilities a component
+              checks for. This is done in the component's
+              <filename>info.php</filename> file. The info array has an entry
+              called "abilities", which is an array of arrays. Each array in
+              the abilities array contains three values, the name of the
+              ability, the title or common name, and the description of the
+              ability.<informalexample>
+                  <bridgehead>Example Abilities Entry From an Info
+                  File</bridgehead>
+
+                  <programlisting language="php">'abilities' =&gt; array(
+    array('view', 'View Log', 'Let the user view the Pines log.'),
+    array('clear', 'Clear Log', 'Let the user clear (delete) the pines log.')
+),</programlisting>
+                </informalexample></para>
+
+              <para></para>
+            </section>
+
+            <section>
+              <title>Entity Access Controls</title>
+
+              <para></para>
+            </section>
+          </section>
 
           <section>
             <title>User</title>
@@ -4514,7 +4838,7 @@ $pines-&gt;entity_manager = 'com_xmlentity';
       </section>
     </chapter>
 
-    <chapter>
+    <chapter xml:id="templates">
       <title>Templates</title>
 
       <section>
