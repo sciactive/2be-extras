@@ -4726,20 +4726,113 @@ $file_url_full = $pines-&gt;uploader-&gt;url($file_path, true);</programlisting>
 ),</programlisting>
                 </informalexample></para>
 
-              <para></para>
+              <para>Once a user has been granted abilities, the
+              <methodname>gatekeeper</methodname> method can be used to check
+              them. To check an ability, append a slash and the name of the
+              ability to the name of the component, and call
+              <methodname>gatekeeper</methodname>. If no user is given as the
+              second argument, the currently logged in user will be used.
+              There is one special ability called "system/all" which has the
+              effect of granting the user all abilities.<informalexample>
+                  <bridgehead>Checking Users' Abilities and Using
+                  <methodname>punt_user</methodname></bridgehead>
+
+                  <programlisting language="php">$user = user::factory('hunter');
+// Check that the user has the ability.
+if (!$pines-&gt;user_manager-&gt;gatekeeper('com_logger/view', $user)) {
+    pines_notice('Hunter can\'t view the Pines log.');
+    return;
+}
+
+// Use shortcuts and check the current user. Punt them if they don't have the ability.
+if (!gatekeeper('com_logger/view'))
+    punt_user(null, pines_url('com_logger', 'view'));
+
+// Checking two abilities. Custom punt user message.
+if (!gatekeeper('com_example/viewwidgets') &amp;&amp; !gatekeeper('com_example/viewownwidgets'))
+    punt_user('You need the ability to see widgets to access this page.');
+
+// Use depend to check multiple abilities. Same as above.
+if (!pines_depend('ability', 'com_example/viewwidgets|com_example/viewownwidgets'))
+    punt_user('You need the ability to see widgets to access this page.');</programlisting>
+                </informalexample></para>
             </section>
 
             <section>
               <title>Entity Access Controls</title>
 
-              <para></para>
+              <para>Entity access controls determine what a user can do, if
+              anything, with an entity. The user #######</para>
             </section>
           </section>
 
           <section>
             <title>User</title>
 
-            <para></para>
+            <para>The user class is very similar to the entity class. Their
+            interfaces are both descendents of
+            <interfacename>data_object_interface</interfacename>, so they
+            share many of the same methods. Here is a list of the methods they
+            share.<itemizedlist>
+                <listitem>
+                  <para><methodname>array_search</methodname></para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>delete</methodname></para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>equals</methodname></para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>in_array</methodname></para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>is</methodname></para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>refresh</methodname></para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>save</methodname></para>
+                </listitem>
+              </itemizedlist></para>
+
+            <para>Although the user's information doesn't have to be stored in
+            an entity, user's must act like entities in the following
+            ways.<itemizedlist>
+                <listitem>
+                  <para>Users must have unique GUIDs.</para>
+                </listitem>
+
+                <listitem>
+                  <para>When requesting entities, users must be returned if
+                  they match as well.</para>
+                </listitem>
+
+                <listitem>
+                  <para>Users must be able to store data, including entity
+                  references, just like entities.</para>
+                </listitem>
+
+                <listitem>
+                  <para>Entities must work with the "ref" selector in the
+                  entity manager.</para>
+                </listitem>
+              </itemizedlist></para>
+
+            <para>What this means is that even though users are not
+            necessarily entities, they can be treated as if they were, except
+            for tags. It is up to the user manager implementation whether to
+            use entities to store users. The SciActive maintained user manager
+            uses entities to handle users and groups.</para>
+
+            <para>#########</para>
           </section>
 
           <section>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>3.2. Pines Object</title><link rel="stylesheet" href="docbook.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.75.2" /><link rel="home" href="index.html" title="Pines Development" /><link rel="up" href="ch03.html" title="Chapter 3. Pines Core" /><link rel="prev" href="ch03.html" title="Chapter 3. Pines Core" /><link rel="next" href="core_services.html" title="3.3. Core Services" /></head><body><a xmlns:fo="http://www.w3.org/1999/XSL/Format" href="index.html"><div class="header">Pines Development</div></a><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.2. Pines Object</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03.html">Prev</a> </td><th width="60%" align="center">Chapter 3. Pines Core</th><td width="20%" align="right"> <a accesskey="n" href="core_services.html">Next</a></td></tr></table><hr /></div><div class="section" title="3.2. Pines Object"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id1289254"></a>3.2. Pines Object</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="ch03s02.html#id1289270">3.2.1. Running an Action</a></span></dt><dt><span class="section"><a href="ch03s02.html#id1289378">3.2.2. Accessing Sessions</a></span></dt><dt><span class="section"><a href="ch03s02.html#id1289468">3.2.3. Redirecting the User</a></span></dt><dt><span class="section"><a href="ch03s02.html#id1289527">3.2.4. Formatting Output</a></span></dt><dt><span class="section"><a href="ch03s02.html#id1289956">3.2.5. Checking an IP Address</a></span></dt></dl></div>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>3.2. Pines Object</title><link rel="stylesheet" href="docbook.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.75.2" /><link rel="home" href="index.html" title="Pines Development" /><link rel="up" href="ch03.html" title="Chapter 3. Pines Core" /><link rel="prev" href="ch03.html" title="Chapter 3. Pines Core" /><link rel="next" href="core_services.html" title="3.3. Core Services" /></head><body><a xmlns:fo="http://www.w3.org/1999/XSL/Format" href="index.html"><div class="header">Pines Development</div></a><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.2. Pines Object</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03.html">Prev</a> </td><th width="60%" align="center">Chapter 3. Pines Core</th><td width="20%" align="right"> <a accesskey="n" href="core_services.html">Next</a></td></tr></table><hr /></div><div class="section" title="3.2. Pines Object"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id1274172"></a>3.2. Pines Object</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="ch03s02.html#id1274187">3.2.1. Running an Action</a></span></dt><dt><span class="section"><a href="ch03s02.html#id1274298">3.2.2. Accessing Sessions</a></span></dt><dt><span class="section"><a href="ch03s02.html#id1274411">3.2.3. Redirecting the User</a></span></dt><dt><span class="section"><a href="ch03s02.html#id1274444">3.2.4. Formatting Output</a></span></dt><dt><span class="section"><a href="ch03s02.html#id1274873">3.2.5. Checking an IP Address</a></span></dt></dl></div>
         
 
         <p>As well as containing services and variables, the Pines object
         (<code class="varname">$pines</code>) also includes several useful
         methods.</p>
 
-        <div class="section" title="3.2.1. Running an Action"><div class="titlepage"><div><div><h3 class="title"><a id="id1289270"></a>3.2.1. Running an Action</h3></div></div></div>
+        <div class="section" title="3.2.1. Running an Action"><div class="titlepage"><div><div><h3 class="title"><a id="id1274187"></a>3.2.1. Running an Action</h3></div></div></div>
           
 
           <p>To run an action, use the <code class="methodname">action</code>
@@ -51,7 +51,7 @@
           HTTP status code. This means your action can return the string
           "error_404" if the requested information is not found and a 404
           error will be sent to the client.</p><div class="informalexample">
-              <h4><a id="id1289363"></a>Manually Running an Action</h4>
+              <h4><a id="id1274284"></a>Manually Running an Action</h4>
 
               <pre class="programlisting">// Run a specific action.
 $pines-&gt;action('com_example', 'widgets/list');
@@ -64,7 +64,7 @@ $pines-&gt;action();</pre>
             </div>
         </div>
 
-        <div class="section" title="3.2.2. Accessing Sessions"><div class="titlepage"><div><div><h3 class="title"><a id="id1289378"></a>3.2.2. Accessing Sessions</h3></div></div></div>
+        <div class="section" title="3.2.2. Accessing Sessions"><div class="titlepage"><div><div><h3 class="title"><a id="id1274298"></a>3.2.2. Accessing Sessions</h3></div></div></div>
           
 
           <p>Sessions in Pines are handled exclusively through the
@@ -104,7 +104,7 @@ $pines-&gt;action();</pre>
 
           <p>If you open a session for writing, you should always close it
           once you don't need write access anymore.</p><div class="informalexample">
-              <h4><a id="id1289464"></a>Reading Session Data</h4>
+              <h4><a id="id1274383"></a>Reading Session Data</h4>
 
               <pre class="programlisting">// Open the session for reading.
 $pines-&gt;session('read');
@@ -115,7 +115,7 @@ $pines-&gt;session('read');
 // Now the session variable is full of the session data.
 echo $_SESSION['messages'];</pre>
             </div><div class="informalexample">
-              <h4><a id="id1289477"></a>Writing Session Data</h4>
+              <h4><a id="id1274396"></a>Writing Session Data</h4>
 
               <pre class="programlisting">// Open the session for writing.
 $pines-&gt;session('write');
@@ -138,7 +138,7 @@ pines_notice('Messages saved.');</pre>
             </div>
         </div>
 
-        <div class="section" title="3.2.3. Redirecting the User"><div class="titlepage"><div><div><h3 class="title"><a id="id1289468"></a>3.2.3. Redirecting the User</h3></div></div></div>
+        <div class="section" title="3.2.3. Redirecting the User"><div class="titlepage"><div><div><h3 class="title"><a id="id1274411"></a>3.2.3. Redirecting the User</h3></div></div></div>
           
 
           <p>The Pines object includes <code class="methodname">redirect</code>, a
@@ -148,7 +148,7 @@ pines_notice('Messages saved.');</pre>
           URL, assuming that URL is also handled by the same Pines
           installation. The HTTP status code returned to the client can be
           changed and defaults to 303 See Other.</p><div class="informalexample">
-              <h4><a id="id1289510"></a>Redirecting the User</h4>
+              <h4><a id="id1274427"></a>Redirecting the User</h4>
 
               <pre class="programlisting">// Notices and errors will be saved.
 pines_notice('You have been redirected here.');
@@ -162,14 +162,14 @@ $pines-&gt;redirect(pines_url('com_example', 'widgets/list'), 301);</pre>
             </div>
         </div>
 
-        <div class="section" title="3.2.4. Formatting Output"><div class="titlepage"><div><div><h3 class="title"><a id="id1289527"></a>3.2.4. Formatting Output</h3></div></div></div>
+        <div class="section" title="3.2.4. Formatting Output"><div class="titlepage"><div><div><h3 class="title"><a id="id1274444"></a>3.2.4. Formatting Output</h3></div></div></div>
           
 
           <p>There are several types of content that need to be formatted
           correctly before being output to the user. The Pines object provides
           functions to allow easy formatting of this data.</p>
 
-          <div class="section" title="3.2.4.1. Formatting Content"><div class="titlepage"><div><div><h4 class="title"><a id="id1289537"></a>3.2.4.1. Formatting Content</h4></div></div></div>
+          <div class="section" title="3.2.4.1. Formatting Content"><div class="titlepage"><div><div><h4 class="title"><a id="id1274455"></a>3.2.4.1. Formatting Content</h4></div></div></div>
             
 
             <p>To format content, use
@@ -191,7 +191,7 @@ $pines-&gt;redirect(pines_url('com_example', 'widgets/list'), 301);</pre>
             only user provided content should ever be formatted. Content like
             your component's forms should most likely never be
             formatted.</p><div class="informalexample">
-                <h5><a id="id1289566"></a>Formatting Content for Output</h5>
+                <h5><a id="id1274484"></a>Formatting Content for Output</h5>
 
                 <pre class="programlisting">&lt;div&gt;
     &lt;?php echo $pines-&gt;format_content($post-&gt;content); ?&gt;
@@ -201,7 +201,7 @@ $pines-&gt;redirect(pines_url('com_example', 'widgets/list'), 301);</pre>
             <p>As mentioned, components can hook this function to provide
             special alterations to content. See the <a class="link" href="core_services.html#hook" title="3.3.3. Hook (hook class)">Hook</a> section in <a class="link" href="core_services.html" title="3.3. Core Services">Core Services</a> for information about
             hooks.</p><div class="informalexample">
-                <h5><a id="id1289597"></a>Using a Hook to Alter Content</h5>
+                <h5><a id="id1274514"></a>Using a Hook to Alter Content</h5>
 
                 <pre class="programlisting">// Replace the word "Pines" with "Barbecue".
 function com_example__replace(&amp;$arguments) {
@@ -212,7 +212,7 @@ $pines-&gt;hook-&gt;add_callback('$pines-&gt;format_content', -10, 'com_example_
               </div>
           </div>
 
-          <div class="section" title="3.2.4.2. Formatting a Date / Time"><div class="titlepage"><div><div><h4 class="title"><a id="id1289610"></a>3.2.4.2. Formatting a Date / Time</h4></div></div></div>
+          <div class="section" title="3.2.4.2. Formatting a Date / Time"><div class="titlepage"><div><div><h4 class="title"><a id="id1274528"></a>3.2.4.2. Formatting a Date / Time</h4></div></div></div>
             
 
             <p>To format a date or time using a timestamp, use
@@ -224,7 +224,7 @@ $pines-&gt;hook-&gt;add_callback('$pines-&gt;format_content', -10, 'com_example_
             <code class="methodname">format</code> method of the
             <code class="classname">DateTime</code> class can be used.
             <code class="methodname">format_date</code> supports several format
-            types.</p><div class="table"><a id="id1289638"></a><p class="title"><b>Table 3.1. Date Format Types</b></p><div class="table-contents">
+            types.</p><div class="table"><a id="id1274557"></a><p class="title"><b>Table 3.1. Date Format Types</b></p><div class="table-contents">
                 
 
                 <table summary="Date Format Types" border="1"><colgroup><col /><col /><col /></colgroup><thead><tr><th>Type</th><th>Format Code</th><th>Description</th></tr></thead><tbody><tr><td>full_sort</td><td><code class="code">Y-m-d H:i T</code></td><td>Date and time, big endian and 24 hour format so
@@ -233,7 +233,7 @@ $pines-&gt;hook-&gt;add_callback('$pines-&gt;format_content', -10, 'com_example_
                       sortable.</td></tr><tr><td>time_long</td><td><code class="code">g:i:s A T</code></td><td>Only the time, long format.</td></tr><tr><td>time_med</td><td><code class="code">g:i:s A</code></td><td>Only the time, medium format.</td></tr><tr><td>time_short</td><td><code class="code">g:i A</code></td><td>Only the time, short format.</td></tr><tr><td>custom</td><td>(Contents of <code class="varname">$format</code>)</td><td>Use whatever is passed in
                       <code class="varname">$format</code>.</td></tr></tbody></table>
               </div></div><p><br class="table-break" /></p><div class="informalexample">
-                <h5><a id="id1289915"></a>Formatting a Date</h5>
+                <h5><a id="id1274831"></a>Formatting a Date</h5>
 
                 <pre class="programlisting">&lt;div&gt;
     &lt;?php echo $pines-&gt;format_date($timestamp, 'custom', 'l jS \of F Y h:i:s A', 'America/Los_Angeles'); ?&gt;
@@ -241,13 +241,13 @@ $pines-&gt;hook-&gt;add_callback('$pines-&gt;format_content', -10, 'com_example_
               </div>
           </div>
 
-          <div class="section" title="3.2.4.3. Formatting a Phone Number"><div class="titlepage"><div><div><h4 class="title"><a id="id1289929"></a>3.2.4.3. Formatting a Phone Number</h4></div></div></div>
+          <div class="section" title="3.2.4.3. Formatting a Phone Number"><div class="titlepage"><div><div><h4 class="title"><a id="id1274845"></a>3.2.4.3. Formatting a Phone Number</h4></div></div></div>
             
 
             <p>To format a phone number, use
             <code class="methodname">format_phone</code>. It uses US phone number
             format. E.g. "(800) 555-1234 x56".</p><div class="informalexample">
-                <h5><a id="id1289944"></a>Formatting a Phone Number</h5>
+                <h5><a id="id1274860"></a>Formatting a Phone Number</h5>
 
                 <pre class="programlisting">&lt;div&gt;
     &lt;?php echo $pines-&gt;format_phone('1800555123456'); ?&gt;
@@ -256,19 +256,19 @@ $pines-&gt;hook-&gt;add_callback('$pines-&gt;format_content', -10, 'com_example_
           </div>
         </div>
 
-        <div class="section" title="3.2.5. Checking an IP Address"><div class="titlepage"><div><div><h3 class="title"><a id="id1289956"></a>3.2.5. Checking an IP Address</h3></div></div></div>
+        <div class="section" title="3.2.5. Checking an IP Address"><div class="titlepage"><div><div><h3 class="title"><a id="id1274873"></a>3.2.5. Checking an IP Address</h3></div></div></div>
           
 
           <p>There are three methods of checking whether an IP address is
           on a given network in the Pines object.</p>
 
-          <div class="simplesect" title="Using CIDR Notation"><div class="titlepage"><div><div><h4 class="title"><a id="id1289969"></a>Using CIDR Notation</h4></div></div></div>
+          <div class="simplesect" title="Using CIDR Notation"><div class="titlepage"><div><div><h4 class="title"><a id="id1274886"></a>Using CIDR Notation</h4></div></div></div>
             
 
             <p>You can use <code class="methodname">check_ip_cidr</code> to check
             an IP address using the CIDR notation of a
             network.</p><div class="informalexample">
-                <h5><a id="id1289985"></a>Checking an IP Using CIDR Notation</h5>
+                <h5><a id="id1274901"></a>Checking an IP Using CIDR Notation</h5>
 
                 <pre class="programlisting">$good = $pines-&gt;check_ip_cidr('192.168.0.5', '192.168/24'); // Returns true.
 
@@ -276,12 +276,12 @@ $bad = $pines-&gt;check_ip_cidr('192.168.1.5', '192.168/24'); // Returns false.<
               </div>
           </div>
 
-          <div class="simplesect" title="Using an IP Range"><div class="titlepage"><div><div><h4 class="title"><a id="id1289998"></a>Using an IP Range</h4></div></div></div>
+          <div class="simplesect" title="Using an IP Range"><div class="titlepage"><div><div><h4 class="title"><a id="id1274914"></a>Using an IP Range</h4></div></div></div>
             
 
             <p>You can use <code class="methodname">check_ip_range</code> to check
             an IP address using an IP range.</p><div class="informalexample">
-                <h5><a id="id1290014"></a>Checking an IP Using an IP Range</h5>
+                <h5><a id="id1274930"></a>Checking an IP Using an IP Range</h5>
 
                 <pre class="programlisting">$good = $pines-&gt;check_ip_range('192.168.0.5', '192.168.0.0', '192.168.0.255'); // Returns true.
 
@@ -289,13 +289,13 @@ $bad = $pines-&gt;check_ip_range('192.168.1.5', '192.168.0.0', '192.168.0.255');
               </div>
           </div>
 
-          <div class="simplesect" title="Using a Subnet Mask"><div class="titlepage"><div><div><h4 class="title"><a id="id1290027"></a>Using a Subnet Mask</h4></div></div></div>
+          <div class="simplesect" title="Using a Subnet Mask"><div class="titlepage"><div><div><h4 class="title"><a id="id1274943"></a>Using a Subnet Mask</h4></div></div></div>
             
 
             <p>You can use <code class="methodname">check_ip_subnet</code> to
             check an IP address using the subnet mask of a
             network.</p><div class="informalexample">
-                <h5><a id="id1290043"></a>Checking an IP Using a Subnet Mask</h5>
+                <h5><a id="id1274959"></a>Checking an IP Using a Subnet Mask</h5>
 
                 <pre class="programlisting">$good = $pines-&gt;check_ip_subnet('192.168.0.5', '192.168.0.0', '255.255.255.0'); // Returns true.
 
