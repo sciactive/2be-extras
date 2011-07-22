@@ -63,6 +63,12 @@
     <section>
       <title>Conventions Used in This Book</title>
 
+      <para>In order to make this book easier to write, I will refer to an
+      object or class' properties as its "variables". Pines has very few
+      global variables, so there is little need for a distinction between
+      variables and properties. I will, however, maintain the distinction
+      between functions and methods.</para>
+
       <para></para>
     </section>
   </preface>
@@ -2890,8 +2896,9 @@ pines_log($module-&gt;get_content());</programlisting>
                               </listitem>
 
                               <listitem>
-                                <para>i11_ : The user manager should fill the
-                                session with user data here.</para>
+                                <para>i11_ : The user manager should ensure the
+                                session is filled with the current user's data
+                                here.</para>
                               </listitem>
 
                               <listitem>
@@ -4762,7 +4769,257 @@ if (!pines_depend('ability', 'com_example/viewwidgets|com_example/viewownwidgets
               <title>Entity Access Controls</title>
 
               <para>Entity access controls determine what a user can do, if
-              anything, with an entity. The user #######</para>
+              anything, with an entity. When a component retrieves entities
+              from the entity manager, the user manager filters out any
+              entities the user does not have read access to before the
+              entities are returned from the method. Likewise, when a
+              component tries to save or delete an entity, the user manager
+              will only allow it if the user has appropriate
+              permission.</para>
+
+              <para>Every entity which is created while a user is logged in
+              will be owned by that user, and belong to that user's primary
+              group. If an entity should belong to another user, it must be
+              saved, assigned to the other user, then resaved. An entity
+              belongs to a user when the user is placed in the entity's
+              <varname>user</varname> variable. Likewise, an entity belongs to
+              a group when the group is placed in the entity's
+              <varname>group</varname> variable.</para>
+
+              <para>Access controls are stored a variable called
+              <varname>ac</varname> on every entity. This variable is an
+              object with the following three variables.<table>
+                  <title>Entity Access Control Variables</title>
+
+                  <tgroup cols="3">
+                    <colspec colnum="3" colwidth="6*" />
+
+                    <thead>
+                      <row>
+                        <entry>Value</entry>
+
+                        <entry>Default Value</entry>
+
+                        <entry>Description</entry>
+                      </row>
+                    </thead>
+
+                    <tbody>
+                      <row>
+                        <entry><varname>user</varname></entry>
+
+                        <entry>3</entry>
+
+                        <entry>Controls the entity's owner's access.</entry>
+                      </row>
+
+                      <row>
+                        <entry><varname>group</varname></entry>
+
+                        <entry>3</entry>
+
+                        <entry>Controls the access of all users in both the
+                        entity's group and all ancestor groups.</entry>
+                      </row>
+
+                      <row>
+                        <entry><varname>other</varname></entry>
+
+                        <entry>0</entry>
+
+                        <entry>Controls all other users' access.</entry>
+                      </row>
+                    </tbody>
+                  </tgroup>
+                </table></para>
+
+              <para>Each of these three variables can be one of the following
+              numeric values.<table>
+                  <title>Entity Access Control Values</title>
+
+                  <tgroup cols="2">
+                    <colspec colnum="2" colwidth="7*" />
+
+                    <thead>
+                      <row>
+                        <entry>Value</entry>
+
+                        <entry>Access Level</entry>
+                      </row>
+                    </thead>
+
+                    <tbody>
+                      <row>
+                        <entry>0</entry>
+
+                        <entry>No access to the entity is granted.</entry>
+                      </row>
+
+                      <row>
+                        <entry>1</entry>
+
+                        <entry>Access is granted to read the entity.</entry>
+                      </row>
+
+                      <row>
+                        <entry>2</entry>
+
+                        <entry>Access is granted to read and edit the
+                        entity.</entry>
+                      </row>
+
+                      <row>
+                        <entry>3</entry>
+
+                        <entry>Access is granted to read, edit, and delete the
+                        entity.</entry>
+                      </row>
+                    </tbody>
+                  </tgroup>
+                </table><caution>
+                  <para>If your component allows the user to edit an entity's
+                  <varname>user</varname>, <varname>group</varname>, or
+                  <varname>ac</varname> variable, the access control mechanism
+                  could probably be easily circumvented.</para>
+                </caution></para>
+
+              <para>The user manager's
+              <methodname>check_permissions</methodname> method can be used to
+              determine whether the current user has certain access to an
+              entity. It takes two arguments, the entity and the type of
+              access to check. The type of access is given as an integer, and
+              returns true if the user has at least that level of access.
+              Different situations use different checks to determine the
+              user's access.<table>
+                  <title>Entity Access Checking Situations</title>
+
+                  <tgroup cols="2">
+                    <thead>
+                      <row>
+                        <entry>Situation</entry>
+
+                        <entry>Check Performed/Value Returned</entry>
+                      </row>
+                    </thead>
+
+                    <tbody>
+                      <row>
+                        <entry>No user is logged in.</entry>
+
+                        <entry>Always true, should be managed with
+                        abilities.</entry>
+                      </row>
+
+                      <row>
+                        <entry>The entity has no user and no group.</entry>
+
+                        <entry>Always true.</entry>
+                      </row>
+
+                      <row>
+                        <entry>The user has the "system/all" ability.</entry>
+
+                        <entry>Always true.</entry>
+                      </row>
+
+                      <row>
+                        <entry>The entity is the user.</entry>
+
+                        <entry>Always true.</entry>
+                      </row>
+
+                      <row>
+                        <entry>The entity is the user's primary group.</entry>
+
+                        <entry>Always true.</entry>
+                      </row>
+
+                      <row>
+                        <entry>The entity is a user or group.</entry>
+
+                        <entry>Always true.</entry>
+                      </row>
+
+                      <row>
+                        <entry>Its <varname>user</varname> variable is the
+                        user. (It is owned by the user.)</entry>
+
+                        <entry>Check user AC.</entry>
+                      </row>
+
+                      <row>
+                        <entry>Its <varname>group</varname> variable is the
+                        user's primary group.</entry>
+
+                        <entry>Check group AC.</entry>
+                      </row>
+
+                      <row>
+                        <entry>Its <varname>group</varname> variable is one of
+                        the user's secondary groups.</entry>
+
+                        <entry>Check group AC.</entry>
+                      </row>
+
+                      <row>
+                        <entry>Its <varname>group</varname> variable is a
+                        descendent of one of the user's groups.</entry>
+
+                        <entry>Check group AC.</entry>
+                      </row>
+
+                      <row>
+                        <entry>None of the above.</entry>
+
+                        <entry>Check other AC.</entry>
+                      </row>
+                    </tbody>
+                  </tgroup>
+                </table></para>
+
+              <para>A component can change the access control variable to
+              allow or prevent access.<informalexample>
+                  <bridgehead>Changing the Access Controls of an
+                  Entity</bridgehead>
+
+                  <programlisting language="php">// Create a new baz entity.
+$entity = com_foobar_baz::factory();
+$entity-&gt;foo = 'bar';
+
+// Allow all users to see it, but only the current user to edit or delete it.
+$entity-&gt;ac = (object) array(
+    'user' =&gt; 3,
+    'group' =&gt; 1,
+    'other' =&gt; 1
+);
+
+$entity-&gt;save();</programlisting>
+                </informalexample></para>
+
+              <para>It is the responsibility of the user manager to prevent
+              your component from accessing an entity in a way the user is not
+              permitted. Therefore, you don't need to add anything to your
+              code. Entities that the current user does not have proper access
+              to won't be returned when you query the entity manager. When you
+              try to access a referenced entity, and the user manager blocks
+              it due to access controls, it will appear as if the variable is
+              null. If you wish to bypass the entity access control feature,
+              you can use the "skip_ac" option in your entity
+              queries.<informalexample>
+                  <bridgehead>Using "skip_ac" to Access Entities</bridgehead>
+
+                  <programlisting language="php">// Get all baz entities, regardless of whether the logged in user has access to them.
+$entities = $pines-&gt;entity_manager-&gt;get_entities(
+        array('class' =&gt; com_foobar_baz, 'skip_ac' =&gt; true),
+        array('&amp;',
+            'tag' =&gt; array('com_foobar', 'baz')
+        )
+    );</programlisting>
+                </informalexample><note>
+                  <para>When you request entities using the "skip_ac" option,
+                  any referenced entities will also be retrieved using the
+                  "skip_ac" option.</para>
+                </note></para>
             </section>
           </section>
 
@@ -4770,7 +5027,7 @@ if (!pines_depend('ability', 'com_example/viewwidgets|com_example/viewownwidgets
             <title>User</title>
 
             <para>The user class is very similar to the entity class. Their
-            interfaces are both descendents of
+            interfaces both extend
             <interfacename>data_object_interface</interfacename>, so they
             share many of the same methods. Here is a list of the methods they
             share.<itemizedlist>
@@ -4804,10 +5061,16 @@ if (!pines_depend('ability', 'com_example/viewwidgets|com_example/viewownwidgets
               </itemizedlist></para>
 
             <para>Although the user's information doesn't have to be stored in
-            an entity, user's must act like entities in the following
+            an entity, users must act like entities in the following
             ways.<itemizedlist>
                 <listitem>
-                  <para>Users must have unique GUIDs.</para>
+                  <para>Users must have unique GUIDs, just like
+                  entities.</para>
+                </listitem>
+
+                <listitem>
+                  <para>The user class must provide a
+                  <methodname>factory</methodname> method.</para>
                 </listitem>
 
                 <listitem>
@@ -4821,8 +5084,8 @@ if (!pines_depend('ability', 'com_example/viewwidgets|com_example/viewownwidgets
                 </listitem>
 
                 <listitem>
-                  <para>Entities must work with the "ref" selector in the
-                  entity manager.</para>
+                  <para>Users must work with the "ref" selector in the entity
+                  manager.</para>
                 </listitem>
               </itemizedlist></para>
 
@@ -4832,13 +5095,182 @@ if (!pines_depend('ability', 'com_example/viewwidgets|com_example/viewownwidgets
             use entities to store users. The SciActive maintained user manager
             uses entities to handle users and groups.</para>
 
-            <para>#########</para>
+            <para>Users have several useful methods:<itemizedlist>
+                <listitem>
+                  <para><methodname>add_group</methodname></para>
+
+                  <para>Add the user to a (secondary) group. Takes one
+                  argument, the group. Returns true if the user is already in
+                  the group, the resulting array of groups if the user was
+                  not.</para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>check_password</methodname></para>
+
+                  <para>Check the given password against the user's. Takes one
+                  argument, the password in question. Returns true if the
+                  passwords match, otherwise false.</para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>del_group</methodname></para>
+
+                  <para>Remove the user from a (secondary) group. Takes one
+                  argument, the group. Returns true if the user wasn't in the
+                  group, the resulting array of groups if the user was.</para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>disable</methodname></para>
+
+                  <para>Disable the user.</para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>enable</methodname></para>
+
+                  <para>Enable the user.</para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>get_timezone</methodname></para>
+
+                  <para>Returns the user's timezone. Takes a boolean argument
+                  (defaults to false), whether to return an object of the
+                  DateTimeZone class, instead of an identifier string.</para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>in_group</methodname></para>
+
+                  <para>Check whether the user is in a (primary or secondary)
+                  group. Takes one argument, the group or the group's
+                  GUID.</para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>is_descendent</methodname></para>
+
+                  <para>Check whether the user is in a (primary or secondary)
+                  group that is a descendent of the provided group. Takes one
+                  argument, the group or the group's GUID.</para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>password</methodname></para>
+
+                  <para>Change the user's password. Takes one argument, the
+                  new password.</para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>print_form</methodname></para>
+
+                  <para>Print a form to edit the user. Returns the form's
+                  module.</para>
+                </listitem>
+              </itemizedlist></para>
           </section>
 
           <section>
             <title>Group</title>
 
-            <para></para>
+            <para>The group class is also very similar to the entity class.
+            Its interface also extends
+            <interfacename>data_object_interface</interfacename>. It shares
+            the same methods with entities that the
+            <classname>user</classname> class shares. It also must act like
+            entities in the same way users do. Again, this does not include
+            support of tags.</para>
+
+            <para>Groups are hierarchical, and all children of a group have
+            the group in their <varname>parent</varname> variable. This makes
+            traversal up the hierarchy very easy. However, traversal down the
+            hierarchy is not as easy. It requires the use of the
+            <methodname>get_children</methodname> or
+            <methodname>get_descendents</methodname> methods.</para>
+
+            <para>Groups can also have a logo. This allows an easy visual
+            representation of a user's position in the group hierarchy. This
+            feature is especially useful for systems which use sports teams,
+            subsidiary companies, store locations, countries, guilds, etc. If
+            the current group doesn't have an associated logo, the user
+            manager should traverse up the hierarchy until it finds a group
+            with a logo, or return the default logo if it can't find
+            one.</para>
+
+            <para>Groups have several useful methods:<itemizedlist>
+                <listitem>
+                  <para><methodname>disable</methodname></para>
+
+                  <para>Disable the group.</para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>enable</methodname></para>
+
+                  <para>Enable the group.</para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>is_descendent</methodname></para>
+
+                  <para>Check whether the group is a descendent of the
+                  provided group. Takes one argument, the group or the group's
+                  GUID.</para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>get_children</methodname></para>
+
+                  <para>Gets an array of the group's child groups.</para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>get_descendents</methodname></para>
+
+                  <para>Gets an array of the group's descendent groups. Takes
+                  a boolean argument (defaults to false), whether to include
+                  itself in the returned array.</para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>get_level</methodname></para>
+
+                  <para>Get the number of parents the group has. If the group
+                  is a top level group, this will return 0. If it is a child
+                  of a top level group, this will return 1. If it is a
+                  grandchild of a top level group, this will return 2, and so
+                  on.</para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>get_logo</methodname></para>
+
+                  <para>Find the location of the group's current logo image.
+                  Takes a boolean argument (defaults to false), whether to
+                  return a full URL, instead of a relative one. Returns the
+                  URL of the logo image.</para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>get_users</methodname></para>
+
+                  <para>Gets an array of users in the group. Some user
+                  managers may return only enabled users, so don't rely on
+                  this returning all users. Takes a boolean argument (defaults
+                  to false), whether to include users in all descendent groups
+                  too.</para>
+                </listitem>
+
+                <listitem>
+                  <para><methodname>print_form</methodname></para>
+
+                  <para>Print a form to edit the group. Returns the form's
+                  module.</para>
+                </listitem>
+              </itemizedlist></para>
           </section>
         </section>
       </section>
@@ -4867,7 +5299,7 @@ if (!pines_depend('ability', 'com_example/viewwidgets|com_example/viewownwidgets
         variable under <varname>$pines</varname> to a string containing the
         class name. For example, if a component, com_xmlentity, is providing
         the entity manager service, it would have something like the following
-        in an init script such as
+        example in an init script such as
         <filename>i10set.php</filename>.<informalexample>
             <bridgehead>Setting a Component as a System Service in an Init
             Script</bridgehead>
@@ -4901,7 +5333,10 @@ $pines-&gt;entity_manager = 'com_xmlentity';
         template service. They also must use their main class, which only
         needs to extend the <classname>template</classname> class. The
         <classname>template</classname> class already implements
-        <interfacename>template_interface</interfacename>.</para>
+        <interfacename>template_interface</interfacename>. Additional
+        restrictions apply when creating templates, which will be discussed in
+        the <link linkend="templates">Templates</link> chapter of Part
+        II.</para>
       </section>
     </chapter>
 
