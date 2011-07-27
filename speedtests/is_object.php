@@ -24,7 +24,7 @@ echo 'is_object :  '.($end_time - $start_time)."\n";
 
 $start_time = microtime(true);
 for ($i = 0; $i < $count; $i++) {
-	if (!(object) $test === $test || (object) $test2 === $test2 || (object) $test3 === $test3 || (object) $test4 === $test4) {
+	if ((object) $test !== $test || (object) $test2 === $test2 || (object) $test3 === $test3 || (object) $test4 === $test4) {
 		echo 'error';
 		break;
 	}

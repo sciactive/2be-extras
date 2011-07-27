@@ -24,7 +24,7 @@ echo 'is_array  :  '.($end_time - $start_time)."\n";
 
 $start_time = microtime(true);
 for ($i = 0; $i < $count; $i++) {
-	if (!(array) $test === $test || (array) $test2 === $test2 || (array) $test3 === $test3 || (array) $test4 === $test4) {
+	if ((array) $test !== $test || (array) $test2 === $test2 || (array) $test3 === $test3 || (array) $test4 === $test4) {
 		echo 'error';
 		break;
 	}

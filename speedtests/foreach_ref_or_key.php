@@ -29,7 +29,7 @@ $test = explode(',', str_pad('1', 9999, ',1'));
 
 $start_time = microtime(true);
 for ($i = 0; $i < $count; $i++) {
-	foreach($test as &$value) {
+	foreach($test as $key => &$value) {
 		switch ($value) {
 			case '1':
 				$value = '0';
