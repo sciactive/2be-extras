@@ -50,7 +50,13 @@
       <section>
         <title>Part II: Application Development</title>
 
-        <para></para>
+        <para>Part II focuses on design of components and templates in the
+        Pines framework. It expands on the features of Pines Core, explaining
+        how to use them in a real environment. Actions, classes, views, init
+        and kill scripts, and other aspects of designing a Pines component are
+        discussed in depth. By the end of this part, you will be able to build
+        at least a simple Pines component. You will be ready to explore the
+        advanced features of Pines and experiment on your own.</para>
       </section>
 
       <section>
@@ -1026,7 +1032,7 @@ $pines-&gt;redirect(pines_url('com_example', 'widgets/list'), 301);</programlist
             formatted.<informalexample>
                 <bridgehead>Formatting Content for Output</bridgehead>
 
-                <programlisting language="php">&lt;div&gt;
+                <programlisting language="html+php">&lt;div&gt;
     &lt;?php echo $pines-&gt;format_content($post-&gt;content); ?&gt;
 &lt;/div&gt;</programlisting>
               </informalexample></para>
@@ -1190,7 +1196,7 @@ $pines-&gt;hook-&gt;add_callback('$pines-&gt;format_content', -10, 'com_example_
               </table><informalexample>
                 <bridgehead>Formatting a Date</bridgehead>
 
-                <programlisting language="php">&lt;div&gt;
+                <programlisting language="html+php">&lt;div&gt;
     &lt;?php echo $pines-&gt;format_date($timestamp, 'custom', 'l jS \of F Y h:i:s A', 'America/Los_Angeles'); ?&gt;
 &lt;/div&gt;</programlisting>
               </informalexample></para>
@@ -1204,7 +1210,7 @@ $pines-&gt;hook-&gt;add_callback('$pines-&gt;format_content', -10, 'com_example_
             format. E.g. "(800) 555-1234 x56".<informalexample>
                 <bridgehead>Formatting a Phone Number</bridgehead>
 
-                <programlisting language="php">&lt;div&gt;
+                <programlisting language="html+php">&lt;div&gt;
     &lt;?php echo $pines-&gt;format_phone('1800555123456'); ?&gt;
 &lt;/div&gt;</programlisting>
               </informalexample></para>
@@ -2135,7 +2141,7 @@ $pines-&gt;menu-&gt;menu_arrays[] = array(
           module in the menu's requested position.<informalexample>
               <bridgehead>Example menu.json File</bridgehead>
 
-              <programlisting>[
+              <programlisting language="js">[
     {
         "path": "main_menu/other/example",
         "text": "Example",
@@ -2255,14 +2261,14 @@ $pines-&gt;page-&gt;detach_module($module, 'content');</programlisting>
               <bridgehead>Rendering the Modules in a Position Using a
               Model</bridgehead>
 
-              <programlisting language="php">&lt;div id="modules_left"&gt;
+              <programlisting language="html+php">&lt;div id="modules_left"&gt;
     &lt;?php echo $pines-&gt;page-&gt;render_modules('left', 'module_sidebar'); ?&gt;
 &lt;/div&gt;</programlisting>
             </informalexample></para>
 
           <para>Under special circumstances, you may need to only output
           certain data to the client. For example, when you are returning JSON
-          data to an AJAX request. To do this, set the
+          data to an Ajax request. To do this, set the
           <varname>override</varname> variable to true, then pass the content
           to <methodname>override_doc()</methodname>.<informalexample>
               <bridgehead>Overriding the Page</bridgehead>
@@ -3179,7 +3185,7 @@ $conf-&gt;save_config();</programlisting>
             file.<informalexample>
                 <bridgehead>Typical config.php File</bridgehead>
 
-                <programlisting language="php">&lt;?php
+                <programlisting language="html+php">&lt;?php
 defined('P_RUN') or die('Direct access prohibited');
 return array (
   0 =&gt; 
@@ -3222,7 +3228,7 @@ return array (
           ensure it is only called when outputting HTML.<informalexample>
               <bridgehead>Using the Editor Service in a View</bridgehead>
 
-              <programlisting language="php">&lt;?php
+              <programlisting language="html+php">&lt;?php
 /**
  * Prints editors.
  *
@@ -4324,7 +4330,7 @@ $entity-&gt;save();</programlisting>
           outputting HTML.<informalexample>
               <bridgehead>Using the Icon Service</bridgehead>
 
-              <programlisting language="php">&lt;?php
+              <programlisting language="html+php">&lt;?php
 defined('P_RUN') or die('Direct access prohibited');
 $pines-&gt;icons-&gt;load();
 ?&gt;
@@ -4530,7 +4536,7 @@ $link = $pines-&gt;template-&gt;url();</programlisting>
           only called when outputting HTML.<informalexample>
               <bridgehead>Using the Uploader Service in a View</bridgehead>
 
-              <programlisting language="php">&lt;?php
+              <programlisting language="html+php">&lt;?php
 /**
  * Prints an uploader.
  *
@@ -5304,7 +5310,7 @@ $entities = $pines-&gt;entity_manager-&gt;get_entities(
             <bridgehead>Setting a Component as a System Service in an Init
             Script</bridgehead>
 
-            <programlisting language="php">&lt;?php
+            <programlisting language="html+php">&lt;?php
 /**
  * Set the system entity manager.
  *
@@ -5343,7 +5349,210 @@ $pines-&gt;entity_manager = 'com_xmlentity';
     <chapter>
       <title>Pines JavaScript Object</title>
 
-      <para></para>
+      <para>The Pines JavaScript object is a small, simple JavaScript library
+      mainly used to aid in development of complex Ajax technologies. Using
+      the included functions to load JavaScript and CSS allows templates to
+      load a page's requirements without needing to reload the page. The Pines
+      object also lets a page's content load first, letting the user see the
+      page as soon as the browser can render it.</para>
+
+      <para>Every component is strongly encouraged to take advantage of the
+      Pines JavaScript object. Not only will it ensure compatibility with Ajax
+      enabled templates, it will help control the execution order of your
+      JavaScript and prevent your scripts from accidentally being loaded
+      twice. Every HTML/XHTML template is required to load the object, so you
+      can use it without any extra code.</para>
+
+      <para>The Pines JavaScript file
+      (<filename>system/includes/pines.js</filename>) begins by adding an
+      indexOf method to the array prototype. This ensures that the method will
+      be available in all browsers. It then creates a global variable called
+      <varname>pines</varname>. This object has two variables, which are
+      filled by the <filename>js.php</filename> script at the end of the
+      file.<itemizedlist>
+          <listitem>
+            <para><varname>full_location</varname></para>
+
+            <para>The full location of the Pines installation. (The URL with
+            http:// or https://.)</para>
+          </listitem>
+
+          <listitem>
+            <para><varname>rela_location</varname></para>
+
+            <para>The relative location of the Pines installation. (A relative
+            URL.)</para>
+          </listitem>
+        </itemizedlist></para>
+
+      <para>The object has many useful methods. Since it will always be loaded
+      before any component's JavaScript, you can control the order in which
+      your component's JavaScript and CSS is loaded even relative to other
+      components.<table>
+          <title>Pines JavaScript Object Methods</title>
+
+          <tgroup cols="3">
+            <colspec colnum="2" colwidth="3*" />
+
+            <colspec colnum="3" colwidth="7*" />
+
+            <thead>
+              <row>
+                <entry>Method</entry>
+
+                <entry>Arguments</entry>
+
+                <entry>Description</entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry><methodname>get</methodname></entry>
+
+                <entry>url, params, target</entry>
+
+                <entry>Cause the browser to request a URL using GET. This is
+                preferred over setting <varname>window.location</varname>, as
+                it allows templates and other components to intercept the call
+                and enhance its functionality, like using Ajax to complete it.
+                Target can be one of "_self", "_top", "_parent", "_blank", or
+                a string.</entry>
+              </row>
+
+              <row>
+                <entry><methodname>post</methodname></entry>
+
+                <entry>url, params, target</entry>
+
+                <entry>Cause the browser to request a URL using POST. Same
+                explanation as above.</entry>
+              </row>
+
+              <row>
+                <entry><methodname>paused</methodname></entry>
+
+                <entry></entry>
+
+                <entry>Determine whether JavaScript loading is currently
+                paused.</entry>
+              </row>
+
+              <row>
+                <entry><methodname>pause</methodname></entry>
+
+                <entry></entry>
+
+                <entry>Pause JavaScript loading. This causes new items to be
+                queued until loading is resumed.</entry>
+              </row>
+
+              <row>
+                <entry><methodname>play</methodname></entry>
+
+                <entry></entry>
+
+                <entry>Resume JavaScript loading.</entry>
+              </row>
+
+              <row>
+                <entry><methodname>ready</methodname></entry>
+
+                <entry>function</entry>
+
+                <entry>Executes the function after all JavaScript files are
+                loaded and the DOM is ready.</entry>
+              </row>
+
+              <row>
+                <entry><methodname>load</methodname></entry>
+
+                <entry>function</entry>
+
+                <entry>Executes the function in turn with the loading
+                JavaScript files. Like if the function were a JavaScript file
+                loaded with <methodname>loadjs</methodname>.</entry>
+              </row>
+
+              <row>
+                <entry><methodname>loadjs</methodname></entry>
+
+                <entry>url, multiple</entry>
+
+                <entry>Load a JavaScript file in turn. If multiple is false,
+                which is the default, the file will only be loaded if it has
+                not been loaded by this function before.</entry>
+              </row>
+
+              <row>
+                <entry><methodname>loadcss</methodname></entry>
+
+                <entry>url, multiple</entry>
+
+                <entry>Load a CSS file in turn. If multiple is false, which is
+                the default, the file will only be loaded if it has not been
+                loaded by this function before.</entry>
+              </row>
+
+              <row>
+                <entry><methodname>notice</methodname></entry>
+
+                <entry>message, title</entry>
+
+                <entry>Present a notice to the user. It should be roughly
+                equivalent to calling <function>pines_notice</function> in
+                PHP.</entry>
+              </row>
+
+              <row>
+                <entry><methodname>error</methodname></entry>
+
+                <entry>message, title</entry>
+
+                <entry>Present an error to the user. It should be roughly
+                equivalent to calling <function>pines_error</function> in
+                PHP.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table></para>
+
+      <para>Calling the <varname>pines</varname> object as a function is a
+      shortcut for <methodname>pines.ready</methodname>.<informalexample>
+          <bridgehead>Using the Pines JavaScript Object to Load
+          JavaScript</bridgehead>
+
+          <programlisting language="js+php">// These files will be loaded first.
+pines.loadcss("&lt;?php echo htmlspecialchars($pines-&gt;config-&gt;location); ?&gt;components/com_example/includes/style.css");
+pines.loadjs("&lt;?php echo htmlspecialchars($pines-&gt;config-&gt;location); ?&gt;components/com_example/includes/script1.js");
+
+// This function won't run until all files are loaded and the DOM is ready.
+pines(function(){
+    // make widgets, get the page ready, etc.
+    pines.notice("Everything is ready!");
+});
+
+// This, however, will run right after script1.js is loaded. (The DOM will NOT be ready.)
+pines.load(function(){
+    pines.notice("Not ready yet, hold on.");
+    // script2.js needs this value, but it's only available in PHP, which is why I'm
+    // in a load() call and not a ready() call.
+    pines.com_example_needed_value = &lt;?php echo json_encode($needed_var); ?&gt;;
+});
+
+// This script is loaded after the above function is done, so the variable is available.
+pines.loadjs("&lt;?php echo htmlspecialchars($pines-&gt;config-&gt;location); ?&gt;components/com_example/includes/script2.js");</programlisting>
+        </informalexample></para>
+
+      <para>The Pines JavaScript object, even though it is only a small part
+      of the Pines Framework, is an important tool to understand to make the
+      most out of Pines. It helps your web applications be more responsive,
+      load faster, and interact with other components better. Try out the Ajax
+      feature of the Pines template. Keep in mind that the pages are created
+      in exactly the same way as without the Ajax feature. The components
+      can't tell the difference, even though every page is loaded with Ajax!
+      The Pines JavaScript object makes this complex system not only possible,
+      but easy!</para>
     </chapter>
   </part>
 
@@ -5359,8 +5568,26 @@ $pines-&gt;entity_manager = 'com_xmlentity';
         <para></para>
       </section>
 
+      <section>
+        <title>Actions</title>
+
+        <para></para>
+      </section>
+
+      <section>
+        <title>Classes</title>
+
+        <para></para>
+      </section>
+
       <section xml:id="views">
         <title>Views</title>
+
+        <para></para>
+      </section>
+
+      <section>
+        <title>Init Scripts</title>
 
         <para></para>
       </section>

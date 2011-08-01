@@ -7,6 +7,21 @@
 %% Just use the original package and pass the options
 \RequirePackageWithOptions{docbook}
 
+%% Syntax Highlighting
+\usepackage{minted,framed,color}
+\definecolor{mintedbg}{rgb}{0.96,0.97,0.98}
+% Second environment version
+% Needs: shadecolor, \boxwidth and the framed package
+\newlength{\boxwidth}
+\newenvironment{mintedbox}{%
+  %%\def\FrameCommand{\fboxsep=\FrameSep \fboxrule=\FrameRule \fcolorbox{black}{mintedbg}}%
+  \def\FrameCommand{\fboxsep=1pt \fboxrule=\FrameRule \fcolorbox{black}{mintedbg}}%
+  \MakeFramed {\setlength{\boxwidth}{\textwidth}
+  \addtolength{\boxwidth}{-2\FrameSep}
+  \addtolength{\boxwidth}{-2\FrameRule}
+  \setlength{\hsize}{\boxwidth} \FrameRestore}}%
+{\endMakeFramed}
+
 %% Margins
 %\addtolength{\textwidth}{.6in}
 %\addtolength{\hoffset}{-.3in}

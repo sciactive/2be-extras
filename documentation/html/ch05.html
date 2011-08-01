@@ -1,7 +1,102 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Chapter 5. Pines JavaScript Object</title><link rel="stylesheet" href="docbook.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.75.2" /><link rel="home" href="index.html" title="Pines Development" /><link rel="up" href="pt01.html" title="Part I. The Pines Framework" /><link rel="prev" href="ch04s02.html" title="4.2. Creating a Service" /><link rel="next" href="pt02.html" title="Part II. Application Development" /></head><body><a xmlns:fo="http://www.w3.org/1999/XSL/Format" href="index.html"><div class="header">Pines Development</div></a><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 5. Pines JavaScript Object</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch04s02.html">Prev</a> </td><th width="60%" align="center">Part I. The Pines Framework</th><td width="20%" align="right"> <a accesskey="n" href="pt02.html">Next</a></td></tr></table><hr /></div><div class="chapter" title="Chapter 5. Pines JavaScript Object"><div class="titlepage"><div><div><h2 class="title"><a id="id1236908"></a>Chapter 5. Pines JavaScript Object</h2></div></div></div>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Chapter 5. Pines JavaScript Object</title><link rel="stylesheet" href="docbook.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.75.2" /><link rel="home" href="index.html" title="Pines Development" /><link rel="up" href="pt01.html" title="Part I. The Pines Framework" /><link rel="prev" href="ch04s02.html" title="4.2. Creating a Service" /><link rel="next" href="pt02.html" title="Part II. Application Development" /></head><body><a xmlns:fo="http://www.w3.org/1999/XSL/Format" href="index.html"><div class="header">Pines Development</div></a><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 5. Pines JavaScript Object</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch04s02.html">Prev</a> </td><th width="60%" align="center">Part I. The Pines Framework</th><td width="20%" align="right"> <a accesskey="n" href="pt02.html">Next</a></td></tr></table><hr /></div><div class="chapter" title="Chapter 5. Pines JavaScript Object"><div class="titlepage"><div><div><h2 class="title"><a id="id1227711"></a>Chapter 5. Pines JavaScript Object</h2></div></div></div>
       
 
-      <p></p>
+      <p>The Pines JavaScript object is a small, simple JavaScript library
+      mainly used to aid in development of complex Ajax technologies. Using
+      the included functions to load JavaScript and CSS allows templates to
+      load a page's requirements without needing to reload the page. The Pines
+      object also lets a page's content load first, letting the user see the
+      page as soon as the browser can render it.</p>
+
+      <p>Every component is strongly encouraged to take advantage of the
+      Pines JavaScript object. Not only will it ensure compatibility with Ajax
+      enabled templates, it will help control the execution order of your
+      JavaScript and prevent your scripts from accidentally being loaded
+      twice. Every HTML/XHTML template is required to load the object, so you
+      can use it without any extra code.</p>
+
+      <p>The Pines JavaScript file
+      (<code class="filename">system/includes/pines.js</code>) begins by adding an
+      indexOf method to the array prototype. This ensures that the method will
+      be available in all browsers. It then creates a global variable called
+      <code class="varname">pines</code>. This object has two variables, which are
+      filled by the <code class="filename">js.php</code> script at the end of the
+      file.</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+            <p><code class="varname">full_location</code></p>
+
+            <p>The full location of the Pines installation. (The URL with
+            http:// or https://.)</p>
+          </li><li class="listitem">
+            <p><code class="varname">rela_location</code></p>
+
+            <p>The relative location of the Pines installation. (A relative
+            URL.)</p>
+          </li></ul></div>
+
+      <p>The object has many useful methods. Since it will always be loaded
+      before any component's JavaScript, you can control the order in which
+      your component's JavaScript and CSS is loaded even relative to other
+      components.</p><div class="table"><a id="id1227781"></a><p class="title"><b>Table 5.1. Pines JavaScript Object Methods</b></p><div class="table-contents">
+          
+
+          <table summary="Pines JavaScript Object Methods" border="1"><colgroup><col /><col /><col /></colgroup><thead><tr><th>Method</th><th>Arguments</th><th>Description</th></tr></thead><tbody><tr><td><code class="methodname">get</code></td><td>url, params, target</td><td>Cause the browser to request a URL using GET. This is
+                preferred over setting <code class="varname">window.location</code>, as
+                it allows templates and other components to intercept the call
+                and enhance its functionality, like using Ajax to complete it.
+                Target can be one of "_self", "_top", "_parent", "_blank", or
+                a string.</td></tr><tr><td><code class="methodname">post</code></td><td>url, params, target</td><td>Cause the browser to request a URL using POST. Same
+                explanation as above.</td></tr><tr><td><code class="methodname">paused</code></td><td> </td><td>Determine whether JavaScript loading is currently
+                paused.</td></tr><tr><td><code class="methodname">pause</code></td><td> </td><td>Pause JavaScript loading. This causes new items to be
+                queued until loading is resumed.</td></tr><tr><td><code class="methodname">play</code></td><td> </td><td>Resume JavaScript loading.</td></tr><tr><td><code class="methodname">ready</code></td><td>function</td><td>Executes the function after all JavaScript files are
+                loaded and the DOM is ready.</td></tr><tr><td><code class="methodname">load</code></td><td>function</td><td>Executes the function in turn with the loading
+                JavaScript files. Like if the function were a JavaScript file
+                loaded with <code class="methodname">loadjs</code>.</td></tr><tr><td><code class="methodname">loadjs</code></td><td>url, multiple</td><td>Load a JavaScript file in turn. If multiple is false,
+                which is the default, the file will only be loaded if it has
+                not been loaded by this function before.</td></tr><tr><td><code class="methodname">loadcss</code></td><td>url, multiple</td><td>Load a CSS file in turn. If multiple is false, which is
+                the default, the file will only be loaded if it has not been
+                loaded by this function before.</td></tr><tr><td><code class="methodname">notice</code></td><td>message, title</td><td>Present a notice to the user. It should be roughly
+                equivalent to calling <code class="function">pines_notice</code> in
+                PHP.</td></tr><tr><td><code class="methodname">error</code></td><td>message, title</td><td>Present an error to the user. It should be roughly
+                equivalent to calling <code class="function">pines_error</code> in
+                PHP.</td></tr></tbody></table>
+        </div></div><p><br class="table-break" /></p>
+
+      <p>Calling the <code class="varname">pines</code> object as a function is a
+      shortcut for <code class="methodname">pines.ready</code>.</p><div class="informalexample">
+          <h2><a id="id1228040"></a>Using the Pines JavaScript Object to Load
+          JavaScript</h2>
+
+          <pre class="programlisting">// These files will be loaded first.
+pines.loadcss("&lt;?php echo htmlspecialchars($pines-&gt;config-&gt;location); ?&gt;components/com_example/includes/style.css");
+pines.loadjs("&lt;?php echo htmlspecialchars($pines-&gt;config-&gt;location); ?&gt;components/com_example/includes/script1.js");
+
+// This function won't run until all files are loaded and the DOM is ready.
+pines(function(){
+    // make widgets, get the page ready, etc.
+    pines.notice("Everything is ready!");
+});
+
+// This, however, will run right after script1.js is loaded. (The DOM will NOT be ready.)
+pines.load(function(){
+    pines.notice("Not ready yet, hold on.");
+    // script2.js needs this value, but it's only available in PHP, which is why I'm
+    // in a load() call and not a ready() call.
+    pines.com_example_needed_value = &lt;?php echo json_encode($needed_var); ?&gt;;
+});
+
+// This script is loaded after the above function is done, so the variable is available.
+pines.loadjs("&lt;?php echo htmlspecialchars($pines-&gt;config-&gt;location); ?&gt;components/com_example/includes/script2.js");</pre>
+        </div>
+
+      <p>The Pines JavaScript object, even though it is only a small part
+      of the Pines Framework, is an important tool to understand to make the
+      most out of Pines. It helps your web applications be more responsive,
+      load faster, and interact with other components better. Try out the Ajax
+      feature of the Pines template. Keep in mind that the pages are created
+      in exactly the same way as without the Ajax feature. The components
+      can't tell the difference, even though every page is loaded with Ajax!
+      The Pines JavaScript object makes this complex system not only possible,
+      but easy!</p>
     </div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="pt01.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="pt02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">4.2. Creating a Service </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Part II. Application Development</td></tr></table></div></body></html>
