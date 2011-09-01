@@ -1,7 +1,7 @@
 #! /bin/bash
 
 echo "Getting dependencies..."
-sudo apt-get install xmlto dblatex texlive-xetex ttf-linux-libertine ttf-freefont python-pygments
+sudo apt-get install xmlto dblatex texlive-xetex ttf-linux-libertine ttf-dejavu python-pygments
 
 echo "Installing custom Pygments alterations..."
 sudo cp sources-pdf/_mapping.py /usr/share/pyshared/pygments/formatters/_mapping.py

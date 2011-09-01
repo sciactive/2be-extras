@@ -9,6 +9,7 @@
          url('fonts/linlibertine_re-webfont.svg#LinuxLibertineORegular') format('svg');
     font-weight: normal;
     font-style: normal;
+
 }
 @font-face {
     font-family: 'LinuxBiolinumORegular';
@@ -19,20 +20,23 @@
          url('fonts/biolinum_re-0.4.1ro-webfont.svg#LinuxBiolinumORegular') format('svg');
     font-weight: normal;
     font-style: normal;
+
 }
 @font-face {
-    font-family: 'FreeMonoMedium';
-    src: url('fonts/freemono-webfont.eot');
-    src: url('fonts/freemono-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/freemono-webfont.woff') format('woff'),
-         url('fonts/freemono-webfont.ttf') format('truetype'),
-         url('fonts/freemono-webfont.svg#FreeMonoMedium') format('svg');
+    font-family: 'DejaVuSansMonoBook';
+    src: url('fonts/dejavusansmono-webfont.eot');
+    src: url('fonts/dejavusansmono-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/dejavusansmono-webfont.woff') format('woff'),
+         url('fonts/dejavusansmono-webfont.ttf') format('truetype'),
+         url('fonts/dejavusansmono-webfont.svg#DejaVuSansMonoBook') format('svg');
     font-weight: normal;
     font-style: normal;
+
 }
 
 body {
 	font-family: 'LinuxLibertineORegular', serif;
+	font-size: 15px;
 	background: transparent url('watermark-small.png') no-repeat fixed bottom right;
 }
 
@@ -76,7 +80,9 @@ table {
 }
 
 code, .command, .filename {
-	font-family: 'FreeMonoMedium', monospace;
+	font-family: 'DejaVuSansMonoBook', monospace;
+	font-size: 12px;
+	line-height: 1em;
 }
 
 .emphasis {
@@ -89,8 +95,8 @@ code, .command, .filename {
 }
 
 .screen {
-	font-family: 'FreeMonoMedium', monospace;
-	font-size: 1em;
+	font-family: 'DejaVuSansMonoBook', monospace;
+	font-size: 12px;
 	display: block;
 	padding: 10px;
 	border: 1px solid #bbb;
@@ -103,8 +109,8 @@ code, .command, .filename {
 }
 
 .programlisting {
-	font-family: 'FreeMonoMedium', monospace;
-	font-size: 1em;
+	font-family: 'DejaVuSansMonoBook', monospace;
+	font-size: 12px;
 	display: block;
 	padding: 10px;
 	border: 1px solid #bbb;

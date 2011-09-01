@@ -25,12 +25,13 @@
 <xsl:param name="term.breakline">1</xsl:param>
 
 <!-- Fonts -->
+<!-- FreeMono causes weird errors with Pygments, so can't use it. -->
 <xsl:param name="xetex.font">
   <xsl:text>\setmainfont{Linux Libertine O}
 </xsl:text>
   <xsl:text>\setsansfont{Linux Biolinum O}
 </xsl:text>
-  <xsl:text>\setmonofont[Scale=MatchLowercase,HyphenChar=None]{FreeMono}
+  <xsl:text>\setmonofont[Scale=MatchLowercase,HyphenChar=None]{DejaVu Sans Mono}
 </xsl:text>
 </xsl:param>
 
