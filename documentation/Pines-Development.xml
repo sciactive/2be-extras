@@ -1446,6 +1446,13 @@ echo $pines-&gt;config-&gt;tpl_green-&gt;tagline;</programlisting>
                   </row>
 
                   <row>
+                    <entry>extension</entry>
+
+                    <entry>Check whether PHP extensions are installed,
+                    enabled, and are certain versions.</entry>
+                  </row>
+
+                  <row>
                     <entry>function</entry>
 
                     <entry>Check whether functions exist.</entry>
@@ -1494,6 +1501,10 @@ echo $pines-&gt;config-&gt;tpl_green-&gt;tagline;</programlisting>
 
               <programlisting language="php">if (!$pines-&gt;depend-&gt;check('component', 'com_example&gt;=2.0|com_sample')) {
     pines_notice('This feature is only available when you have com_example 2.0 or greater, or com_sample.');
+    return;
+}
+if (!$pines-&gt;depend-&gt;check('extension', 'mysql|mysqli')) {
+    pines_notice('It appears the MySQL extension is not installed. Please install it to continue.');
     return;
 }</programlisting>
             </informalexample></para>
@@ -3223,9 +3234,12 @@ return array (
           it provides a simplified editor, textareas with the class
           "peditor-simple" will use this editor instead.</para>
 
-          <para>The editor has one method, <methodname>load</methodname>,
-          which loads the editor. This method should be called from a view, to
-          ensure it is only called when outputting HTML.<informalexample>
+          <para>The editor has a method, <methodname>load</methodname>, which
+          loads the editor. This method should be called from a view, to
+          ensure it is only called when outputting HTML. The editor also has a
+          method, <methodname>add_css</methodname>, which takes one argument,
+          the URL of a stylesheet to use for styling WYSIWYG
+          content.<informalexample>
               <bridgehead>Using the Editor Service in a View</bridgehead>
 
               <programlisting language="html+php">&lt;?php
@@ -3241,6 +3255,8 @@ defined('P_RUN') or die('Direct access prohibited');
 $this-&gt;title = 'Editors';
 // Load the editor.
 $pines-&gt;editor-&gt;load();
+// Load a custom stylesheet.
+$pines-&gt;editor-&gt;add_css($pines-&gt;config-&gt;location.'components/com_example/includes/custom.css');
 ?&gt;
 &lt;div&gt;Regular Editor&lt;/div&gt;
 &lt;div&gt;&lt;textarea rows="3" cols="35" class="peditor"&gt;&lt;/textarea&gt;&lt;/div&gt;
