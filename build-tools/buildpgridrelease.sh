@@ -11,7 +11,7 @@ cp "../../pgrid/jquery.pgrid.touch.css" "jquery.pgrid/"
 cp "../../pgrid/jquery.pgrid.js" "jquery.pgrid/"
 
 echo Compressing JavaScript with Google Closure Compiler.
-head -n 8 jquery.pgrid/jquery.pgrid.js > jquery.pgrid/jquery.pgrid.min.js
+head -n 10 jquery.pgrid/jquery.pgrid.js > jquery.pgrid/jquery.pgrid.min.js
 java -jar compiler.jar --js=jquery.pgrid/jquery.pgrid.js >> jquery.pgrid/jquery.pgrid.min.js
 
 echo Zipping the whole directory.
