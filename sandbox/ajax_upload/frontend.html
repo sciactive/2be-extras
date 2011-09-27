@@ -11,10 +11,29 @@
 					var form = $("<form method=\"post\" enctype=\"multipart/form-data\" action=\"backend.php\" target=\""+id+"\"></form>").appendTo("body");
 					var target = $("<iframe id=\""+id+"\" name=\""+id+"\" src=\"\" style=\"display: none;\"></iframe>").appendTo(form);
 					var input = $("<input name=\"file[]\" type=\"file\" multiple=\"multiple\" style=\"display: none;\" />").appendTo(form).change(function(){
+//						var getAllEvents = function(element){
+//							var result = [];
+//							for (var key in element) {
+//								if (key.indexOf('on') === 0){
+//									result.push(key);
+//								}
+//							}
+//							return result.join(' ');
+//						};
+//						target.bind(getAllEvents(target.get()[0]), function(e){
+//							console.dir([e]);
+//						});
 						target.get()[0].pines_upload_done = function(){
-							$("#output").append($("body", target.get()[0].contentDocument).html());
+							var target_dom = target.get()[0];
+							var body;
+							if (target_dom.contentDocument)
+								body = $("body", target_dom.contentDocument);
+							else
+								body = $("body", target_dom.contentWindow.document);
+							$("#output").append(body.html());
+							form.remove();
 						};
-						form.submit().remove();
+						form.submit().hide();
 					});
 					if ($.browser.msie) {
 						$(this).after(form);
