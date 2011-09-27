@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>AJAX Uploader</title>
+		<meta charset="utf-8" />
+		<script src="../jquery.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#file_button").click(function(){
+					var id = "upload_frame_"+(new Date()).getTime()+"_"+Math.ceil(Math.random() * 10000000);
+					var form = $("<form method=\"post\" enctype=\"multipart/form-data\" action=\"backend.php\" target=\""+id+"\"></form>").appendTo("body");
+					var target = $("<iframe id=\""+id+"\" name=\""+id+"\" src=\"\" style=\"display: none;\"></iframe>").appendTo(form);
+					var input = $("<input name=\"file[]\" type=\"file\" multiple=\"multiple\" style=\"display: none;\" />").appendTo(form).change(function(){
+						target.get()[0].pines_upload_done = function(){
+							$("#output").append($("body", target.get()[0].contentDocument).html());
+						};
+						form.submit().remove();
+					});
+					if ($.browser.msie) {
+						$(this).after(form);
+						input.css({"display": "inline"});
+					} else
+						input.click();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<button type="button" id="file_button">Upload File(s)</button>
+		<div id="output"></div>
+	</body>
+</html>
