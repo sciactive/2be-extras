@@ -1203,6 +1203,206 @@ $pines-&gt;hook-&gt;add_callback('$pines-&gt;format_content', -10, 'com_example_
           </section>
 
           <section>
+            <title>Formatting a Date Range</title>
+
+            <para>To format a date or time range using two timestamps, use
+            <methodname>format_date_range</methodname>. Like
+            <methodname>format_date</methodname>, the current user's timezone
+            is used for calculations. One wouldn't think that a timezone
+            wouldn't be a concern when showing a range of time, but if your
+            time range displays hours and a Daylight Savings Time change
+            occurs during it in the selected timezone, you will have a
+            different number of hours than in a timezone without DST.</para>
+
+            <para><parameter>$format</parameter> is built using macros, which
+            are substrings replaced by the corresponding number of units.
+            There are singular macros, such as #year#, which are used if the
+            number of that unit is 1. For example, if the range is 1 year and
+            both #year# and #years# are present, #year# will be used and
+            #years# will be ignored. This allows you to use a different
+            description for each one. You accomplish this by surrounding the
+            macro and its description in curly brackets. If the unit is 0,
+            everything in that curly bracket will be removed. This allows you
+            to place both #year# and #years# and always end up with the right
+            one.</para>
+
+            <para>Since the units in curly brackets that equal 0 are removed,
+            you can include as many as you want and only the relevant ones
+            will be used. If you choose not to include one, such as year, then
+            the next available one will include the time that would have been
+            placed in it. For example, if the time range is 2 years, but you
+            only include months, then months will be set to 24.</para>
+
+            <para>After formatting, any leading and trailing whitespace is
+            trimmed before the result is returned.</para>
+
+            <para><table>
+                <title>Macros Available in Date Range Formats</title>
+
+                <tgroup cols="2">
+                  <colspec colnum="2" colwidth="3*" />
+
+                  <thead>
+                    <row>
+                      <entry>Macro</entry>
+
+                      <entry>Corresponding Value</entry>
+                    </row>
+                  </thead>
+
+                  <tbody>
+                    <row>
+                      <entry><code>#years#</code></entry>
+
+                      <entry>The number of years.</entry>
+                    </row>
+
+                    <row>
+                      <entry><code>#year#</code></entry>
+
+                      <entry>The number 1 if applicable.</entry>
+                    </row>
+
+                    <row>
+                      <entry><code>#months#</code></entry>
+
+                      <entry>The number of months.</entry>
+                    </row>
+
+                    <row>
+                      <entry><code>#month#</code></entry>
+
+                      <entry>The number 1 if applicable.</entry>
+                    </row>
+
+                    <row>
+                      <entry><code>#weeks#</code></entry>
+
+                      <entry>The number of weeks.</entry>
+                    </row>
+
+                    <row>
+                      <entry><code>#week#</code></entry>
+
+                      <entry>The number 1 if applicable.</entry>
+                    </row>
+
+                    <row>
+                      <entry><code>#days#</code></entry>
+
+                      <entry>The number of days.</entry>
+                    </row>
+
+                    <row>
+                      <entry><code>#day#</code></entry>
+
+                      <entry>The number 1 if applicable.</entry>
+                    </row>
+
+                    <row>
+                      <entry><code>#hours#</code></entry>
+
+                      <entry>The number of hours.</entry>
+                    </row>
+
+                    <row>
+                      <entry><code>#hour#</code></entry>
+
+                      <entry>The number 1 if applicable.</entry>
+                    </row>
+
+                    <row>
+                      <entry><code>#minutes#</code></entry>
+
+                      <entry>The number of minutes.</entry>
+                    </row>
+
+                    <row>
+                      <entry><code>#minute#</code></entry>
+
+                      <entry>The number 1 if applicable.</entry>
+                    </row>
+
+                    <row>
+                      <entry><code>#seconds#</code></entry>
+
+                      <entry>The number of seconds.</entry>
+                    </row>
+
+                    <row>
+                      <entry><code>#second#</code></entry>
+
+                      <entry>The number 1 if applicable.</entry>
+                    </row>
+                  </tbody>
+                </tgroup>
+              </table>If <parameter>$format</parameter> is left null, it
+            defaults to the following: "<literal>{#years# years}{#year# year}
+            {#months# months}{#month# month} {#days# days}{#day# day} {#hours#
+            hours}{#hour# hour} {#minutes# minutes}{#minute# minute}
+            {#seconds# seconds}{#second# second}</literal>"</para>
+
+            <para>Here are some examples of formats and what would be
+            outputted given a time range of 2 years 5 months 1 day and 4
+            hours. (These values were calculated on Fri Oct 14 2011 in San
+            Diego, which has DST. 2012 is a leap year.)<itemizedlist>
+                <listitem>
+                  <para><code>#years# years {#days# days}{#day#
+                  day}</code></para>
+
+                  <para><computeroutput>2 years 152
+                  days</computeroutput></para>
+                </listitem>
+
+                <listitem>
+                  <para><code>{#months# months}{#month# month} {#days#
+                  days}{#day# day}</code></para>
+
+                  <para><computeroutput>29 months 1
+                  day</computeroutput></para>
+                </listitem>
+
+                <listitem>
+                  <para><code>{#weeks# weeks}{#week# week} {#days# days}{#day#
+                  day}</code></para>
+
+                  <para><computeroutput>126 weeks 1
+                  day</computeroutput></para>
+                </listitem>
+
+                <listitem>
+                  <para><code>#days# days #hours# hours #minutes#
+                  minutes</code></para>
+
+                  <para><computeroutput>883 days 4 hours 0
+                  minutes</computeroutput></para>
+                </listitem>
+
+                <listitem>
+                  <para><code>{#minutes#min} {#seconds#sec}</code></para>
+
+                  <para><computeroutput>1271760min</computeroutput></para>
+                </listitem>
+
+                <listitem>
+                  <para><code>#seconds#</code></para>
+
+                  <para><computeroutput>76305600</computeroutput></para>
+                </listitem>
+              </itemizedlist></para>
+
+            <informalexample>
+              <bridgehead>Formatting a Date Range</bridgehead>
+
+              <programlisting language="html+php">&lt;div&gt;
+    This warehouse has gone
+    &lt;?php echo $pines-&gt;format_date_range($last_accident, time(), '{#days# days}{#day# day}', 'America/Los_Angeles'); ?&gt;
+    without an accident.
+&lt;/div&gt;</programlisting>
+            </informalexample>
+          </section>
+
+          <section>
             <title>Formatting a Phone Number</title>
 
             <para>To format a phone number, use
@@ -2363,6 +2563,13 @@ $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
                 </row>
 
                 <row>
+                  <entry><function>format_date_range</function></entry>
+
+                  <entry>Shortcut to
+                  <code>$pines-&gt;format_date_range()</code>.</entry>
+                </row>
+
+                <row>
                   <entry><function>format_phone</function></entry>
 
                   <entry>Shortcut to
@@ -3251,6 +3458,7 @@ return array (
  * @copyright SciActive.com
  * @link http://sciactive.com/
  */
+/* @var $pines pines *//* @var $this module */
 defined('P_RUN') or die('Direct access prohibited');
 $this-&gt;title = 'Editors';
 // Load the editor.
@@ -4347,6 +4555,7 @@ $entity-&gt;save();</programlisting>
               <bridgehead>Using the Icon Service</bridgehead>
 
               <programlisting language="html+php">&lt;?php
+/* @var $pines pines *//* @var $this module */
 defined('P_RUN') or die('Direct access prohibited');
 $pines-&gt;icons-&gt;load();
 ?&gt;
@@ -4561,6 +4770,7 @@ $link = $pines-&gt;template-&gt;url();</programlisting>
  * @copyright SciActive.com
  * @link http://sciactive.com/
  */
+/* @var $pines pines *//* @var $this module */
 defined('P_RUN') or die('Direct access prohibited');
 $this-&gt;title = 'Uploader';
 // Load the uploader.
@@ -5335,6 +5545,7 @@ $entities = $pines-&gt;entity_manager-&gt;get_entities(
  * @copyright SciActive.com
  * @link http://sciactive.com/
  */
+/* @var $pines pines */
 defined('P_RUN') or die('Direct access prohibited');
 
 /**
@@ -5529,6 +5740,18 @@ $pines-&gt;entity_manager = 'com_xmlentity';
                 equivalent to calling <function>pines_error</function> in
                 PHP.</entry>
               </row>
+
+              <row>
+                <entry>safe</entry>
+
+                <entry>unsafe</entry>
+
+                <entry>Take untrusted text (unsafe) and make it safe to insert
+                into HTML. This essentially transforms what the browser would
+                interpret as HTML into HTML entities. (Eg.
+                "&lt;strong&gt;Hi&lt;/strong&gt;" becomes
+                "&amp;lt;strong&amp;gt;Hi&amp;lt;/strong&amp;gt;".)</entry>
+              </row>
             </tbody>
           </tgroup>
         </table></para>
@@ -5558,6 +5781,13 @@ pines.load(function(){
 
 // This script is loaded after the above function is done, so the variable is available.
 pines.loadjs("&lt;?php echo htmlspecialchars($pines-&gt;config-&gt;location); ?&gt;components/com_example/includes/script2.js");</programlisting>
+        </informalexample><informalexample>
+          <bridgehead>Using <methodname>pines.safe</methodname> To Sanitize
+          Untrusted Text</bridgehead>
+
+          <programlisting language="js+php">var user_name = prompt("What is your name?", "");
+// Since user_name could contain HTML tags, sanitize it first.
+output.innerHTML = pines.safe(user_name);</programlisting>
         </informalexample></para>
 
       <para>The Pines JavaScript object, even though it is only a small part

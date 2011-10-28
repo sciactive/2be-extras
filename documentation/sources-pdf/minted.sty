@@ -5,7 +5,7 @@
 %% The original source files were:
 %%
 %% minted.dtx  (with options: `package')
-%% Copyright 2010 Konrad Rudolph
+%% Copyright 2010--2011 Konrad Rudolph
 %% 
 %% This work may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3
@@ -22,17 +22,20 @@
 %% 
 %% The Current Maintainer of this work is Konrad Rudolph.
 %% 
-%% This work consists of the files mints.dtx and mints.ins
-%% and the derived file mints.sty.
+%% This work consists of the files minted.dtx and minted.ins
+%% and the derived file minted.sty.
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{minted}[2011/08/30 v1.7 Yet another Pygments shim for LaTeX]
+\ProvidesPackage{minted}[2011/09/17 v1.7 Yet another Pygments shim for LaTeX]
 \RequirePackage{keyval}
 \RequirePackage{fancyvrb}
-\RequirePackage{color}
+\RequirePackage{xcolor}
 \RequirePackage{float}
 \RequirePackage{ifthen}
 \RequirePackage{calc}
 \RequirePackage{ifplatform}
+\DeclareOption{chapter}{\def\minted@float@within{chapter}}
+\DeclareOption{section}{\def\minted@float@within{section}}
+\ProcessOptions\relax
 \ifwindows
   \providecommand\DeleteFile[1]{\immediate\write18{del #1}}
 \else
@@ -96,7 +99,8 @@
 \minted@define@switch{mathescape}{-P mathescape}
 \minted@define@switch{linenos}{-P linenos}
 \minted@define@switch{startinline}{-P startinline}
-\minted@define@switch[-P funcnamehighlighting=False]{funcnamehighlighting}{-P funcnamehighlighting}
+\minted@define@switch[-P funcnamehighlighting=False]%
+  {funcnamehighlighting}{-P funcnamehighlighting}
 \minted@define@opt{gobble}{-F gobble:n=#1}
 \minted@define@opt{bgcolor}{#1}
 \minted@define@extra{frame}
@@ -206,7 +210,9 @@
    {\def\minted@shortname{#1}}
   \expandafter\newcommand\csname\minted@shortname\endcsname[2][]{
     \inputminted[#3,##1]{#2}{##2}}}
-\newfloat{listing}{h}{lol}
+\@ifundefined{minted@float@within}
+ {\newfloat{listing}{h}{lol}}
+ {\newfloat{listing}{h}{lol}[\minted@float@within]}
 \newcommand\listingscaption{Listing}
 \floatname{listing}{\listingscaption}
 \newcommand\listoflistingscaption{List of listings}

@@ -3,7 +3,7 @@
 echo "Building PDF..."
 
 echo "Fetching new minted.sty"
-wget -O sources-pdf/minted.sty.new http://minted.googlecode.com/hg/minted.sty
+wget -O sources-pdf/minted.sty.new http://minted.googlecode.com/files/minted.sty
 
 if [ ! -s sources-pdf/minted.sty.new ]; then
 	echo "Couldn't fetch minted.sty. Using the old copy."
