@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link href="http://pines.hg.sourceforge.net/hgweb/pines/pform/raw-file/tip/pform.css" media="all" rel="stylesheet" type="text/css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.js" type="text/javascript"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js" type="text/javascript"></script>
+		<script src="http://pines.hg.sourceforge.net/hgweb/pines/core/raw-file/tip/system/includes/pines.js" type="text/javascript"></script>
+		<style type="text/css">
+			.furry {
+				background-color: purple !important;
+			}
+			
+			#banana .box {
+				width: 60px;
+				height: 60px;
+				margin: 1em;
+				float: left;
+				background: yellow url(banana.gif) no-repeat center center;
+			}
+			#banana .box.bricks {
+				background-color: #db0005;
+			}
+		</style>
+		<script type="text/javascript">
+			$(function(){
+				var load_ajax = function(safe){
+					if ($("#use_static").is(":checked"))
+						var url = "angela.json";
+					else
+						var url = "angela.php";
+					$.ajax({
+						url: url,
+						dataType: "json",
+						method: "post",
+						beforeSend: function(){
+							$("#screen").html("<img src=\"ajax-loader.gif\" /> Loading...");
+						},
+						error: function(jqXHR, textStatus, errorThrown){
+							$("#screen").html("omg error: "+textStatus+" - "+errorThrown);
+						},
+						success: function(data){
+							var output = $("<div />");
+							if (safe)
+								output.append("<h2>"+pines.safe(data.name)+"</h2>")
+								.append("<p>"+pines.safe(data.description)+"</p>")
+								.append("<div>Gender: "+(data.gender == "m" ? "Male" : "Female")+"</div>")
+								.append("<div>Age: "+pines.safe(data.age)+"</div>")
+								.append("<div>Height: "+pines.safe(data.height.feet+"'"+data.height.inches)+"\"</div>")
+								.append("<div>Skills: "+pines.safe(data.skills.join(", "))+"</div>");
+							else
+								output.append("<h2>"+data.name+"</h2>")
+								.append("<p>"+data.description+"</p>")
+								.append("<div>Gender: "+(data.gender == "m" ? "Male" : "Female")+"</div>")
+								.append("<div>Age: "+data.age+"</div>")
+								.append("<div>Height: "+data.height.feet+"'"+data.height.inches+"\"</div>")
+								.append("<div>Skills: "+data.skills.join(", ")+"</div>");
+							$("#screen").html(output);
+						}
+					});
+				};
+				load_ajax(true);
+				$("#reload").click(function(){
+					load_ajax(true);
+				});
+				$("#reload_xss").click(function(){
+					load_ajax(false);
+				});
+
+				$("#bananana").click(function(){
+					$("#banana .box:first-child").next().effect("bounce");
+				}).mousedown(function(e){
+					var next_banana = function(){
+						$(this).effect("bounce", {}, "reg", next_banana);
+					};
+					if (e.button == 1) {
+						var ival = function(banana, timeout){
+							if (banana.next().length)
+								setTimeout(ival, timeout, banana.next(), timeout);
+							banana.stop(true, true).effect("bounce", {}, "reg", next_banana);
+						};
+						ival($("#banana .box:first-child"), 100);
+					}
+				});
+				$("#banana .box").hover(function(){
+					$(this).toggleClass("furry");
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<button id="reload" type="button">Reload (Safe)</button>
+		<button id="reload_xss" type="button">Reload (XSS Attack Example)</button>
+		<label><input type="checkbox" id="use_static" /> Use a static JSON backend. (Check this if you get errors.)</label>
+		<div id="screen" style="min-height: 200px; background-color: lightgray; border: 9px ridge goldenrod; padding: 1em; margin: 1em 0;">
+			<img src="ajax-loader.gif" /> Loading...
+		</div>
+		<button type="button" id="bananana">bananana</button>
+		<div id="banana">
+			<div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div>
+			<div class="box bricks"></div>
+			<div class="box"></div>
+			<div class="box"></div>
+		</div>
+		<form class="pf-form">
+			<div class="pf-element pf-heading">
+				<h1>Pines Form Test</h1>
+				<p>Do you have what it takes?</p>
+			</div>
+
+			<div class="pf-element">
+				<span class="pf-label">This is Easy</span>
+				<input class="pf-field" type="text"/>
+			</div>
+
+			<div class="pf-element">
+				<span class="pf-label">This is Too</span>
+				<span class="pf-note">Only one thing is different.</span>
+				<input class="pf-field" type="text"/>
+			</div>
+
+			<div class="pf-element">
+				<span class="pf-label">This is a Little Harder</span>
+				<div class="pf-group">
+					<span class="pf-field">Let's see if you can pull it off.</span><br/>
+					<span class="pf-field">It'll take some knowledge.</span><br/>
+					<span class="pf-field">Hope you studied.</span><br/>
+					<input class="pf-field" type="text"/>
+				</div>
+			</div>
+			
+			<fieldset class="pf-group">
+				<legend>CHANGE PLACES!</legend>
+				
+				<div class="pf-element pf-heading">
+					<p>You shouldn't have too much trouble in here.</p>
+				</div>
+				
+				<div class="pf-element pf-full-width">
+					<span class="pf-label">As long as you
+						<span class="pf-note">studied hard.</span>
+					</span>
+					<span class="pf-field" style="float:right;">Cause I'm way over here.<br/>
+					And you have to float me to get me over here.
+					</span>
+				</div>
+				
+				<div class="pf-element pf-buttons pf-centered">
+					If I had a nickel for every button here,
+					<input class="pf-button shiny" type="button" value="I'd have"/>
+					<input class="pf-button" type="button" value="A dime!"/>
+				</div>
+			</fieldset>
+			
+			<div class="pf-element">
+				<label>
+				<span class="pf-label">Click me and the box must focus!</span>
+				<span class="pf-note">Oh and no IDs here.</span>
+				<input class="pf-field" type="text" value="I'm the box." />
+				</label>
+				<input class="pf-field" type="button" value="And I'm a button."/>
+			</div>
+			
+			<div class="pf-element">
+				<label for="p_muid_box">
+					<span class="pf-label">Click me and the box must focus!</span>
+					<span class="pf-note">You can use IDs here.</span>
+				</label>
+				<label>
+					<input id="p_muid_checkbox" class="pf-field" type="checkbox"/> Am I in your way? Click me and the checkbox must toggle!
+				</label><br/>
+				<input id="p_muid_box" value="I'm the box." class="pf-field" type="text"/>
+			</div>
+			
+			<div class="pf-element pf-full-width">
+				<span class="pf-label">Whoa Curveball!
+					<span class="pf-required">*</span>
+				</span>
+				<span class="pf-field pf-full-width">
+					<textarea cols="10" rows="3" style="width:100%;">Hint: I have 3 rows, 10 cols, and 100% width.</textarea>
+				</span>
+			</div>
+			
+			<div class="pf-element">
+				<div class="pf-group">
+					<div class="pf-field">
+						Alright, this one is the last hard one. I promise. And I don't make promises I can't keep. Seriously, you can trust me. What would I have to gain by lying to you? Serious, it hurts that you would doubt me at all! 
+					</div>
+				</div>
+			</div>
+			
+			<div class="pf-element">
+				If you're happy and you know it
+			</div>
+			
+			<div class="pf-element pf-buttons">
+				<input type="button" value="Clap your hands." class="pf-button"/>
+				<input type="button" value="Sit Quietly." class="pf-button"/>
+			</div>
+		</form>
+		
+	</body>
+</html>
