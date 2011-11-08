@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Chapter 5. Pines JavaScript Object</title><link rel="stylesheet" href="docbook.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.75.2" /><link rel="home" href="index.html" title="Pines Development" /><link rel="up" href="pt01.html" title="Part I. The Pines Framework" /><link rel="prev" href="ch04s02.html" title="4.2. Creating a Service" /><link rel="next" href="pt02.html" title="Part II. Application Development" /></head><body><a xmlns:fo="http://www.w3.org/1999/XSL/Format" href="index.html"><div class="header">Pines Development</div></a><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 5. Pines JavaScript Object</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch04s02.html">Prev</a> </td><th width="60%" align="center">Part I. The Pines Framework</th><td width="20%" align="right"> <a accesskey="n" href="pt02.html">Next</a></td></tr></table><hr /></div><div class="chapter" title="Chapter 5. Pines JavaScript Object"><div class="titlepage"><div><div><h2 class="title"><a id="idp1147600"></a>Chapter 5. Pines JavaScript Object</h2></div></div></div>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Chapter 5. Pines JavaScript Object</title><link rel="stylesheet" href="docbook.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.75.2" /><link rel="home" href="index.html" title="Pines Development" /><link rel="up" href="pt01.html" title="Part I. The Pines Framework" /><link rel="prev" href="ch04s02.html" title="4.2. Creating a Service" /><link rel="next" href="pt02.html" title="Part II. Application Development" /></head><body><a xmlns:fo="http://www.w3.org/1999/XSL/Format" href="index.html"><div class="header">Pines Development</div></a><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 5. Pines JavaScript Object</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch04s02.html">Prev</a> </td><th width="60%" align="center">Part I. The Pines Framework</th><td width="20%" align="right"> <a accesskey="n" href="pt02.html">Next</a></td></tr></table><hr /></div><div class="chapter" title="Chapter 5. Pines JavaScript Object"><div class="titlepage"><div><div><h2 class="title"><a id="idp1148880"></a>Chapter 5. Pines JavaScript Object</h2></div></div></div>
       
 
       <p>The Pines JavaScript object is a small, simple JavaScript library
@@ -14,11 +14,12 @@
       Pines JavaScript object. Not only will it ensure compatibility with Ajax
       enabled templates, it will help control the execution order of your
       JavaScript and prevent your scripts from accidentally being loaded
-      twice. Every HTML/XHTML template is required to load the object, so you
-      can use it without any extra code.</p>
+      twice. Every HTML/XHTML template is required to load the object first,
+      so you can use it without any extra code.</p>
 
       <p>The Pines JavaScript file
-      (<code class="filename">system/includes/pines.js</code>) begins by adding an
+      (<code class="filename">system/includes/pines.js</code>), which is loaded by the
+      template through <code class="filename">js.php</code>, begins by adding an
       indexOf method to the array prototype. This ensures that the method will
       be available in all browsers. It then creates a global variable called
       <code class="varname">pines</code>. This object has two variables, which are
@@ -38,7 +39,7 @@
       <p>The object has many useful methods. Since it will always be loaded
       before any component's JavaScript, you can control the order in which
       your component's JavaScript and CSS is loaded even relative to other
-      components.</p><div class="table"><a id="idp1155968"></a><p class="title"><b>Table 5.1. Pines JavaScript Object Methods</b></p><div class="table-contents">
+      components.</p><div class="table"><a id="idp1157344"></a><p class="title"><b>Table 5.1. Pines JavaScript Object Methods</b></p><div class="table-contents">
           
 
           <table summary="Pines JavaScript Object Methods" border="1"><colgroup><col /><col /><col /></colgroup><thead><tr><th>Method</th><th>Arguments</th><th>Description</th></tr></thead><tbody><tr><td><code class="methodname">get</code></td><td>url, params, target</td><td>Cause the browser to request a URL using GET. This is
@@ -60,16 +61,21 @@
                 equivalent to calling <code class="function">pines_notice</code> in
                 PHP.</td></tr><tr><td><code class="methodname">error</code></td><td>message, title</td><td>Present an error to the user. It should be roughly
                 equivalent to calling <code class="function">pines_error</code> in
-                PHP.</td></tr><tr><td>safe</td><td>unsafe</td><td>Take untrusted text (unsafe) and make it safe to insert
+                PHP.</td></tr><tr><td><code class="methodname">safe</code></td><td>unsafe</td><td>Take untrusted text (unsafe) and make it safe to insert
                 into HTML. This essentially transforms what the browser would
-                interpret as HTML into HTML entities. (Eg.
-                "&lt;strong&gt;Hi&lt;/strong&gt;" becomes
-                "&amp;lt;strong&amp;gt;Hi&amp;lt;/strong&amp;gt;".)</td></tr></tbody></table>
+                interpret as HTML (', ", &amp;, &lt;, and &gt;) into HTML
+                entities. (Eg. "&lt;script&gt;alert("It's an
+                alert!")&lt;/script&gt;" becomes
+                "&amp;lt;script&amp;gt;alert(&amp;quot;It&amp;#039;s an
+                alert!&amp;quot;)&amp;lt;/script&amp;gt;".)</td></tr><tr><td><code class="methodname">unsafe</code></td><td>safe</td><td>Take trusted (or any) text (safe) and convert the
+                specific HTML entities back to their respective characters.
+                Does the opposite of the <code class="methodname">safe</code>
+                method.</td></tr></tbody></table>
         </div></div><p><br class="table-break" /></p>
 
       <p>Calling the <code class="varname">pines</code> object as a function is a
       shortcut for <code class="methodname">pines.ready</code>.</p><div class="informalexample">
-          <h2><a id="idp1189360"></a>Using the Pines JavaScript Object to Load
+          <h2><a id="idp1193264"></a>Using the Pines JavaScript Object to Load
           JavaScript</h2>
 
           <pre class="programlisting">// These files will be loaded first.
@@ -93,13 +99,17 @@ pines.load(function(){
 // This script is loaded after the above function is done, so the variable is available.
 pines.loadjs("&lt;?php echo htmlspecialchars($pines-&gt;config-&gt;location); ?&gt;components/com_example/includes/script2.js");</pre>
         </div><div class="informalexample">
-          <h2><a id="idp1191904"></a>Using <code class="methodname">pines.safe</code> To Sanitize
+          <h2><a id="idp1195744"></a>Using <code class="methodname">pines.safe</code> To Sanitize
           Untrusted Text</h2>
 
           <pre class="programlisting">var user_name = prompt("What is your name?", "");
 // Since user_name could contain HTML tags, sanitize it first.
 output.innerHTML = pines.safe(user_name);</pre>
         </div>
+
+      <p>At the end of the file, the JSON object is checked, and if not
+      defined, a copy of json2.js is loaded to provide it. This ensures that a
+      JSON object will exist in every browser.</p>
 
       <p>The Pines JavaScript object, even though it is only a small part
       of the Pines Framework, is an important tool to understand to make the

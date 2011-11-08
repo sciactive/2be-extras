@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>3.3. Core Services</title><link rel="stylesheet" href="docbook.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.75.2" /><link rel="home" href="index.html" title="Pines Development" /><link rel="up" href="ch03.html" title="Chapter 3. Pines Core" /><link rel="prev" href="ch03s02.html" title="3.2. Pines Object" /><link rel="next" href="ch03s04.html" title="3.4. Core Functions" /></head><body><a xmlns:fo="http://www.w3.org/1999/XSL/Format" href="index.html"><div class="header">Pines Development</div></a><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.3. Core Services</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03s02.html">Prev</a> </td><th width="60%" align="center">Chapter 3. Pines Core</th><td width="20%" align="right"> <a accesskey="n" href="ch03s04.html">Next</a></td></tr></table><hr /></div><div class="section" title="3.3. Core Services"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="core_services"></a>3.3. Core Services</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="core_services.html#idp312464">3.3.1. Config (<code class="classname">config</code> class)</a></span></dt><dt><span class="section"><a href="core_services.html#idp339648">3.3.2. Depend (<code class="classname">depend</code> class)</a></span></dt><dt><span class="section"><a href="core_services.html#hook">3.3.3. Hook (<code class="classname">hook</code> class)</a></span></dt><dt><span class="section"><a href="core_services.html#idp411072">3.3.4. Info (<code class="classname">info</code> class)</a></span></dt><dt><span class="section"><a href="core_services.html#idp447456">3.3.5. Menu (<code class="classname">menu</code> class)</a></span></dt><dt><span class="section"><a href="core_services.html#idp493872">3.3.6. Page (<code class="classname">page</code> class)</a></span></dt></dl></div>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>3.3. Core Services</title><link rel="stylesheet" href="docbook.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.75.2" /><link rel="home" href="index.html" title="Pines Development" /><link rel="up" href="ch03.html" title="Chapter 3. Pines Core" /><link rel="prev" href="ch03s02.html" title="3.2. Pines Object" /><link rel="next" href="ch03s04.html" title="3.4. Core Functions" /></head><body><a xmlns:fo="http://www.w3.org/1999/XSL/Format" href="index.html"><div class="header">Pines Development</div></a><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.3. Core Services</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03s02.html">Prev</a> </td><th width="60%" align="center">Chapter 3. Pines Core</th><td width="20%" align="right"> <a accesskey="n" href="ch03s04.html">Next</a></td></tr></table><hr /></div><div class="section" title="3.3. Core Services"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="core_services"></a>3.3. Core Services</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="core_services.html#idp312560">3.3.1. Config (<code class="classname">config</code> class)</a></span></dt><dt><span class="section"><a href="core_services.html#idp339776">3.3.2. Depend (<code class="classname">depend</code> class)</a></span></dt><dt><span class="section"><a href="core_services.html#hook">3.3.3. Hook (<code class="classname">hook</code> class)</a></span></dt><dt><span class="section"><a href="core_services.html#idp411552">3.3.4. Info (<code class="classname">info</code> class)</a></span></dt><dt><span class="section"><a href="core_services.html#idp447264">3.3.5. Menu (<code class="classname">menu</code> class)</a></span></dt><dt><span class="section"><a href="core_services.html#idp494528">3.3.6. Page (<code class="classname">page</code> class)</a></span></dt></dl></div>
         
 
-        <div class="section" title="3.3.1. Config (config class)"><div class="titlepage"><div><div><h3 class="title"><a id="idp312464"></a>3.3.1. Config (<code class="classname">config</code> class)</h3></div></div></div>
+        <div class="section" title="3.3.1. Config (config class)"><div class="titlepage"><div><div><h3 class="title"><a id="idp312560"></a>3.3.1. Config (<code class="classname">config</code> class)</h3></div></div></div>
           
 
           <p>The config service loads configuration for both Pines and any
@@ -14,7 +14,7 @@
           component's directory. The return value from this file is an array
           which is used to load configuration variables. Each array entry
           should be an associative array containing the following
-          entries:</p><div class="table"><a id="idp315296"></a><p class="title"><b>Table 3.3. Config Array Entries</b></p><div class="table-contents">
+          entries:</p><div class="table"><a id="idp315424"></a><p class="title"><b>Table 3.3. Config Array Entries</b></p><div class="table-contents">
               
 
               <table summary="Config Array Entries" border="1"><colgroup><col /><col /><col /></colgroup><thead><tr><th>Key</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td>name</td><td>Yes</td><td>The configuration option's name. This is used to
@@ -44,7 +44,7 @@
           an object named after the component on the first attempted access of
           the object. Pines' configuration options are placed in the config
           object itself.</p><div class="informalexample">
-              <h4><a id="idp336336"></a>Accessing Configuration for Pines and
+              <h4><a id="idp336464"></a>Accessing Configuration for Pines and
               Components</h4>
 
               <pre class="programlisting">// Access Pines' "system_name" configuration option:
@@ -65,11 +65,11 @@ echo $pines-&gt;config-&gt;tpl_green-&gt;tagline;</pre>
           </td></tr></table></div>
         </div>
 
-        <div class="section" title="3.3.2. Depend (depend class)"><div class="titlepage"><div><div><h3 class="title"><a id="idp339648"></a>3.3.2. Depend (<code class="classname">depend</code> class)</h3></div></div></div>
+        <div class="section" title="3.3.2. Depend (depend class)"><div class="titlepage"><div><div><h3 class="title"><a id="idp339776"></a>3.3.2. Depend (<code class="classname">depend</code> class)</h3></div></div></div>
           
 
           <p>The depend service manages and runs dependency checkers. It
-          includes several dependency checkers by default.</p><div class="table"><a id="idp341504"></a><p class="title"><b>Table 3.4. Built In Dependency Checkers</b></p><div class="table-contents">
+          includes several dependency checkers by default.</p><div class="table"><a id="idp341632"></a><p class="title"><b>Table 3.4. Built In Dependency Checkers</b></p><div class="table-contents">
               
 
               <table summary="Built In Dependency Checkers" border="1"><colgroup><col /><col /></colgroup><thead><tr><th>Name</th><th>Description</th></tr></thead><tbody><tr><td>ability</td><td>Check that the current user has certain
@@ -85,7 +85,7 @@ echo $pines-&gt;config-&gt;tpl_green-&gt;tagline;</pre>
           <p>To check a dependency, use the
           <code class="methodname">check()</code> method. It will return true if the
           value passes the check, or false if it does not.</p><div class="informalexample">
-              <h4><a id="idp363184"></a>Using the Dependency Checker</h4>
+              <h4><a id="idp363568"></a>Using the Dependency Checker</h4>
 
               <pre class="programlisting">if (!$pines-&gt;depend-&gt;check('component', 'com_example&gt;=2.0|com_sample')) {
     pines_notice('This feature is only available when you have com_example 2.0 or greater, or com_sample.');
@@ -104,7 +104,7 @@ if (!$pines-&gt;depend-&gt;check('extension', 'mysql|mysqli')) {
           not. This should usually be done using an init script. That will
           ensure the checker is available by the time an action is
           run.</p><div class="informalexample">
-              <h4><a id="idp366032"></a>Adding a New Checker</h4>
+              <h4><a id="idp364080"></a>Adding a New Checker</h4>
 
               <pre class="programlisting">function com_example__check_something($value) {
     return ($value == 'barbecue');
@@ -134,7 +134,7 @@ $pines-&gt;depend-&gt;checkers['something'] = 'com_example__check_something';
           grouping using parentheses "()". Here's an example of how to use
           <code class="function">simple_parse()</code> in the example
           checker.</p><div class="informalexample">
-              <h4><a id="idp371136"></a>Using the Simple Parser</h4>
+              <h4><a id="idp371408"></a>Using the Simple Parser</h4>
 
               <pre class="programlisting">function com_example__check_something($value) {
     global $pines;
@@ -162,7 +162,7 @@ $pines-&gt;depend-&gt;checkers['something'] = 'com_example__check_something';
           callback to the method, you can use a shortcut function to save
           Pines from loading your component's class during each script
           run.</p><div class="informalexample">
-              <h4><a id="idp371888"></a>Using a Shortcut Function to a Method</h4>
+              <h4><a id="idp372160"></a>Using a Shortcut Function to a Method</h4>
 
               <pre class="programlisting">// Using an extra function to call the real checker keeps the com_example
 // class from being loaded on each script run.
@@ -190,7 +190,7 @@ $pines-&gt;depend-&gt;checkers['something'] = 'com_example__check_something';</p
           alter return values, and change the actual function being
           called.</p>
 
-          <div class="simplesect" title="How Hook Works"><div class="titlepage"><div><div><h4 class="title"><a id="idp379456"></a>How Hook Works</h4></div></div></div>
+          <div class="simplesect" title="How Hook Works"><div class="titlepage"><div><div><h4 class="title"><a id="idp379184"></a>How Hook Works</h4></div></div></div>
             
 
             <p>Hook uses a complex technique to override an object and
@@ -234,14 +234,14 @@ $pines-&gt;depend-&gt;checkers['something'] = 'com_example__check_something';</p
             </td></tr></table></div>
           </div>
 
-          <div class="simplesect" title="How to Use Hooks"><div class="titlepage"><div><div><h4 class="title"><a id="idp386976"></a>How to Use Hooks</h4></div></div></div>
+          <div class="simplesect" title="How to Use Hooks"><div class="titlepage"><div><div><h4 class="title"><a id="idp387408"></a>How to Use Hooks</h4></div></div></div>
             
 
             <p>To hook an object, so calls to its methods can be
             intercepted, use <code class="methodname">hook_object()</code>. The
             prefix will be used when setting up callbacks for the
             hooks.</p><div class="informalexample">
-                <h5><a id="idp389264"></a>Hooking an Object</h5>
+                <h5><a id="idp389744"></a>Hooking an Object</h5>
 
                 <pre class="programlisting">$widget = new com_example_widget;
 $pines-&gt;hook-&gt;hook_object($widget, 'com_example_widget-&gt;', false);</pre>
@@ -317,7 +317,7 @@ $pines-&gt;hook-&gt;hook_object($widget, 'com_example_widget-&gt;', false);</pre
             what was actually caught. Callbacks attached to the "all" hook
             will run before callbacks attached to the actual
             hook.</p><div class="informalexample">
-                <h5><a id="idp406544"></a>Adding a Callback to a Hook</h5>
+                <h5><a id="idp406992"></a>Adding a Callback to a Hook</h5>
 
                 <pre class="programlisting">function com_example__callback() {
     // Do something.
@@ -337,14 +337,14 @@ $pines-&gt;hook-&gt;add_callback('all', 10, 'com_example__callback');</pre>
             <p>To manually run callbacks (without an originating function
             call), use
             <code class="methodname">run_callbacks()</code>.</p><div class="informalexample">
-                <h5><a id="idp409792"></a>Manually Run Callbacks</h5>
+                <h5><a id="idp410000"></a>Manually Run Callbacks</h5>
 
                 <pre class="programlisting">$pines-&gt;hook-&gt;run_callbacks('+com_games_player_bonus');</pre>
               </div>
           </div>
         </div>
 
-        <div class="section" title="3.3.4. Info (info class)"><div class="titlepage"><div><div><h3 class="title"><a id="idp411072"></a>3.3.4. Info (<code class="classname">info</code> class)</h3></div></div></div>
+        <div class="section" title="3.3.4. Info (info class)"><div class="titlepage"><div><div><h3 class="title"><a id="idp411552"></a>3.3.4. Info (<code class="classname">info</code> class)</h3></div></div></div>
           
 
           <p>The info service provides information about Pines and
@@ -356,7 +356,7 @@ $pines-&gt;hook-&gt;add_callback('all', 10, 'com_example__callback');</pre>
           component's directory. It will use this file to create an object for
           that component. The <code class="varname">template</code> variable will
           contain the info of the current template. The info file should
-          return an associative array with the following entries:</p><div class="table"><a id="idp414736"></a><p class="title"><b>Table 3.5. Info Array Entries</b></p><div class="table-contents">
+          return an associative array with the following entries:</p><div class="table"><a id="idp414624"></a><p class="title"><b>Table 3.5. Info Array Entries</b></p><div class="table-contents">
               
 
               <table summary="Info Array Entries" border="1"><colgroup><col /><col /><col /></colgroup><thead><tr><th>Key</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td>name</td><td>Yes</td><td>The component's name. This is the name displayed to
@@ -372,7 +372,7 @@ $pines-&gt;hook-&gt;add_callback('all', 10, 'com_example__callback');</pre>
                     array has three entries, a name, a title, and a
                     description, in that order.</td></tr></tbody></table>
             </div></div><p><br class="table-break" /></p><div class="informalexample">
-              <h4><a id="idp443472"></a>Example Info File</h4>
+              <h4><a id="idp443088"></a>Example Info File</h4>
 
               <pre class="programlisting">defined('P_RUN') or die('Direct access prohibited');
 
@@ -400,7 +400,7 @@ return array(
     ),
 );</pre>
             </div><div class="informalexample">
-              <h4><a id="idp445936"></a>Accessing Info for Pines and Components</h4>
+              <h4><a id="idp445744"></a>Accessing Info for Pines and Components</h4>
 
               <pre class="programlisting">// Access Pines' "license" info entry:
 echo $pines-&gt;info-&gt;license;
@@ -413,7 +413,7 @@ echo $pines-&gt;info-&gt;tpl_green-&gt;version;</pre>
             </div>
         </div>
 
-        <div class="section" title="3.3.5. Menu (menu class)"><div class="titlepage"><div><div><h3 class="title"><a id="idp447456"></a>3.3.5. Menu (<code class="classname">menu</code> class)</h3></div></div></div>
+        <div class="section" title="3.3.5. Menu (menu class)"><div class="titlepage"><div><div><h3 class="title"><a id="idp447264"></a>3.3.5. Menu (<code class="classname">menu</code> class)</h3></div></div></div>
           
 
           <p>The menu service builds and renders menus. In Pines, menus are
@@ -427,7 +427,7 @@ echo $pines-&gt;info-&gt;tpl_green-&gt;version;</pre>
           each placed into the <code class="varname">menu_arrays</code> variable in the
           menu object. Each entry is either a top level menu, or a menu entry.
           Top level menus require a position in which to place them, as well
-          as several other values:</p><div class="table"><a id="idp451488"></a><p class="title"><b>Table 3.6. Top Level Menu Array Entries</b></p><div class="table-contents">
+          as several other values:</p><div class="table"><a id="idp451408"></a><p class="title"><b>Table 3.6. Top Level Menu Array Entries</b></p><div class="table-contents">
               
 
               <table summary="Top Level Menu Array Entries" border="1"><colgroup><col /><col /><col /></colgroup><thead><tr><th>Key</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td>path</td><td>Yes</td><td>The name of the menus path.</td></tr><tr><td>text</td><td>Yes</td><td>The text to title the menu's module.</td></tr><tr><td>position</td><td>Yes</td><td>The page position in which to place the
@@ -456,7 +456,7 @@ echo $pines-&gt;info-&gt;tpl_green-&gt;version;</pre>
 
           <p>To add a menu entry using code, you can insert it into the
           <code class="varname">menu_arrays</code> variable.</p><div class="informalexample">
-              <h4><a id="idp485984"></a>Adding a Menu Entry Through Code</h4>
+              <h4><a id="idp487104"></a>Adding a Menu Entry Through Code</h4>
 
               <pre class="programlisting">// Using pines_url().
 $pines-&gt;menu-&gt;menu_arrays[] = array(
@@ -494,7 +494,7 @@ $pines-&gt;menu-&gt;menu_arrays[] = array(
           then passes these arrays to the <code class="methodname">menu()</code>
           method of the current template and places the return value into a
           module in the menu's requested position.</p><div class="informalexample">
-              <h4><a id="idp491856"></a>Example menu.json File</h4>
+              <h4><a id="idp492576"></a>Example menu.json File</h4>
 
               <pre class="programlisting">[
     {
@@ -524,7 +524,7 @@ $pines-&gt;menu-&gt;menu_arrays[] = array(
             </div>
         </div>
 
-        <div class="section" title="3.3.6. Page (page class)"><div class="titlepage"><div><div><h3 class="title"><a id="idp493872"></a>3.3.6. Page (<code class="classname">page</code> class)</h3></div></div></div>
+        <div class="section" title="3.3.6. Page (page class)"><div class="titlepage"><div><div><h3 class="title"><a id="idp494528"></a>3.3.6. Page (<code class="classname">page</code> class)</h3></div></div></div>
           
 
           <p>The page service manages modules, notices, and errors, and
@@ -580,7 +580,7 @@ $pines-&gt;menu-&gt;menu_arrays[] = array(
           position in which to place the module. You can also manually detach
           the module. If the module is attached to the same position twice, it
           must likewise be removed twice.</p><div class="informalexample">
-              <h4><a id="idp511104"></a>Manually Attaching and Detaching a
+              <h4><a id="idp511488"></a>Manually Attaching and Detaching a
               Module</h4>
 
               <pre class="programlisting">$module = new module;
@@ -597,7 +597,7 @@ $pines-&gt;page-&gt;detach_module($module, 'content');</pre>
           <code class="methodname">render_modules()</code>, providing a position. If
           needed, the template can also provide a model, which will be used to
           format the content as necessary.</p><div class="informalexample">
-              <h4><a id="idp513648"></a>Rendering the Modules in a Position Using a
+              <h4><a id="idp514240"></a>Rendering the Modules in a Position Using a
               Model</h4>
 
               <pre class="programlisting">&lt;div id="modules_left"&gt;
@@ -610,7 +610,7 @@ $pines-&gt;page-&gt;detach_module($module, 'content');</pre>
           data to an Ajax request. To do this, set the
           <code class="varname">override</code> variable to true, then pass the content
           to <code class="methodname">override_doc()</code>.</p><div class="informalexample">
-              <h4><a id="idp516912"></a>Overriding the Page</h4>
+              <h4><a id="idp517136"></a>Overriding the Page</h4>
 
               <pre class="programlisting">// Turn override on.
 $pines-&gt;page-&gt;override = true;

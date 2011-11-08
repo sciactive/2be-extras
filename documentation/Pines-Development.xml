@@ -5587,11 +5587,12 @@ $pines-&gt;entity_manager = 'com_xmlentity';
       Pines JavaScript object. Not only will it ensure compatibility with Ajax
       enabled templates, it will help control the execution order of your
       JavaScript and prevent your scripts from accidentally being loaded
-      twice. Every HTML/XHTML template is required to load the object, so you
-      can use it without any extra code.</para>
+      twice. Every HTML/XHTML template is required to load the object first,
+      so you can use it without any extra code.</para>
 
       <para>The Pines JavaScript file
-      (<filename>system/includes/pines.js</filename>) begins by adding an
+      (<filename>system/includes/pines.js</filename>), which is loaded by the
+      template through <filename>js.php</filename>, begins by adding an
       indexOf method to the array prototype. This ensures that the method will
       be available in all browsers. It then creates a global variable called
       <varname>pines</varname>. This object has two variables, which are
@@ -5742,15 +5743,28 @@ $pines-&gt;entity_manager = 'com_xmlentity';
               </row>
 
               <row>
-                <entry>safe</entry>
+                <entry><methodname>safe</methodname></entry>
 
                 <entry>unsafe</entry>
 
                 <entry>Take untrusted text (unsafe) and make it safe to insert
                 into HTML. This essentially transforms what the browser would
-                interpret as HTML into HTML entities. (Eg.
-                "&lt;strong&gt;Hi&lt;/strong&gt;" becomes
-                "&amp;lt;strong&amp;gt;Hi&amp;lt;/strong&amp;gt;".)</entry>
+                interpret as HTML (', ", &amp;, &lt;, and &gt;) into HTML
+                entities. (Eg. "&lt;script&gt;alert("It's an
+                alert!")&lt;/script&gt;" becomes
+                "&amp;lt;script&amp;gt;alert(&amp;quot;It&amp;#039;s an
+                alert!&amp;quot;)&amp;lt;/script&amp;gt;".)</entry>
+              </row>
+
+              <row>
+                <entry><methodname>unsafe</methodname></entry>
+
+                <entry>safe</entry>
+
+                <entry>Take trusted (or any) text (safe) and convert the
+                specific HTML entities back to their respective characters.
+                Does the opposite of the <methodname>safe</methodname>
+                method.</entry>
               </row>
             </tbody>
           </tgroup>
@@ -5789,6 +5803,10 @@ pines.loadjs("&lt;?php echo htmlspecialchars($pines-&gt;config-&gt;location); ?&
 // Since user_name could contain HTML tags, sanitize it first.
 output.innerHTML = pines.safe(user_name);</programlisting>
         </informalexample></para>
+
+      <para>At the end of the file, the JSON object is checked, and if not
+      defined, a copy of json2.js is loaded to provide it. This ensures that a
+      JSON object will exist in every browser.</para>
 
       <para>The Pines JavaScript object, even though it is only a small part
       of the Pines Framework, is an important tool to understand to make the
