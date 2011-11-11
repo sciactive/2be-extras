@@ -212,7 +212,7 @@ if($a->extract())
 header('Location: '.$d);
 else
 die('Error during extraction. All files may not have extracted correctly.');
-if(!$a->metadata['keep_self']) unlink(__FILE__);
+if(!$a->ext['keep_self']) unlink(__FILE__);
 exit;
 
 }

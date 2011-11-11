@@ -1,11 +1,28 @@
 <?php
+
+if (!file_exists('release/'))
+	die('You must have a release directory with releases in it. You can run assemblerelease.sh first.');
+
+$releases = array_diff(scandir('release/'), array('.', '..'));
+foreach ($releases as $key => $cur_release) {
+	if (!is_dir('release/'.$cur_release))
+		unset($releases[$key]);
+}
+$releases = array_values($releases);
+
+if (empty($releases))
+	die('No releases were found in your release directory.');
+
 function clean_filename($filename) {
 	return str_replace('..', 'fail-danger-dont-use-hack-attempt', $filename);
 }
 if (isset($_REQUEST['directory'])) {
-	$directory = clean_filename($_REQUEST['directory']);
-	if (empty($directory)) $directory = 'pines';
-	$directory = '../../'.$directory;
+	$directory = $_REQUEST['directory'];
+	if (!in_array($directory, $releases))
+		die('Directory must be an existing release directory.');
+	$directory = 'release/'.$directory;
+	if (!file_exists($directory))
+		die('Directory doesn\'t exist.');
 	$file = clean_filename($_REQUEST['file']);
 	switch ($_REQUEST['submit']) {
 		case "Build .php":
@@ -15,8 +32,9 @@ if (isset($_REQUEST['directory'])) {
 			$arc->stub = file_get_contents('extract-template.php');
 			$arc->working_directory = $directory;
 			$arc->file_integrity = true;
+			if ($_REQUEST['remove_self_extract'] != 'ON')
+				$arc->ext['keep_self'] = true;
 			$arc->add_directory('.');
-			//header('Content-Type: application/x-httpd-php');
 			header('Content-Type: application/octet-stream');
 			header("Content-Disposition: attachment; filename=\"$file.php\"");
 
@@ -40,13 +58,12 @@ if (isset($_REQUEST['directory'])) {
 	}
 	exit;
 }
-echo '<?xml version="1.0" encoding="UTF-8" standalone="no" ?>'; ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-
+?>
+<!DOCTYPE html>
+<html>
 <head>
 	<title>Release Builder</title>
+	<meta charset="utf-8" />
 	<style type="text/css" media="all">
 		/* <![CDATA[ */
 		.wrapper {
@@ -67,10 +84,13 @@ echo '<?xml version="1.0" encoding="UTF-8" standalone="no" ?>'; ?>
 		}
 		.wrapper label {
 			display: block;
-			text-align: right;
-			margin-right: 60%;
+			margin-left: 4em;
 		}
-		.wrapper input {
+		.wrapper label span {
+			display: inline-block;
+			width: 180px;
+		}
+		.wrapper input, .wrapper select {
 			color: #040;
 		}
 		.wrapper .buttons {
@@ -78,16 +98,49 @@ echo '<?xml version="1.0" encoding="UTF-8" standalone="no" ?>'; ?>
 		}
 		/* ]]> */
 	</style>
+	<script type="text/javascript">
+		function explain_archive() {
+			alert("\
+When you create a Slim PHP Self Extractor \"Build .php\", you have the option to\n\
+make the Slim archive remove itself after extracting all of its files. This\n\
+makes it easier for someone installing Pines, because they don't have to remove\n\
+the file manually.");
+		}
+	</script>
 </head>
 <body>
 <div class="wrapper">
 	<form action="" method="post">
 		<fieldset>
 			<legend>Pines Release Builder</legend>
-			<p>Use this release builder to build a package of the source from the given directory in the repository. After you click one of the build options, you will be given the chance to save the file to your hard drive.</p>
-			<label>Repository directory to build from: <input type="text" name="directory" value="pines/" /></label><br />
-			<label>Filename to save as: <input type="text" name="file" value="pines-VERSION-STATE" /></label><br />
-			<div class="buttons"><input type="submit" value="Build .php" name="submit" /> <input type="submit" value="Build .tar.gz" name="submit" /> <input type="submit" value="Build .tar.bz2" name="submit" /> <input type="submit" value="Build .zip" name="submit" /> <input type="reset" value="Reset" name="reset" /></div>
+			<p>
+				Use this release builder to build packages from the sources in
+				the given directory in your releases directory. After you click
+				one of the build options, you will be given the chance to save
+				the file to your hard drive.
+			</p>
+			<label>
+				<span>Release directory:</span>
+				<select name="directory">
+					<?php foreach ($releases as $cur_release) { ?>
+					<option value="<?php echo htmlspecialchars($cur_release); ?>"><?php echo htmlspecialchars($cur_release); ?></option>
+					<?php } ?>
+				</select>
+			</label><br />
+			<label>
+				<span>Filename to save as:</span>
+				<input type="text" name="file" value="pines-VERSION-STATE-DBBACKEND" />
+			</label><br />
+			<label>
+				<span>Remove Slim extractor: <a href="javascript:void(0);" onclick="explain_archive();">(?)</a></span>
+				<input type="checkbox" name="remove_self_extract" value="ON" />
+			</label><br />
+			<div class="buttons">
+				<input type="submit" value="Build .php" name="submit" />
+				<input type="submit" value="Build .tar.gz" name="submit" />
+				<input type="submit" value="Build .tar.bz2" name="submit" />
+				<input type="submit" value="Build .zip" name="submit" />
+			</div>
 		</fieldset>
 	</form>
 </div>
