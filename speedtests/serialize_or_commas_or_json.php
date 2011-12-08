@@ -17,7 +17,7 @@ for ($i = 0; $i < $count; $i++) {
 	}
 }
 $end_time = microtime(true);
-echo 'serialize :  '.($end_time - $start_time)."\n";
+echo 'serialize   :  '.($end_time - $start_time)."\n";
 
 $start_time = microtime(true);
 for ($i = 0; $i < $count; $i++) {
@@ -28,7 +28,18 @@ for ($i = 0; $i < $count; $i++) {
 	}
 }
 $end_time = microtime(true);
-echo 'implode   :  '.($end_time - $start_time)."\n";
+echo 'implode     :  '.($end_time - $start_time)."\n";
+
+$start_time = microtime(true);
+for ($i = 0; $i < $count; $i++) {
+	$result = json_decode(json_encode($test));
+	if ($result != $test) {
+		echo 'error';
+		break;
+	}
+}
+$end_time = microtime(true);
+echo 'json_encode :  '.($end_time - $start_time)."\n";
 
 echo "\nTested $count iterations."
 
