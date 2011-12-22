@@ -9,7 +9,7 @@ cp "../../pnotify/jquery.pnotify.default.css" "jquery.pnotify/"
 cp "../../pnotify/jquery.pnotify.js" "jquery.pnotify/"
 
 echo Compressing JavaScript with Google Closure Compiler.
-head -n 10 jquery.pnotify/jquery.pnotify.js > jquery.pnotify/jquery.pnotify.min.js
+head -n 11 jquery.pnotify/jquery.pnotify.js > jquery.pnotify/jquery.pnotify.min.js
 java -jar compiler.jar --js=jquery.pnotify/jquery.pnotify.js >> jquery.pnotify/jquery.pnotify.min.js
 
 echo Zipping the whole directory.

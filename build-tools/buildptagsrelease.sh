@@ -7,7 +7,7 @@ cp "../../ptags/jquery.ptags.default.css" "jquery.ptags/"
 cp "../../ptags/jquery.ptags.js" "jquery.ptags/"
 
 echo Compressing JavaScript with Google Closure Compiler.
-head -n 10 jquery.ptags/jquery.ptags.js > jquery.ptags/jquery.ptags.min.js
+head -n 11 jquery.ptags/jquery.ptags.js > jquery.ptags/jquery.ptags.min.js
 java -jar compiler.jar --js=jquery.ptags/jquery.ptags.js >> jquery.ptags/jquery.ptags.min.js
 
 echo Zipping the whole directory.
