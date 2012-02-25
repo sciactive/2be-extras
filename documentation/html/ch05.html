@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Chapter 5. Pines JavaScript Object</title><link rel="stylesheet" href="docbook.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.75.2" /><link rel="home" href="index.html" title="Pines Development" /><link rel="up" href="pt01.html" title="Part I. The Pines Framework" /><link rel="prev" href="ch04s02.html" title="4.2. Creating a Service" /><link rel="next" href="pt02.html" title="Part II. Application Development" /></head><body><a xmlns:fo="http://www.w3.org/1999/XSL/Format" href="index.html"><div class="header">Pines Development</div></a><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 5. Pines JavaScript Object</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch04s02.html">Prev</a> </td><th width="60%" align="center">Part I. The Pines Framework</th><td width="20%" align="right"> <a accesskey="n" href="pt02.html">Next</a></td></tr></table><hr /></div><div class="chapter" title="Chapter 5. Pines JavaScript Object"><div class="titlepage"><div><div><h2 class="title"><a id="idp1148880"></a>Chapter 5. Pines JavaScript Object</h2></div></div></div>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Chapter 5. Pines JavaScript Object</title><link rel="stylesheet" href="docbook.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.75.2" /><link rel="home" href="index.html" title="Pines Development" /><link rel="up" href="pt01.html" title="Part I. The Pines Framework" /><link rel="prev" href="ch04s02.html" title="4.2. Creating a Service" /><link rel="next" href="pt02.html" title="Part II. Application Development" /></head><body><a xmlns:fo="http://www.w3.org/1999/XSL/Format" href="index.html"><div class="header">Pines Development</div></a><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 5. Pines JavaScript Object</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch04s02.html">Prev</a> </td><th width="60%" align="center">Part I. The Pines Framework</th><td width="20%" align="right"> <a accesskey="n" href="pt02.html">Next</a></td></tr></table><hr /></div><div class="chapter" title="Chapter 5. Pines JavaScript Object"><div class="titlepage"><div><div><h2 class="title"><a id="idp1153872"></a>Chapter 5. Pines JavaScript Object</h2></div></div></div>
       
 
       <p>The Pines JavaScript object is a small, simple JavaScript library
@@ -39,7 +39,7 @@
       <p>The object has many useful methods. Since it will always be loaded
       before any component's JavaScript, you can control the order in which
       your component's JavaScript and CSS is loaded even relative to other
-      components.</p><div class="table"><a id="idp1157344"></a><p class="title"><b>Table 5.1. Pines JavaScript Object Methods</b></p><div class="table-contents">
+      components.</p><div class="table"><a id="idp1163008"></a><p class="title"><b>Table 5.1. Pines JavaScript Object Methods</b></p><div class="table-contents">
           
 
           <table summary="Pines JavaScript Object Methods" border="1"><colgroup><col /><col /><col /></colgroup><thead><tr><th>Method</th><th>Arguments</th><th>Description</th></tr></thead><tbody><tr><td><code class="methodname">get</code></td><td>url, params, target</td><td>Cause the browser to request a URL using GET. This is
@@ -75,7 +75,7 @@
 
       <p>Calling the <code class="varname">pines</code> object as a function is a
       shortcut for <code class="methodname">pines.ready</code>.</p><div class="informalexample">
-          <h2><a id="idp1193264"></a>Using the Pines JavaScript Object to Load
+          <h2><a id="idp1198272"></a>Using the Pines JavaScript Object to Load
           JavaScript</h2>
 
           <pre class="programlisting">// These files will be loaded first.
@@ -99,7 +99,7 @@ pines.load(function(){
 // This script is loaded after the above function is done, so the variable is available.
 pines.loadjs("&lt;?php echo htmlspecialchars($pines-&gt;config-&gt;location); ?&gt;components/com_example/includes/script2.js");</pre>
         </div><div class="informalexample">
-          <h2><a id="idp1195744"></a>Using <code class="methodname">pines.safe</code> To Sanitize
+          <h2><a id="idp1200816"></a>Using <code class="methodname">pines.safe</code> To Sanitize
           Untrusted Text</h2>
 
           <pre class="programlisting">var user_name = prompt("What is your name?", "");

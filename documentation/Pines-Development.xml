@@ -27,7 +27,7 @@
   <preface>
     <title>Preface</title>
 
-    <para></para>
+    <para/>
 
     <section>
       <title>How This Book is Organized</title>
@@ -62,7 +62,7 @@
       <section>
         <title>Part III: Distribution</title>
 
-        <para></para>
+        <para/>
       </section>
     </section>
 
@@ -75,7 +75,7 @@
       variables and properties. I will, however, maintain the distinction
       between functions and methods.</para>
 
-      <para></para>
+      <para/>
     </section>
   </preface>
 
@@ -1069,9 +1069,9 @@ $pines-&gt;hook-&gt;add_callback('$pines-&gt;format_content', -10, 'com_example_
                 <title>Date Format Types</title>
 
                 <tgroup cols="3">
-                  <colspec colnum="2" colwidth="2*" />
+                  <colspec colnum="2" colwidth="2*"/>
 
-                  <colspec colnum="3" colwidth="4*" />
+                  <colspec colnum="3" colwidth="4*"/>
 
                   <thead>
                     <row>
@@ -1197,7 +1197,7 @@ $pines-&gt;hook-&gt;add_callback('$pines-&gt;format_content', -10, 'com_example_
                 <bridgehead>Formatting a Date</bridgehead>
 
                 <programlisting language="html+php">&lt;div&gt;
-    &lt;?php echo $pines-&gt;format_date($timestamp, 'custom', 'l jS \of F Y h:i:s A', 'America/Los_Angeles'); ?&gt;
+    &lt;?php echo htmlspecialchars($pines-&gt;format_date($timestamp, 'custom', 'l jS \of F Y h:i:s A', 'America/Los_Angeles')); ?&gt;
 &lt;/div&gt;</programlisting>
               </informalexample></para>
           </section>
@@ -1240,7 +1240,7 @@ $pines-&gt;hook-&gt;add_callback('$pines-&gt;format_content', -10, 'com_example_
                 <title>Macros Available in Date Range Formats</title>
 
                 <tgroup cols="2">
-                  <colspec colnum="2" colwidth="3*" />
+                  <colspec colnum="2" colwidth="3*"/>
 
                   <thead>
                     <row>
@@ -1396,10 +1396,26 @@ $pines-&gt;hook-&gt;add_callback('$pines-&gt;format_content', -10, 'com_example_
 
               <programlisting language="html+php">&lt;div&gt;
     This warehouse has gone
-    &lt;?php echo $pines-&gt;format_date_range($last_accident, time(), '{#days# days}{#day# day}', 'America/Los_Angeles'); ?&gt;
+    &lt;?php echo htmlspecialchars($pines-&gt;format_date_range($last_accident, time(), '{#days# days}{#day# day}', 'America/Los_Angeles')); ?&gt;
     without an accident.
 &lt;/div&gt;</programlisting>
             </informalexample>
+          </section>
+
+          <section>
+            <title>Formatting a Fuzzy Time String</title>
+
+            <para>To format a fuzzy time string using a timestamp, use
+            <methodname>format_fuzzy_time</methodname>. This method does not
+            use timezones, so it may not give perfectly precise time strings.
+            Seeing as it is used for a time estimation, that shouldn't be a
+            problem.<informalexample>
+                <bridgehead>Formatting a Fuzzy Time String</bridgehead>
+
+                <programlisting language="html+php">&lt;div&gt;
+    Sale created &lt;?php echo htmlspecialchars($pines-&gt;format_fuzzy_time($sale-&gt;p_cdate)); ?&gt;.
+&lt;/div&gt;</programlisting>
+              </informalexample></para>
           </section>
 
           <section>
@@ -1411,7 +1427,7 @@ $pines-&gt;hook-&gt;add_callback('$pines-&gt;format_content', -10, 'com_example_
                 <bridgehead>Formatting a Phone Number</bridgehead>
 
                 <programlisting language="html+php">&lt;div&gt;
-    &lt;?php echo $pines-&gt;format_phone('1800555123456'); ?&gt;
+    &lt;?php echo htmlspecialchars($pines-&gt;format_phone('1800555123456')); ?&gt;
 &lt;/div&gt;</programlisting>
               </informalexample></para>
           </section>
@@ -1484,7 +1500,7 @@ $bad = $pines-&gt;check_ip_subnet('192.168.1.5', '192.168.0.0', '255.255.255.0')
               <title>Config Array Entries</title>
 
               <tgroup cols="3">
-                <colspec colnum="3" colwidth="5*" />
+                <colspec colnum="3" colwidth="5*"/>
 
                 <thead>
                   <row>
@@ -1601,7 +1617,7 @@ echo $pines-&gt;config-&gt;tpl_green-&gt;tagline;</programlisting>
               <title>Built In Dependency Checkers</title>
 
               <tgroup cols="2">
-                <colspec colnum="2" colwidth="5*" />
+                <colspec colnum="2" colwidth="5*"/>
 
                 <thead>
                   <row>
@@ -1982,7 +1998,7 @@ $pines-&gt;hook-&gt;add_callback('all', 10, 'com_example__callback');</programli
               <title>Info Array Entries</title>
 
               <tgroup cols="3">
-                <colspec colnum="3" colwidth="5*" />
+                <colspec colnum="3" colwidth="5*"/>
 
                 <thead>
                   <row>
@@ -2163,7 +2179,7 @@ echo $pines-&gt;info-&gt;tpl_green-&gt;version;</programlisting>
               <title>Top Level Menu Array Entries</title>
 
               <tgroup cols="3">
-                <colspec colnum="3" colwidth="5*" />
+                <colspec colnum="3" colwidth="5*"/>
 
                 <thead>
                   <row>
@@ -2226,7 +2242,7 @@ echo $pines-&gt;info-&gt;tpl_green-&gt;version;</programlisting>
               <title>Regular Menu Array Entries</title>
 
               <tgroup cols="3">
-                <colspec colnum="3" colwidth="5*" />
+                <colspec colnum="3" colwidth="5*"/>
 
                 <thead>
                   <row>
@@ -2523,7 +2539,7 @@ $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
             <title>Core Functions</title>
 
             <tgroup cols="2">
-              <colspec colnum="2" colwidth="3*" />
+              <colspec colnum="2" colwidth="3*"/>
 
               <thead>
                 <row>
@@ -2567,6 +2583,13 @@ $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
 
                   <entry>Shortcut to
                   <code>$pines-&gt;format_date_range()</code>.</entry>
+                </row>
+
+                <row>
+                  <entry><function>format_fuzzy_time</function></entry>
+
+                  <entry>Shortcut to
+                  <code>$pines-&gt;format_fuzzy_time()</code>.</entry>
                 </row>
 
                 <row>
@@ -3919,7 +3942,7 @@ pines_notice('Hooray! I found the baz you wanted and the cron user!');</programl
                 <title>Entity Querying Options</title>
 
                 <tgroup cols="4">
-                  <colspec colnum="4" colwidth="7*" />
+                  <colspec colnum="4" colwidth="7*"/>
 
                   <thead>
                     <row>
@@ -4013,7 +4036,7 @@ pines_notice('Hooray! I found the baz you wanted and the cron user!');</programl
                 <title>Entity Selector Types</title>
 
                 <tgroup cols="3">
-                  <colspec colnum="3" colwidth="6*" />
+                  <colspec colnum="3" colwidth="6*"/>
 
                   <thead>
                     <row>
@@ -4070,13 +4093,13 @@ pines_notice('Hooray! I found the baz you wanted and the cron user!');</programl
                 <title>Entity Selector Criteria</title>
 
                 <tgroup cols="5">
-                  <colspec colnum="2" colwidth="2*" />
+                  <colspec colnum="2" colwidth="2*"/>
 
-                  <colspec colnum="3" colwidth="4*" />
+                  <colspec colnum="3" colwidth="4*"/>
 
-                  <colspec colnum="4" colwidth="4*" />
+                  <colspec colnum="4" colwidth="4*"/>
 
-                  <colspec colnum="5" colwidth="8*" />
+                  <colspec colnum="5" colwidth="8*"/>
 
                   <thead>
                     <row>
@@ -4562,7 +4585,7 @@ $pines-&gt;icons-&gt;load();
 &lt;div style="float: left; width: 32px; height: 32px; margin: 1em;" class="picon-32 picon-document-sign"&gt;&lt;/div&gt;
 &lt;p&gt;Your order can't be shipped until your contract is signed.&lt;/p&gt;
 
-&lt;button type="button" class="ui-state-default ui-corner-all"&gt;
+&lt;button type="button" class="btn"&gt;
     &lt;span class="picon-dialog-ok" style="background-repeat: no-repeat; padding-left: 18px;"&gt;Go&lt;/span&gt;
 &lt;/button&gt;</programlisting>
             </informalexample></para>
@@ -5018,13 +5041,13 @@ if (!pines_depend('ability', 'com_example/viewwidgets|com_example/viewownwidgets
               a group when the group is placed in the entity's
               <varname>group</varname> variable.</para>
 
-              <para>Access controls are stored a variable called
+              <para>Access controls are stored in a variable called
               <varname>ac</varname> on every entity. This variable is an
               object with the following three variables.<table>
                   <title>Entity Access Control Variables</title>
 
                   <tgroup cols="3">
-                    <colspec colnum="3" colwidth="6*" />
+                    <colspec colnum="3" colwidth="6*"/>
 
                     <thead>
                       <row>
@@ -5070,7 +5093,7 @@ if (!pines_depend('ability', 'com_example/viewwidgets|com_example/viewownwidgets
                   <title>Entity Access Control Values</title>
 
                   <tgroup cols="2">
-                    <colspec colnum="2" colwidth="7*" />
+                    <colspec colnum="2" colwidth="7*"/>
 
                     <thead>
                       <row>
@@ -5195,7 +5218,7 @@ if (!pines_depend('ability', 'com_example/viewwidgets|com_example/viewownwidgets
 
                       <row>
                         <entry>Its <varname>group</varname> variable is a
-                        descendent of one of the user's groups.</entry>
+                        descendant of one of the user's groups.</entry>
 
                         <entry>Check group AC.</entry>
                       </row>
@@ -5382,10 +5405,10 @@ $entities = $pines-&gt;entity_manager-&gt;get_entities(
                 </listitem>
 
                 <listitem>
-                  <para><methodname>is_descendent</methodname></para>
+                  <para><methodname>is_descendant</methodname></para>
 
                   <para>Check whether the user is in a (primary or secondary)
-                  group that is a descendent of the provided group. Takes one
+                  group that is a descendant of the provided group. Takes one
                   argument, the group or the group's GUID.</para>
                 </listitem>
 
@@ -5421,7 +5444,7 @@ $entities = $pines-&gt;entity_manager-&gt;get_entities(
             traversal up the hierarchy very easy. However, traversal down the
             hierarchy is not as easy. It requires the use of the
             <methodname>get_children</methodname> or
-            <methodname>get_descendents</methodname> methods.</para>
+            <methodname>get_descendants</methodname> methods.</para>
 
             <para>Groups can also have a logo. This allows an easy visual
             representation of a user's position in the group hierarchy. This
@@ -5446,9 +5469,9 @@ $entities = $pines-&gt;entity_manager-&gt;get_entities(
                 </listitem>
 
                 <listitem>
-                  <para><methodname>is_descendent</methodname></para>
+                  <para><methodname>is_descendant</methodname></para>
 
-                  <para>Check whether the group is a descendent of the
+                  <para>Check whether the group is a descendant of the
                   provided group. Takes one argument, the group or the group's
                   GUID.</para>
                 </listitem>
@@ -5460,9 +5483,9 @@ $entities = $pines-&gt;entity_manager-&gt;get_entities(
                 </listitem>
 
                 <listitem>
-                  <para><methodname>get_descendents</methodname></para>
+                  <para><methodname>get_descendants</methodname></para>
 
-                  <para>Gets an array of the group's descendent groups. Takes
+                  <para>Gets an array of the group's descendant groups. Takes
                   a boolean argument (defaults to false), whether to include
                   itself in the returned array.</para>
                 </listitem>
@@ -5492,7 +5515,7 @@ $entities = $pines-&gt;entity_manager-&gt;get_entities(
                   <para>Gets an array of users in the group. Some user
                   managers may return only enabled users, so don't rely on
                   this returning all users. Takes a boolean argument (defaults
-                  to false), whether to include users in all descendent groups
+                  to false), whether to include users in all descendant groups
                   too.</para>
                 </listitem>
 
@@ -5620,9 +5643,9 @@ $pines-&gt;entity_manager = 'com_xmlentity';
           <title>Pines JavaScript Object Methods</title>
 
           <tgroup cols="3">
-            <colspec colnum="2" colwidth="3*" />
+            <colspec colnum="2" colwidth="3*"/>
 
-            <colspec colnum="3" colwidth="7*" />
+            <colspec colnum="3" colwidth="7*"/>
 
             <thead>
               <row>
@@ -5660,7 +5683,7 @@ $pines-&gt;entity_manager = 'com_xmlentity';
               <row>
                 <entry><methodname>paused</methodname></entry>
 
-                <entry></entry>
+                <entry/>
 
                 <entry>Determine whether JavaScript loading is currently
                 paused.</entry>
@@ -5669,7 +5692,7 @@ $pines-&gt;entity_manager = 'com_xmlentity';
               <row>
                 <entry><methodname>pause</methodname></entry>
 
-                <entry></entry>
+                <entry/>
 
                 <entry>Pause JavaScript loading. This causes new items to be
                 queued until loading is resumed.</entry>
@@ -5678,7 +5701,7 @@ $pines-&gt;entity_manager = 'com_xmlentity';
               <row>
                 <entry><methodname>play</methodname></entry>
 
-                <entry></entry>
+                <entry/>
 
                 <entry>Resume JavaScript loading.</entry>
               </row>
@@ -5829,31 +5852,31 @@ output.innerHTML = pines.safe(user_name);</programlisting>
       <section>
         <title>Component Design</title>
 
-        <para></para>
+        <para/>
       </section>
 
       <section>
         <title>Actions</title>
 
-        <para></para>
+        <para/>
       </section>
 
       <section>
         <title>Classes</title>
 
-        <para></para>
+        <para/>
       </section>
 
       <section xml:id="views">
         <title>Views</title>
 
-        <para></para>
+        <para/>
       </section>
 
       <section>
         <title>Init Scripts</title>
 
-        <para></para>
+        <para/>
       </section>
     </chapter>
 
@@ -5863,7 +5886,7 @@ output.innerHTML = pines.safe(user_name);</programlisting>
       <section>
         <title>Template Design</title>
 
-        <para></para>
+        <para/>
       </section>
     </chapter>
   </part>
@@ -5874,13 +5897,13 @@ output.innerHTML = pines.safe(user_name);</programlisting>
     <chapter>
       <title>Packaging</title>
 
-      <para></para>
+      <para/>
     </chapter>
 
     <chapter>
       <title>Pines Plaza</title>
 
-      <para></para>
+      <para/>
     </chapter>
   </part>
 </book>
