@@ -19,9 +19,11 @@ mv repos/core/* pines/
 
 # Now copy the distribution components.
 mv repos/components/com_about/ pines/components/
+mv repos/components/com_bootstrap/ pines/components/
 mv repos/components/com_ckeditor/ pines/components/
 mv repos/components/com_configure/ pines/components/
 mv repos/components/com_content/ pines/components/
+mv repos/components/com_dash/ pines/components/
 mv repos/components/com_elfinder/ pines/components/
 mv repos/components/com_elfinderupload/ pines/components/
 mv repos/components/com_entitytools/ pines/components/
@@ -36,6 +38,7 @@ mv repos/components/com_mailer/ pines/components/
 mv repos/components/com_menueditor/ pines/components/
 mv repos/components/com_modules/ pines/components/
 mv repos/components/com_nivoslider/ pines/components/
+mv repos/components/com_notes/ pines/components/
 mv repos/components/com_oxygenicons/ pines/components/
 mv repos/components/com_package/ pines/components/
 mv repos/components/com_pform/ pines/components/

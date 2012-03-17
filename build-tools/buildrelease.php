@@ -62,41 +62,51 @@ if (isset($_REQUEST['directory'])) {
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Release Builder</title>
 	<meta charset="utf-8" />
+	<title>Release Builder</title>
+	<link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
 	<style type="text/css" media="all">
-		/* <![CDATA[ */
+		html {
+			font-size: 100%;
+			-webkit-text-size-adjust: 100%;
+			-ms-text-size-adjust: 100%;
+		}
+		body {
+			margin: 0;
+			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			font-size: 18px;
+			line-height: 22px;
+			color: #333;
+			background-color: #fff;
+			text-rendering: optimizelegibility;
+		}
 		.wrapper {
-			margin: 3em;
-			font-family: sans;
-			font-size: 80%;
+			margin: 2em;
 		}
 		.wrapper fieldset {
-			border: 1px solid #040;
-			-moz-border-radius: 10px;
+			border: 1px dashed rgba(82, 168, 236, 0.8);
+			padding: 0 1em 1em;
 		}
 		.wrapper legend {
-			padding: 0.5em 0.8em;
-			border: 2px solid #040;
-			color: #040;
-			font-size: 120%;
-			-moz-border-radius: 10px;
+			font-family: 'EB Garamond', serif;
+			padding: 0 .2em;
+			font-size: 72px;
+			line-height: 1;
+			border: none;
+		}
+		.wrapper p {
+			margin: 1em 0 0;
+			padding: 0;
 		}
 		.wrapper label {
+			margin: 1em 0 0;
 			display: block;
-			margin-left: 4em;
-		}
-		.wrapper label span {
-			display: inline-block;
-			width: 180px;
-		}
-		.wrapper input, .wrapper select {
-			color: #040;
+			text-align: right;
+			margin-right: 60%;
 		}
 		.wrapper .buttons {
 			text-align: right;
 		}
-		/* ]]> */
 	</style>
 	<script type="text/javascript">
 		function explain_archive() {
@@ -126,15 +136,15 @@ the file manually.");
 					<option value="<?php echo htmlspecialchars($cur_release); ?>"><?php echo htmlspecialchars($cur_release); ?></option>
 					<?php } ?>
 				</select>
-			</label><br />
+			</label>
 			<label>
 				<span>Filename to save as:</span>
 				<input type="text" name="file" value="pines-VERSION-STATE-DBBACKEND" />
-			</label><br />
+			</label>
 			<label>
 				<span>Remove Slim extractor: <a href="javascript:void(0);" onclick="explain_archive();">(?)</a></span>
 				<input type="checkbox" name="remove_self_extract" value="ON" />
-			</label><br />
+			</label>
 			<div class="buttons">
 				<input type="submit" value="Build .php" name="submit" />
 				<input type="submit" value="Build .tar.gz" name="submit" />

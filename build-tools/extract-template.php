@@ -216,44 +216,55 @@ if(!$a->ext['keep_self']) unlink(__FILE__);
 exit;
 
 }
-
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-
+<!DOCTYPE html>
+<html>
 <head>
+<meta charset="utf-8">
 <title>PHP Slim Self Extractor</title>
+<link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
 <style type="text/css" media="all">
-/* <![CDATA[ */
+html {
+font-size: 100%;
+-webkit-text-size-adjust: 100%;
+-ms-text-size-adjust: 100%;
+}
+body {
+margin: 0;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 18px;
+line-height: 22px;
+color: #333;
+background-color: #fff;
+text-rendering: optimizelegibility;
+}
 .wrapper {
-	margin: 3em;
-	font-family: sans;
-	font-size: 80%;
+margin: 2em;
 }
 .wrapper fieldset {
-	border: 1px solid #040;
-	-moz-border-radius: 10px;
+border: 1px dashed rgba(82, 168, 236, 0.8);
+padding: 0 1em 1em;
 }
 .wrapper legend {
-	padding: 0.5em 0.8em;
-	border: 2px solid #040;
-	color: #040;
-	font-size: 120%;
-	-moz-border-radius: 10px;
+font-family: 'EB Garamond', serif;
+padding: 0 .2em;
+font-size: 72px;
+line-height: 1;
+border: none;
+}
+.wrapper p {
+margin: 1em 0 0;
+padding: 0;
 }
 .wrapper label {
-	display: block;
-	text-align: right;
-	margin-right: 60%;
-}
-.wrapper input {
-	color: #040;
+margin: 1em 0 0;
+display: block;
+text-align: right;
+margin-right: 60%;
 }
 .wrapper .buttons {
-	text-align: right;
+text-align: right;
 }
-/* ]]> */
 </style>
 </head>
 <body>
@@ -262,11 +273,11 @@ exit;
 <fieldset>
 <legend>Slim Self Extractor</legend>
 <p>Please enter the directory where you would like to extract the files stored in this Slim Archive. Leave this blank to use the current directory. If the directory does not exist, it will be created for you. Please do not try to use parent directories, they will not work. After the files are extracted, you will be redirected to the directory.</p>
-<label>Directory: <input type="text" name="directory" value="" /></label><br />
+<label>Directory: <input type="text" name="directory" value="" /></label>
 <div class="buttons"><input type="submit" value="Extract and Run" name="submit" /> <input type="reset" value="Reset" name="reset" /></div>
 </fieldset>
 </form>
-<p><small>This Slim Self Extractor was developed by Hunter Perrin as part of <a href="https://sourceforge.net/projects/pines/">Pines</a>.</small></p>
+<p><small>This Slim Self Extractor was developed by Hunter Perrin as part of <a href="http://pinesframework.org/">Pines</a>.</small></p>
 </div>
 </body>
 </html>
