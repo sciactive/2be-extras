@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>HTTP Streaming Test</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script type="text/javascript" src="pcomet.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				// Start the persistent connection.
+				var comet = new pcomet("backend.php");
+				var log = function(text){
+					$("#log").prepend("<hr/>").prepend(document.createTextNode(text));
+				};
+				log('Starting Connection...');
+				// Add a handler for received data.
+				comet.addHandler(function(state, data){
+					switch (state) {
+						case comet.state.RECEIVED:
+							log("Received data:\n"+data);
+							break;
+						case comet.state.SENT:
+							log("Sent data:\n"+data);
+							break;
+						case comet.state.CLOSED:
+							log("Closed connection!");
+							break;
+					}
+				});
+				$("#send").click(function(){
+					// Send data to the listening server.
+					comet.send($("#data").val());
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div>
+			<textarea id="data" rows="5" cols="35"></textarea>
+			<button id="send" type="button">Send</button>
+		</div>
+		<div>Log:
+			<pre id="log"></pre>
+		</div>
+	</body>
+</html>
