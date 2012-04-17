@@ -5728,21 +5728,26 @@ $pines-&gt;entity_manager = 'com_xmlentity';
               <row>
                 <entry><methodname>loadjs</methodname></entry>
 
-                <entry>url, multiple</entry>
+                <entry>url, multiple, attrs</entry>
 
                 <entry>Load a JavaScript file in turn. If multiple is false,
                 which is the default, the file will only be loaded if it has
-                not been loaded by this function before.</entry>
+                not been loaded by this function before. If attrs is an
+                object, its properties will be used as attributes for the
+                script element. You cannot override the type or src
+                attribute.</entry>
               </row>
 
               <row>
                 <entry><methodname>loadcss</methodname></entry>
 
-                <entry>url, multiple</entry>
+                <entry>url, multiple, attrs</entry>
 
                 <entry>Load a CSS file in turn. If multiple is false, which is
                 the default, the file will only be loaded if it has not been
-                loaded by this function before.</entry>
+                loaded by this function before. If attrs is an object, its
+                properties will be used as attributes for the style element.
+                You cannot override the type or href attribute.</entry>
               </row>
 
               <row>
@@ -5800,6 +5805,9 @@ $pines-&gt;entity_manager = 'com_xmlentity';
 
           <programlisting language="js+php">// These files will be loaded first.
 pines.loadcss("&lt;?php echo htmlspecialchars($pines-&gt;config-&gt;location); ?&gt;components/com_example/includes/style.css");
+pines.loadcss("&lt;?php echo htmlspecialchars($pines-&gt;config-&gt;location); ?&gt;components/com_example/includes/print.css", false, {
+    media: "print"
+});
 pines.loadjs("&lt;?php echo htmlspecialchars($pines-&gt;config-&gt;location); ?&gt;components/com_example/includes/script1.js");
 
 // This function won't run until all files are loaded and the DOM is ready.
