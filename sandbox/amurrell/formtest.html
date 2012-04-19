@@ -6,6 +6,7 @@
 		<link href="http://pines.hg.sourceforge.net/hgweb/pines/pform/raw-file/tip/pform.css" media="all" rel="stylesheet" type="text/css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.js" type="text/javascript"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js" type="text/javascript"></script>
+		<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/smoothness/jquery-ui.css" type="text/css" rel="stylesheet" />
 		<script src="http://pines.hg.sourceforge.net/hgweb/pines/core/raw-file/tip/system/includes/pines.js" type="text/javascript"></script>
 		<style type="text/css">
 			.furry {
@@ -86,6 +87,48 @@
 				$("#banana .box").hover(function(){
 					$(this).toggleClass("furry");
 				});
+				var do_enter;
+				$("#dialog_button").click(function(){
+					$("#dialog").dialog({
+						modal: true,
+						width: 500,
+						resizable: false,
+						closeOnEscape: false,
+						open: function(){
+							var dialog = $(this);
+							if (!do_enter)
+								do_enter = function(e){
+									if (e.keyCode == 13) {
+										console.log("i was run!!!");
+										dialog.dialog("option", "buttons").Done.call(dialog);
+									}
+								};
+							dialog.closest(".ui-dialog").find(".ui-dialog-titlebar-close").hide();
+							$("#steve_input").val($("#steve").val()).unbind("keypress", do_enter).bind("keypress", do_enter);
+						},
+						buttons: {
+							"Cancel": function(){
+								$(this).dialog("close");
+							},
+							"Done": function(){
+								$("#steve").val($("#steve_input").val());
+								$(this).dialog("close");
+							}
+						}
+					});
+				});
+
+				$("#steve_input").bind("keypress", function(){
+					var jthis = $(this);
+					jthis.val(jthis.val().replace(/[^a-z ]/i, ''));
+				});
+				
+				var josh_changed = function(){
+					var val = $("#josh").val();
+					var progress = val.length/60;
+					$("#josh_progress").progressbar({"value": Math.round(progress*100)});
+				};
+				$("#josh").change(josh_changed).keyup(josh_changed).change();
 			});
 		</script>
 	</head>
@@ -107,6 +150,38 @@
 			<div class="box"></div>
 			<div class="box"></div>
 		</div>
+		<br style="clear: both;" />
+		<button id="dialog_button" type="button">Show a Dialog</button>
+		<form class="pf-form" action="" method="POST">
+			<div class="pf-element pf-heading">
+				<h1>I'm a PForm</h1>
+			</div>
+			<div class="pf-element pf-full-width">
+				<span class="pf-label">Label</span>
+				<span class="pf-note">Don't look!</span>
+				<span class="pf-field"><input type="text" name="josh" id="josh" maxlength="60" value="json" /></span>
+				<div style="clear: both; height: 10px;" id="josh_progress"></div>
+			</div>
+			<div id="dialog" title="I'm a Dialog" style="display: none;">
+				<div class="pf-form">
+					<div class="pf-element">
+						<span class="pf-label">Label</span>
+						<span class="pf-note">Don't look!</span>
+						<span class="pf-field">Foobar</span>
+					</div>
+					<div class="pf-element">
+						<span class="pf-label">Label</span>
+						<span class="pf-note">Don't look!</span>
+						<span class="pf-field"><input type="text" id="steve_input" /></span>
+					</div>
+				</div>
+				<br />
+			</div>
+			<div class="pf-element pf-buttons">
+				<input type="text" name="steve" id="steve" value="oh my" />
+				<input type="submit" value="Submit" />
+			</div>
+		</form>
 		<form class="pf-form">
 			<div class="pf-element pf-heading">
 				<h1>Pines Form Test</h1>

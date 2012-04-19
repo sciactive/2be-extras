@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link href="http://pines.hg.sourceforge.net/hgweb/pines/pform/raw-file/tip/pform.css" media="all" rel="stylesheet" type="text/css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.js" type="text/javascript"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js" type="text/javascript"></script>
+		<script src="http://pines.hg.sourceforge.net/hgweb/pines/core/raw-file/tip/system/includes/pines.js" type="text/javascript"></script>
+		<style type="text/css">
+			#images img{
+				border:none;
+			}
+			
+			#images {
+				margin: 0 auto;
+				text-align:left;
+				width:570px;
+			}
+			.keywordcontainer input {
+				float:left;	
+			}
+			
+			.keywordcontainer .next input, .keywordcontainer .prev input  {
+				float:right;
+				margin: -40px 3px 0;
+				border:1px solid #bbb;
+				background-color:#ddd;
+				font-family: arial, helvetica, sans-serif;
+				font-size:20px;
+				color:#aaa;
+				cursor: pointer;
+			}
+			
+			.keywordcontainer .prev input  {
+				margin-right:70px;
+			}
+		
+			div.imageframe {
+				border:1px solid #ccc;
+				margin: 10px;
+				padding:5px;
+				display:inline-block;
+				zoom:1;
+				*display:inline;
+				vertical-align:top;
+				background-color:#fff;
+				overflow:hidden;
+				width:110px;
+				height:110px;
+			}
+			
+			div.imagecontain {
+				height:100%;
+				width:100%;
+				overflow: hidden;
+			}
+			
+			div.hoverimage {
+				height:200px;
+				width:200px;
+				position:absolute;
+			}
+			
+			.keywordcontainer {
+				width:650px;
+				margin:10px auto;
+				border:1px solid #bbb;
+				text-align:left;
+				padding:5px;
+				height:28px;
+			}
+			
+			label {
+				font-family: arial, helvetica, sans-serif;
+				font-size:10px;
+				color:#aaa;
+				vertical-align:bottom;
+				line-height: 40px;
+				display:inline-block;
+			}
+			
+			.keywordinput {
+				border:1px solid #bbb;
+				background-color:#eee;
+				font-family: arial, helvetica, sans-serif;
+				font-size:20px;
+				color:#aaa;
+			}
+			
+			.perpageinput, .wallsize {
+				border:1px solid #bbb;
+				background-color:#eee;
+				font-family: arial, helvetica, sans-serif;
+				font-size:20px;
+				color:#aaa;
+				margin:0 3px;
+				float:left;
+				width:30px;
+				text-align:right;
+			}
+			
+			.wallsize {
+				width:50px;
+			}
+			
+			#keyinputclone {
+				border:1px solid #bbb;
+				background-color:#eee;
+				font-family: arial, helvetica, sans-serif;
+				font-size:20px;
+				color:#aaa;
+			}
+			
+			#imagewall {
+				width:600px;
+				margin:10px auto;
+				border:1px solid #bbb;
+				text-align:center;
+				padding:30px 30px 40px;
+				position:relative;
+				line-height:0;
+				font-family: arial, helvetica, sans-serif;
+				font-size:16px;
+				color:#aaa;
+			}
+			
+			#imagewall a {
+				line-height:0px;
+			}
+			
+			.viewing {
+				font-family: arial, helvetica, sans-serif;
+				font-size:12px;
+				color:#aaa;
+				margin:-10px auto 0;
+				height:20px;
+			}
+			
+			.viewclone {
+				font-family: arial, helvetica, sans-serif;
+				font-size:12px;
+				color:#aaa;
+				margin:30px auto -35px;
+				height:20px;
+			}
+			
+			div.divleft, div.divright {
+				display:inline-block;
+				float:left;
+			}
+			
+			div.divright {
+				float:right;
+			}
+			
+			div.deleteimage {
+				position:absolute;
+				top:0;
+				left:190px;
+				width:16px;
+				height:16px;
+				background: url('edit-delete.png') no-repeat;
+				display:none;
+				cursor:pointer;
+			}
+			
+			#deleted {
+				text-align:center;
+				padding:30px 30px 40px;
+			}
+			
+			#deleted p {
+				font-family: arial, helvetica, sans-serif;
+				font-size:14px;
+				color:#aaa;
+			}
+			
+			
+		</style>
+		<script type="text/javascript">
+			$(function(){
+				var delete_images_option = true;
+				var diff_size_img = function(img, length, max_length, img_margin){
+					var img = $(img);
+					var w = img.width();
+					var h = img.height();
+					var ratio = w/h;
+					if (
+							(ratio > 1 && !max_length) ||
+							(ratio < 1 && max_length)
+						) {
+						// wider image
+						var width = length*ratio;
+						var margin;
+						if (img_margin)
+							margin = (width - length) / 2 * -1;
+						else
+							margin = 0;
+						img.css({'height': length+'px', 'width': width+'px', 'margin-left': margin+"px"})
+					} else if (
+							(ratio <= 1 && !max_length) ||
+							(ratio >= 1 && max_length)
+						) {
+						// taller image
+						var height = length/ratio;
+						var margin;
+						if (img_margin)
+							margin = (height - length) / 2 * -1;
+						else
+							margin = 0;
+						img.css({'width': length+'px', 'height': height+'px', 'margin-top': margin+"px"})
+					}
+				};
+				$("#imagewall").undelegate('div.imageframe:not(.no-hover)','mouseenter').delegate('div.imageframe:not(.no-hover)','mouseenter',function(){
+					var imageframes = $(this);
+					var position = imageframes.position();
+					var clone = imageframes.clone()
+					.addClass("no-hover")
+					.replaceAll('#change')
+					.wrap("<div id=\"change\"/>")
+					.css({'width': '200px', 'height':'200px'});
+					
+					if(delete_images_option){
+						clone.children().children(".deleteimage").show().click(function(){
+							$("#imagewall , .keywordcontainer").css("float","left");
+							var deleted = $("#deleted");
+							if (deleted.length == 0){
+								var creatediv = "<div id=\"deleted\"><p>Deleted Items</p></div>";
+							}
+							$("body").append(creatediv);
+							$("#deleted").append(imageframes);
+							imageframes.hide();
+							$("#deleted .imageframe").show().click(function(){
+								var exists = false;
+								var thisthing = $(this)
+								var makeoriginal = thisthing.clone();
+								var title_value = parseInt(makeoriginal.attr("title"))
+								$("#images").find(".imageframe").each(function() {
+									var each_title_value = parseInt($(this).attr("title"));
+									if (title_value == each_title_value){
+										//image exists
+										exists = true;
+									}	
+								});
+								if (!exists) {
+									makeoriginal.appendTo("#images");
+									thisthing.fadeOut( 1000, function() {
+										thisthing.remove();
+									});
+								}
+
+								return false;
+							});
+							clone.effect("explode");
+						});
+					}
+					
+					var clone_image = clone.find("img");
+					clone_image.css({"margin-left": "0", "margin-top": "0"}).each(function(){
+						diff_size_img(this, 200, true, false);
+					});
+					var w = clone.width();
+					var h = clone.height();
+					clone.css({'position':'absolute','top': position.top - ((h - 110) / 2), 'left': position.left - ((w - 110) / 2)});
+				});
+				$("#imagewall").mouseleave(function(){
+					$('#change').html('<div>&nbsp;</div>')
+				});
+				
+				
+				
+				
+
+				$("#imagewall").delegate("#images > .imageframe img", "angelasevent", function() {
+					diff_size_img(this, 110, false, true);
+				});
+				
+				var keywordinput = $('.keywordinput');
+				var perpageinput = $('.perpageinput');
+				var wallsizeinput = $('.wallsize');
+
+				wallsizeinput.bind('keyup', function(e) {
+					if(e.keyCode==13){
+						keywordinput.trigger(e);
+					}
+				});
+				
+				perpageinput.bind('keyup', function(e) {
+					if(e.keyCode==13){
+						keywordinput.trigger(e);
+					}
+				});
+				
+				keywordinput.bind('keyup', function(e) {
+					if(e.keyCode==13){
+						if (keywordinput.val() != "" ) {
+							$.ajax({
+								url: "imagewall.php",
+								dataType: "json",
+								method: "POST",
+								data: {"keyword": keywordinput.val()},
+								beforeSend: function(){
+									$("#imagewall").html("<img src=\"ajax-loader.gif\" /> Loading...");
+								},
+								error: function(jqXHR, textStatus, errorThrown){
+									$("#imagewall").html("omg error: "+textStatus+" - "+errorThrown);
+								},
+								success: function(data){
+									var perpage = parseInt(perpageinput.val());
+									var wallsize = parseInt(wallsizeinput.val());
+									var keyclone = $("#keywordcontainer-clone");
+									var nextdiv = $(".next");
+									var prevdiv = $(".prev");
+									keyclone.remove();
+									nextdiv.remove();
+									prevdiv.remove();
+									var output = $("<div id=\"images\"/>");
+									var addnext = $("<div class=\"next\"/>");
+									var addprev = $("<div class=\"prev\"/>");
+									var imagewall = $("#imagewall");
+									var keywordcontainer = $(".keywordcontainer");
+									
+									//get rid of deleted div
+									
+									var deleted = $("#deleted");
+									if (deleted.length != 0) {
+										deleted.fadeOut(2000, function() { deleted.remove(); });
+										imagewall.css("float" , "none");
+										keywordcontainer.css("float" , "none");
+									}
+									
+									//set wall widths (cant set images div yet but I can calculate it)
+									imagewall.css("width" , wallsize);
+									keywordcontainer.css("width" , wallsize + 50);
+									var imageswidth = wallsize - 30;
+									
+									function viewstatusfunc(increment){
+										var viewstart = (increment - perpage) + 1;
+										var viewtotal = data[0].length;
+										if (increment == viewtotal) {
+											var showing = viewtotal % perpage;
+											if (showing == 0) {
+												showing = perpage;
+											}
+											viewstart = (viewtotal - showing) + 1; 
+										}
+										var viewend = increment;
+										var viewshowing = (viewend - viewstart) + 1;
+										var viewstatus = "<div class=\"viewing\"/>";
+										imagewall.html(viewstatus);
+										$(".viewing").html("<div class=\"divright\">Viewing " + viewstart + " - " + viewend + " out of " + viewtotal +"</div><div class=\"divleft\">" + viewshowing + " Showing</div>");
+									}
+									function viewclonefunc(increment){
+										var viewstart = (increment - perpage) + 1;
+										var viewtotal = data[0].length;
+										if (increment == viewtotal) {
+											var showing = viewtotal % perpage;
+											if (showing == 0) {
+												showing = perpage;
+											}
+											viewstart = (viewtotal - showing) + 1; 
+										}
+										var viewend = increment;
+										var viewshowing = (viewend - viewstart) + 1;
+										var viewstatus = "<div class=\"viewing viewclone\"/>";
+										imagewall.append(viewstatus);
+										$(".viewing").html("<div class=\"divright\">Viewing " + viewstart + " - " + viewend + " out of " + viewtotal +"</div><div class=\"divleft\">" + viewshowing + " Showing</div>");
+									}
+									function keywordclonefunc(){
+										var keywordclone = keywordcontainer.clone(true,true);
+										var deleted_div = $("#deleted");
+											if (deleted_div.length == 0) {
+												keywordclone
+												.appendTo('body');
+											}
+											
+											else {
+												keywordclone
+												.insertBefore('#deleted');
+											}
+											
+											
+											keywordclone
+											.attr("id", "keywordcontainer-clone")
+											.children(".keywordinput")
+											.attr("id", "keyinputclone")
+											.removeClass("keywordinput")
+											.bind("keydown keyup keypress", function(e){
+												keywordinput.trigger(e).val($(this).val());
+											});
+											
+											var keyclone = $("#keywordcontainer-clone");
+											
+											keyclone.children(".next")
+											.attr("id", "nextclone");
+											
+											keyclone.children(".prev")
+											.attr("id", "prevclone");
+											
+											keyclone.children("label").children(".perpageinput")
+											.attr("id", "perpageclone")
+											.bind("keydown keyup keypress", function(e){
+												perpageinput.trigger(e).val($(this).val());
+											});
+											
+											keyclone.children("label").children(".wallsize")
+											.attr("id", "wallsizeclone")
+											.bind("keydown keyup keypress", function(e){
+												wallsizeinput.trigger(e).val($(this).val());
+											});
+										
+											$("#nextclone input").click(function(){
+													$(".next input:not(#nextclone) input").click();
+											})
+
+
+											$("#prevclone input").click(function(){
+													$(".prev input:not(#prevclone) input").click();
+											})
+										
+										}
+									addnext.append("<input type=\"button\" name=\"next\" value=\"next\"/>")
+									addprev.append("<input type=\"button\" name=\"prev\" value=\"previous\"/>")
+									if(typeof data[1] != "undefined"){
+										var i=0;
+										var increment = perpage;
+										for (i=0;i<increment;i=i+1)
+											{
+												output.append("<div class=\"imageframe\" title=\""+i+"\"><div class=\"imagecontain\"><a href=\""+data[1][i]+"\" target=\"_blank\">"+data[0][i].replace("<img", "<img onload=\"$(this).trigger('angelasevent');\"")+"</a><div class=\"deleteimage img"+i+"\">&nbsp;</div></div></div>");
+											}
+									}
+									
+									viewstatusfunc(increment);
+
+									output.append("<div id=\"clone-image\"><div id=\"change\"></div></div>");
+									imagewall.append(output);
+									keywordcontainer.append(addnext);
+									keywordclonefunc();
+									viewclonefunc(increment);
+									$("#images").css("width" , imageswidth);
+									
+									keywordcontainer.undelegate(".next input", "click").delegate(".next input", "click", function(){
+										$("#keywordcontainer-clone").remove();
+										var thisnextdiv = $(this).closest(".next");
+										var thisprevdiv = thisnextdiv.siblings(".prev");
+										imagewall.html("<div id=\"images\"/>");
+										var newoutput = $("#images");
+										thisnextdiv.remove();
+										thisprevdiv.remove();
+										increment += perpage;
+										var viewtotal = data[0].length;
+										if (increment > viewtotal){
+											increment = viewtotal;
+										}
+										removenext = false;
+										if (typeof data[0][increment] == "undefined")
+											{
+												var removenext = true;
+											}
+										for (i=i;i<increment;i=i+1)
+											{
+												newoutput.append("<div class=\"imageframe\" title=\""+i+"\"><div class=\"imagecontain\"><a href=\""+data[1][i]+"\" target=\"_blank\">"+data[0][i].replace("<img", "<img onload=\"$(this).trigger('angelasevent');\"")+"</a><div class=\"deleteimage img"+i+"\">&nbsp;</div></div></div>");
+											}
+										
+										if(removenext == false) {
+											newoutput.append("<div id=\"clone-image\"><div id=\"change\"></div></div>");
+											keywordcontainer.append(addnext);
+											viewstatusfunc(i,increment);
+											imagewall.append(newoutput);
+										}
+										viewstatusfunc(increment);
+										imagewall.append(newoutput);
+										keywordcontainer.append(addprev);
+										keywordclonefunc();
+										viewclonefunc(increment);
+										$("#images").css("width" , imageswidth);
+									});
+
+									keywordcontainer.undelegate(".prev input", "click").delegate(".prev input", "click", function(){
+										$("#keywordcontainer-clone").remove();
+										var thisprevdiv = $(this).closest(".prev");
+										var thisnextdiv = thisprevdiv.siblings(".next");
+										thisnextdiv.remove();
+										thisprevdiv.remove();
+										imagewall.html("<div id=\"images\"/>");
+										var removeprev = false;
+										var newoutput = $("#images");
+										var viewtotal = data[0].length;
+										if (i == viewtotal){
+											var showing = viewtotal % perpage;
+											if (showing == 0){
+												increment -= perpage;
+												i = increment - perpage;
+											}
+											else {
+												increment = i - showing;
+												i = increment - perpage;
+											}
+											
+										}
+										else {
+											//do something when normal
+											increment -= perpage;
+											i = increment - perpage;
+										}
+//										alert(i);
+										for (i=i;i<increment;i=i+1)
+											{
+												newoutput.append("<div class=\"imageframe\" title=\""+i+"\"><div class=\"imagecontain\"><a href=\""+data[1][i]+"\" target=\"_blank\">"+data[0][i].replace("<img", "<img onload=\"$(this).trigger('angelasevent');\"")+"</a><div class=\"deleteimage img"+i+"\">&nbsp;</div></div></div>");
+											}
+										if (increment < (perpage + 1))
+											{
+												var removeprev = true;
+											}
+										newoutput.append("<div id=\"clone-image\"><div id=\"change\"></div></div>");
+										keywordcontainer.append(addnext);
+										if(removeprev == false) {
+											keywordcontainer.append(addprev);
+										}
+										viewstatusfunc(increment);
+										imagewall.append(newoutput);
+										keywordclonefunc();
+										viewclonefunc(increment);
+										$("#images").css("width" , imageswidth);
+									});
+								}
+							});
+						}
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		
+		<div class="keywordcontainer">
+			<input type="text" class="keywordinput" name="keyword"/>
+			<label><input type="text" class="perpageinput" name="perpage" value="20"/> per page</label>
+			<label><input type="text" class="wallsize" name="wallsize" value="600"/> wall size</label>
+		</div>
+		<div id="imagewall">
+			<p>Start by typing in a keyword.</p>
+		</div>
+		
+		
+	</body>
+</html>
