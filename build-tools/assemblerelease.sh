@@ -8,8 +8,8 @@ mkdir repos
 cd repos/
 
 # And get pines.
-hg clone http://pines.hg.sourceforge.net:8000/hgroot/pines/core core
-hg clone http://pines.hg.sourceforge.net:8000/hgroot/pines/components components
+git clone git://github.com/sciactive/pines-core.git core
+git clone git://github.com/sciactive/pines-components.git components
 
 cd ..
 mkdir pines
@@ -54,9 +54,9 @@ mv repos/components/com_timeoutnotice/ pines/components/
 #mv repos/components/com_tinymce/ pines/components/
 mv repos/components/com_uasniffer/ pines/components/
 mv repos/components/com_user/ pines/components/
-mv repos/components/tpl_bamboo/ pines/templates/
 mv repos/components/tpl_mobile/ pines/templates/
 mv repos/components/tpl_pines/ pines/templates/
+mv repos/components/tpl_pinescms/ pines/templates/
 mv repos/components/tpl_print/ pines/templates/
 
 # Now copy MySQL code.
@@ -70,8 +70,8 @@ mv repos/components/com_pgentity/ pines-pgsql/components/
 mv repos/components/com_pgsql/ pines-pgsql/components/
 
 # Now clean up.
-rm -r repos/
-rm -r pines/
+rm --interactive=never -r repos/
+rm --interactive=never -r pines/
 
 # And we're done.
 echo All done.
