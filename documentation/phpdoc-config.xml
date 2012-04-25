@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdoc>
+	<title><![CDATA[Pines Framework]]></title>
+	<parser>
+		<default-package-name>Core</default-package-name>
+		<target>pines-docs</target>
+		<markers>
+			<item>TODO</item>
+			<item>FIXME</item>
+		</markers>
+		<extensions>
+			<extension>php</extension>
+		</extensions>
+		<visibility></visibility>
+	</parser>
+	<transformer>
+		<target>pines-docs</target>
+	</transformer>
+	<files>
+		<ignore-hidden>on</ignore-hidden>
+		<ignore-symlinks>on</ignore-symlinks>
+		<directory>pines/</directory>
+		<ignore>components/com_barcode/includes/*</ignore>
+		<ignore>components/com_elfinder/classes/elFinder*</ignore>
+		<ignore>components/com_messenger/includes/*</ignore>
+		<ignore>components/com_pdf/includes/*</ignore>
+		<ignore>templates/tpl_joomlatemplates/*</ignore>
+	</files>
+	<logging>
+		<level>warn</level>
+		<paths>
+			<default>{APP_ROOT}/data/log/{DATE}.log</default>
+			<errors>{APP_ROOT}/data/log/{DATE}.errors.log</errors>
+		</paths>
+	</logging>
+	<transformations>
+		<template name="responsive" />
+	</transformations>
+</phpdoc>
