@@ -24,32 +24,19 @@ foreach ($iterator as $file_path) {
 	$dir = substr($rel_file, 0, strpos($rel_file, '/'));
 	$file = substr($rel_file, strrpos($rel_file, '/') + 1, -4);
 	$file = str_replace('+', '_', $file);
-	if ($dir == '16') {
+	if ($dir == '16')
 		$styles[".picon-{$file}"] = $rel_file;
-	} else {
+	else
 		$styles[".picon-{$dir}.picon-{$file}"] = $rel_file;
-	}
 }
 
 ksort($styles);
 
 foreach ($styles as $key => $value) {
-	echo "{$key} {background-image:url(\"{$value}\")}\n";
-}
-
-exit;
-
-// Old code.
-$working_dir_regex = '/'.preg_quote($working_dir, '/').'/';
-$files = `find $working_dir -iname "*.png" -or -iname "*.gif"`;
-$file_array = explode("\n", $files);
-foreach ($file_array as $cur_file) {
-	if (!empty($cur_file))
-		echo preg_replace(array($working_dir_regex, '/\//', '/\.([Pp][Nn][Gg]|[Gg][Ii][Ff])$/', '/\./', '/^/'), array('', '_', '', '-', '.picon_'), $cur_file)
-		.' {background-image: url("'
-		.str_replace($working_dir, '', $cur_file)
-		.'");}'
-		."\n";
+	if (strpos($value, '+') === false)
+		echo "{$key}{background:url({$value})}\n";
+	else
+		echo "{$key}{background:url(\"{$value}\")}\n";
 }
 
 ?>
