@@ -26,6 +26,7 @@ mv repos/components/com_content/ pines/components/
 mv repos/components/com_dash/ pines/components/
 mv repos/components/com_elfinder/ pines/components/
 mv repos/components/com_elfinderupload/ pines/components/
+mv repos/components/com_entityhelper/ pines/components/
 mv repos/components/com_entitytools/ pines/components/
 mv repos/components/com_fancybox/ pines/components/
 mv repos/components/com_iframe/ pines/components/
