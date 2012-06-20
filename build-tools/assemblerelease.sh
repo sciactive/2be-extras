@@ -20,7 +20,7 @@ mv repos/core/* pines/
 # Now copy the distribution components.
 mv repos/components/com_about/ pines/components/
 mv repos/components/com_bootstrap/ pines/components/
-mv repos/components/com_ckeditor/ pines/components/
+#mv repos/components/com_ckeditor/ pines/components/
 mv repos/components/com_configure/ pines/components/
 mv repos/components/com_content/ pines/components/
 mv repos/components/com_dash/ pines/components/
@@ -51,7 +51,7 @@ mv repos/components/com_replace/ pines/components/
 mv repos/components/com_slim/ pines/components/
 mv repos/components/com_su/ pines/components/
 mv repos/components/com_timeoutnotice/ pines/components/
-#mv repos/components/com_tinymce/ pines/components/
+mv repos/components/com_tinymce/ pines/components/
 mv repos/components/com_uasniffer/ pines/components/
 mv repos/components/com_user/ pines/components/
 mv repos/components/tpl_mobile/ pines/templates/
