@@ -14,7 +14,7 @@
    height="1000"
    id="svg2"
    version="1.1"
-   inkscape:version="0.47pre4 r22446"
+   inkscape:version="0.48.3.1 r9886"
    sodipodi:docname="pines-low.svg"
    style="display:inline"
    inkscape:export-filename="pines-low.png"
@@ -1074,16 +1074,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.175"
-     inkscape:cx="1115.9864"
-     inkscape:cy="378.95831"
+     inkscape:zoom="0.35"
+     inkscape:cx="1249.8985"
+     inkscape:cy="449.84197"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1280"
-     inkscape:window-height="951"
+     inkscape:window-height="1000"
      inkscape:window-x="0"
-     inkscape:window-y="25"
+     inkscape:window-y="24"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata7">
@@ -1093,7 +1093,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -1125,7 +1125,7 @@
        transform="matrix(0.94488189,0,0,0.94488189,142.03613,-211.16913)" />
     <path
        sodipodi:type="arc"
-       style="fill:#0a9800;fill-opacity:1;stroke:none"
+       style="fill:#7bb900;fill-opacity:1;stroke:none"
        id="path2816-9"
        sodipodi:cx="388.57144"
        sodipodi:cy="635.2193"
