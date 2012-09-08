@@ -235,25 +235,43 @@ font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 font-size: 18px;
 line-height: 22px;
 color: #333;
-background-color: #fff;
+background: #ccc;
+background: -moz-linear-gradient(top,  #ccc 1%, #aaa 100%) repeat fixed 0 0 transparent;
+background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#ccc), color-stop(100%,#aaa)) repeat fixed 0 0 transparent;
+background: -webkit-linear-gradient(top,  #ccc 1%,#aaa 100%) repeat fixed 0 0 transparent;
+background: -o-linear-gradient(top,  #ccc 1%,#aaa 100%) repeat fixed 0 0 transparent;
+background: -ms-linear-gradient(top,  #ccc 1%,#aaa 100%) repeat fixed 0 0 transparent;
+background: linear-gradient(to bottom,  #ccc 1%,#aaa 100%) repeat fixed 0 0 transparent;
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cccccc', endColorstr='#aaaaaa',GradientType=0 );
 text-rendering: optimizelegibility;
 }
 .wrapper {
-margin: 2em;
+font-family: sans-serif;
+font-size: 13px;
+margin: 100px 125px;
+color: #333;
+background-color: #ecf7d6;
+-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset, 0 -2px 0 rgba(10, 12, 15, 0.1) inset, 0 0 10px rgba(255, 255, 255, 0.5) inset, 0 0 0 1px rgba(10, 12, 15, 0.1), 0 2px 4px rgba(10, 12, 15, 0.15), inset -60px -90px 300px 10px #B4DC63;
+box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset, 0 -2px 0 rgba(10, 12, 15, 0.1) inset, 0 0 10px rgba(255, 255, 255, 0.5) inset, 0 0 0 1px rgba(10, 12, 15, 0.1), 0 2px 4px rgba(10, 12, 15, 0.15), inset -60px -90px 300px 10px #B4DC63;
+border-radius: 8px;
+padding: 40px;
 }
-.wrapper fieldset {
-border: 1px dashed rgba(82, 168, 236, 0.8);
-padding: 0 1em 1em;
-}
-.wrapper legend {
+.wrapper .header h1 {
 font-family: 'EB Garamond', serif;
-padding: 0 .2em;
-font-size: 72px;
+font-weight: normal;
+font-size: 40px;
 line-height: 1;
-border: none;
+margin: 0 0 5px;
+color: #507800;
+text-decoration: none;
+text-shadow: 0 0 4px #B4DC63;
+filter: dropshadow(color=#B4DC63, offx=0, offy=0);
+}
+.wrapper .header hr {
+margin: 6px -10px;
 }
 .wrapper p {
-margin: 1em 0 0;
+margin: .4em 0 0;
 padding: 0;
 }
 .wrapper label {
@@ -262,20 +280,61 @@ display: block;
 text-align: right;
 margin-right: 60%;
 }
+.wrapper input[type=text] {
+padding: .2em;
+color: #67003A;
+background: #fff;
+border: 1px #67003A solid;
+border-radius: 3px;
+-webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+-moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+-o-transition: border linear 0.2s, box-shadow linear 0.2s;
+transition: border linear 0.2s, box-shadow linear 0.2s;
+}
+.wrapper input[type=text]:focus {
+border-color: rgba(159, 40, 133, 0.8);
+outline: 0;
+outline: thin dotted \9;
+-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(159, 40, 133, 0.6);
+-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(159, 40, 133, 0.6);
+box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(159, 40, 133, 0.6);
+}
 .wrapper .buttons {
 text-align: right;
+}
+.wrapper input[type=submit], .wrapper input[type=reset], .wrapper input[type=button], .wrapper button {
+color: #FFF;
+padding: 6px 10px;
+border: 1px #662E59 solid;
+border-radius: 3px;
+background: #cc5fb2;
+background: -moz-linear-gradient(top,  #cc5fb2 0%, #9f488c 6%, #662e59 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cc5fb2), color-stop(6%,#9f488c), color-stop(100%,#662e59));
+background: -webkit-linear-gradient(top,  #cc5fb2 0%,#9f488c 6%,#662e59 100%);
+background: -o-linear-gradient(top,  #cc5fb2 0%,#9f488c 6%,#662e59 100%);
+background: -ms-linear-gradient(top,  #cc5fb2 0%,#9f488c 6%,#662e59 100%);
+background: linear-gradient(to bottom,  #cc5fb2 0%,#9f488c 6%,#662e59 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc5fb2', endColorstr='#662e59',GradientType=0 );
+}
+.wrapper input[type=submit]:hover, .wrapper input[type=reset]:hover, .wrapper input[type=button]:hover, .wrapper button:hover {
+background: #cc5fb2;
+background: -moz-linear-gradient(top,  #cc5fb2 0%, #8c407a 6%, #662e59 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cc5fb2), color-stop(6%,#8c407a), color-stop(100%,#662e59));
+background: -webkit-linear-gradient(top,  #cc5fb2 0%,#8c407a 6%,#662e59 100%);
+background: -o-linear-gradient(top,  #cc5fb2 0%,#8c407a 6%,#662e59 100%);
+background: -ms-linear-gradient(top,  #cc5fb2 0%,#8c407a 6%,#662e59 100%);
+background: linear-gradient(to bottom,  #cc5fb2 0%,#8c407a 6%,#662e59 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc5fb2', endColorstr='#662e59',GradientType=0 );
 }
 </style>
 </head>
 <body>
 <div class="wrapper">
 <form action="" method="post">
-<fieldset>
-<legend>Slim Self Extractor</legend>
+<div class="header"><h1>Slim Self Extractor</h1><hr /></div>
 <p>Please enter the directory where you would like to extract the files stored in this Slim Archive. Leave this blank to use the current directory. If the directory does not exist, it will be created for you. Please do not try to use parent directories, they will not work. After the files are extracted, you will be redirected to the directory.</p>
 <label>Directory: <input type="text" name="directory" value="" /></label>
 <div class="buttons"><input type="submit" value="Extract and Run" name="submit" /> <input type="reset" value="Reset" name="reset" /></div>
-</fieldset>
 </form>
 <p><small>This Slim Self Extractor was developed by Hunter Perrin as part of <a href="http://pinesframework.org/">Pines</a>.</small></p>
 </div>

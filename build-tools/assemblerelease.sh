@@ -36,6 +36,7 @@ mv repos/components/com_jquery/ pines/components/
 mv repos/components/com_jstree/ pines/components/
 mv repos/components/com_logger/ pines/components/
 mv repos/components/com_mailer/ pines/components/
+mv repos/components/com_markdown/ pines/components/
 mv repos/components/com_menueditor/ pines/components/
 mv repos/components/com_modules/ pines/components/
 mv repos/components/com_nivoslider/ pines/components/
