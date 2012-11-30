@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Chapter 4. System Services</title><link rel="stylesheet" href="docbook.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.75.2" /><link rel="home" href="index.html" title="Pines Development" /><link rel="up" href="pt01.html" title="Part I. The Pines Framework" /><link rel="prev" href="ch03s06.html" title="3.6. Order of Execution" /><link rel="next" href="ch04s02.html" title="4.2. Creating a Service" /></head><body><a xmlns:fo="http://www.w3.org/1999/XSL/Format" href="index.html"><div class="header">Pines Development</div></a><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 4. System Services</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03s06.html">Prev</a> </td><th width="60%" align="center">Part I. The Pines Framework</th><td width="20%" align="right"> <a accesskey="n" href="ch04s02.html">Next</a></td></tr></table><hr /></div><div class="chapter" title="Chapter 4. System Services"><div class="titlepage"><div><div><h2 class="title"><a id="idp710672"></a>Chapter 4. System Services</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="ch04.html#idp712048">4.1. System Services</a></span></dt><dd><dl><dt><span class="section"><a href="ch04.html#idp712864">4.1.1. Configurator</a></span></dt><dt><span class="section"><a href="ch04.html#idp736352">4.1.2. Editor</a></span></dt><dt><span class="section"><a href="ch04.html#idp747440">4.1.3. Entity Manager</a></span></dt><dt><span class="section"><a href="ch04.html#idp942976">4.1.4. Icons</a></span></dt><dt><span class="section"><a href="ch04.html#idp948672">4.1.5. Log Manager</a></span></dt><dt><span class="section"><a href="ch04.html#template_service">4.1.6. Template</a></span></dt><dt><span class="section"><a href="ch04.html#idp985616">4.1.7. Uploader</a></span></dt><dt><span class="section"><a href="ch04.html#idp994592">4.1.8. User Manager</a></span></dt></dl></dd><dt><span class="section"><a href="ch04s02.html">4.2. Creating a Service</a></span></dt></dl></div>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Chapter 4. System Services</title><link rel="stylesheet" type="text/css" href="docbook.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.76.1" /><link rel="home" href="index.html" title="Pines Development" /><link rel="up" href="pt01.html" title="Part I. The Pines Framework" /><link rel="prev" href="ch03s06.html" title="3.6. Order of Execution" /><link rel="next" href="ch04s02.html" title="4.2. Creating a Service" /></head><body><a xmlns:fo="http://www.w3.org/1999/XSL/Format" href="index.html"><div class="header">Pines Development</div></a><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 4. System Services</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03s06.html">Prev</a> </td><th width="60%" align="center">Part I. The Pines Framework</th><td width="20%" align="right"> <a accesskey="n" href="ch04s02.html">Next</a></td></tr></table><hr /></div><div class="chapter" title="Chapter 4. System Services"><div class="titlepage"><div><div><h2 class="title"><a id="idp721520"></a>Chapter 4. System Services</h2></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl><dt><span class="section"><a href="ch04.html#idp722896">4.1. System Services</a></span></dt><dd><dl><dt><span class="section"><a href="ch04.html#idp723776">4.1.1. Configurator</a></span></dt><dt><span class="section"><a href="ch04.html#idp760720">4.1.2. Editor</a></span></dt><dt><span class="section"><a href="ch04.html#idp767088">4.1.3. Entity Manager</a></span></dt><dt><span class="section"><a href="ch04.html#idp967440">4.1.4. Icons</a></span></dt><dt><span class="section"><a href="ch04.html#idp973168">4.1.5. Log Manager</a></span></dt><dt><span class="section"><a href="ch04.html#template_service">4.1.6. Template</a></span></dt><dt><span class="section"><a href="ch04.html#idp1011776">4.1.7. Uploader</a></span></dt><dt><span class="section"><a href="ch04.html#idp1026368">4.1.8. User Manager</a></span></dt></dl></dd><dt><span class="section"><a href="ch04s02.html">4.2. Creating a Service</a></span></dt></dl></div>
       
 
       <p>System services provide many features, and allow these features to
@@ -9,16 +9,17 @@
       certain guidelines to ensure that any component designed to use them
       will work with any implementation.</p>
 
-      <div class="section" title="4.1. System Services"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idp712048"></a>4.1. System Services</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="ch04.html#idp712864">4.1.1. Configurator</a></span></dt><dt><span class="section"><a href="ch04.html#idp736352">4.1.2. Editor</a></span></dt><dt><span class="section"><a href="ch04.html#idp747440">4.1.3. Entity Manager</a></span></dt><dt><span class="section"><a href="ch04.html#idp942976">4.1.4. Icons</a></span></dt><dt><span class="section"><a href="ch04.html#idp948672">4.1.5. Log Manager</a></span></dt><dt><span class="section"><a href="ch04.html#template_service">4.1.6. Template</a></span></dt><dt><span class="section"><a href="ch04.html#idp985616">4.1.7. Uploader</a></span></dt><dt><span class="section"><a href="ch04.html#idp994592">4.1.8. User Manager</a></span></dt></dl></div>
+      <div class="section" title="4.1. System Services"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idp722896"></a>4.1. System Services</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="ch04.html#idp723776">4.1.1. Configurator</a></span></dt><dt><span class="section"><a href="ch04.html#idp760720">4.1.2. Editor</a></span></dt><dt><span class="section"><a href="ch04.html#idp767088">4.1.3. Entity Manager</a></span></dt><dt><span class="section"><a href="ch04.html#idp967440">4.1.4. Icons</a></span></dt><dt><span class="section"><a href="ch04.html#idp973168">4.1.5. Log Manager</a></span></dt><dt><span class="section"><a href="ch04.html#template_service">4.1.6. Template</a></span></dt><dt><span class="section"><a href="ch04.html#idp1011776">4.1.7. Uploader</a></span></dt><dt><span class="section"><a href="ch04.html#idp1026368">4.1.8. User Manager</a></span></dt></dl></div>
         
 
-        <div class="section" title="4.1.1. Configurator"><div class="titlepage"><div><div><h3 class="title"><a id="idp712864"></a>4.1.1. Configurator</h3></div></div></div>
+        <div class="section" title="4.1.1. Configurator"><div class="titlepage"><div><div><h3 class="title"><a id="idp723776"></a>4.1.1. Configurator</h3></div></div></div>
           
 
           <p>The configurator service allows the user and other components
           to edit/save configuration and enable/disable components. In Pines,
           a component is disabled by prepending a period (.) to its
-          directory's name.</p>
+          directory's name. This is the same way the directory is hidden on
+          Linux file systems.</p>
 
           <p>The configurator itself has the following
           methods:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
@@ -39,7 +40,7 @@
                 <p>Creates and attaches a module which lists configurable
                 components. It also returns the created module.</p>
               </li></ul></div><div class="informalexample">
-              <h4><a id="idp719776"></a>Enabling and Disabling Components</h4>
+              <h4><a id="idp731376"></a>Enabling and Disabling Components</h4>
 
               <pre class="programlisting">// Enable the component com_good.
 $pines-&gt;configurator-&gt;enable_component('com_good');
@@ -48,7 +49,7 @@ $pines-&gt;configurator-&gt;enable_component('com_good');
 $pines-&gt;configurator-&gt;disable_component('com_bad');</pre>
             </div>
 
-          <div class="section" title="4.1.1.1. Configurator Component"><div class="titlepage"><div><div><h4 class="title"><a id="idp721184"></a>4.1.1.1. Configurator Component</h4></div></div></div>
+          <div class="section" title="4.1.1.1. Configurator Component"><div class="titlepage"><div><div><h4 class="title"><a id="idp732976"></a>4.1.1.1. Configurator Component</h4></div></div></div>
             
 
             <p>The configurator also provides a class for retrieving and
@@ -58,9 +59,32 @@ $pines-&gt;configurator-&gt;disable_component('com_bad');</pre>
             the component's name as the only argument and returns a new
             instance of <code class="classname">configurator_component</code> for the
             provided component. The class constructor also accepts this
-            argument.</p>
+            argument, but using the <code class="methodname">factory</code> method is
+            recommended.</p>
 
-            <p>The component configurator class provides these
+            <p>The component configurator class has these
+            properties:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+                  <p><span class="property">defaults</span></p>
+
+                  <p>The configuration defaults.</p>
+                </li><li class="listitem">
+                  <p><span class="property">config</span></p>
+
+                  <p>The current configuration.</p>
+                </li><li class="listitem">
+                  <p><span class="property">config_keys</span></p>
+
+                  <p>The current configuration in an array with key =&gt;
+                  values.</p>
+                </li><li class="listitem">
+                  <p><span class="property">info</span></p>
+
+                  <p>The info object of the component.</p>
+                </li><li class="listitem">
+                  <p><span class="property">name</span></p>
+
+                  <p>The component.</p>
+                </li></ul></div><p>The component configurator class provides these
             methods:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
                   <p><code class="methodname">get_full_config_array</code></p>
 
@@ -93,7 +117,7 @@ $pines-&gt;configurator-&gt;disable_component('com_bad');</pre>
                   =&gt; values. Any value not provided will be set back to
                   default.</p>
                 </li></ul></div><div class="informalexample">
-                <h5><a id="idp735840"></a>Changing a Component's Configuration</h5>
+                <h5><a id="idp755104"></a>Changing a Component's Configuration</h5>
 
                 <pre class="programlisting">// Load the component's configuration.
 $conf = configurator_component::factory('com_example');
@@ -105,7 +129,8 @@ $conf-&gt;set_config(array(
     'database' =&gt; $database
 ));
 // Save the new configuration to disk.
-$conf-&gt;save_config();</pre>
+if (!$conf-&gt;save_config())
+    pines_error('Couldn\'t save config.');</pre>
               </div>
 
             <p>When the configuration is saved, the configurator creates a
@@ -117,23 +142,23 @@ $conf-&gt;save_config();</pre>
             building the component's configuration, replacing values from
             <code class="filename">defaults.php</code> with the values from this
             file.</p><div class="informalexample">
-                <h5><a id="idp739376"></a>Typical config.php File</h5>
+                <h5><a id="idp758528"></a>Example config.php File</h5>
 
                 <pre class="programlisting">&lt;?php
 defined('P_RUN') or die('Direct access prohibited');
 return array (
   0 =&gt; 
   array (
-    'name' =&gt; 'string',
-    'value' =&gt; 'dsgsdfgfg',
+    'name' =&gt; 'notice_text',
+    'value' =&gt; 'Notice: you have exceeded the limits.',
   ),
   1 =&gt;
   array (
-    'name' =&gt; 'multi_float',
+    'name' =&gt; 'limits',
     'value' =&gt; 
     array (
       0 =&gt; 9.33,
-      1 =&gt; 8.4,
+      1 =&gt; 13.6,
     ),
   ),
 );
@@ -142,7 +167,7 @@ return array (
           </div>
         </div>
 
-        <div class="section" title="4.1.2. Editor"><div class="titlepage"><div><div><h3 class="title"><a id="idp736352"></a>4.1.2. Editor</h3></div></div></div>
+        <div class="section" title="4.1.2. Editor"><div class="titlepage"><div><div><h3 class="title"><a id="idp760720"></a>4.1.2. Editor</h3></div></div></div>
           
 
           <p>The editor service provides a more friendly HTML editor for
@@ -153,9 +178,13 @@ return array (
           provide for the system's users.</p>
 
           <p>Once the editor is loaded, it will transform any textareas
-          with the class "peditor" or "peditor-simple" into HTML editors. If
-          it provides a simplified editor, textareas with the class
-          "peditor-simple" will use this editor instead.</p>
+          with the class "peditor", "peditor-simple", or "peditor-email" into
+          HTML editors. If it provides a simplified editor, textareas with the
+          class "peditor-simple" will use this editor instead. If it provides
+          an email editor, textareas with the class "peditor-email" will use
+          this editor instead. Email editors will format content for emails.
+          This includes full URLs for links and images, no stylesheets,
+          etc.</p>
 
           <p>The editor has a method, <code class="methodname">load</code>, which
           loads the editor. This method should be called from a view, to
@@ -163,7 +192,7 @@ return array (
           method, <code class="methodname">add_css</code>, which takes one argument,
           the URL of a stylesheet to use for styling WYSIWYG
           content.</p><div class="informalexample">
-              <h4><a id="idp745216"></a>Using the Editor Service in a View</h4>
+              <h4><a id="idp764928"></a>Using the Editor Service in a View</h4>
 
               <pre class="programlisting">&lt;?php
 /**
@@ -186,11 +215,14 @@ $pines-&gt;editor-&gt;add_css($pines-&gt;config-&gt;location.'components/com_exa
 &lt;div&gt;&lt;textarea rows="3" cols="35" class="peditor"&gt;&lt;/textarea&gt;&lt;/div&gt;
 &lt;br /&gt;
 &lt;div&gt;Simple Editor&lt;/div&gt;
-&lt;div&gt;&lt;textarea rows="3" cols="35" class="peditor-simple"&gt;&lt;/textarea&gt;&lt;/div&gt;</pre>
+&lt;div&gt;&lt;textarea rows="3" cols="35" class="peditor-simple"&gt;&lt;/textarea&gt;&lt;/div&gt;
+&lt;br /&gt;
+&lt;div&gt;Email Editor&lt;/div&gt;
+&lt;div&gt;&lt;textarea rows="3" cols="35" class="peditor-email"&gt;&lt;/textarea&gt;&lt;/div&gt;</pre>
             </div>
         </div>
 
-        <div class="section" title="4.1.3. Entity Manager"><div class="titlepage"><div><div><h3 class="title"><a id="idp747440"></a>4.1.3. Entity Manager</h3></div></div></div>
+        <div class="section" title="4.1.3. Entity Manager"><div class="titlepage"><div><div><h3 class="title"><a id="idp767088"></a>4.1.3. Entity Manager</h3></div></div></div>
           
 
           <p>Go brew some coffee or drink an energy drink, cause this is
@@ -199,15 +231,15 @@ $pines-&gt;editor-&gt;add_css($pines-&gt;config-&gt;location.'components/com_exa
           relationships between data as easily as setting the value of a
           property.</p>
 
-          <div class="section" title="4.1.3.1. Introduction"><div class="titlepage"><div><div><h4 class="title"><a id="idp745856"></a>4.1.3.1. Introduction</h4></div></div></div>
+          <div class="section" title="4.1.3.1. Introduction"><div class="titlepage"><div><div><h4 class="title"><a id="idp768752"></a>4.1.3.1. Introduction</h4></div></div></div>
             
 
             <p>The entity manager service provides database abstraction for
             Pines. Data in Pines is based on objects called entities. An
             entity is an object which can hold any type of data available in
-            PHP, including other entities. All entity classes (and therefore
-            all entities) inherit the <code class="classname">entity</code>
-            class.</p>
+            PHP (except resources), including other entities. All entity
+            classes (and therefore all entities) inherit the
+            <code class="classname">entity</code> class.</p>
 
             <p>Components can freely access the database if they wish,
             however it is strongly discouraged, as this prevents portability
@@ -234,15 +266,16 @@ $pines-&gt;editor-&gt;add_css($pines-&gt;config-&gt;location.'components/com_exa
 
             <p>Entities are not strictly structured, so data of any type
             can be added and saved just by assigning a variable on the entity
-            and calling <code class="function">save()</code>. This makes data
+            and calling <code class="methodname">save</code>. This makes data
             manipulation in Pines very easy.</p>
 
             <p>All entities are given a globally unique identifier (GUID),
-            which is an integer. No entities in the same Pines installation
-            will ever have the same GUID. The entity manager also provides
-            UIDs, which can be used to number certain types of entities (or
-            practically anything else). UIDs can be used to provide a more
-            visibly pleasing identifier for entities.</p>
+            which is an integer (but may not be in the future). No entities in
+            the same Pines installation will ever have the same GUID. The
+            entity manager also provides UIDs, which can be used to number
+            certain types of entities (or practically anything else). UIDs can
+            be used to provide a more visibly pleasing identifier for
+            entities.</p>
 
             <p>Entities are organized with tags. For example, if a
             component, com_blog, wanted to store posts using an entity, it may
@@ -266,7 +299,7 @@ $pines-&gt;editor-&gt;add_css($pines-&gt;config-&gt;location.'components/com_exa
               </td></tr></table></div>
           </div>
 
-          <div class="section" title="4.1.3.2. Creating Entities"><div class="titlepage"><div><div><h4 class="title"><a id="idp763600"></a>4.1.3.2. Creating Entities</h4></div></div></div>
+          <div class="section" title="4.1.3.2. Creating Entities"><div class="titlepage"><div><div><h4 class="title"><a id="idp783344"></a>4.1.3.2. Creating Entities</h4></div></div></div>
             
 
             <p>To create an entity, call the
@@ -279,14 +312,20 @@ $pines-&gt;editor-&gt;add_css($pines-&gt;config-&gt;location.'components/com_exa
             exist or no GUID was provided, a new entity. The
             <code class="methodname">factory</code> method is used instead of the
             <span class="keysym">new</span> keyword to provide entities a chance to set
-            up hooking on their objects.</p><div class="informalexample">
-                <h5><a id="idp767664"></a>Creating an Entity</h5>
+            up hooking on their objects. To check that an entity is a new
+            entity (it hasn't been saved), check that the GUID has not been
+            set.</p><div class="informalexample">
+                <h5><a id="idp787728"></a>Creating an Entity</h5>
 
                 <pre class="programlisting">// Using the entity class.
 $new_entity = entity::factory();
 
 // Using a custom class.
-$blog_post = com_blog_post::factory();</pre>
+$blog_post = com_blog_post::factory();
+
+// Check that the entity is new.
+if (isset($new_entity-&gt;guid))
+    pines_notice('This entity is not a new entity!');</pre>
               </div>
 
             <p>Much like blogs in many blogging systems, entities are
@@ -304,46 +343,48 @@ $blog_post = com_blog_post::factory();</pre>
             variable. If the referenced entity is newly created and does not
             have a GUID, the entity manager will not be able to retrieve it
             later. Always save the referenced entity first.</p><div class="informalexample">
-                <h5><a id="idp772032"></a>Saving a Referenced Entity the Wrong
+                <h5><a id="idp791600"></a>Saving a Referenced Entity the Wrong
                 Way</h5>
 
                 <pre class="programlisting">$entity = entity::factory();
 $entity-&gt;foo = entity::factory();
 
-$entity-&gt;save(); // foo hasn't been saved yet.
+$entity-&gt;save(); // foo hasn't been saved yet!
 $entity-&gt;foo-&gt;bar = 'It works!';
 $entity-&gt;foo-&gt;save();
 
 $guid = $entity-&gt;guid;
 unset($entity);
-$entity = $pines-&gt;entity_manager-&gt;get_entity(array(), array('&amp;', 'guid' =&gt; $guid));
+$entity = $pines-&gt;entity_manager-&gt;get_entity($guid);
 
 isset($entity-&gt;foo-&gt;guid); // False
 echo $entity-&gt;foo-&gt;bar; // Outputs nothing.</pre>
               </div><div class="informalexample">
-                <h5><a id="idp773856"></a>Saving a Referenced Entity the Right
+                <h5><a id="idp793776"></a>Saving a Referenced Entity the Right
                 Way</h5>
 
                 <pre class="programlisting">$entity = entity::factory();
 $entity-&gt;foo = entity::factory();
 
 $entity-&gt;foo-&gt;bar = 'It works!';
-$entity-&gt;foo-&gt;save();
+$entity-&gt;foo-&gt;save(); // Saving the referenced entity first! :)
 $entity-&gt;save(); // now foo has been saved.
 
 $guid = $entity-&gt;guid;
 unset($entity);
-$entity = $pines-&gt;entity_manager-&gt;get_entity(array(), array('&amp;', 'guid' =&gt; $guid));
+$entity = $pines-&gt;entity_manager-&gt;get_entity($guid);
 
 isset($entity-&gt;foo-&gt;guid); // True
 echo $entity-&gt;foo-&gt;bar; // Outputs 'It works!'.</pre>
               </div>
 
-            <p>Since the reference entity's class name is stored in the
-            reference on the entity's first save and used to retrieve the
-            reference entity using the same class, if you change the class
-            name in an update, you need to reassign the reference entity and
-            save to storage.</p>
+            <div class="caution" title="Caution" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Caution"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Caution]" src="caution.png" /></td><th align="left">Caution</th></tr><tr><td align="left" valign="top">
+              <p>Since the reference entity's class name is stored in the
+              reference on the entity's first save and used to retrieve the
+              reference entity using the same class, if you change the class
+              name in an update, you need to reassign the reference entity and
+              save to storage.</p>
+            </td></tr></table></div>
 
             <p>When an entity is loaded, it does not request its referenced
             entities from the entity manager. This is done the first time the
@@ -356,7 +397,7 @@ echo $entity-&gt;foo-&gt;bar; // Outputs 'It works!'.</pre>
             to call <code class="methodname">clear_cache</code>.</p>
           </div>
 
-          <div class="section" title="4.1.3.3. Entities"><div class="titlepage"><div><div><h4 class="title"><a id="idp778656"></a>4.1.3.3. Entities</h4></div></div></div>
+          <div class="section" title="4.1.3.3. Entities"><div class="titlepage"><div><div><h4 class="title"><a id="idp798800"></a>4.1.3.3. Entities</h4></div></div></div>
             
 
             <p>As mentioned before, entities are organized using tags. To
@@ -366,7 +407,7 @@ echo $entity-&gt;foo-&gt;bar; // Outputs 'It works!'.</pre>
             <code class="methodname">has_tag</code> are used, respectively. Each
             takes any number of tags or an array of tags as
             arguments.</p><div class="informalexample">
-                <h5><a id="idp781776"></a>Manipulating Entity Tags</h5>
+                <h5><a id="idp801840"></a>Manipulating Entity Tags</h5>
 
                 <pre class="programlisting">$entity = entity::factory();
 
@@ -380,7 +421,7 @@ $entity-&gt;has_tag('foo'); // False</pre>
             <p>To clear the cache of referenced entities, so that the next
             time one is accessed it will be pulled from the database, use the
             <code class="methodname">clear_cache</code> method.</p><div class="informalexample">
-                <h5><a id="idp784336"></a>Clearing the Reference Entity Cache</h5>
+                <h5><a id="idp804496"></a>Clearing the Reference Entity Cache</h5>
 
                 <pre class="programlisting">$entity = entity::factory();
 $entity-&gt;foo = entity::factory();
@@ -388,9 +429,9 @@ $entity-&gt;foo-&gt;bar = 'Old value.';
 $entity-&gt;foo-&gt;save();
 $entity-&gt;save();
 
-$entity = $pines-&gt;entity_manager-&gt;get_entity(array(), array('&amp;', 'guid' =&gt; $entity-&gt;guid));
+$entity = $pines-&gt;entity_manager-&gt;get_entity($entity-&gt;guid);
 
-$inst_of_foo = $pines-&gt;entity_manager-&gt;get_entity(array(), array('&amp;', 'guid' =&gt; $entity-&gt;foo-&gt;guid));
+$inst_of_foo = $pines-&gt;entity_manager-&gt;get_entity($entity-&gt;foo-&gt;guid);
 $inst_of_foo-&gt;bar = 'New value.';
 $inst_of_foo-&gt;save();
 
@@ -402,13 +443,13 @@ echo $entity-&gt;foo-&gt;bar; // Outputs 'New value.'</pre>
             <p>Much like clearing the entity cache, you may need to refresh
             the entity's own data. Use the <code class="methodname">refresh</code>
             method for this.</p><div class="informalexample">
-                <h5><a id="idp787328"></a>Refreshing an Entity's Data</h5>
+                <h5><a id="idp807392"></a>Refreshing an Entity's Data</h5>
 
                 <pre class="programlisting">$entity = entity::factory();
 $entity-&gt;foo = 'Old value.';
 $entity-&gt;save();
 
-$inst_of_ent = $pines-&gt;entity_manager-&gt;get_entity(array(), array('&amp;', 'guid' =&gt; $entity-&gt;guid));
+$inst_of_ent = $pines-&gt;entity_manager-&gt;get_entity($entity-&gt;guid);
 $inst_of_ent-&gt;foo = 'New value.';
 $inst_of_ent-&gt;save();
 
@@ -423,9 +464,9 @@ echo $entity-&gt;foo; // Outputs 'New value.'</pre>
             can also call the <code class="methodname">save_entity</code>,
             <code class="methodname">delete_entity</code>, and
             <code class="methodname">delete_entity_by_id</code> methods of the entity
-            manager itself. Entities use these methods themselves. This allows
-            hooking of all entity saves and deletes.</p><div class="informalexample">
-                <h5><a id="idp792112"></a>Different Ways of Saving and Deleting
+            manager itself. Entities use these methods, which allows hooking
+            of all entity saves and deletes.</p><div class="informalexample">
+                <h5><a id="idp812336"></a>Different Ways of Saving and Deleting
                 Entities</h5>
 
                 <pre class="programlisting">$entity = entity::factory();
@@ -446,7 +487,8 @@ $pines-&gt;entity_manager-&gt;delete_entity_by_id($entity-&gt;guid);</pre>
             <p>Several methods are provided by entities to find and compare
             them with other data. Entities cannot simply be checked using the
             == operator. It will almost always fail because of things like
-            entity caching and sleeping references.</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+            entity caching and sleeping references. Instead, you can use the
+            following entity methods.</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
                   <p><code class="methodname">is</code></p>
 
                   <p>Perform a less strict comparison of two entities. To
@@ -479,9 +521,12 @@ $pines-&gt;entity_manager-&gt;delete_entity_by_id($entity-&gt;guid);</pre>
                   boolean <code class="varname">$strict</code>. If
                   <code class="varname">$strict</code> is false, the function uses
                   <code class="methodname">is</code> to compare, and if it's true,
-                  the function uses <code class="methodname">equals</code>.</p>
+                  the function uses <code class="methodname">equals</code>. This
+                  method may return 0, which evaluates to false, so you should
+                  use <code class="methodname">in_array</code> if you are only
+                  checking whether the entity is in the array.</p>
                 </li></ul></div><div class="informalexample">
-                <h5><a id="idp809392"></a>Comparing Entities</h5>
+                <h5><a id="idp830240"></a>Comparing Entities</h5>
 
                 <pre class="programlisting">$entity = entity::factory();
 
@@ -493,8 +538,8 @@ $array = array('foo' =&gt; null, 'bar' =&gt; $entity);
 echo $entity-&gt;array_search($array); // Outputs 'bar'</pre>
               </div>
 
-            <p>There are three functions to sort entities. Each one uses a
-            different method of sorting.</p>
+            <p>The entity manager provides three methods to sort entities.
+            Each one uses a different method of sorting.</p>
 
             <div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
                   <p><code class="methodname">hsort</code></p>
@@ -513,7 +558,7 @@ echo $entity-&gt;array_search($array); // Outputs 'bar'</pre>
                   <p>Sort an array of entities by a specified property's
                   value.</p>
                 </li></ul></div><div class="informalexample">
-                <h5><a id="idp816960"></a>Sorting Entities</h5>
+                <h5><a id="idp837904"></a>Sorting Entities</h5>
 
                 <pre class="programlisting">$cats = $pines-&gt;entity_manager-&gt;get_entities(
         array('class' =&gt; com_foobar_category),
@@ -536,7 +581,7 @@ $pines-&gt;entity_manager-&gt;sort($cats, 'name', $case_sensitive, $reverse);</p
               </div>
           </div>
 
-          <div class="section" title="4.1.3.4. Entity Querying"><div class="titlepage"><div><div><h4 class="title"><a id="idp818816"></a>4.1.3.4. Entity Querying</h4></div></div></div>
+          <div class="section" title="4.1.3.4. Entity Querying"><div class="titlepage"><div><div><h4 class="title"><a id="idp839824"></a>4.1.3.4. Entity Querying</h4></div></div></div>
             
 
             <p>The real power behind the entity manager is the entity
@@ -558,7 +603,7 @@ $pines-&gt;entity_manager-&gt;sort($cats, 'name', $case_sensitive, $reverse);</p
                 determine if it was found by checking that
                 <code class="varname">guid</code> is set.</p>
               </td></tr></table></div><div class="informalexample">
-                <h5><a id="idp824256"></a>Getting Entities Using the Factory
+                <h5><a id="idp845280"></a>Getting Entities Using the Factory
                 Method</h5>
 
                 <pre class="programlisting">// Most entities use a GUID.
@@ -590,17 +635,18 @@ pines_notice('Hooray! I found the baz you wanted and the cron user!');</pre>
             The options array can be empty, in which case the
             <code class="classname">entity</code> class will be used for returned
             entities. The following is a list of options which all entity
-            managers support.</p><div class="table"><a id="idp828784"></a><p class="title"><b>Table 4.1. Entity Querying Options</b></p><div class="table-contents">
+            managers support.</p><div class="table"><a id="idp849808"></a><p class="title"><strong>Table 4.1. Entity Querying Options</strong></p><div class="table-contents">
                 
 
-                <table summary="Entity Querying Options" border="1"><colgroup><col /><col /><col /><col /></colgroup><thead><tr><th>Option</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td>class</td><td>string</td><td>"entity"</td><td>The class to create each entity with. It must
+                <table summary="Entity Querying Options" border="1"><colgroup><col /><col /><col /><col /></colgroup><thead><tr><th>Option</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td>class</td><td>string</td><td>"entity"</td><td>The class used to create each entity. It must
                       have a <code class="methodname">factory</code> static method
                       that returns a new instance.</td></tr><tr><td>limit</td><td>int</td><td>null</td><td>The limit of entities to be returned. Not needed
                       when using <code class="methodname">get_entity</code>, as it
                       always returns only one.</td></tr><tr><td>offset</td><td>int</td><td>0</td><td>The offset from the oldest (or newest if
                       reversed) matching entity to start retrieving.</td></tr><tr><td>reverse</td><td>bool</td><td>false</td><td>If true, entities will be retrieved from newest
                       to oldest. Therefore, offset will be from the newest
-                      entity.</td></tr><tr><td>skip_ac</td><td>bool</td><td>false</td><td>If true, the user manager will not filter
+                      entity.</td></tr><tr><td>sort</td><td>string</td><td>"guid"</td><td>How to sort the entities. Accepts "guid",
+                      "cdate", and "mdate".</td></tr><tr><td>skip_ac</td><td>bool</td><td>false</td><td>If true, the user manager will not filter
                       returned entities according to access controls.</td></tr></tbody></table>
               </div></div><p><br class="table-break" /></p><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="note.png" /></td><th align="left">Note</th></tr><tr><td align="left" valign="top">
                 <p>When using skip_ac, any referenced entities, when
@@ -608,8 +654,8 @@ pines_notice('Hooray! I found the baz you wanted and the cron user!');</pre>
               </td></tr></table></div>
 
             <p>A component or entity manager implementation is free to add
-            extra options, but it should prepend the component's name to the
-            name of the option. For example, if your component,
+            extra options, but it should consider prepending the component's
+            name to the name of the option. For example, if your component,
             com_entityversions, wants to add the option "date", it should use
             "com_entityversions_date".</p>
 
@@ -618,7 +664,7 @@ pines_notice('Hooray! I found the baz you wanted and the cron user!');</pre>
             each selector's criteria to be returned. The first member of the
             array (the value at index 0) is the type of selector, which
             determines how the criteria are matched against an entity's
-            data.</p><div class="table"><a id="idp848560"></a><p class="title"><b>Table 4.2. Entity Selector Types</b></p><div class="table-contents">
+            data.</p><div class="table"><a id="idp845904"></a><p class="title"><strong>Table 4.2. Entity Selector Types</strong></p><div class="table-contents">
                 
 
                 <table summary="Entity Selector Types" border="1"><colgroup><col /><col /><col /></colgroup><thead><tr><th>Type</th><th>Name</th><th>Description</th></tr></thead><tbody><tr><td>&amp;</td><td>And</td><td>All values in the selector must be true.</td></tr><tr><td>|</td><td>Or</td><td>At least one value in the selector must be
@@ -629,7 +675,9 @@ pines_notice('Hooray! I found the baz you wanted and the cron user!');</pre>
             <p>The following members of the array are the criteria of the
             selector. They must be in the form <code class="code">$selector['name'] =
             $value</code>, or <code class="code">$selector['name'] = array($value1,
-            $value2,...)</code>.</p><div class="table"><a id="idp862544"></a><p class="title"><b>Table 4.3. Entity Selector Criteria</b></p><div class="table-contents">
+            $value2,...)</code>. They can be negated by prepending a bang (!)
+            to the name, such as <code class="code">$selector['!tag'] =
+            'user'</code>.</p><div class="table"><a id="idp886240"></a><p class="title"><strong>Table 4.3. Entity Selector Criteria</strong></p><div class="table-contents">
                 
 
                 <table summary="Entity Selector Criteria" border="1"><colgroup><col /><col /><col /><col /><col /></colgroup><thead><tr><th>Name</th><th>Value</th><th>Condition</th><th>Example Selector</th><th>Matching Entity</th></tr></thead><tbody><tr><td>guid</td><td>A GUID.</td><td>True if the entity's GUID is equal.</td><td><code class="code">array('&amp;', 'guid' =&gt;
@@ -673,7 +721,7 @@ pines_notice('Hooray! I found the baz you wanted and the cron user!');</pre>
             <p>So putting it all together, you can specify any of the
             options, and any number of selectors to find the exact entities
             you want.</p><div class="informalexample">
-                <h5><a id="idp913552"></a>Getting Entities by Querying</h5>
+                <h5><a id="idp937312"></a>Getting Entities by Querying</h5>
 
                 <pre class="programlisting">// Get all entities using the entity class.
 $entities = $pines-&gt;entity_manager-&gt;get_entities();
@@ -706,6 +754,15 @@ $entities = $pines-&gt;entity_manager-&gt;get_entities(
         array('&amp;',
             'tag' =&gt; array('com_foobar', 'baz'),
             'isset' =&gt; 'name'
+        )
+    );
+
+// Get baz entities without names.
+$entities = $pines-&gt;entity_manager-&gt;get_entities(
+        array('class' =&gt; com_foobar_baz),
+        array('&amp;',
+            'tag' =&gt; array('com_foobar', 'baz'),
+            '!isset' =&gt; 'name'
         )
     );
 
@@ -770,7 +827,7 @@ $entities = $pines-&gt;entity_manager-&gt;get_entities(
               </div>
           </div>
 
-          <div class="section" title="4.1.3.5. Exporting and Importing Entities"><div class="titlepage"><div><div><h4 class="title"><a id="idp917744"></a>4.1.3.5. Exporting and Importing Entities</h4></div></div></div>
+          <div class="section" title="4.1.3.5. Exporting and Importing Entities"><div class="titlepage"><div><div><h4 class="title"><a id="idp941744"></a>4.1.3.5. Exporting and Importing Entities</h4></div></div></div>
             
 
             <p>All entity managers provide a method for exporting and
@@ -793,14 +850,15 @@ $entities = $pines-&gt;entity_manager-&gt;get_entities(
 
                   <p>Import entities from a file.</p>
                 </li></ul></div><div class="informalexample">
-                <h5><a id="idp924832"></a>Exporting and Importing Entities with the Entity
+                <h5><a id="idp949024"></a>Exporting and Importing Entities with the Entity
                 Manager</h5>
 
-                <pre class="programlisting">// Export entities to a file.
+                <pre class="programlisting">@set_time_limit(3600); // Make sure the script doesn't terminate before the entities are exported/imported.
+
+// Export entities to a file.
 $pines-&gt;entity_manager-&gt;export($filename);
 
 // Export entities to the client.
-@set_time_limit(3600); // Make sure the script doesn't terminate before the entities are exported.
 $pines-&gt;entity_manager-&gt;export_print();
 
 // Import entities from a file.
@@ -811,7 +869,7 @@ $pines-&gt;entity_manager-&gt;import($filename);</pre>
             by all entity managers. The file extension, PEX, stands for Pines
             Entity eXchange. Here is an example of an exported entity
             file.</p><div class="informalexample">
-                <h5><a id="idp927120"></a>Example Entity Export File (PEX)</h5>
+                <h5><a id="idp951520"></a>Example Entity Export File (PEX)</h5>
 
                 <pre class="programlisting"># Pines Entity Export
 # com_pgentity version 1.0.0
@@ -858,7 +916,7 @@ $pines-&gt;entity_manager-&gt;import($filename);</pre>
               </div>
           </div>
 
-          <div class="section" title="4.1.3.6. UIDs"><div class="titlepage"><div><div><h4 class="title"><a id="idp929168"></a>4.1.3.6. UIDs</h4></div></div></div>
+          <div class="section" title="4.1.3.6. UIDs"><div class="titlepage"><div><div><h4 class="title"><a id="idp953760"></a>4.1.3.6. UIDs</h4></div></div></div>
             
 
             <p>UIDs provide an easier way for users to identify entities.
@@ -898,7 +956,7 @@ $pines-&gt;entity_manager-&gt;import($filename);</pre>
 
                   <p>Set the value of a unique ID.</p>
                 </li></ul></div><div class="informalexample">
-                <h5><a id="idp940368"></a>Using UIDs</h5>
+                <h5><a id="idp964832"></a>Using UIDs</h5>
 
                 <pre class="programlisting">// Create a new entity.
 $entity = com_foobar_baz::factory();
@@ -916,7 +974,7 @@ $entity-&gt;save();</pre>
           </div>
         </div>
 
-        <div class="section" title="4.1.4. Icons"><div class="titlepage"><div><div><h3 class="title"><a id="idp942976"></a>4.1.4. Icons</h3></div></div></div>
+        <div class="section" title="4.1.4. Icons"><div class="titlepage"><div><div><h3 class="title"><a id="idp967440"></a>4.1.4. Icons</h3></div></div></div>
           
 
           <p>The icon service provides a set of icons available to use
@@ -930,23 +988,24 @@ $entity-&gt;save();</pre>
           <code class="methodname">load</code>, which loads the icon CSS. This method
           should be called from a view, to ensure it is only called when
           outputting HTML.</p><div class="informalexample">
-              <h4><a id="idp946704"></a>Using the Icon Service</h4>
+              <h4><a id="idp971168"></a>Using the Icon Service</h4>
 
               <pre class="programlisting">&lt;?php
 /* @var $pines pines *//* @var $this module */
 defined('P_RUN') or die('Direct access prohibited');
+// Load the icons CSS.
 $pines-&gt;icons-&gt;load();
 ?&gt;
 &lt;div style="float: left; width: 32px; height: 32px; margin: 1em;" class="picon-32 picon-document-sign"&gt;&lt;/div&gt;
 &lt;p&gt;Your order can't be shipped until your contract is signed.&lt;/p&gt;
 
 &lt;button type="button" class="btn"&gt;
-    &lt;span class="picon-dialog-ok" style="background-repeat: no-repeat; padding-left: 18px;"&gt;Go&lt;/span&gt;
+    &lt;span class="picon-dialog-ok" style="background-repeat: no-repeat; padding-left: 18px;"&gt;&amp;nbsp;&lt;/span&gt;Go
 &lt;/button&gt;</pre>
             </div>
         </div>
 
-        <div class="section" title="4.1.5. Log Manager"><div class="titlepage"><div><div><h3 class="title"><a id="idp948672"></a>4.1.5. Log Manager</h3></div></div></div>
+        <div class="section" title="4.1.5. Log Manager"><div class="titlepage"><div><div><h3 class="title"><a id="idp973168"></a>4.1.5. Log Manager</h3></div></div></div>
           
 
           <p>The log manager service provides an easy and simple logging
@@ -977,8 +1036,8 @@ $pines-&gt;icons-&gt;load();
               </li><li class="listitem">
                 <p>warning</p>
 
-                <p>Warn the user of something that may be wrong, but not
-                necessarily an error.</p>
+                <p>Warn the user of something that may be wrong or bad, but
+                not necessarily an error.</p>
               </li><li class="listitem">
                 <p>error</p>
 
@@ -989,7 +1048,7 @@ $pines-&gt;icons-&gt;load();
                 <p>Provide notice of an error, from which the script cannot
                 recover.</p>
               </li></ul></div><div class="informalexample">
-              <h4><a id="idp961008"></a>Making an Entry in the Log</h4>
+              <h4><a id="idp985504"></a>Making an Entry in the Log</h4>
 
               <pre class="programlisting">$user = user::factory();
 $user-&gt;username = 'bob';
@@ -1012,9 +1071,10 @@ else
           layout and design of the page and inserts the content from any
           modules attached to the page. It also has the responsibility of
           building the output of the menus. Templates will be discussed in
-          much greater depth in Part II.</p>
+          much greater depth in <a class="link" href="templates.html" title="Chapter 7. Templates">Templates</a> in
+          <a class="link" href="pt02.html#part_2">Part II</a>.</p>
 
-          <p>The template only has two methods.</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+          <p>The template only needs two methods.</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
                 <p><code class="methodname">menu</code></p>
 
                 <p>Formats a menu so it can be printed into content.</p>
@@ -1037,20 +1097,22 @@ else
                       of the Pines installation.</p>
                     </li></ol></div>
               </li></ul></div><div class="informalexample">
-              <h4><a id="idp972928"></a>Formatting a URL Using the Template
+              <h4><a id="idp999728"></a>Formatting a URL Using the Template
               Service</h4>
 
               <pre class="programlisting">// A URL suitable for a link on a page in Pines.
 $link = $pines-&gt;template-&gt;url('com_example', 'widget/edit', array('id' =&gt; $widget-&gt;guid));
+// or you can use the shortcut function:
+$link = pines_url('com_example', 'widget/edit', array('id' =&gt; $widget-&gt;guid));
 
 // A URL suitable for a link in an external page or an email.
 $link = $pines-&gt;template-&gt;url('com_example', 'widget/edit', array('id' =&gt; $widget-&gt;guid), true);
 
 // The URL of the home page of the Pines installation.
-$link = $pines-&gt;template-&gt;url();</pre>
+$link = pines_url();</pre>
             </div>
 
-          <p>Templates also have some variables which define how output is
+          <p>Templates also have some properties which define how output is
           constructed/viewed.</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
                 <p><code class="varname">editor_css</code></p>
 
@@ -1065,7 +1127,7 @@ $link = $pines-&gt;template-&gt;url();</pre>
 
           <p>The template format uses dashes to separate its parts, and
           describes the language, format, version, etc. of the view. The
-          following is some example formats and a description of their
+          following are some example formats and a description of their
           language and what they're for.</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
                 <p>html-desktop-5</p>
 
@@ -1079,7 +1141,7 @@ $link = $pines-&gt;template-&gt;url();</pre>
 
                 <p>XHTML 1.0 Strict for desktops.</p>
               </li><li class="listitem">
-                <p>rss-2-0</p>
+                <p>xml-rss-2-0</p>
 
                 <p>RSS 2.0.</p>
               </li></ul></div>
@@ -1087,7 +1149,7 @@ $link = $pines-&gt;template-&gt;url();</pre>
           <p>For more information on templates, you can see <a class="link" href="templates.html" title="Chapter 7. Templates">Templates</a> in Part II.</p>
         </div>
 
-        <div class="section" title="4.1.7. Uploader"><div class="titlepage"><div><div><h3 class="title"><a id="idp985616"></a>4.1.7. Uploader</h3></div></div></div>
+        <div class="section" title="4.1.7. Uploader"><div class="titlepage"><div><div><h3 class="title"><a id="idp1011776"></a>4.1.7. Uploader</h3></div></div></div>
           
 
           <p>The uploader service provides a convenient way for the user to
@@ -1096,11 +1158,18 @@ $link = $pines-&gt;template-&gt;url();</pre>
           enabled interface for ease of use.</p>
 
           <p>Once the uploader is loaded, it will transform any text inputs
-          with the class "puploader" into Ajax file uploaders/selectors. To
-          use the uploader in a view, call the <code class="methodname">load</code>
-          method. This method should be called from a view, to ensure it is
-          only called when outputting HTML.</p><div class="informalexample">
-              <h4><a id="idp988496"></a>Using the Uploader Service in a View</h4>
+          with the class "puploader" into Ajax file uploaders/selectors. If
+          you would like the user to be able to select folders, add the
+          "puploader-folders" class. If you would like the user to be able to
+          select multiple files, add the "puploader-multiple" class. Add the
+          class "puploader-temp" to emulate a single file upload. Only one
+          file will be allowed, and it will be placed into a temporary
+          directory. Note that the check method is not needed when you are
+          using a temp file. To use the uploader in a view, call the
+          <code class="methodname">load</code> method. This method should be called
+          from a view, to ensure it is only called when outputting
+          HTML.</p><div class="informalexample">
+              <h4><a id="idp1014976"></a>Using the Uploader Service in a View</h4>
 
               <pre class="programlisting">&lt;?php
 /**
@@ -1117,22 +1186,25 @@ $this-&gt;title = 'Uploader';
 // Load the uploader.
 $pines-&gt;uploader-&gt;load();
 ?&gt;
-&lt;div&gt;Upload a File&lt;/div&gt;
-&lt;div&gt;&lt;input class="puploader" name="upload_file" type="text" value="" /&gt;&lt;/div&gt;</pre>
+&lt;div&gt;Choose or Upload a File on the Server&lt;/div&gt;
+&lt;div&gt;&lt;input class="puploader" name="upload_file" type="text" value="" /&gt;&lt;/div&gt;
+&lt;div&gt;Upload a New File&lt;/div&gt;
+&lt;div&gt;&lt;input class="puploader puploader-temp" name="temp_file" type="text" value="" /&gt;&lt;/div&gt;</pre>
             </div>
 
           <p>The value of the field when the form is submitted will be the
-          relative URL of the selected file. After receiving the path of the
-          file, it should <span class="bold"><strong>always</strong></span> be checked
-          using the <code class="methodname">check</code> method of the uploader
-          service. This will verify that the user didn't maliciously alter the
-          URL. It can then be translated to a real file path using the
-          <code class="methodname">real</code> method, and back to a URL again with
-          the <code class="methodname">url</code> method. The
+          relative URL of the selected file. When selecting multiple files,
+          they will be separated by two forward slashes "//". After receiving
+          the path of the file, it should <span class="bold"><strong>always</strong></span> be checked using the
+          <code class="methodname">check</code> method of the uploader service
+          (unless it is a temp upload). This will verify that the user didn't
+          maliciously alter the URL. It can then be translated to a real file
+          path using the <code class="methodname">real</code> method, and back to a
+          URL again with the <code class="methodname">url</code> method. The
           <code class="methodname">url</code> method takes an extra argument, which
           determines whether a full URL should be returned instead of a
           relative URL.</p><div class="informalexample">
-              <h4><a id="idp993872"></a>Verifying and Using a URL Returned by the
+              <h4><a id="idp1020880"></a>Verifying and Using a URL Returned by the
               Uploader</h4>
 
               <pre class="programlisting">$file_url = $_REQUEST['upload_file'];
@@ -1154,9 +1226,27 @@ $file_url_full = $pines-&gt;uploader-&gt;url($file_path, true);</pre>
               potentially giving them access to confidential
               information.</p>
             </td></tr></table></div>
+
+          <p>When you accept a temp upload, use the
+          <code class="methodname">temp</code> method to get the real file path to
+          the uploaded file.</p><div class="informalexample">
+              <h4><a id="idp1024592"></a>Using a Temp File Returned by the
+              Uploader</h4>
+
+              <pre class="programlisting">$file = $_REQUEST['temp_file'];
+
+// Get the path to the temporary location of the file.
+$file_path = $pines-&gt;uploader-&gt;temp($file);
+if (!$file_path) {
+    pines_notice('Invalid file path submitted!');
+    return;
+}
+
+// Now you can move the file into a permanent location with rename().</pre>
+            </div>
         </div>
 
-        <div class="section" title="4.1.8. User Manager"><div class="titlepage"><div><div><h3 class="title"><a id="idp994592"></a>4.1.8. User Manager</h3></div></div></div>
+        <div class="section" title="4.1.8. User Manager"><div class="titlepage"><div><div><h3 class="title"><a id="idp1026368"></a>4.1.8. User Manager</h3></div></div></div>
           
 
           <p>The user manager service is one of Pines' most powerful
@@ -1243,7 +1333,7 @@ $file_url_full = $pines-&gt;uploader-&gt;url($file_path, true);</pre>
           the beginning of Pines' development. As such, the user manager has
           some unique and powerful systems of access control.</p>
 
-          <div class="section" title="4.1.8.1. Access Control Systems"><div class="titlepage"><div><div><h4 class="title"><a id="idp1019456"></a>4.1.8.1. Access Control Systems</h4></div></div></div>
+          <div class="section" title="4.1.8.1. Access Control Systems"><div class="titlepage"><div><div><h4 class="title"><a id="idp1048960"></a>4.1.8.1. Access Control Systems</h4></div></div></div>
             
 
             <p>This section discusses the different types of access control
@@ -1256,7 +1346,7 @@ $file_url_full = $pines-&gt;uploader-&gt;url($file_path, true);</pre>
             time to learn and understand these access control systems very
             well.</p>
 
-            <div class="section" title="4.1.8.1.1. Abilities"><div class="titlepage"><div><div><h5 class="title"><a id="idp1020576"></a>4.1.8.1.1. Abilities</h5></div></div></div>
+            <div class="section" title="4.1.8.1.1. Abilities"><div class="titlepage"><div><div><h5 class="title"><a id="idp1050080"></a>4.1.8.1.1. Abilities</h5></div></div></div>
               
 
               <p>Abilities define what a user is allowed to do. Abilities
@@ -1273,7 +1363,7 @@ $file_url_full = $pines-&gt;uploader-&gt;url($file_path, true);</pre>
               the abilities array contains three values, the name of the
               ability, the title or common name, and the description of the
               ability.</p><div class="informalexample">
-                  <h6><a id="idp1024512"></a>Example Abilities Entry From an Info
+                  <h6><a id="idp1054016"></a>Example Abilities Entry From an Info
                   File</h6>
 
                   <pre class="programlisting">'abilities' =&gt; array(
@@ -1290,7 +1380,7 @@ $file_url_full = $pines-&gt;uploader-&gt;url($file_path, true);</pre>
               second argument, the currently logged in user will be used.
               There is one special ability called "system/all" which has the
               effect of granting the user all abilities.</p><div class="informalexample">
-                  <h6><a id="idp1025232"></a>Checking Users' Abilities and Using
+                  <h6><a id="idp1054736"></a>Checking Users' Abilities and Using
                   <code class="methodname">punt_user</code></h6>
 
                   <pre class="programlisting">$user = user::factory('hunter');
@@ -1314,7 +1404,7 @@ if (!pines_depend('ability', 'com_example/viewwidgets|com_example/viewownwidgets
                 </div>
             </div>
 
-            <div class="section" title="4.1.8.1.2. Entity Access Controls"><div class="titlepage"><div><div><h5 class="title"><a id="idp1030592"></a>4.1.8.1.2. Entity Access Controls</h5></div></div></div>
+            <div class="section" title="4.1.8.1.2. Entity Access Controls"><div class="titlepage"><div><div><h5 class="title"><a id="idp1060096"></a>4.1.8.1.2. Entity Access Controls</h5></div></div></div>
               
 
               <p>Entity access controls determine what a user can do, if
@@ -1337,7 +1427,7 @@ if (!pines_depend('ability', 'com_example/viewwidgets|com_example/viewownwidgets
 
               <p>Access controls are stored in a variable called
               <code class="varname">ac</code> on every entity. This variable is an
-              object with the following three variables.</p><div class="table"><a id="idp1034992"></a><p class="title"><b>Table 4.4. Entity Access Control Variables</b></p><div class="table-contents">
+              object with the following three variables.</p><div class="table"><a id="idp1064528"></a><p class="title"><strong>Table 4.4. Entity Access Control Variables</strong></p><div class="table-contents">
                   
 
                   <table summary="Entity Access Control Variables" border="1"><colgroup><col /><col /><col /></colgroup><thead><tr><th>Value</th><th>Default Value</th><th>Description</th></tr></thead><tbody><tr><td><code class="varname">user</code></td><td>3</td><td>Controls the entity's owner's access.</td></tr><tr><td><code class="varname">group</code></td><td>3</td><td>Controls the access of all users in both the
@@ -1345,7 +1435,7 @@ if (!pines_depend('ability', 'com_example/viewwidgets|com_example/viewownwidgets
                 </div></div><p><br class="table-break" /></p>
 
               <p>Each of these three variables can be one of the following
-              numeric values.</p><div class="table"><a id="idp1046912"></a><p class="title"><b>Table 4.5. Entity Access Control Values</b></p><div class="table-contents">
+              numeric values.</p><div class="table"><a id="idp1076224"></a><p class="title"><strong>Table 4.5. Entity Access Control Values</strong></p><div class="table-contents">
                   
 
                   <table summary="Entity Access Control Values" border="1"><colgroup><col /><col /></colgroup><thead><tr><th>Value</th><th>Access Level</th></tr></thead><tbody><tr><td>0</td><td>No access to the entity is granted.</td></tr><tr><td>1</td><td>Access is granted to read the entity.</td></tr><tr><td>2</td><td>Access is granted to read and edit the
@@ -1365,7 +1455,7 @@ if (!pines_depend('ability', 'com_example/viewwidgets|com_example/viewownwidgets
               access to check. The type of access is given as an integer, and
               returns true if the user has at least that level of access.
               Different situations use different checks to determine the
-              user's access.</p><div class="table"><a id="idp1060400"></a><p class="title"><b>Table 4.6. Entity Access Checking Situations</b></p><div class="table-contents">
+              user's access.</p><div class="table"><a id="idp1089984"></a><p class="title"><strong>Table 4.6. Entity Access Checking Situations</strong></p><div class="table-contents">
                   
 
                   <table summary="Entity Access Checking Situations" border="1"><colgroup><col /><col /></colgroup><thead><tr><th>Situation</th><th>Check Performed/Value Returned</th></tr></thead><tbody><tr><td>No user is logged in.</td><td>Always true, should be managed with
@@ -1378,7 +1468,7 @@ if (!pines_depend('ability', 'com_example/viewwidgets|com_example/viewownwidgets
 
               <p>A component can change the access control variable to
               allow or prevent access.</p><div class="informalexample">
-                  <h6><a id="idp1082448"></a>Changing the Access Controls of an
+                  <h6><a id="idp1112032"></a>Changing the Access Controls of an
                   Entity</h6>
 
                   <pre class="programlisting">// Create a new baz entity.
@@ -1405,7 +1495,7 @@ $entity-&gt;save();</pre>
               null. If you wish to bypass the entity access control feature,
               you can use the "skip_ac" option in your entity
               queries.</p><div class="informalexample">
-                  <h6><a id="idp1085552"></a>Using "skip_ac" to Access Entities</h6>
+                  <h6><a id="idp1115136"></a>Using "skip_ac" to Access Entities</h6>
 
                   <pre class="programlisting">// Get all baz entities, regardless of whether the logged in user has access to them.
 $entities = $pines-&gt;entity_manager-&gt;get_entities(
@@ -1422,7 +1512,7 @@ $entities = $pines-&gt;entity_manager-&gt;get_entities(
             </div>
           </div>
 
-          <div class="section" title="4.1.8.2. User"><div class="titlepage"><div><div><h4 class="title"><a id="idp1088240"></a>4.1.8.2. User</h4></div></div></div>
+          <div class="section" title="4.1.8.2. User"><div class="titlepage"><div><div><h4 class="title"><a id="idp1117824"></a>4.1.8.2. User</h4></div></div></div>
             
 
             <p>The user class is very similar to the entity class. Their
@@ -1528,7 +1618,7 @@ $entities = $pines-&gt;entity_manager-&gt;get_entities(
                 </li></ul></div>
           </div>
 
-          <div class="section" title="4.1.8.3. Group"><div class="titlepage"><div><div><h4 class="title"><a id="idp1104736"></a>4.1.8.3. Group</h4></div></div></div>
+          <div class="section" title="4.1.8.3. Group"><div class="titlepage"><div><div><h4 class="title"><a id="idp1134944"></a>4.1.8.3. Group</h4></div></div></div>
             
 
             <p>The group class is also very similar to the entity class.

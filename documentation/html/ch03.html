@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Chapter 3. Pines Core</title><link rel="stylesheet" href="docbook.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.75.2" /><link rel="home" href="index.html" title="Pines Development" /><link rel="up" href="pt01.html" title="Part I. The Pines Framework" /><link rel="prev" href="ch02s04.html" title="2.4. Building Pines" /><link rel="next" href="ch03s02.html" title="3.2. Pines Object" /></head><body><a xmlns:fo="http://www.w3.org/1999/XSL/Format" href="index.html"><div class="header">Pines Development</div></a><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 3. Pines Core</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s04.html">Prev</a> </td><th width="60%" align="center">Part I. The Pines Framework</th><td width="20%" align="right"> <a accesskey="n" href="ch03s02.html">Next</a></td></tr></table><hr /></div><div class="chapter" title="Chapter 3. Pines Core"><div class="titlepage"><div><div><h2 class="title"><a id="idp112640"></a>Chapter 3. Pines Core</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="ch03.html#idp113520">3.1. Structure</a></span></dt><dd><dl><dt><span class="section"><a href="ch03.html#idp114272">3.1.1. File Structure</a></span></dt><dt><span class="section"><a href="ch03.html#idp140560">3.1.2. Object Structure</a></span></dt></dl></dd><dt><span class="section"><a href="ch03s02.html">3.2. Pines Object</a></span></dt><dd><dl><dt><span class="section"><a href="ch03s02.html#idp171472">3.2.1. Running an Action</a></span></dt><dt><span class="section"><a href="ch03s02.html#idp184560">3.2.2. Accessing Sessions</a></span></dt><dt><span class="section"><a href="ch03s02.html#idp198304">3.2.3. Redirecting the User</a></span></dt><dt><span class="section"><a href="ch03s02.html#idp200288">3.2.4. Formatting Output</a></span></dt><dt><span class="section"><a href="ch03s02.html#idp302672">3.2.5. Checking an IP Address</a></span></dt></dl></dd><dt><span class="section"><a href="core_services.html">3.3. Core Services</a></span></dt><dd><dl><dt><span class="section"><a href="core_services.html#idp313680">3.3.1. Config (<code class="classname">config</code> class)</a></span></dt><dt><span class="section"><a href="core_services.html#idp342160">3.3.2. Depend (<code class="classname">depend</code> class)</a></span></dt><dt><span class="section"><a href="core_services.html#hook">3.3.3. Hook (<code class="classname">hook</code> class)</a></span></dt><dt><span class="section"><a href="core_services.html#idp415408">3.3.4. Info (<code class="classname">info</code> class)</a></span></dt><dt><span class="section"><a href="core_services.html#idp450448">3.3.5. Menu (<code class="classname">menu</code> class)</a></span></dt><dt><span class="section"><a href="core_services.html#idp497472">3.3.6. Page (<code class="classname">page</code> class)</a></span></dt></dl></dd><dt><span class="section"><a href="ch03s04.html">3.4. Core Functions</a></span></dt><dt><span class="section"><a href="ch03s05.html">3.5. Core Classes</a></span></dt><dd><dl><dt><span class="section"><a href="ch03s05.html#idp567664">3.5.1. Component</a></span></dt><dt><span class="section"><a href="ch03s05.html#idp569248">3.5.2. Template</a></span></dt><dt><span class="section"><a href="ch03s05.html#idp582208">3.5.3. Module</a></span></dt></dl></dd><dt><span class="section"><a href="ch03s06.html">3.6. Order of Execution</a></span></dt></dl></div>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Chapter 3. Pines Core</title><link rel="stylesheet" type="text/css" href="docbook.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.76.1" /><link rel="home" href="index.html" title="Pines Development" /><link rel="up" href="pt01.html" title="Part I. The Pines Framework" /><link rel="prev" href="ch02s04.html" title="2.4. Building Pines" /><link rel="next" href="ch03s02.html" title="3.2. Pines Object" /></head><body><a xmlns:fo="http://www.w3.org/1999/XSL/Format" href="index.html"><div class="header">Pines Development</div></a><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 3. Pines Core</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s04.html">Prev</a> </td><th width="60%" align="center">Part I. The Pines Framework</th><td width="20%" align="right"> <a accesskey="n" href="ch03s02.html">Next</a></td></tr></table><hr /></div><div class="chapter" title="Chapter 3. Pines Core"><div class="titlepage"><div><div><h2 class="title"><a id="idp116512"></a>Chapter 3. Pines Core</h2></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl><dt><span class="section"><a href="ch03.html#idp117328">3.1. Structure</a></span></dt><dd><dl><dt><span class="section"><a href="ch03.html#idp117968">3.1.1. File Structure</a></span></dt><dt><span class="section"><a href="ch03.html#idp141440">3.1.2. Object Structure</a></span></dt></dl></dd><dt><span class="section"><a href="ch03s02.html">3.2. Pines Object</a></span></dt><dd><dl><dt><span class="section"><a href="ch03s02.html#idp168112">3.2.1. Running an Action</a></span></dt><dt><span class="section"><a href="ch03s02.html#idp182656">3.2.2. Accessing Sessions</a></span></dt><dt><span class="section"><a href="ch03s02.html#idp194912">3.2.3. Redirecting the User</a></span></dt><dt><span class="section"><a href="ch03s02.html#idp198480">3.2.4. Formatting Output</a></span></dt><dt><span class="section"><a href="ch03s02.html#idp289344">3.2.5. Checking an IP Address</a></span></dt></dl></dd><dt><span class="section"><a href="core_services.html">3.3. Core Services</a></span></dt><dd><dl><dt><span class="section"><a href="core_services.html#idp302608">3.3.1. Config (<code class="classname">config</code> class)</a></span></dt><dt><span class="section"><a href="core_services.html#idp330752">3.3.2. Depend (<code class="classname">depend</code> class)</a></span></dt><dt><span class="section"><a href="core_services.html#hook">3.3.3. Hook (<code class="classname">hook</code> class)</a></span></dt><dt><span class="section"><a href="core_services.html#idp418656">3.3.4. Info (<code class="classname">info</code> class)</a></span></dt><dt><span class="section"><a href="core_services.html#idp455216">3.3.5. Menu (<code class="classname">menu</code> class)</a></span></dt><dt><span class="section"><a href="core_services.html#idp501632">3.3.6. Page (<code class="classname">page</code> class)</a></span></dt></dl></dd><dt><span class="section"><a href="ch03s04.html">3.4. Core Functions</a></span></dt><dt><span class="section"><a href="ch03s05.html">3.5. Core Classes</a></span></dt><dd><dl><dt><span class="section"><a href="ch03s05.html#idp573136">3.5.1. Component</a></span></dt><dt><span class="section"><a href="ch03s05.html#idp574976">3.5.2. Template</a></span></dt><dt><span class="section"><a href="ch03s05.html#idp588784">3.5.3. Module</a></span></dt></dl></dd><dt><span class="section"><a href="ch03s06.html">3.6. Order of Execution</a></span></dt></dl></div>
       
 
-      <div class="section" title="3.1. Structure"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idp113520"></a>3.1. Structure</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="ch03.html#idp114272">3.1.1. File Structure</a></span></dt><dt><span class="section"><a href="ch03.html#idp140560">3.1.2. Object Structure</a></span></dt></dl></div>
+      <div class="section" title="3.1. Structure"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idp117328"></a>3.1. Structure</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="ch03.html#idp117968">3.1.1. File Structure</a></span></dt><dt><span class="section"><a href="ch03.html#idp141440">3.1.2. Object Structure</a></span></dt></dl></div>
         
 
-        <div class="section" title="3.1.1. File Structure"><div class="titlepage"><div><div><h3 class="title"><a id="idp114272"></a>3.1.1. File Structure</h3></div></div></div>
+        <div class="section" title="3.1.1. File Structure"><div class="titlepage"><div><div><h3 class="title"><a id="idp117968"></a>3.1.1. File Structure</h3></div></div></div>
           
 
           <p>Pines has a strict and logical file structure. The system and
@@ -27,13 +27,13 @@
               </li><li class="listitem">
                 <p><code class="filename">system</code> - Contains the Pines Core
                 code.</p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
-                      <p><code class="filename">actions</code> - Contains actions
-                      always available in Pines.</p>
+                      <p><code class="filename">actions</code> - Contains system
+                      actions always available in Pines.</p>
                     </li><li class="listitem">
                       <p><code class="filename">classes</code> - Contains the core
                       classes used by Pines.</p>
                     </li><li class="listitem">
-                      <p><code class="filename">includes</code> - Contains Pines
+                      <p><code class="filename">includes</code> - Contains Pines'
                       JavaScript files.</p>
                     </li><li class="listitem">
                       <p><code class="filename">init</code> - Contains the system
@@ -48,8 +48,7 @@
                     </li><li class="listitem">
                       <p><code class="filename">i01common.php</code> - An init
                       script which is run with the component init scripts. It
-                      sets up several shortcut functions and other useful
-                      functions.</p>
+                      sets up some basic security functions.</p>
                     </li><li class="listitem">
                       <p><code class="filename">info.php</code> - The Pines Core
                       information file. Contains information such as version
@@ -70,13 +69,18 @@
                 <p><code class="filename">templates</code> - Contains all currently
                 installed templates.</p>
               </li><li class="listitem">
+                <p><code class="filename">htaccess.txt</code> - An htaccess file. If
+                prettier URLs are desired, you can rename this to
+                <code class="filename">.htaccess</code> and enable the feature in the
+                config.</p>
+              </li><li class="listitem">
                 <p><code class="filename">index.php</code> - The main controller
                 script. This sets up some constants, then immediately executes
                 the system init scripts.</p>
               </li></ul></div>
         </div>
 
-        <div class="section" title="3.1.2. Object Structure"><div class="titlepage"><div><div><h3 class="title"><a id="idp140560"></a>3.1.2. Object Structure</h3></div></div></div>
+        <div class="section" title="3.1.2. Object Structure"><div class="titlepage"><div><div><h3 class="title"><a id="idp141440"></a>3.1.2. Object Structure</h3></div></div></div>
           
 
           <p>Pines is structured almost entirely around the Pines object,
@@ -87,7 +91,7 @@
           keyword.</p>
 
           <div class="informalexample">
-              <h4><a id="idp143648"></a>Using <code class="varname">$pines</code> in a function or
+              <h4><a id="idp144288"></a>Using <code class="varname">$pines</code> in a function or
               method.</h4>
 
               <pre class="programlisting">function example() {

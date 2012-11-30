@@ -30,6 +30,32 @@
     <para/>
 
     <section>
+      <title>History of Pines</title>
+
+      <para>Pines was started in the Fall of 2008 by myself, Hunter Perrin.
+      While taking my first PHP class, along with a French class, I developed
+      a small PHP application to allow the collaborative editing of a play
+      script. The application was used for my French class, then stowed away.
+      Several months after that, I started a new job, working as a web
+      designer. There, they requested me to find an application capable of
+      sending newsletters to their clients. I dug up the old application, and
+      adapted it to send emails. This incarnation was called Dandelion, and
+      released under the GNU Affero GPL.</para>
+
+      <para>After a year there, I took a new position. They had several new
+      ideas for web applications, which I slowly started building using
+      Dandelion. When the project started to really resemble a framework, not
+      just an application, we renamed it to Pines. Problem after problem would
+      arise, and solution after solution would be built. All atop the Pines
+      framework. Every feature in Pines has come from the real need of a
+      business environment. Pines has seen two major redesigns, and it barely
+      resembles the early application.</para>
+
+      <para>Now Pines is a solid, well tested, and well documented framework,
+      suitable for building high demand enterprise applications.</para>
+    </section>
+
+    <section>
       <title>How This Book is Organized</title>
 
       <para>This book is divided into three parts, each dealing with a
@@ -103,7 +129,7 @@
         The SciActive maintained configurator component, com_configure, is a
         perfect example of Pines' obsession with customization, allowing the
         administrator to provide different configuration based on users,
-        groups, and even dependency sets.</para>
+        groups, and even dependency sets (called conditions).</para>
 
         <para>Pines strives to also provide this level of customization to its
         developers. Many of the features available in Pines are provided
@@ -114,40 +140,13 @@
         developers can design their components once, and have it work with any
         implementation of these system services. Developers can also extend
         components to add features not available by default. For example, the
-        official user manager adds access control features to the entity
-        manager, which by default, has no considerations for users or groups.
-        Amazingly, this extension to the entity manager is accomplished
-        without altering any of its code. The user manager uses method hooking
-        to alter the functionality of the entity manager. This level of
-        flexibility allows developers to create complex, scalable applications
-        with ease.</para>
-      </section>
-
-      <section>
-        <title>The History of Pines</title>
-
-        <para>Pines was started in the Fall of 2008 by myself, Hunter Perrin.
-        While taking my first PHP class, along with a French I class, I
-        developed a small PHP application to allow the collaborative editing
-        of a play script. The application was used for my French class, then
-        stowed away. Several months after that, I started a new job, working
-        as a web designer. There, they requested me to find an application
-        capable of sending newsletters to their clients. I dug up the old
-        application, and adapted it to send emails. This incarnation was
-        called Dandelion, and released under the GNU Affero GPL.</para>
-
-        <para>After a year there, I took a new position. They had several new
-        ideas for web applications, which I slowly started building using
-        Dandelion. When the project started to really resemble a framework,
-        not just an application, we renamed it to Pines. Problem after problem
-        would arise, and solution after solution would be built. All atop the
-        Pines framework. Every feature in Pines has come from the real need of
-        a business environment. Pines has seen many redesigns, and it barely
-        resembles the early application.</para>
-
-        <para>Now Pines is a solid, well tested, and well documented
-        framework, suitable for building high demand enterprise
-        applications.</para>
+        official user manager adds user/group based access control features to
+        the entity manager (which by default, has no considerations for users
+        or groups). Amazingly, this extension to the entity manager is
+        accomplished without altering any of its code. The user manager uses
+        method hooking to alter the functionality of the entity manager. This
+        level of flexibility allows developers to create complex, scalable
+        applications with ease.</para>
       </section>
 
       <section>
@@ -162,9 +161,9 @@
         <para>If you modify any of Pines' source code (including the SciActive
         maintained components), and use this modified code to run a server,
         which users can access, your modified code must be freely available to
-        these users. This does not mean that you must release any custom
-        components you create, just any modifications to Pines' core or
-        official components.</para>
+        these users. <emphasis>This does not mean that you must release any
+        custom components you create</emphasis>, just any modifications to
+        Pines' core or official components.</para>
 
         <para>You are free to make modifications and not release them to the
         public, but any users which access the system on which the modified
@@ -172,8 +171,8 @@
 
         <para>If you would like to change Pines' behavior without modifying
         its code, you can use the hook system to accomplish almost any needed
-        change. Because a component can be licensed under any license, you do
-        not necessarily have to distribute this source code.</para>
+        change. Because a component can be licensed under any license, you are
+        not required to distribute this source code.</para>
       </section>
 
       <section>
@@ -257,22 +256,35 @@
         software.<itemizedlist>
             <listitem>
               <para><link
+              xlink:href="https://github.com/sciactive">https://github.com/sciactive</link></para>
+
+              <para>The SciActive GitHub page. Pines' repositories are listed
+              here. Each repository here has a bugtracker and a wiki.</para>
+            </listitem>
+
+            <listitem>
+              <para><link
               xlink:href="http://sourceforge.net/projects/pines/">http://sourceforge.net/projects/pines/</link></para>
 
               <para>The Pines project page on SourceForge. This is where
-              almost everything about Pines can be found.</para>
+              Pines' releases are available for download.</para>
             </listitem>
 
             <listitem>
               <para><link
-              xlink:href="http://pines.sourceforge.net/">http://pines.sourceforge.net/</link></para>
+              xlink:href="https://pinesframework.org/">https://pinesframework.org/</link>
+              and <link
+              xlink:href="http://pinescms.org/">http://pinescms.org/</link></para>
 
-              <para>Pines' main website.</para>
+              <para>Pines' main websites. The Pines Framework website provides
+              information about Pines Framework, and the Pines CMS website
+              provides information about the CMS build using Pines
+              Framework.</para>
             </listitem>
 
             <listitem>
               <para><link
-              xlink:href="http://pines.sourceforge.net/pines-docs/">http://pines.sourceforge.net/pines-docs/</link></para>
+              xlink:href="http://pinesframework.org/api/">http://pinesframework.org/api/</link></para>
 
               <para>Pines API Documentation. This can be very helpful to have
               handy while you are learning Pines development. Before using
@@ -299,13 +311,11 @@
             </listitem>
           </itemizedlist></para>
 
-        <para>Pines, and its related projects are available in Mercurial
-        repositories from SourceForge.<itemizedlist>
+        <para>Pines, and its related projects are available in Git
+        repositories from GitHub.<itemizedlist>
             <listitem>
               <para><link
-              xlink:href="http://pines.hg.sourceforge.net:8000/hgroot/pines/pines">http://pines.hg.sourceforge.net:8000/hgroot/pines/pines</link><emphasis>
-              or </emphasis><link
-              xlink:href="http://pines.hg.sourceforge.net:8000/hgroot/pines/core">http://pines.hg.sourceforge.net:8000/hgroot/pines/core</link></para>
+              xlink:href="https://github.com/sciactive/pines-core">https://github.com/sciactive/pines-core</link></para>
 
               <para>Pines Core repository. Contains the core system
               files.</para>
@@ -313,93 +323,127 @@
 
             <listitem>
               <para><link
-              xlink:href="http://pines.hg.sourceforge.net:8000/hgroot/pines/components">http://pines.hg.sourceforge.net:8000/hgroot/pines/components</link></para>
+              xlink:href="https://github.com/sciactive/pines-components">https://github.com/sciactive/pines-components</link></para>
 
-              <para>Pines Components repository. Contains official components
-              and templates.</para>
+              <para>Pines Components repository. Contains official, SciActive
+              maintained components and templates.</para>
             </listitem>
 
             <listitem>
               <para><link
-              xlink:href="http://pines.hg.sourceforge.net:8000/hgroot/pines/pform">http://pines.hg.sourceforge.net:8000/hgroot/pines/pform</link></para>
+              xlink:href="https://github.com/sciactive/pform">https://github.com/sciactive/pform</link></para>
 
-              <para>Pines Form.</para>
+              <para>Pines Form, a CSS form layout library for HTML and
+              XHTML.</para>
             </listitem>
 
             <listitem>
               <para><link
-              xlink:href="http://pines.hg.sourceforge.net:8000/hgroot/pines/pgrid">http://pines.hg.sourceforge.net:8000/hgroot/pines/pgrid</link></para>
+              xlink:href="https://github.com/sciactive/pgrid">https://github.com/sciactive/pgrid</link></para>
 
-              <para>Pines Grid.</para>
+              <para>Pines Grid, a JavaScript (jQuery) data grid plugin.</para>
             </listitem>
 
             <listitem>
               <para><link
-              xlink:href="http://pines.hg.sourceforge.net:8000/hgroot/pines/pnotify">http://pines.hg.sourceforge.net:8000/hgroot/pines/pnotify</link></para>
+              xlink:href="https://github.com/sciactive/pnotify">https://github.com/sciactive/pnotify</link></para>
 
-              <para>Pines Notify.</para>
+              <para>Pines Notify, JavaScript notifications for Bootstrap or
+              jQuery UI.</para>
             </listitem>
 
             <listitem>
               <para><link
-              xlink:href="http://pines.hg.sourceforge.net:8000/hgroot/pines/ptags">http://pines.hg.sourceforge.net:8000/hgroot/pines/ptags</link></para>
+              xlink:href="https://github.com/sciactive/ptags">https://github.com/sciactive/ptags</link></para>
 
-              <para>Pines Tags.</para>
+              <para>Pines Tags, a JavaScript (jQuery) content tag editor
+              plugin.</para>
             </listitem>
 
             <listitem>
               <para><link
-              xlink:href="http://pines.hg.sourceforge.net:8000/hgroot/pines/tools">http://pines.hg.sourceforge.net:8000/hgroot/pines/tools</link></para>
+              xlink:href="https://github.com/sciactive/pines-tools">https://github.com/sciactive/pines-tools</link></para>
 
               <para>Build tools, documentation, logo sources, and other
               various tools.</para>
             </listitem>
-
-            <listitem>
-              <para><link
-              xlink:href="http://pines.hg.sourceforge.net:8000/hgroot/pines/cash-drawer">http://pines.hg.sourceforge.net:8000/hgroot/pines/cash-drawer</link></para>
-
-              <para>Pines POS Cash Drawer Firefox Extension</para>
-            </listitem>
           </itemizedlist></para>
 
-        <para>To get a local copy of Pines for testing or development, clone
-        the Mercurial repositories.</para>
+        <para>To get a local copy of Pines for testing or development, we're
+        going to set up a directory of symlinks to the actual repository
+        directories. First, from your server root (or wherever you'd like
+        these directories), clone the Git repositories.</para>
+
+        <para><programlisting language="sh">git clone git://github.com/sciactive/pines-core.git
+git clone git://github.com/sciactive/pines-components.git</programlisting></para>
+
+        <para>Then create a pines directory, and create links to the core
+        files, components, and templates under the correct directories.</para>
 
         <para><programlisting language="sh">mkdir pines
-hg clone http://pines.hg.sourceforge.net:8000/hgroot/pines/pines pines
+cd pines
+
+ln -s ../pines-core/* ./
+unlink components
+unlink templates
+unlink media
 
 mkdir components
-hg clone http://pines.hg.sourceforge.net:8000/hgroot/pines/components components</programlisting></para>
+cd components
+ln -s ../../pines-components/com_* ./
+cd ..
 
-        <para>Then create links to the components/templates under the correct
-        directories.</para>
+mkdir templates
+cd templates
+ln -s ../../pines-components/tpl_* ./
+cd ..
 
-        <para><programlisting language="sh">cd pines/components/
-ln -s ../../components/com_* ./
-
-cd ../templates/
-ln -s ../../components/tpl_* ./</programlisting></para>
+mkdir media
+cd media
+ln -s ../../pines-core/media/* ./
+ln -s ../../pines-components/meta_packages/* ./
+cd ..</programlisting></para>
 
         <para>You will need to unlink conflicting components, such as extra
-        entity managers. If you plan to use MySQL for example, you will need
-        to delete the links to com_pgentity and com_pgsql.</para>
+        entity managers and editors. If you plan to use MySQL and TinyMCE for
+        example, you will need to delete the links to com_pgentity, com_pgsql,
+        and com_ckeditor.</para>
 
-        <para><programlisting language="sh">cd pines/components/
-unlink com_pgentity
-unlink com_pgsql</programlisting></para>
+        <para><programlisting language="sh">unlink components/com_pgentity
+unlink components/com_pgsql
+unlink components/com_ckeditor</programlisting></para>
+
+        <para>Now you should be able to access your installation from your
+        server. If you placed it in the server root of your localhost, the
+        address of the development setup would be
+        <uri>http://localhost/pines/</uri>. Access the site and set up the
+        database following the instructions on screen.</para>
+
+        <para>When you set up your database, you should use the username and
+        database name "pines" and the password "password". These are the
+        configuration defaults, so this setup will allow you to use Pines
+        without additional configuration files. Once you set up your database,
+        remove the newly created configuration file in the SQL component you
+        are using (com_mysql or com_pgsql). It is not needed, as long as the
+        configuration is the same as the defaults.</para>
+
+        <para><programlisting language="sh">rm pines-components/com_mysql/config.php</programlisting></para>
+
+        <para>You are now ready to start developing and testing. When you
+        first create a user in the new setup, it will be granted administrator
+        rights.</para>
 
         <para>To update your local repository and get the latest code, pull
-        changes and update.<programlisting language="sh">cd pines/
-hg pull
-hg up
+        changes from the origin repository (the default
+        remote).<programlisting language="sh">cd pines-core/
+git pull
 
-cd ../components/
-hg pull
-hg up</programlisting></para>
+cd ../pines-components/
+git pull</programlisting></para>
 
-        <para>I recommend using a Mercurial GUI to make using the repository
-        easier. I use TortoiseHG (http://tortoisehg.org/).</para>
+        <para>I recommend using a Git GUI to make using the repository easier.
+        I use SmartGit (<link
+        xlink:href="http://www.syntevo.com/smartgit/index.html">http://www.syntevo.com/smartgit/index.html</link>).</para>
       </section>
 
       <section>
@@ -409,7 +453,7 @@ hg up</programlisting></para>
           <para>This coding style is the style used by Pines Core and the
           SciActive maintained components/templates. If you are submitting a
           patch, please keep it written in this style. In your own
-          components/templates you are free to use whatever style you like,
+          components/templates you are free to use whatever style you'd like,
           but you must conform to the naming guidelines.</para>
         </note>
 
@@ -456,8 +500,12 @@ $pines-&gt;entity_manager-&gt;get_entities(
         array('&amp;',
             'tag' =&gt; array('some', 'tags')
         ),
-        array('!&amp;',
-            'data' =&gt; array('something', true)
+        array('!|',
+            'data' =&gt; array(
+                array('something', true),
+                array('another', true),
+                array('onemore', true)
+            )
         )
     );</programlisting>
             </informalexample></para>
@@ -533,7 +581,7 @@ if (
           with the component. Other than a few special classes, like
           <classname>user</classname> and <classname>entity</classname>, that
           are provided by services, classes are prefixed with their
-          component's name. E.g.
+          component's name and an underscore. E.g.
           <classname>com_example_widget</classname>.</para>
 
           <para>Templates are the same, except "tpl_" is used instead of
@@ -552,7 +600,8 @@ if (
           <para>Components' functions should be prefixed with their
           component's name, followed by two underscores, then the name. E.g.
           <function>com_example__do_something()</function>. This is only for
-          functions, not for methods.</para>
+          functions, not for methods. This is to distinguish between a
+          function name and a class name.</para>
         </section>
 
         <section>
@@ -584,8 +633,7 @@ if (
           API documentation. Files, functions, classes, interfaces,
           properties, methods, constants, and requires/includes that are part
           of Pines Core or SciActive's components should be commented using
-          phpDoc style comment blocks using the package "Pines". Each
-          component and template is a subpackage of "Pines".</para>
+          phpDoc style comment blocks.</para>
         </section>
       </section>
 
@@ -593,11 +641,9 @@ if (
         <title>Building Pines</title>
 
         <para>To build a custom release of Pines, you will need to clone the
-        "tools" repository. There, you will find the
+        "pines-tools" repository. There, you will find the
         <filename>build-tools/buildrelease.php</filename> file. Point your
-        browser to this script to use the release builder. The directory you
-        enter should be in the directory above the "tools" repository
-        clone.</para>
+        browser to this script to use the release builder.</para>
 
         <para>In the build tools, you will also find scripts to package Pines'
         jQuery plugins and to generate an icon component's CSS.</para>
@@ -641,8 +687,8 @@ if (
                 <para><filename>system</filename> - Contains the Pines Core
                 code.<itemizedlist>
                     <listitem>
-                      <para><filename>actions</filename> - Contains actions
-                      always available in Pines.</para>
+                      <para><filename>actions</filename> - Contains system
+                      actions always available in Pines.</para>
                     </listitem>
 
                     <listitem>
@@ -651,7 +697,7 @@ if (
                     </listitem>
 
                     <listitem>
-                      <para><filename>includes</filename> - Contains Pines
+                      <para><filename>includes</filename> - Contains Pines'
                       JavaScript files.</para>
                     </listitem>
 
@@ -674,8 +720,7 @@ if (
                     <listitem>
                       <para><filename>i01common.php</filename> - An init
                       script which is run with the component init scripts. It
-                      sets up several shortcut functions and other useful
-                      functions.</para>
+                      sets up some basic security functions.</para>
                     </listitem>
 
                     <listitem>
@@ -706,6 +751,13 @@ if (
               <listitem>
                 <para><filename>templates</filename> - Contains all currently
                 installed templates.</para>
+              </listitem>
+
+              <listitem>
+                <para><filename>htaccess.txt</filename> - An htaccess file. If
+                prettier URLs are desired, you can rename this to
+                <filename>.htaccess</filename> and enable the feature in the
+                config.</para>
               </listitem>
 
               <listitem>
@@ -855,10 +907,10 @@ if (
           <methodname>action</methodname>.</para>
 
           <para>When an action is run, <methodname>action</methodname> will
-          look in the component's <filename>action</filename> directory for a
+          look in the component's <filename>actions</filename> directory for a
           file with the same name as the desired action (with .php appended).
           If the desired component is "system", Pines will instead look in the
-          system's <filename>action</filename> directory. If no action was
+          system's <filename>actions</filename> directory. If no action was
           specified, <methodname>action</methodname> will look for a
           <filename>default.php</filename> file. If no component was
           specified, <methodname>action</methodname> will use the default
@@ -874,14 +926,20 @@ if (
             </note></para>
 
           <para>If no action file was found for the given arguments,
-          <methodname>action</methodname> will return the string "error_404".
-          Otherwise, it will return the value returned by the action file. If
-          <filename>i60action.php</filename> receives "error_404" when it runs
-          the requested action, it will attach a module with the system's
-          "error_404" view into the page's "content" position and send a 404
-          HTTP status code. This means your action can return the string
-          "error_404" if the requested information is not found and a 404
-          error will be sent to the client.<informalexample>
+          <methodname>action</methodname> will throw a new 404
+          <exceptionname>HttpClientException</exceptionname>. Otherwise, it
+          will return the value returned by the action file. If
+          <filename>i60action.php</filename> catches a
+          <exceptionname>HttpClientException</exceptionname> or a
+          <exceptionname>HttpServerException</exceptionname> when it runs the
+          requested action, it will attach a module with the system's "error"
+          view into the page's "content" position and send the corresponding
+          HTTP status code. This means your action can throw either of these
+          exceptions (<exceptionname>HttpServerException</exceptionname> for a
+          5XX error, and <exceptionname>HttpClientException</exceptionname>
+          for a 4XX error) and the HTTP status code will be sent to the
+          client, along with an explanation of the error (or an optional
+          message you provide).<informalexample>
               <bridgehead>Manually Running an Action</bridgehead>
 
               <programlisting language="php">// Run a specific action.
@@ -949,7 +1007,7 @@ $pines-&gt;action();</programlisting>
 $pines-&gt;session('read');
 
 // Also works.
-//$pines-&gt;session();
+$pines-&gt;session();
 
 // Now the session variable is full of the session data.
 echo $_SESSION['messages'];</programlisting>
@@ -986,7 +1044,7 @@ pines_notice('Messages saved.');</programlisting>
           to the user will be displayed when the user reaches the destination
           URL, assuming that URL is also handled by the same Pines
           installation. The HTTP status code returned to the client can be
-          changed and defaults to 303 See Other.<informalexample>
+          changed and defaults to 303 (See Other).<informalexample>
               <bridgehead>Redirecting the User</bridgehead>
 
               <programlisting language="php">// Notices and errors will be saved.
@@ -1208,11 +1266,11 @@ $pines-&gt;hook-&gt;add_callback('$pines-&gt;format_content', -10, 'com_example_
             <para>To format a date or time range using two timestamps, use
             <methodname>format_date_range</methodname>. Like
             <methodname>format_date</methodname>, the current user's timezone
-            is used for calculations. One wouldn't think that a timezone
-            wouldn't be a concern when showing a range of time, but if your
-            time range displays hours and a Daylight Savings Time change
-            occurs during it in the selected timezone, you will have a
-            different number of hours than in a timezone without DST.</para>
+            is used for calculations. One wouldn't think that a timezone would
+            be a concern when showing a range of time, but if your time range
+            displays hours and a Daylight Savings Time change occurs during it
+            in the selected timezone, you will have a different number of
+            hours than in a timezone without DST.</para>
 
             <para><parameter>$format</parameter> is built using macros, which
             are substrings replaced by the corresponding number of units.
@@ -1342,10 +1400,10 @@ $pines-&gt;hook-&gt;add_callback('$pines-&gt;format_content', -10, 'com_example_
             hours}{#hour# hour} {#minutes# minutes}{#minute# minute}
             {#seconds# seconds}{#second# second}</literal>"</para>
 
-            <para>Here are some examples of formats and what would be
-            outputted given a time range of 2 years 5 months 1 day and 4
-            hours. (These values were calculated on Fri Oct 14 2011 in San
-            Diego, which has DST. 2012 is a leap year.)<itemizedlist>
+            <para>Here are some examples of formats and what would be returned
+            given a time range of 2 years 5 months 1 day and 4 hours. (These
+            values were calculated on Fri Oct 14 2011 in San Diego, which has
+            DST. 2012 is a leap year.)<itemizedlist>
                 <listitem>
                   <para><code>#years# years {#days# days}{#day#
                   day}</code></para>
@@ -1491,7 +1549,7 @@ $bad = $pines-&gt;check_ip_subnet('192.168.1.5', '192.168.0.0', '255.255.255.0')
           <para>The config service loads configuration for both Pines and any
           components/templates. The configuration for Pines is always loaded,
           and components' configuration is loaded the first time it is
-          accessed during each script run. Config will start by loading the
+          accessed, during each script run. Config will start by loading the
           <filename>defaults.php</filename> file (if it exists) in the
           component's directory. The return value from this file is an array
           which is used to load configuration variables. Each array entry
@@ -1584,10 +1642,17 @@ $bad = $pines-&gt;check_ip_subnet('192.168.1.5', '192.168.0.0', '255.255.255.0')
           The file is structured the same, except that each entry only
           contains "name" and "value".</para>
 
-          <para>The configuration is built using these files, and placed into
-          an object named after the component on the first attempted access of
-          the object. Pines' configuration options are placed in the config
-          object itself.<informalexample>
+          <para>The configuration object is built using these files, and
+          placed into a property (named after the component) on the first
+          attempted access of the property. Pines' system configuration
+          options are placed in the config object itself.</para>
+
+          <para>When the user changes a config option, they may only change
+          the option to a value of the same type as the default value. For
+          example, if the option's default value is an integer, the value can
+          only be changed to another integer.</para>
+
+          <para><informalexample>
               <bridgehead>Accessing Configuration for Pines and
               Components</bridgehead>
 
@@ -1602,9 +1667,8 @@ echo $pines-&gt;config-&gt;tpl_green-&gt;tagline;</programlisting>
             </informalexample></para>
 
           <caution>
-            <para>Configuration options are not cleaned or checked (except
-            when an options array is used). When you are inserting them into
-            HTML, they should be escaped with
+            <para>Configuration options are not sanitized. When you are
+            inserting them into HTML, they should be escaped with
             <function>htmlspecialchars()</function>.</para>
           </caution>
         </section>
@@ -1702,6 +1766,13 @@ echo $pines-&gt;config-&gt;tpl_green-&gt;tagline;</programlisting>
                   </row>
 
                   <row>
+                    <entry>request</entry>
+
+                    <entry>Check the requested component and action.
+                    (Combination of "option" and "action".)</entry>
+                  </row>
+
+                  <row>
                     <entry>service</entry>
 
                     <entry>Check the available system services.</entry>
@@ -1712,29 +1783,52 @@ echo $pines-&gt;config-&gt;tpl_green-&gt;tagline;</programlisting>
 
           <para>To check a dependency, use the
           <methodname>check()</methodname> method. It will return true if the
-          value passes the check, or false if it does not.<informalexample>
+          value passes the check, or false if it does not. To retrieve a
+          checker's help array, with information about the checker, use the
+          <methodname>help()</methodname> method.<informalexample>
               <bridgehead>Using the Dependency Checker</bridgehead>
 
               <programlisting language="php">if (!$pines-&gt;depend-&gt;check('component', 'com_example&gt;=2.0|com_sample')) {
-    pines_notice('This feature is only available when you have com_example 2.0 or greater, or com_sample.');
+    pines_notice('This feature is only available when you have com_example 2.0 or higher, or com_sample.');
     return;
 }
 if (!$pines-&gt;depend-&gt;check('extension', 'mysql|mysqli')) {
     pines_notice('It appears the MySQL extension is not installed. Please install it to continue.');
     return;
-}</programlisting>
+}
+$help_array = $pines-&gt;depend-&gt;help('extension');</programlisting>
             </informalexample></para>
 
           <para>Adding a new dependency checker is easy. Add a new entry to
           the checkers variable, using the name of the checker as the key, and
           a callback to the checker function as the value. The callback
           function should return true if the check passes and false if it does
-          not. This should usually be done using an init script. That will
+          not. The first argument to a checker is a value to check. However,
+          the second argument, if set to true, means the callback function
+          should return a help array.</para>
+
+          <para>This should usually be done using an init script. That will
           ensure the checker is available by the time an action is
           run.<informalexample>
               <bridgehead>Adding a New Checker</bridgehead>
 
-              <programlisting language="php">function com_example__check_something($value) {
+              <programlisting language="php">function com_example__check_something($value, $help = false) {
+    if ($help) {
+        $return = array();
+        $return['cname'] = 'Barbecue Checker';
+        $return['description'] = &lt;&lt;&lt;'EOF'
+Check that something is a barbecue.
+EOF;
+        $return['syntax'] = &lt;&lt;&lt;'EOF'
+Any value will do, but to pass, it must be barbecue.
+EOF;
+        $return['examples'] = &lt;&lt;&lt;'EOF'
+stick in the mud
+:   Check if "stick in the mud" == "barbecue".
+EOF;
+        $return['simple_parse'] = false;
+        return $return;
+    }
     return ($value == 'barbecue');
 }
 
@@ -1764,8 +1858,24 @@ $pines-&gt;depend-&gt;checkers['something'] = 'com_example__check_something';
           checker.<informalexample>
               <bridgehead>Using the Simple Parser</bridgehead>
 
-              <programlisting language="php">function com_example__check_something($value) {
+              <programlisting language="php">function com_example__check_something($value, $help = false) {
     global $pines;
+    if ($help) {
+        $return = array();
+        $return['cname'] = 'Barbecue Checker';
+        $return['description'] = &lt;&lt;&lt;'EOF'
+Check that something is a barbecue.
+EOF;
+        $return['syntax'] = &lt;&lt;&lt;'EOF'
+Any value will do, but to pass, it must be barbecue.
+EOF;
+        $return['examples'] = &lt;&lt;&lt;'EOF'
+stick in the mud|hot dogs
+:   Check if "stick in the mud" or "hot dogs" == "barbecue".
+EOF;
+        $return['simple_parse'] = true;
+        return $return;
+    }
     if (
             strpos($value, '&amp;') !== false ||
             strpos($value, '|') !== false ||
@@ -1782,6 +1892,59 @@ $pines-&gt;depend-&gt;checkers['something'] = 'com_example__check_something';
 // Call the new checker like this:
 // $pines-&gt;depend-&gt;check('something', 'a value|barbecue'); // Would return true.</programlisting>
             </informalexample></para>
+
+          <para>The checker's help array must contain the following
+          values.<table>
+              <title>Dependency Checker Help Array Values</title>
+
+              <tgroup cols="2">
+                <colspec colnum="2" colwidth="5*"/>
+
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+
+                    <entry>Description</entry>
+                  </row>
+                </thead>
+
+                <tbody>
+                  <row>
+                    <entry>cname</entry>
+
+                    <entry>A common name to present to users.</entry>
+                  </row>
+
+                  <row>
+                    <entry>description</entry>
+
+                    <entry>A description of the checker. This is formatted
+                    with Markdown.</entry>
+                  </row>
+
+                  <row>
+                    <entry>syntax</entry>
+
+                    <entry>An explanation of the checker's syntax. This is
+                    formatted with Markdown.</entry>
+                  </row>
+
+                  <row>
+                    <entry>examples</entry>
+
+                    <entry>Examples of values that can be checked with the
+                    checker. This is formatted with Markdown.</entry>
+                  </row>
+
+                  <row>
+                    <entry>simple_parse</entry>
+
+                    <entry>A boolean. Whether this checker uses the
+                    simple_parse feature.</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table></para>
 
           <para>If you'd like to include your checker in your component's
           class, it is better to consider the resources used by including a
@@ -1814,8 +1977,8 @@ $pines-&gt;depend-&gt;checkers['something'] = 'com_example__check_something';</p
 
           <para>The hook service provides method hooking for the entire
           <varname>$pines</varname> object and most classes. Method hooking
-          allows a developer to intercept function calls and alter arguments,
-          alter return values, and change the actual function being
+          allows a component to intercept function calls to alter arguments,
+          alter return values, and/or change the actual function being
           called.</para>
 
           <simplesect>
@@ -1844,10 +2007,10 @@ $pines-&gt;depend-&gt;checkers['something'] = 'com_example__check_something';</p
             will hook the clone as well.</para>
 
             <caution>
-              <para>Calls from within a method of the original class to
-              another method of the class will not be intercepted. This
-              includes all calls to private methods. Static methods cannot be
-              hooked either.</para>
+              <para>Calls from <emphasis>within</emphasis> a method of the
+              original class to another method of the class will not be
+              intercepted. This includes all calls to private methods. Static
+              methods cannot be hooked either.</para>
             </caution>
 
             <caution>
@@ -2067,7 +2230,8 @@ $pines-&gt;hook-&gt;add_callback('all', 10, 'com_example__callback');</programli
 
                     <entry>No</entry>
 
-                    <entry>A short description of the component.</entry>
+                    <entry>A short description (one line) of the
+                    component.</entry>
                   </row>
 
                   <row>
@@ -2085,7 +2249,8 @@ $pines-&gt;hook-&gt;add_callback('all', 10, 'com_example__callback');</programli
 
                     <entry>An associative array of dependencies which the
                     component requires. The keys are the names of the
-                    dependency checker to use.</entry>
+                    dependency checker to use, and the values are the values
+                    to check.</entry>
                   </row>
 
                   <row>
@@ -2095,7 +2260,8 @@ $pines-&gt;hook-&gt;add_callback('all', 10, 'com_example__callback');</programli
 
                     <entry>An associative array of dependencies which the
                     component conflicts with. The keys are the names of the
-                    dependency checker to use.</entry>
+                    dependency checker to use, and the values are the values
+                    to check.</entry>
                   </row>
 
                   <row>
@@ -2105,7 +2271,8 @@ $pines-&gt;hook-&gt;add_callback('all', 10, 'com_example__callback');</programli
 
                     <entry>An associative array of dependencies which the
                     component recommends. The keys are the names of the
-                    dependency checker to use.</entry>
+                    dependency checker to use, and the values are the values
+                    to check.</entry>
                   </row>
 
                   <row>
@@ -2197,7 +2364,7 @@ echo $pines-&gt;info-&gt;tpl_green-&gt;version;</programlisting>
 
                     <entry>Yes</entry>
 
-                    <entry>The name of the menus path.</entry>
+                    <entry>The name of the menu's path.</entry>
                   </row>
 
                   <row>
@@ -2222,7 +2389,7 @@ echo $pines-&gt;info-&gt;tpl_green-&gt;version;</programlisting>
 
                     <entry>No</entry>
 
-                    <entry>Boolean value of whether the menu short be sorted
+                    <entry>Boolean value of whether the menu should be sorted
                     alphabetically.</entry>
                   </row>
 
@@ -2278,7 +2445,7 @@ echo $pines-&gt;info-&gt;tpl_green-&gt;version;</programlisting>
 
                     <entry>No</entry>
 
-                    <entry>Boolean value of whether the menu short be sorted
+                    <entry>Boolean value of whether the menu should be sorted
                     alphabetically.</entry>
                   </row>
 
@@ -2412,7 +2579,7 @@ $pines-&gt;menu-&gt;menu_arrays[] = array(
               <listitem>
                 <para><methodname>title</methodname></para>
 
-                <para>Append test to the title.</para>
+                <para>Append text to the title.</para>
               </listitem>
 
               <listitem>
@@ -2435,8 +2602,9 @@ $pines-&gt;menu-&gt;menu_arrays[] = array(
             </itemizedlist></para>
 
           <para>Page has several methods for displaying notices and errors to
-          the user. It is ultimately the responsibility of the template to
-          display the messages to the user.<itemizedlist>
+          the user. Page only manages and organizes them, as it is ultimately
+          the responsibility of the template to display the messages to the
+          user.<itemizedlist>
               <listitem>
                 <para><methodname>notice</methodname></para>
 
@@ -2462,12 +2630,15 @@ $pines-&gt;menu-&gt;menu_arrays[] = array(
               </listitem>
             </itemizedlist></para>
 
-          <para>Though module attachments are usually handled by the module
-          when it is created, you can manually attach a module to Page. The
-          second argument of <methodname>attach_module()</methodname> is the
-          position in which to place the module. You can also manually detach
-          the module. If the module is attached to the same position twice, it
-          must likewise be removed twice.<informalexample>
+          <para>Modules are segments of the page, which must be attached to
+          the page in order to have their view content rendered and sent to
+          the client. When a module is attached to Page, a position must be
+          specified. Though module attachments are usually handled by the
+          module when it is created, you can manually attach a module to Page.
+          The second argument of <methodname>attach_module()</methodname> is
+          the position in which to place the module. You can also manually
+          detach the module. If the module is attached to the same position
+          twice, it must likewise be removed twice.<informalexample>
               <bridgehead>Manually Attaching and Detaching a
               Module</bridgehead>
 
@@ -2488,7 +2659,7 @@ $pines-&gt;page-&gt;detach_module($module, 'content');</programlisting>
               <bridgehead>Rendering the Modules in a Position Using a
               Model</bridgehead>
 
-              <programlisting language="html+php">&lt;div id="modules_left"&gt;
+              <programlisting language="html+php">&lt;div id="left"&gt;
     &lt;?php echo $pines-&gt;page-&gt;render_modules('left', 'module_sidebar'); ?&gt;
 &lt;/div&gt;</programlisting>
             </informalexample></para>
@@ -2659,6 +2830,13 @@ $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
                 </row>
 
                 <row>
+                  <entry><function>pines_session</function></entry>
+
+                  <entry>Shortcut to
+                  <code>$pines-&gt;session()</code>.</entry>
+                </row>
+
+                <row>
                   <entry><function>pines_url</function></entry>
 
                   <entry>Shortcut to
@@ -2781,8 +2959,8 @@ $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
               <listitem>
                 <para><varname>classes</varname></para>
 
-                <para>A list of additional classes to be added to the module.
-                This applies only to HTML modules.</para>
+                <para>An array of additional classes to be added to the
+                module. This applies only to HTML modules.</para>
               </listitem>
 
               <listitem>
@@ -2861,8 +3039,9 @@ $email_body = $module-&gt;render();</programlisting>
               view.</para>
             </caution></para>
 
-          <para>Pines provides a blank view, which you can use if you want to
-          add content to the module manually.<informalexample>
+          <para>Pines provides a blank view (component is "system" and view is
+          "null"), which you can use if you want to add content to the module
+          manually.<informalexample>
               <bridgehead>Manually Creating the Module Content</bridgehead>
 
               <programlisting language="php">// Of course, this example message would be much more suited to use pines_notice() or pines_error(),
@@ -2875,8 +3054,8 @@ $module-&gt;content('The process '.($success ? 'finished successfully.' : 'encou
 pines_log($module-&gt;get_content());</programlisting>
             </informalexample></para>
 
-          <para>For more information about creating and using views, please
-          see the <link linkend="views">Views</link> section.</para>
+          <para>For more information about creating and using views, see the
+          <link linkend="views">Views</link> section.</para>
         </section>
       </section>
 
@@ -2905,7 +3084,8 @@ pines_log($module-&gt;get_content());</programlisting>
                   <listitem>
                     <para><constant>P_RUN</constant> - Used to determine that
                     Pines was executed properly through
-                    <filename>index.php</filename>.</para>
+                    <filename>index.php</filename>. You'll see this referenced
+                    in every Pines PHP file.</para>
                   </listitem>
 
                   <listitem>
@@ -2936,9 +3116,10 @@ pines_log($module-&gt;get_content());</programlisting>
                     <itemizedlist>
                       <listitem>
                         <para>Loads script timing functions. These functions
-                        will use the JavaScript console.log function to
-                        display timing information for various portions of the
-                        script run.</para>
+                        will use the JavaScript
+                        <function>console.log</function> function to display
+                        timing information for various portions of the script
+                        run.</para>
                       </listitem>
                     </itemizedlist>
                   </listitem>
@@ -2948,8 +3129,8 @@ pines_log($module-&gt;get_content());</programlisting>
 
                     <itemizedlist>
                       <listitem>
-                        <para>Loads various functions used specifically by
-                        Pines Core.</para>
+                        <para>Loads various functions used by Pines Core and
+                        shortcut functions.</para>
                       </listitem>
                     </itemizedlist>
                   </listitem>
@@ -3036,7 +3217,7 @@ pines_log($module-&gt;get_content());</programlisting>
                                     </listitem>
 
                                     <listitem>
-                                      <para>Gets timezone from config and passes to
+                                      <para>Gets timezone from config and calls
                                       <varname>date_default_timezone_set</varname>.</para>
                                     </listitem>
 
@@ -3126,14 +3307,12 @@ pines_log($module-&gt;get_content());</programlisting>
                           important events are noted below.<itemizedlist>
                               <listitem>
                                 <para>i00_ : Common cleaning functions can be
-                                overridden here. However, shortcut functions (like
-                                <function>gatekeeper</function>) are not available
-                                yet.</para>
+                                overridden here.</para>
                               </listitem>
 
                               <listitem>
-                                <para>i01_ : Common functions are being defined
-                                here.</para>
+                                <para>i01_ : Common cleaning functions are being
+                                defined here.</para>
                               </listitem>
 
                               <listitem>
@@ -3167,9 +3346,21 @@ pines_log($module-&gt;get_content());</programlisting>
                         </listitem>
 
                         <listitem>
+                          <para>If a HttpClientException or
+                          HttpServerException is thrown, loads a module with
+                          "system" as component, "error" as view, and
+                          "content" as position. Assigns the exception to the
+                          <property>exception</property> property. The
+                          exception will return the correct HTTP status code,
+                          and the view will output a friendly message to the
+                          client.</para>
+                        </listitem>
+
+                        <listitem>
                           <para>Checks system config again in case config has
                           changed. (Repeats same steps as
-                          <varname>$pines</varname> does when loading.)</para>
+                          <varname>$pines</varname> does when checking
+                          config.)</para>
                         </listitem>
                       </itemizedlist></para>
                   </listitem>
@@ -3182,10 +3373,14 @@ pines_log($module-&gt;get_content());</programlisting>
                         </listitem>
 
                         <listitem>
-                          <para>If the string "error_404" is returned, issues
-                          a 404 HTTP status header and loads a module with
-                          "system" as component, "error_404" as view, and
-                          "content" as position.</para>
+                          <para>If a HttpClientException or
+                          HttpServerException is thrown, loads a module with
+                          "system" as component, "error" as view, and
+                          "content" as position. Assigns the exception to the
+                          <property>exception</property> property. The
+                          exception will return the correct HTTP status code,
+                          and the view will output a friendly message to the
+                          client.</para>
                         </listitem>
                       </itemizedlist></para>
                   </listitem>
@@ -3203,6 +3398,17 @@ pines_log($module-&gt;get_content());</programlisting>
 
                         <listitem>
                           <para>Executes each kill script in order.</para>
+                        </listitem>
+
+                        <listitem>
+                          <para>If a HttpClientException or
+                          HttpServerException is thrown, loads a module with
+                          "system" as component, "error" as view, and
+                          "content" as position. Assigns the exception to the
+                          <property>exception</property> property. The
+                          exception will return the correct HTTP status code,
+                          and the view will output a friendly message to the
+                          client.</para>
                         </listitem>
                       </itemizedlist></para>
                   </listitem>
@@ -3270,7 +3476,7 @@ pines_log($module-&gt;get_content());</programlisting>
                         </listitem>
 
                         <listitem>
-                          <para>Prints the response.</para>
+                          <para>Echo the response.</para>
                         </listitem>
                       </itemizedlist></para>
                   </listitem>
@@ -3305,7 +3511,8 @@ pines_log($module-&gt;get_content());</programlisting>
           <para>The configurator service allows the user and other components
           to edit/save configuration and enable/disable components. In Pines,
           a component is disabled by prepending a period (.) to its
-          directory's name.</para>
+          directory's name. This is the same way the directory is hidden on
+          Linux file systems.</para>
 
           <para>The configurator itself has the following
           methods:<itemizedlist>
@@ -3351,9 +3558,42 @@ $pines-&gt;configurator-&gt;disable_component('com_bad');</programlisting>
             the component's name as the only argument and returns a new
             instance of <classname>configurator_component</classname> for the
             provided component. The class constructor also accepts this
-            argument.</para>
+            argument, but using the <methodname>factory</methodname> method is
+            recommended.</para>
 
-            <para>The component configurator class provides these
+            <para>The component configurator class has these
+            properties:<itemizedlist>
+                <listitem>
+                  <para><property>defaults</property></para>
+
+                  <para>The configuration defaults.</para>
+                </listitem>
+
+                <listitem>
+                  <para><property>config</property></para>
+
+                  <para>The current configuration.</para>
+                </listitem>
+
+                <listitem>
+                  <para><property>config_keys</property></para>
+
+                  <para>The current configuration in an array with key =&gt;
+                  values.</para>
+                </listitem>
+
+                <listitem>
+                  <para><property>info</property></para>
+
+                  <para>The info object of the component.</para>
+                </listitem>
+
+                <listitem>
+                  <para><property>name</property></para>
+
+                  <para>The component.</para>
+                </listitem>
+              </itemizedlist>The component configurator class provides these
             methods:<itemizedlist>
                 <listitem>
                   <para><methodname>get_full_config_array</methodname></para>
@@ -3412,7 +3652,8 @@ $conf-&gt;set_config(array(
     'database' =&gt; $database
 ));
 // Save the new configuration to disk.
-$conf-&gt;save_config();</programlisting>
+if (!$conf-&gt;save_config())
+    pines_error('Couldn\'t save config.');</programlisting>
               </informalexample></para>
 
             <para>When the configuration is saved, the configurator creates a
@@ -3424,23 +3665,23 @@ $conf-&gt;save_config();</programlisting>
             building the component's configuration, replacing values from
             <filename>defaults.php</filename> with the values from this
             file.<informalexample>
-                <bridgehead>Typical config.php File</bridgehead>
+                <bridgehead>Example config.php File</bridgehead>
 
                 <programlisting language="html+php">&lt;?php
 defined('P_RUN') or die('Direct access prohibited');
 return array (
   0 =&gt; 
   array (
-    'name' =&gt; 'string',
-    'value' =&gt; 'dsgsdfgfg',
+    'name' =&gt; 'notice_text',
+    'value' =&gt; 'Notice: you have exceeded the limits.',
   ),
   1 =&gt;
   array (
-    'name' =&gt; 'multi_float',
+    'name' =&gt; 'limits',
     'value' =&gt; 
     array (
       0 =&gt; 9.33,
-      1 =&gt; 8.4,
+      1 =&gt; 13.6,
     ),
   ),
 );
@@ -3460,9 +3701,13 @@ return array (
           provide for the system's users.</para>
 
           <para>Once the editor is loaded, it will transform any textareas
-          with the class "peditor" or "peditor-simple" into HTML editors. If
-          it provides a simplified editor, textareas with the class
-          "peditor-simple" will use this editor instead.</para>
+          with the class "peditor", "peditor-simple", or "peditor-email" into
+          HTML editors. If it provides a simplified editor, textareas with the
+          class "peditor-simple" will use this editor instead. If it provides
+          an email editor, textareas with the class "peditor-email" will use
+          this editor instead. Email editors will format content for emails.
+          This includes full URLs for links and images, no stylesheets,
+          etc.</para>
 
           <para>The editor has a method, <methodname>load</methodname>, which
           loads the editor. This method should be called from a view, to
@@ -3493,7 +3738,10 @@ $pines-&gt;editor-&gt;add_css($pines-&gt;config-&gt;location.'components/com_exa
 &lt;div&gt;&lt;textarea rows="3" cols="35" class="peditor"&gt;&lt;/textarea&gt;&lt;/div&gt;
 &lt;br /&gt;
 &lt;div&gt;Simple Editor&lt;/div&gt;
-&lt;div&gt;&lt;textarea rows="3" cols="35" class="peditor-simple"&gt;&lt;/textarea&gt;&lt;/div&gt;</programlisting>
+&lt;div&gt;&lt;textarea rows="3" cols="35" class="peditor-simple"&gt;&lt;/textarea&gt;&lt;/div&gt;
+&lt;br /&gt;
+&lt;div&gt;Email Editor&lt;/div&gt;
+&lt;div&gt;&lt;textarea rows="3" cols="35" class="peditor-email"&gt;&lt;/textarea&gt;&lt;/div&gt;</programlisting>
             </informalexample></para>
         </section>
 
@@ -3512,9 +3760,9 @@ $pines-&gt;editor-&gt;add_css($pines-&gt;config-&gt;location.'components/com_exa
             <para>The entity manager service provides database abstraction for
             Pines. Data in Pines is based on objects called entities. An
             entity is an object which can hold any type of data available in
-            PHP, including other entities. All entity classes (and therefore
-            all entities) inherit the <classname>entity</classname>
-            class.</para>
+            PHP (except resources), including other entities. All entity
+            classes (and therefore all entities) inherit the
+            <classname>entity</classname> class.</para>
 
             <para>Components can freely access the database if they wish,
             however it is strongly discouraged, as this prevents portability
@@ -3553,15 +3801,16 @@ $pines-&gt;editor-&gt;add_css($pines-&gt;config-&gt;location.'components/com_exa
 
             <para>Entities are not strictly structured, so data of any type
             can be added and saved just by assigning a variable on the entity
-            and calling <function>save()</function>. This makes data
+            and calling <methodname>save</methodname>. This makes data
             manipulation in Pines very easy.</para>
 
             <para>All entities are given a globally unique identifier (GUID),
-            which is an integer. No entities in the same Pines installation
-            will ever have the same GUID. The entity manager also provides
-            UIDs, which can be used to number certain types of entities (or
-            practically anything else). UIDs can be used to provide a more
-            visibly pleasing identifier for entities.</para>
+            which is an integer (but may not be in the future). No entities in
+            the same Pines installation will ever have the same GUID. The
+            entity manager also provides UIDs, which can be used to number
+            certain types of entities (or practically anything else). UIDs can
+            be used to provide a more visibly pleasing identifier for
+            entities.</para>
 
             <para>Entities are organized with tags. For example, if a
             component, com_blog, wanted to store posts using an entity, it may
@@ -3598,14 +3847,20 @@ $pines-&gt;editor-&gt;add_css($pines-&gt;config-&gt;location.'components/com_exa
             exist or no GUID was provided, a new entity. The
             <methodname>factory</methodname> method is used instead of the
             <keysym>new</keysym> keyword to provide entities a chance to set
-            up hooking on their objects.<informalexample>
+            up hooking on their objects. To check that an entity is a new
+            entity (it hasn't been saved), check that the GUID has not been
+            set.<informalexample>
                 <bridgehead>Creating an Entity</bridgehead>
 
                 <programlisting language="php">// Using the entity class.
 $new_entity = entity::factory();
 
 // Using a custom class.
-$blog_post = com_blog_post::factory();</programlisting>
+$blog_post = com_blog_post::factory();
+
+// Check that the entity is new.
+if (isset($new_entity-&gt;guid))
+    pines_notice('This entity is not a new entity!');</programlisting>
               </informalexample></para>
 
             <para>Much like blogs in many blogging systems, entities are
@@ -3629,13 +3884,13 @@ $blog_post = com_blog_post::factory();</programlisting>
                 <programlisting language="php">$entity = entity::factory();
 $entity-&gt;foo = entity::factory();
 
-$entity-&gt;save(); // foo hasn't been saved yet.
+$entity-&gt;save(); // foo hasn't been saved yet!
 $entity-&gt;foo-&gt;bar = 'It works!';
 $entity-&gt;foo-&gt;save();
 
 $guid = $entity-&gt;guid;
 unset($entity);
-$entity = $pines-&gt;entity_manager-&gt;get_entity(array(), array('&amp;', 'guid' =&gt; $guid));
+$entity = $pines-&gt;entity_manager-&gt;get_entity($guid);
 
 isset($entity-&gt;foo-&gt;guid); // False
 echo $entity-&gt;foo-&gt;bar; // Outputs nothing.</programlisting>
@@ -3647,22 +3902,24 @@ echo $entity-&gt;foo-&gt;bar; // Outputs nothing.</programlisting>
 $entity-&gt;foo = entity::factory();
 
 $entity-&gt;foo-&gt;bar = 'It works!';
-$entity-&gt;foo-&gt;save();
+$entity-&gt;foo-&gt;save(); // Saving the referenced entity first! :)
 $entity-&gt;save(); // now foo has been saved.
 
 $guid = $entity-&gt;guid;
 unset($entity);
-$entity = $pines-&gt;entity_manager-&gt;get_entity(array(), array('&amp;', 'guid' =&gt; $guid));
+$entity = $pines-&gt;entity_manager-&gt;get_entity($guid);
 
 isset($entity-&gt;foo-&gt;guid); // True
 echo $entity-&gt;foo-&gt;bar; // Outputs 'It works!'.</programlisting>
               </informalexample></para>
 
-            <para>Since the reference entity's class name is stored in the
-            reference on the entity's first save and used to retrieve the
-            reference entity using the same class, if you change the class
-            name in an update, you need to reassign the reference entity and
-            save to storage.</para>
+            <caution>
+              <para>Since the reference entity's class name is stored in the
+              reference on the entity's first save and used to retrieve the
+              reference entity using the same class, if you change the class
+              name in an update, you need to reassign the reference entity and
+              save to storage.</para>
+            </caution>
 
             <para>When an entity is loaded, it does not request its referenced
             entities from the entity manager. This is done the first time the
@@ -3708,9 +3965,9 @@ $entity-&gt;foo-&gt;bar = 'Old value.';
 $entity-&gt;foo-&gt;save();
 $entity-&gt;save();
 
-$entity = $pines-&gt;entity_manager-&gt;get_entity(array(), array('&amp;', 'guid' =&gt; $entity-&gt;guid));
+$entity = $pines-&gt;entity_manager-&gt;get_entity($entity-&gt;guid);
 
-$inst_of_foo = $pines-&gt;entity_manager-&gt;get_entity(array(), array('&amp;', 'guid' =&gt; $entity-&gt;foo-&gt;guid));
+$inst_of_foo = $pines-&gt;entity_manager-&gt;get_entity($entity-&gt;foo-&gt;guid);
 $inst_of_foo-&gt;bar = 'New value.';
 $inst_of_foo-&gt;save();
 
@@ -3728,7 +3985,7 @@ echo $entity-&gt;foo-&gt;bar; // Outputs 'New value.'</programlisting>
 $entity-&gt;foo = 'Old value.';
 $entity-&gt;save();
 
-$inst_of_ent = $pines-&gt;entity_manager-&gt;get_entity(array(), array('&amp;', 'guid' =&gt; $entity-&gt;guid));
+$inst_of_ent = $pines-&gt;entity_manager-&gt;get_entity($entity-&gt;guid);
 $inst_of_ent-&gt;foo = 'New value.';
 $inst_of_ent-&gt;save();
 
@@ -3743,8 +4000,8 @@ echo $entity-&gt;foo; // Outputs 'New value.'</programlisting>
             can also call the <methodname>save_entity</methodname>,
             <methodname>delete_entity</methodname>, and
             <methodname>delete_entity_by_id</methodname> methods of the entity
-            manager itself. Entities use these methods themselves. This allows
-            hooking of all entity saves and deletes.<informalexample>
+            manager itself. Entities use these methods, which allows hooking
+            of all entity saves and deletes.<informalexample>
                 <bridgehead>Different Ways of Saving and Deleting
                 Entities</bridgehead>
 
@@ -3766,7 +4023,8 @@ $pines-&gt;entity_manager-&gt;delete_entity_by_id($entity-&gt;guid);</programlis
             <para>Several methods are provided by entities to find and compare
             them with other data. Entities cannot simply be checked using the
             == operator. It will almost always fail because of things like
-            entity caching and sleeping references.<itemizedlist>
+            entity caching and sleeping references. Instead, you can use the
+            following entity methods.<itemizedlist>
                 <listitem>
                   <para><methodname>is</methodname></para>
 
@@ -3820,7 +4078,10 @@ $pines-&gt;entity_manager-&gt;delete_entity_by_id($entity-&gt;guid);</programlis
                   boolean <varname>$strict</varname>. If
                   <varname>$strict</varname> is false, the function uses
                   <methodname>is</methodname> to compare, and if it's true,
-                  the function uses <methodname>equals</methodname>.</para>
+                  the function uses <methodname>equals</methodname>. This
+                  method may return 0, which evaluates to false, so you should
+                  use <methodname>in_array</methodname> if you are only
+                  checking whether the entity is in the array.</para>
                 </listitem>
               </itemizedlist><informalexample>
                 <bridgehead>Comparing Entities</bridgehead>
@@ -3835,8 +4096,8 @@ $array = array('foo' =&gt; null, 'bar' =&gt; $entity);
 echo $entity-&gt;array_search($array); // Outputs 'bar'</programlisting>
               </informalexample></para>
 
-            <para>There are three functions to sort entities. Each one uses a
-            different method of sorting.</para>
+            <para>The entity manager provides three methods to sort entities.
+            Each one uses a different method of sorting.</para>
 
             <para><itemizedlist>
                 <listitem>
@@ -3964,7 +4225,7 @@ pines_notice('Hooray! I found the baz you wanted and the cron user!');</programl
 
                       <entry>"entity"</entry>
 
-                      <entry>The class to create each entity with. It must
+                      <entry>The class used to create each entity. It must
                       have a <methodname>factory</methodname> static method
                       that returns a new instance.</entry>
                     </row>
@@ -4005,6 +4266,17 @@ pines_notice('Hooray! I found the baz you wanted and the cron user!');</programl
                     </row>
 
                     <row>
+                      <entry>sort</entry>
+
+                      <entry>string</entry>
+
+                      <entry>"guid"</entry>
+
+                      <entry>How to sort the entities. Accepts "guid",
+                      "cdate", and "mdate".</entry>
+                    </row>
+
+                    <row>
                       <entry>skip_ac</entry>
 
                       <entry>bool</entry>
@@ -4022,8 +4294,8 @@ pines_notice('Hooray! I found the baz you wanted and the cron user!');</programl
               </note></para>
 
             <para>A component or entity manager implementation is free to add
-            extra options, but it should prepend the component's name to the
-            name of the option. For example, if your component,
+            extra options, but it should consider prepending the component's
+            name to the name of the option. For example, if your component,
             com_entityversions, wants to add the option "date", it should use
             "com_entityversions_date".</para>
 
@@ -4089,7 +4361,9 @@ pines_notice('Hooray! I found the baz you wanted and the cron user!');</programl
             <para>The following members of the array are the criteria of the
             selector. They must be in the form <code>$selector['name'] =
             $value</code>, or <code>$selector['name'] = array($value1,
-            $value2,...)</code>.<table>
+            $value2,...)</code>. They can be negated by prepending a bang (!)
+            to the name, such as <code>$selector['!tag'] =
+            'user'</code>.<table>
                 <title>Entity Selector Criteria</title>
 
                 <tgroup cols="5">
@@ -4338,6 +4612,15 @@ $entities = $pines-&gt;entity_manager-&gt;get_entities(
         )
     );
 
+// Get baz entities without names.
+$entities = $pines-&gt;entity_manager-&gt;get_entities(
+        array('class' =&gt; com_foobar_baz),
+        array('&amp;',
+            'tag' =&gt; array('com_foobar', 'baz'),
+            '!isset' =&gt; 'name'
+        )
+    );
+
 // Get baz entities with either first names or last names.
 $entities = $pines-&gt;entity_manager-&gt;get_entities(
         array('class' =&gt; com_foobar_baz),
@@ -4431,11 +4714,12 @@ $entities = $pines-&gt;entity_manager-&gt;get_entities(
                 <bridgehead>Exporting and Importing Entities with the Entity
                 Manager</bridgehead>
 
-                <programlisting language="php">// Export entities to a file.
+                <programlisting language="php">@set_time_limit(3600); // Make sure the script doesn't terminate before the entities are exported/imported.
+
+// Export entities to a file.
 $pines-&gt;entity_manager-&gt;export($filename);
 
 // Export entities to the client.
-@set_time_limit(3600); // Make sure the script doesn't terminate before the entities are exported.
 $pines-&gt;entity_manager-&gt;export_print();
 
 // Import entities from a file.
@@ -4580,13 +4864,14 @@ $entity-&gt;save();</programlisting>
               <programlisting language="html+php">&lt;?php
 /* @var $pines pines *//* @var $this module */
 defined('P_RUN') or die('Direct access prohibited');
+// Load the icons CSS.
 $pines-&gt;icons-&gt;load();
 ?&gt;
 &lt;div style="float: left; width: 32px; height: 32px; margin: 1em;" class="picon-32 picon-document-sign"&gt;&lt;/div&gt;
 &lt;p&gt;Your order can't be shipped until your contract is signed.&lt;/p&gt;
 
 &lt;button type="button" class="btn"&gt;
-    &lt;span class="picon-dialog-ok" style="background-repeat: no-repeat; padding-left: 18px;"&gt;Go&lt;/span&gt;
+    &lt;span class="picon-dialog-ok" style="background-repeat: no-repeat; padding-left: 18px;"&gt;&amp;nbsp;&lt;/span&gt;Go
 &lt;/button&gt;</programlisting>
             </informalexample></para>
         </section>
@@ -4629,8 +4914,8 @@ $pines-&gt;icons-&gt;load();
               <listitem>
                 <para>warning</para>
 
-                <para>Warn the user of something that may be wrong, but not
-                necessarily an error.</para>
+                <para>Warn the user of something that may be wrong or bad, but
+                not necessarily an error.</para>
               </listitem>
 
               <listitem>
@@ -4669,9 +4954,10 @@ else
           layout and design of the page and inserts the content from any
           modules attached to the page. It also has the responsibility of
           building the output of the menus. Templates will be discussed in
-          much greater depth in Part II.</para>
+          much greater depth in <link linkend="templates">Templates</link> in
+          <link linkend="part_2">Part II</link>.</para>
 
-          <para>The template only has two methods.<itemizedlist>
+          <para>The template only needs two methods.<itemizedlist>
               <listitem>
                 <para><methodname>menu</methodname></para>
 
@@ -4711,15 +4997,17 @@ else
 
               <programlisting language="php">// A URL suitable for a link on a page in Pines.
 $link = $pines-&gt;template-&gt;url('com_example', 'widget/edit', array('id' =&gt; $widget-&gt;guid));
+// or you can use the shortcut function:
+$link = pines_url('com_example', 'widget/edit', array('id' =&gt; $widget-&gt;guid));
 
 // A URL suitable for a link in an external page or an email.
 $link = $pines-&gt;template-&gt;url('com_example', 'widget/edit', array('id' =&gt; $widget-&gt;guid), true);
 
 // The URL of the home page of the Pines installation.
-$link = $pines-&gt;template-&gt;url();</programlisting>
+$link = pines_url();</programlisting>
             </informalexample></para>
 
-          <para>Templates also have some variables which define how output is
+          <para>Templates also have some properties which define how output is
           constructed/viewed.<itemizedlist>
               <listitem>
                 <para><varname>editor_css</varname></para>
@@ -4738,7 +5026,7 @@ $link = $pines-&gt;template-&gt;url();</programlisting>
 
           <para>The template format uses dashes to separate its parts, and
           describes the language, format, version, etc. of the view. The
-          following is some example formats and a description of their
+          following are some example formats and a description of their
           language and what they're for.<itemizedlist>
               <listitem>
                 <para>html-desktop-5</para>
@@ -4759,7 +5047,7 @@ $link = $pines-&gt;template-&gt;url();</programlisting>
               </listitem>
 
               <listitem>
-                <para>rss-2-0</para>
+                <para>xml-rss-2-0</para>
 
                 <para>RSS 2.0.</para>
               </listitem>
@@ -4778,10 +5066,17 @@ $link = $pines-&gt;template-&gt;url();</programlisting>
           enabled interface for ease of use.</para>
 
           <para>Once the uploader is loaded, it will transform any text inputs
-          with the class "puploader" into Ajax file uploaders/selectors. To
-          use the uploader in a view, call the <methodname>load</methodname>
-          method. This method should be called from a view, to ensure it is
-          only called when outputting HTML.<informalexample>
+          with the class "puploader" into Ajax file uploaders/selectors. If
+          you would like the user to be able to select folders, add the
+          "puploader-folders" class. If you would like the user to be able to
+          select multiple files, add the "puploader-multiple" class. Add the
+          class "puploader-temp" to emulate a single file upload. Only one
+          file will be allowed, and it will be placed into a temporary
+          directory. Note that the check method is not needed when you are
+          using a temp file. To use the uploader in a view, call the
+          <methodname>load</methodname> method. This method should be called
+          from a view, to ensure it is only called when outputting
+          HTML.<informalexample>
               <bridgehead>Using the Uploader Service in a View</bridgehead>
 
               <programlisting language="html+php">&lt;?php
@@ -4799,18 +5094,22 @@ $this-&gt;title = 'Uploader';
 // Load the uploader.
 $pines-&gt;uploader-&gt;load();
 ?&gt;
-&lt;div&gt;Upload a File&lt;/div&gt;
-&lt;div&gt;&lt;input class="puploader" name="upload_file" type="text" value="" /&gt;&lt;/div&gt;</programlisting>
+&lt;div&gt;Choose or Upload a File on the Server&lt;/div&gt;
+&lt;div&gt;&lt;input class="puploader" name="upload_file" type="text" value="" /&gt;&lt;/div&gt;
+&lt;div&gt;Upload a New File&lt;/div&gt;
+&lt;div&gt;&lt;input class="puploader puploader-temp" name="temp_file" type="text" value="" /&gt;&lt;/div&gt;</programlisting>
             </informalexample></para>
 
           <para>The value of the field when the form is submitted will be the
-          relative URL of the selected file. After receiving the path of the
-          file, it should <emphasis role="bold">always</emphasis> be checked
-          using the <methodname>check</methodname> method of the uploader
-          service. This will verify that the user didn't maliciously alter the
-          URL. It can then be translated to a real file path using the
-          <methodname>real</methodname> method, and back to a URL again with
-          the <methodname>url</methodname> method. The
+          relative URL of the selected file. When selecting multiple files,
+          they will be separated by two forward slashes "//". After receiving
+          the path of the file, it should <emphasis
+          role="bold">always</emphasis> be checked using the
+          <methodname>check</methodname> method of the uploader service
+          (unless it is a temp upload). This will verify that the user didn't
+          maliciously alter the URL. It can then be translated to a real file
+          path using the <methodname>real</methodname> method, and back to a
+          URL again with the <methodname>url</methodname> method. The
           <methodname>url</methodname> method takes an extra argument, which
           determines whether a full URL should be returned instead of a
           relative URL.<informalexample>
@@ -4836,6 +5135,24 @@ $file_url_full = $pines-&gt;uploader-&gt;url($file_path, true);</programlisting>
               potentially giving them access to confidential
               information.</para>
             </warning></para>
+
+          <para>When you accept a temp upload, use the
+          <methodname>temp</methodname> method to get the real file path to
+          the uploaded file.<informalexample>
+              <bridgehead>Using a Temp File Returned by the
+              Uploader</bridgehead>
+
+              <programlisting language="php">$file = $_REQUEST['temp_file'];
+
+// Get the path to the temporary location of the file.
+$file_path = $pines-&gt;uploader-&gt;temp($file);
+if (!$file_path) {
+    pines_notice('Invalid file path submitted!');
+    return;
+}
+
+// Now you can move the file into a permanent location with rename().</programlisting>
+            </informalexample></para>
         </section>
 
         <section>
@@ -5852,7 +6169,7 @@ output.innerHTML = pines.safe(user_name);</programlisting>
   </part>
 
   <part>
-    <title>Application Development</title>
+    <title xml:id="part_2">Application Development</title>
 
     <chapter>
       <title>Components</title>
@@ -5889,7 +6206,7 @@ output.innerHTML = pines.safe(user_name);</programlisting>
     </chapter>
 
     <chapter xml:id="templates">
-      <title>Templates</title>
+      <title xml:id="templates">Templates</title>
 
       <section>
         <title>Template Design</title>

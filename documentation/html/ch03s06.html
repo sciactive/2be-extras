@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>3.6. Order of Execution</title><link rel="stylesheet" href="docbook.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.75.2" /><link rel="home" href="index.html" title="Pines Development" /><link rel="up" href="ch03.html" title="Chapter 3. Pines Core" /><link rel="prev" href="ch03s05.html" title="3.5. Core Classes" /><link rel="next" href="ch04.html" title="Chapter 4. System Services" /></head><body><a xmlns:fo="http://www.w3.org/1999/XSL/Format" href="index.html"><div class="header">Pines Development</div></a><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.6. Order of Execution</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03s05.html">Prev</a> </td><th width="60%" align="center">Chapter 3. Pines Core</th><td width="20%" align="right"> <a accesskey="n" href="ch04.html">Next</a></td></tr></table><hr /></div><div class="section" title="3.6. Order of Execution"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idp612688"></a>3.6. Order of Execution</h2></div></div></div>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>3.6. Order of Execution</title><link rel="stylesheet" type="text/css" href="docbook.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.76.1" /><link rel="home" href="index.html" title="Pines Development" /><link rel="up" href="ch03.html" title="Chapter 3. Pines Core" /><link rel="prev" href="ch03s05.html" title="3.5. Core Classes" /><link rel="next" href="ch04.html" title="Chapter 4. System Services" /></head><body><a xmlns:fo="http://www.w3.org/1999/XSL/Format" href="index.html"><div class="header">Pines Development</div></a><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.6. Order of Execution</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03s05.html">Prev</a> </td><th width="60%" align="center">Chapter 3. Pines Core</th><td width="20%" align="right"> <a accesskey="n" href="ch04.html">Next</a></td></tr></table><hr /></div><div class="section" title="3.6. Order of Execution"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idp619136"></a>3.6. Order of Execution</h2></div></div></div>
         
 
         <p>Pines is a very complex framework, and has many different
@@ -21,7 +21,8 @@
                   </li><li class="listitem">
                     <p><code class="constant">P_RUN</code> - Used to determine that
                     Pines was executed properly through
-                    <code class="filename">index.php</code>.</p>
+                    <code class="filename">index.php</code>. You'll see this referenced
+                    in every Pines PHP file.</p>
                   </li><li class="listitem">
                     <p><code class="constant">P_BASE_PATH</code> - The base path of
                     the Pines installation.</p>
@@ -41,16 +42,17 @@
 
                     <div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
                         <p>Loads script timing functions. These functions
-                        will use the JavaScript console.log function to
-                        display timing information for various portions of the
-                        script run.</p>
+                        will use the JavaScript
+                        <code class="function">console.log</code> function to display
+                        timing information for various portions of the script
+                        run.</p>
                       </li></ul></div>
                   </li><li class="listitem">
                     <p><code class="filename">i10functions.php</code></p>
 
                     <div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
-                        <p>Loads various functions used specifically by
-                        Pines Core.</p>
+                        <p>Loads various functions used by Pines Core and
+                        shortcut functions.</p>
                       </li></ul></div>
                   </li><li class="listitem">
                     <p><code class="filename">i20interfaces.php</code></p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
@@ -99,7 +101,7 @@
                                       setting or request variable and sets it as the
                                       template service.</p>
                                     </li><li class="listitem">
-                                      <p>Gets timezone from config and passes to
+                                      <p>Gets timezone from config and calls
                                       <code class="varname">date_default_timezone_set</code>.</p>
                                     </li><li class="listitem">
                                       <p>If offline mode is turned on, loads
@@ -154,12 +156,10 @@
                           <p>Executes each init script in order. Some
                           important events are noted below.</p><div class="itemizedlist"><ul class="itemizedlist" type="square"><li class="listitem">
                                 <p>i00_ : Common cleaning functions can be
-                                overridden here. However, shortcut functions (like
-                                <code class="function">gatekeeper</code>) are not available
-                                yet.</p>
+                                overridden here.</p>
                               </li><li class="listitem">
-                                <p>i01_ : Common functions are being defined
-                                here.</p>
+                                <p>i01_ : Common cleaning functions are being
+                                defined here.</p>
                               </li><li class="listitem">
                                 <p>i10_ : Components which provide system
                                 services should set themselves as the system service
@@ -180,19 +180,33 @@
                                 requested component/action should do it here.</p>
                               </li></ul></div>
                         </li><li class="listitem">
+                          <p>If a HttpClientException or
+                          HttpServerException is thrown, loads a module with
+                          "system" as component, "error" as view, and
+                          "content" as position. Assigns the exception to the
+                          <span class="property">exception</span> property. The
+                          exception will return the correct HTTP status code,
+                          and the view will output a friendly message to the
+                          client.</p>
+                        </li><li class="listitem">
                           <p>Checks system config again in case config has
                           changed. (Repeats same steps as
-                          <code class="varname">$pines</code> does when loading.)</p>
+                          <code class="varname">$pines</code> does when checking
+                          config.)</p>
                         </li></ul></div>
                   </li><li class="listitem">
                     <p><code class="filename">i60action.php</code></p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
                           <p>Runs <code class="function">action</code>, using the
                           requested component and action.</p>
                         </li><li class="listitem">
-                          <p>If the string "error_404" is returned, issues
-                          a 404 HTTP status header and loads a module with
-                          "system" as component, "error_404" as view, and
-                          "content" as position.</p>
+                          <p>If a HttpClientException or
+                          HttpServerException is thrown, loads a module with
+                          "system" as component, "error" as view, and
+                          "content" as position. Assigns the exception to the
+                          <span class="property">exception</span> property. The
+                          exception will return the correct HTTP status code,
+                          and the view will output a friendly message to the
+                          client.</p>
                         </li></ul></div>
                   </li><li class="listitem">
                     <p><code class="filename">i70kill_components.php</code></p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
@@ -202,6 +216,15 @@
                           <p>Sorts them by filename.</p>
                         </li><li class="listitem">
                           <p>Executes each kill script in order.</p>
+                        </li><li class="listitem">
+                          <p>If a HttpClientException or
+                          HttpServerException is thrown, loads a module with
+                          "system" as component, "error" as view, and
+                          "content" as position. Assigns the exception to the
+                          <span class="property">exception</span> property. The
+                          exception will return the correct HTTP status code,
+                          and the view will output a friendly message to the
+                          client.</p>
                         </li></ul></div>
                   </li><li class="listitem">
                     <p><code class="filename">i80menus.php</code></p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
@@ -243,7 +266,7 @@
                                 file of the current template.</p>
                               </li></ul></div>
                         </li><li class="listitem">
-                          <p>Prints the response.</p>
+                          <p>Echo the response.</p>
                         </li></ul></div>
                   </li></ol></div>
             </li></ul></div>
