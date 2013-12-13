@@ -21,10 +21,10 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- * Hunter can be contacted at hunter@sciactive.com
+ * Hunter can be contacted at hperrin@gmail.com
  *
  * @license http://www.gnu.org/licenses/agpl-3.0.html
- * @author Hunter Perrin <hunter@sciactive.com>
+ * @author Hunter Perrin <hperrin@gmail.com>
  * @copyright SciActive.com
  * @link http://sciactive.com/
  * @version 1.0
