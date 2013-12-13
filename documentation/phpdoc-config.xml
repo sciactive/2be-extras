@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <phpdoc>
-	<title><![CDATA[Pines Framework]]></title>
+	<title><![CDATA[WonderPHP]]></title>
 	<parser>
 		<default-package-name>Core</default-package-name>
 		<target>pines-docs</target>

@@ -336,7 +336,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc5fb2', end
 <label>Directory: <input type="text" name="directory" value="" /></label>
 <div class="buttons"><input type="submit" value="Extract and Run" name="submit" /> <input type="reset" value="Reset" name="reset" /></div>
 </form>
-<p><small>This Slim Self Extractor was developed by Hunter Perrin as part of <a href="http://pinesframework.org/">Pines</a>.</small></p>
+<p><small>This Slim Self Extractor was developed by Hunter Perrin as part of <a href="http://pinesframework.org/">WonderPHP</a>.</small></p>
 </div>
 </body>
 </html>

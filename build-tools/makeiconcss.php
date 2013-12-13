@@ -2,7 +2,7 @@
 /**
  * Makes a CSS file from an icon theme.
  *
- * Because of the target audience of Pines, this file only regards PNG and GIF images.
+ * Because of the target audience of WonderPHP, this file only regards PNG and GIF images.
  */
 
 /**

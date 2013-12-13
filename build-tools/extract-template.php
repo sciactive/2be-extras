@@ -439,7 +439,7 @@ echo base64_decode($s);
 <html>
 <head>
 <meta charset="utf-8">
-<title>Pines Installation</title>
+<title>WonderPHP Installation</title>
 <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
 <style type="text/css" media="all">
 html {
@@ -550,13 +550,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc5fb2', end
 <img style="position:absolute;top:60px;right:85px;z-index:1;" src="?image=1" alt="" />
 <div class="wrapper">
 <form action="" method="post">
-<div class="header"><img style="float:right;" src="?logo=1" alt="Pines Logo" />
-	<h1>Pines Installation</h1><hr /></div>
-<p>Please enter the directory where you would like to extract the Pines files. Leave this blank to use the current directory. If the directory does not exist, it will be created for you. It can't be a parent directory. After the files are extracted, you will be redirected to the directory.</p>
+<div class="header"><img style="float:right;" src="?logo=1" alt="WonderPHP Logo" />
+	<h1>WonderPHP Installation</h1><hr /></div>
+<p>Please enter the directory where you would like to extract the WonderPHP files. Leave this blank to use the current directory. If the directory does not exist, it will be created for you. It can't be a parent directory. After the files are extracted, you will be redirected to the directory.</p>
 <label>Directory: <input type="text" name="directory" value="" /></label>
 <div class="buttons"><input type="submit" value="Extract and Run" name="submit" /> <input type="reset" value="Reset" name="reset" /></div>
 </form>
-<p><small>This Slim Self Extractor was developed by Hunter Perrin as part of <a href="http://pinesframework.org/">Pines</a>.</small></p>
+<p><small>This Slim Self Extractor was developed by Hunter Perrin as part of <a href="http://pinesframework.org/">WonderPHP</a>.</small></p>
 </div>
 </body>
 </html>

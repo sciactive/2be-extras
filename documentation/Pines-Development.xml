@@ -7,7 +7,7 @@
       xmlns:html="http://www.w3.org/1999/xhtml"
       xmlns:db="http://docbook.org/ns/docbook">
   <info>
-    <title>Pines Development</title>
+    <title>WonderPHP Development</title>
 
     <author>
       <personname><firstname>Hunter</firstname><surname>Perrin</surname></personname>
@@ -30,9 +30,9 @@
     <para/>
 
     <section>
-      <title>History of Pines</title>
+      <title>History of WonderPHP</title>
 
-      <para>Pines was started in the Fall of 2008 by myself, Hunter Perrin.
+      <para>WonderPHP was started in the Fall of 2008 by myself, Hunter Perrin.
       While taking my first PHP class, along with a French class, I developed
       a small PHP application to allow the collaborative editing of a play
       script. The application was used for my French class, then stowed away.
@@ -51,7 +51,7 @@
       business environment. Pines has seen two major redesigns, and it barely
       resembles the early application.</para>
 
-      <para>Now Pines is a solid, well tested, and well documented framework,
+      <para>Now WonderPHP is a solid, well tested, and well documented framework,
       suitable for building high demand enterprise applications.</para>
     </section>
 
@@ -59,16 +59,16 @@
       <title>How This Book is Organized</title>
 
       <para>This book is divided into three parts, each dealing with a
-      different aspect of Pines development. Each part builds on the
+      different aspect of WonderPHP development. Each part builds on the
       information and instruction given in the previous part.</para>
 
       <section>
-        <title>Part I: The Pines Framework</title>
+        <title>Part I: The WonderPHP Framework</title>
 
-        <para>Part I focuses on getting acquainted with the Pines framework.
-        It provides information about Pines, how it works, and what is
-        provided by Pines. I discuss how to get Pines from the development
-        repositories. Pines Core, the system on which the framework is built,
+        <para>Part I focuses on getting acquainted with the WonderPHP framework.
+        It provides information about WonderPHP, how it works, and what is
+        provided by WonderPHP. I discuss how to get WonderPHP from the development
+        repositories. WonderPHP Core, the system on which the framework is built,
         is discussed in depth. System services, which provide additional
         functionality for developers, are explained in detail.</para>
       </section>
@@ -76,13 +76,13 @@
       <section>
         <title>Part II: Application Development</title>
 
-        <para>Part II focuses on design of components and templates in the
-        Pines framework. It expands on the features of Pines Core, explaining
+        <para>Part II focuses on design of components and templates in
+        WonderPHP. It expands on the features of WonderPHP Core, explaining
         how to use them in a real environment. Actions, classes, views, init
-        and kill scripts, and other aspects of designing a Pines component are
+        and kill scripts, and other aspects of designing a WonderPHP component are
         discussed in depth. By the end of this part, you will be able to build
-        at least a simple Pines component. You will be ready to explore the
-        advanced features of Pines and experiment on your own.</para>
+        at least a simple WonderPHP component. You will be ready to explore the
+        advanced features of WonderPHP and experiment on your own.</para>
       </section>
 
       <section>
@@ -96,7 +96,7 @@
       <title>Conventions Used in This Book</title>
 
       <para>In order to make this book easier to write, I will refer to an
-      object or class' properties as its "variables". Pines has very few
+      object or class' properties as its "variables". WonderPHP has very few
       global variables, so there is little need for a distinction between
       variables and properties. I will, however, maintain the distinction
       between functions and methods.</para>
@@ -106,36 +106,36 @@
   </preface>
 
   <part>
-    <title>The Pines Framework</title>
+    <title>The WonderPHP Framework</title>
 
     <chapter>
-      <title>Pines</title>
+      <title>WonderPHP</title>
 
       <section>
-        <title>What is Pines?</title>
+        <title>What is WonderPHP?</title>
 
-        <para>Pines is a MVC based PHP framework, designed to help produce
+        <para>WonderPHP is a MVC based PHP framework, designed to help produce
         complex web applications rapidly. It is a full featured application
-        framework, which provides features not only unique to Pines as a
-        framework, but never before seen in PHP. Pines is designed with the
-        developer in mind. This is reflected in the history of Pines.</para>
+        framework, which provides features not only unique to WonderPHP as a
+        framework, but never before seen in PHP. WonderPHP is designed with the
+        developer in mind. This is reflected in the history of WonderPHP.</para>
 
-        <para>Pines' goal as a framework is to provide the developer with a
+        <para>WonderPHP's goal as a framework is to provide the developer with a
         set of tools, which simplify the development of complex applications
         and allow administrators to easily and quickly set up complex, secure
-        installations. One of the key aspects considered in Pines development
-        is customization. Pines has a long history of being customized for all
-        sorts of use, and that history has brought Pines some important tools.
+        installations. One of the key aspects considered in WonderPHP development
+        is customization. WonderPHP has a long history of being customized for all
+        sorts of use, and that history has brought WonderPHP some important tools.
         The SciActive maintained configurator component, com_configure, is a
-        perfect example of Pines' obsession with customization, allowing the
+        perfect example of WonderPHP's obsession with customization, allowing the
         administrator to provide different configuration based on users,
         groups, and even dependency sets (called conditions).</para>
 
-        <para>Pines strives to also provide this level of customization to its
-        developers. Many of the features available in Pines are provided
+        <para>WonderPHP strives to also provide this level of customization to its
+        developers. Many of the features available in WonderPHP are provided
         through system services, which can be implemented in many different
         ways. For example, the entity manager, used to provide data storage
-        and retrieval, can use any number of different backends. Because Pines
+        and retrieval, can use any number of different backends. Because WonderPHP
         defines a standard way of interacting with these system services,
         developers can design their components once, and have it work with any
         implementation of these system services. Developers can also extend
@@ -150,37 +150,37 @@
       </section>
 
       <section>
-        <title>Implications of Pines' License, The GNU AGPL</title>
+        <title>Implications of WonderPHP's License, The GNU AGPL</title>
 
-        <para>Pines is, and always will be, free and open source software.
-        This means that anyone can freely redistribute Pines, obtain the
+        <para>WonderPHP is, and always will be, free and open source software.
+        This means that anyone can freely redistribute WonderPHP, obtain the
         source code for study or modification, and create derived works (under
         the same license). It is released under the GNU AGPL, which places
-        certain requirements on use of Pines software.</para>
+        certain requirements on use of WonderPHP software.</para>
 
-        <para>If you modify any of Pines' source code (including the SciActive
+        <para>If you modify any of WonderPHP's source code (including the SciActive
         maintained components), and use this modified code to run a server,
         which users can access, your modified code must be freely available to
         these users. <emphasis>This does not mean that you must release any
         custom components you create</emphasis>, just any modifications to
-        Pines' core or official components.</para>
+        WonderPHP's core or official components.</para>
 
         <para>You are free to make modifications and not release them to the
         public, but any users which access the system on which the modified
         code runs must have access to the code.</para>
 
-        <para>If you would like to change Pines' behavior without modifying
+        <para>If you would like to change WonderPHP's behavior without modifying
         its code, you can use the hook system to accomplish almost any needed
         change. Because a component can be licensed under any license, you are
         not required to distribute this source code.</para>
       </section>
 
       <section>
-        <title>Features That Make Pines Unique</title>
+        <title>Features That Make WonderPHP Unique</title>
 
-        <para>Pines has many features which are either vastly superior to
+        <para>WonderPHP has many features which are either vastly superior to
         their counterparts in other frameworks, or have never been seen before
-        in PHP. This is a list of just a few features that make Pines stand
+        in PHP. This is a list of just a few features that make WonderPHP stand
         out in the ever expanding field of PHP frameworks.<itemizedlist>
             <listitem>
               <para>The Package Manager</para>
@@ -188,7 +188,7 @@
               <para>The package manager resembles the package managers common
               in Linux. It handles dependencies, retrieves updates, checks
               signed code, and much more. This isn't necessarily uncommon in a
-              PHP framework, but Pines' package manager is 100% PHP code. That
+              PHP framework, but WonderPHP's package manager is 100% PHP code. That
               includes everything. The package downloading, dependency
               checker, code signing, even the package format is 100%
               PHP.</para>
@@ -206,7 +206,7 @@
               <para>The Hook System</para>
 
               <para>Similar hook systems have been attempted by other
-              frameworks, but Pines' hook system is unparalleled. It allows
+              frameworks, but WonderPHP's hook system is unparalleled. It allows
               the developer to extend or even change <phrase
               role="bold">any</phrase> method in a component. This level of
               flexibility allows developers to collaborate and build like
@@ -225,7 +225,7 @@
             </listitem>
           </itemizedlist></para>
 
-        <para>Pines is full of features which make coding applications fast
+        <para>WonderPHP is full of features which make coding applications fast
         and easy, yet it's flexible enough to fit almost any application.
         Let's get started!</para>
       </section>
@@ -237,28 +237,28 @@
       <section>
         <title>Setting Up an Environment</title>
 
-        <para>The first and most important thing you need to develop for Pines
-        is a web server. Pines is designed for Apache on Linux, but it will
+        <para>The first and most important thing you need to develop for WonderPHP
+        is a web server. WonderPHP is designed for Apache on Linux, but it will
         work fine on most setups. If you are planning on using the entity
         manager, which is the easiest way to store and manipulate data in
-        Pines, you will also most likely need a database server. MySQL works
-        well with Pines, and is officially supported by SciActive. I recommend
+        WonderPHP, you will also most likely need a database server. MySQL works
+        well with WonderPHP, and is officially supported by SciActive. I recommend
         using an IDE, such as NetBeans or Eclipse. Both have great PHP
-        support. Once you have Pines set up and you are ready to make your own
+        support. Once you have WonderPHP set up and you are ready to make your own
         components/templates, you can use symlinks to test them with different
-        Pines setups.</para>
+        WonderPHP setups.</para>
       </section>
 
       <section>
-        <title>Getting Pines</title>
+        <title>Getting WonderPHP</title>
 
-        <para>There are several sites which host Pines, and Pines related
+        <para>There are several sites which host WonderPHP, and WonderPHP related
         software.<itemizedlist>
             <listitem>
               <para><link
               xlink:href="https://github.com/sciactive">https://github.com/sciactive</link></para>
 
-              <para>The SciActive GitHub page. Pines' repositories are listed
+              <para>The SciActive GitHub page. WonderPHP's repositories are listed
               here. Each repository here has a bugtracker and a wiki.</para>
             </listitem>
 
@@ -266,8 +266,8 @@
               <para><link
               xlink:href="http://sourceforge.net/projects/pines/">http://sourceforge.net/projects/pines/</link></para>
 
-              <para>The Pines project page on SourceForge. This is where
-              Pines' releases are available for download.</para>
+              <para>The WonderPHP project page on SourceForge. This is where
+              WonderPHP's releases are available for download.</para>
             </listitem>
 
             <listitem>
@@ -276,21 +276,20 @@
               and <link
               xlink:href="http://pinescms.org/">http://pinescms.org/</link></para>
 
-              <para>Pines' main websites. The Pines Framework website provides
-              information about Pines Framework, and the Pines CMS website
-              provides information about the CMS build using Pines
-              Framework.</para>
+              <para>WonderPHP's main websites. The WonderPHP website provides
+              information about WonderPHP, and the WonderPHP website
+              provides information about the CMS build using WonderPHP.</para>
             </listitem>
 
             <listitem>
               <para><link
               xlink:href="http://pinesframework.org/api/">http://pinesframework.org/api/</link></para>
 
-              <para>Pines API Documentation. This can be very helpful to have
-              handy while you are learning Pines development. Before using
-              Pines' advanced features, I recommend reading through the
+              <para>WonderPHP API Documentation. This can be very helpful to have
+              handy while you are learning WonderPHP development. Before using
+              WonderPHP's advanced features, I recommend reading through the
               related API documentation to ensure you have a firm
-              understanding of how Pines' features work and how to use
+              understanding of how WonderPHP's features work and how to use
               them.</para>
             </listitem>
 
@@ -298,26 +297,26 @@
               <para><link
               xlink:href="http://www.sciactive.com/">http://www.sciactive.com/</link></para>
 
-              <para>Pines' main developer's website.</para>
+              <para>WonderPHP's main developer's website.</para>
             </listitem>
 
             <listitem>
               <para><link
               xlink:href="http://www.pinesplaza.com/">http://www.pinesplaza.com/</link></para>
 
-              <para>The official Pines Repository. Pines components and
+              <para>The official WonderPHP Repository. WonderPHP components and
               templates are hosted and distributed here. You can get a free
-              account and distribute your software through Pines Plaza.</para>
+              account and distribute your software through WonderPHP Plaza.</para>
             </listitem>
           </itemizedlist></para>
 
-        <para>Pines, and its related projects are available in Git
+        <para>WonderPHP, and its related projects are available in Git
         repositories from GitHub.<itemizedlist>
             <listitem>
               <para><link
               xlink:href="https://github.com/sciactive/pines-core">https://github.com/sciactive/pines-core</link></para>
 
-              <para>Pines Core repository. Contains the core system
+              <para>WonderPHP Core repository. Contains the core system
               files.</para>
             </listitem>
 
@@ -325,7 +324,7 @@
               <para><link
               xlink:href="https://github.com/sciactive/pines-components">https://github.com/sciactive/pines-components</link></para>
 
-              <para>Pines Components repository. Contains official, SciActive
+              <para>WonderPHP Components repository. Contains official, SciActive
               maintained components and templates.</para>
             </listitem>
 
@@ -333,7 +332,7 @@
               <para><link
               xlink:href="https://github.com/sciactive/pform">https://github.com/sciactive/pform</link></para>
 
-              <para>Pines Form, a CSS form layout library for HTML and
+              <para>PForm, a CSS form layout library for HTML and
               XHTML.</para>
             </listitem>
 
@@ -341,14 +340,14 @@
               <para><link
               xlink:href="https://github.com/sciactive/pgrid">https://github.com/sciactive/pgrid</link></para>
 
-              <para>Pines Grid, a JavaScript (jQuery) data grid plugin.</para>
+              <para>PGrid, a JavaScript (jQuery) data grid plugin.</para>
             </listitem>
 
             <listitem>
               <para><link
               xlink:href="https://github.com/sciactive/pnotify">https://github.com/sciactive/pnotify</link></para>
 
-              <para>Pines Notify, JavaScript notifications for Bootstrap or
+              <para>PNotify, JavaScript notifications for Bootstrap or
               jQuery UI.</para>
             </listitem>
 
@@ -356,7 +355,7 @@
               <para><link
               xlink:href="https://github.com/sciactive/ptags">https://github.com/sciactive/ptags</link></para>
 
-              <para>Pines Tags, a JavaScript (jQuery) content tag editor
+              <para>PTags, a JavaScript (jQuery) content tag editor
               plugin.</para>
             </listitem>
 
@@ -369,7 +368,7 @@
             </listitem>
           </itemizedlist></para>
 
-        <para>To get a local copy of Pines for testing or development, we're
+        <para>To get a local copy of WonderPHP for testing or development, we're
         going to set up a directory of symlinks to the actual repository
         directories. First, from your server root (or wherever you'd like
         these directories), clone the Git repositories.</para>
@@ -421,7 +420,7 @@ unlink components/com_ckeditor</programlisting></para>
 
         <para>When you set up your database, you should use the username and
         database name "pines" and the password "password". These are the
-        configuration defaults, so this setup will allow you to use Pines
+        configuration defaults, so this setup will allow you to use WonderPHP
         without additional configuration files. Once you set up your database,
         remove the newly created configuration file in the SQL component you
         are using (com_mysql or com_pgsql). It is not needed, as long as the
@@ -450,7 +449,7 @@ git pull</programlisting></para>
         <title>Coding Style</title>
 
         <note>
-          <para>This coding style is the style used by Pines Core and the
+          <para>This coding style is the style used by WonderPHP Core and the
           SciActive maintained components/templates. If you are submitting a
           patch, please keep it written in this style. In your own
           components/templates you are free to use whatever style you'd like,
@@ -572,7 +571,7 @@ if (
         <section>
           <title>Naming</title>
 
-          <para>Names in Pines always use lowercase, and words are separated
+          <para>Names in WonderPHP always use lowercase, and words are separated
           by underscores.</para>
 
           <para>Component names start with "com_" and don't contain any
@@ -607,7 +606,7 @@ if (
         <section>
           <title>Commenting</title>
 
-          <para>Pines uses both C89 (/*...*/) and C99 (//...) style comments.
+          <para>WonderPHP uses both C89 (/*...*/) and C99 (//...) style comments.
           Comments should have a space after the comment mark. Code which is
           commented out should not. C89 style is preferred for longer
           comments.<informalexample>
@@ -629,29 +628,29 @@ if (
 //$pines-&gt;com_example-&gt;something();</programlisting>
             </informalexample></para>
 
-          <para>Pines uses phpDocumentor (http://www.phpdoc.org) to generate
+          <para>WonderPHP uses phpDocumentor (http://www.phpdoc.org) to generate
           API documentation. Files, functions, classes, interfaces,
           properties, methods, constants, and requires/includes that are part
-          of Pines Core or SciActive's components should be commented using
+          of WonderPHP Core or SciActive's components should be commented using
           phpDoc style comment blocks.</para>
         </section>
       </section>
 
       <section>
-        <title>Building Pines</title>
+        <title>Building WonderPHP</title>
 
-        <para>To build a custom release of Pines, you will need to clone the
+        <para>To build a custom release of WonderPHP, you will need to clone the
         "pines-tools" repository. There, you will find the
         <filename>build-tools/buildrelease.php</filename> file. Point your
         browser to this script to use the release builder.</para>
 
-        <para>In the build tools, you will also find scripts to package Pines'
+        <para>In the build tools, you will also find scripts to package WonderPHP's
         jQuery plugins and to generate an icon component's CSS.</para>
       </section>
     </chapter>
 
     <chapter>
-      <title>Pines Core</title>
+      <title>WonderPHP Core</title>
 
       <section>
         <title>Structure</title>
@@ -659,7 +658,7 @@ if (
         <section>
           <title>File Structure</title>
 
-          <para>Pines has a strict and logical file structure. The system and
+          <para>WonderPHP has a strict and logical file structure. The system and
           individual components have a similar file structure. Some less
           important files and folders have been left out of the following list
           for brevity.<itemizedlist>
@@ -678,43 +677,43 @@ if (
 
                     <listitem>
                       <para><filename>logos</filename> - Contains logos,
-                      including Pines' default logo.</para>
+                      including WonderPHP's default logo.</para>
                     </listitem>
                   </itemizedlist></para>
               </listitem>
 
               <listitem>
-                <para><filename>system</filename> - Contains the Pines Core
+                <para><filename>system</filename> - Contains the WonderPHP Core
                 code.<itemizedlist>
                     <listitem>
                       <para><filename>actions</filename> - Contains system
-                      actions always available in Pines.</para>
+                      actions always available in WonderPHP.</para>
                     </listitem>
 
                     <listitem>
                       <para><filename>classes</filename> - Contains the core
-                      classes used by Pines.</para>
+                      classes used by WonderPHP.</para>
                     </listitem>
 
                     <listitem>
-                      <para><filename>includes</filename> - Contains Pines'
+                      <para><filename>includes</filename> - Contains WonderPHP's
                       JavaScript files.</para>
                     </listitem>
 
                     <listitem>
                       <para><filename>init</filename> - Contains the system
-                      init scripts which build the Pines environment and
+                      init scripts which build the WonderPHP environment and
                       control execution of scripts.</para>
                     </listitem>
 
                     <listitem>
                       <para><filename>views</filename> - Contains views used
-                      by Pines Core.</para>
+                      by WonderPHP Core.</para>
                     </listitem>
 
                     <listitem>
                       <para><filename>defaults.php</filename> - The default
-                      configuration settings for Pines Core.</para>
+                      configuration settings for WonderPHP Core.</para>
                     </listitem>
 
                     <listitem>
@@ -724,7 +723,7 @@ if (
                     </listitem>
 
                     <listitem>
-                      <para><filename>info.php</filename> - The Pines Core
+                      <para><filename>info.php</filename> - The WonderPHP Core
                       information file. Contains information such as version
                       number and core abilities.</para>
                     </listitem>
@@ -771,7 +770,7 @@ if (
         <section>
           <title>Object Structure</title>
 
-          <para>Pines is structured almost entirely around the Pines object,
+          <para>WonderPHP is structured almost entirely around the Pines object,
           <varname>$pines</varname>. The variable is created in the global
           scope by the system init script,
           <filename>i30load_system.php</filename>. To use the variable in any
@@ -909,12 +908,12 @@ if (
           <para>When an action is run, <methodname>action</methodname> will
           look in the component's <filename>actions</filename> directory for a
           file with the same name as the desired action (with .php appended).
-          If the desired component is "system", Pines will instead look in the
+          If the desired component is "system", WonderPHP will instead look in the
           system's <filename>actions</filename> directory. If no action was
           specified, <methodname>action</methodname> will look for a
           <filename>default.php</filename> file. If no component was
           specified, <methodname>action</methodname> will use the default
-          component specified in Pines' configuration. Once the correct file
+          component specified in WonderPHP's configuration. Once the correct file
           is found, <methodname>action</methodname> will run the file. The
           <varname>$pines</varname> variable is already included when the file
           is run, so there is no need to include it with the
@@ -956,11 +955,11 @@ $pines-&gt;action();</programlisting>
         <section>
           <title>Accessing Sessions</title>
 
-          <para>Sessions in Pines are handled exclusively through the
+          <para>Sessions in WonderPHP are handled exclusively through the
           <methodname>session</methodname> method. Using this method, you can
           access an existing session for reading or writing, and close or
           destroy it. Using this method to open a session for reading allows
-          asynchronous requests to Pines to respond quickly, without
+          asynchronous requests to WonderPHP to respond quickly, without
           blocking.</para>
 
           <para>If you've never experienced blocking in PHP sessions, it
@@ -1042,7 +1041,7 @@ pines_notice('Messages saved.');</programlisting>
           method to redirect users to a different URL. Using this method
           ensures that any messages and errors that are queued to be displayed
           to the user will be displayed when the user reaches the destination
-          URL, assuming that URL is also handled by the same Pines
+          URL, assuming that URL is also handled by the same WonderPHP
           installation. The HTTP status code returned to the client can be
           changed and defaults to 303 (See Other).<informalexample>
               <bridgehead>Redirecting the User</bridgehead>
@@ -1102,9 +1101,9 @@ $pines-&gt;redirect(pines_url('com_example', 'widgets/list'), 301);</programlist
             hooks.<informalexample>
                 <bridgehead>Using a Hook to Alter Content</bridgehead>
 
-                <programlisting language="php">// Replace the word "Pines" with "Barbecue".
+                <programlisting language="php">// Replace the word "WonderPHP" with "Barbecue".
 function com_example__replace(&amp;$arguments) {
-    $arguments[0] = str_replace('Pines', 'Barbecue', $arguments[0]);
+    $arguments[0] = str_replace('WonderPHP', 'Barbecue', $arguments[0]);
 }
 
 $pines-&gt;hook-&gt;add_callback('$pines-&gt;format_content', -10, 'com_example__replace');</programlisting>
@@ -1546,8 +1545,8 @@ $bad = $pines-&gt;check_ip_subnet('192.168.1.5', '192.168.0.0', '255.255.255.0')
         <section>
           <title>Config (<classname>config</classname> class)</title>
 
-          <para>The config service loads configuration for both Pines and any
-          components/templates. The configuration for Pines is always loaded,
+          <para>The config service loads configuration for both WonderPHP and any
+          components/templates. The configuration for WonderPHP is always loaded,
           and components' configuration is loaded the first time it is
           accessed, during each script run. Config will start by loading the
           <filename>defaults.php</filename> file (if it exists) in the
@@ -1644,7 +1643,7 @@ $bad = $pines-&gt;check_ip_subnet('192.168.1.5', '192.168.0.0', '255.255.255.0')
 
           <para>The configuration object is built using these files, and
           placed into a property (named after the component) on the first
-          attempted access of the property. Pines' system configuration
+          attempted access of the property. WonderPHP's system configuration
           options are placed in the config object itself.</para>
 
           <para>When the user changes a config option, they may only change
@@ -1653,10 +1652,10 @@ $bad = $pines-&gt;check_ip_subnet('192.168.1.5', '192.168.0.0', '255.255.255.0')
           only be changed to another integer.</para>
 
           <para><informalexample>
-              <bridgehead>Accessing Configuration for Pines and
+              <bridgehead>Accessing Configuration for WonderPHP and
               Components</bridgehead>
 
-              <programlisting language="php">// Access Pines' "system_name" configuration option:
+              <programlisting language="php">// Access WonderPHP's "system_name" configuration option:
 echo $pines-&gt;config-&gt;system_name;
 
 // Access a component's "website_name" configuration option:
@@ -1951,7 +1950,7 @@ $pines-&gt;depend-&gt;checkers['something'] = 'com_example__check_something';
           callback directly to your component's method. Component classes are
           loaded as soon as the object is first accessed. Instead of using a
           callback to the method, you can use a shortcut function to save
-          Pines from loading your component's class during each script
+          WonderPHP from loading your component's class during each script
           run.<informalexample>
               <bridgehead>Using a Shortcut Function to a Method</bridgehead>
 
@@ -2148,7 +2147,7 @@ $pines-&gt;hook-&gt;add_callback('all', 10, 'com_example__callback');</programli
         <section>
           <title>Info (<classname>info</classname> class)</title>
 
-          <para>The info service provides information about Pines and
+          <para>The info service provides information about WonderPHP and
           installed components/templates. When Info is loaded, the
           <filename>info.php</filename> file in the
           <filename>system</filename> folder is retrieved. This file is used
@@ -2315,9 +2314,9 @@ return array(
     ),
 );</programlisting>
             </informalexample><informalexample>
-              <bridgehead>Accessing Info for Pines and Components</bridgehead>
+              <bridgehead>Accessing Info for WonderPHP and Components</bridgehead>
 
-              <programlisting language="php">// Access Pines' "license" info entry:
+              <programlisting language="php">// Access WonderPHP's "license" info entry:
 echo $pines-&gt;info-&gt;license;
 
 // Access a component's "description" info entry:
@@ -2331,7 +2330,7 @@ echo $pines-&gt;info-&gt;tpl_green-&gt;version;</programlisting>
         <section>
           <title>Menu (<classname>menu</classname> class)</title>
 
-          <para>The menu service builds and renders menus. In Pines, menus are
+          <para>The menu service builds and renders menus. In WonderPHP, menus are
           built using arrays, and these arrays are usually stored in JSON
           files. Menu will begin by loading the <filename>menu.json</filename>
           file in the <filename>system</filename> directory. This will set up
@@ -2704,7 +2703,7 @@ $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
       <section>
         <title>Core Functions</title>
 
-        <para>Pines Core includes several functions. Most of these functions
+        <para>WonderPHP Core includes several functions. Most of these functions
         are just shortcuts to common methods of the Pines object and system
         services.<table>
             <title>Core Functions</title>
@@ -2924,7 +2923,7 @@ $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
           <title>Module</title>
 
           <para>The <classname>module</classname> class is used to generate
-          content using a view and place it into a page. Modules allow Pines
+          content using a view and place it into a page. Modules allow WonderPHP
           to pass data from the logic portion of a component to the
           presentation portion. This allows the business logic to remain the
           same no matter which type of page is being constructed (XHTML, RSS,
@@ -3039,7 +3038,7 @@ $email_body = $module-&gt;render();</programlisting>
               view.</para>
             </caution></para>
 
-          <para>Pines provides a blank view (component is "system" and view is
+          <para>WonderPHP provides a blank view (component is "system" and view is
           "null"), which you can use if you want to add content to the module
           manually.<informalexample>
               <bridgehead>Manually Creating the Module Content</bridgehead>
@@ -3062,17 +3061,17 @@ pines_log($module-&gt;get_content());</programlisting>
       <section>
         <title>Order of Execution</title>
 
-        <para>Pines is a very complex framework, and has many different
+        <para>WonderPHP is a very complex framework, and has many different
         interacting parts. Understanding how these parts are loaded and when
         they become available to use is important in developing successful
-        Pines software. If you are reading this book sequentially, you may be
+        WonderPHP software. If you are reading this book sequentially, you may be
         unfamiliar with some of the terms used in this section. Since this
-        section is so important for Pines development, I recommend you come
+        section is so important for WonderPHP development, I recommend you come
         back to this section after reading Part II, and read it again to
-        reinforce your understanding of the order in which Pines executes
+        reinforce your understanding of the order in which WonderPHP executes
         various parts of the system.</para>
 
-        <para>Pines begins execution by a request to the
+        <para>WonderPHP begins execution by a request to the
         <filename>index.php</filename> file.<itemizedlist>
             <listitem>
               <para>Defines constants.<itemizedlist>
@@ -3083,14 +3082,14 @@ pines_log($module-&gt;get_content());</programlisting>
 
                   <listitem>
                     <para><constant>P_RUN</constant> - Used to determine that
-                    Pines was executed properly through
+                    WonderPHP was executed properly through
                     <filename>index.php</filename>. You'll see this referenced
-                    in every Pines PHP file.</para>
+                    in every WonderPHP PHP file.</para>
                   </listitem>
 
                   <listitem>
                     <para><constant>P_BASE_PATH</constant> - The base path of
-                    the Pines installation.</para>
+                    the WonderPHP installation.</para>
                   </listitem>
 
                   <listitem>
@@ -3129,7 +3128,7 @@ pines_log($module-&gt;get_content());</programlisting>
 
                     <itemizedlist>
                       <listitem>
-                        <para>Loads various functions used by Pines Core and
+                        <para>Loads various functions used by WonderPHP Core and
                         shortcut functions.</para>
                       </listitem>
                     </itemizedlist>
@@ -3484,10 +3483,10 @@ pines_log($module-&gt;get_content());</programlisting>
             </listitem>
           </itemizedlist></para>
 
-        <para>As mentioned before, this section is very important for Pines
+        <para>As mentioned before, this section is very important for WonderPHP
         development. Knowing when certain features will be available for use
-        allows you to plan accordingly. Pines is very flexible, but it is also
-        very strictly structured. If you know Pines' execution path, debugging
+        allows you to plan accordingly. WonderPHP is very flexible, but it is also
+        very strictly structured. If you know WonderPHP's execution path, debugging
         will be much easier. Remember to come back to this section if you are
         currently unfamiliar with the features discussed here.</para>
       </section>
@@ -3498,7 +3497,7 @@ pines_log($module-&gt;get_content());</programlisting>
 
       <para>System services provide many features, and allow these features to
       be implemented in many different ways. System services are not provided
-      by Pines Core. They are, however, well defined and must conform to
+      by WonderPHP Core. They are, however, well defined and must conform to
       certain guidelines to ensure that any component designed to use them
       will work with any implementation.</para>
 
@@ -3509,7 +3508,7 @@ pines_log($module-&gt;get_content());</programlisting>
           <title>Configurator</title>
 
           <para>The configurator service allows the user and other components
-          to edit/save configuration and enable/disable components. In Pines,
+          to edit/save configuration and enable/disable components. In WonderPHP,
           a component is disabled by prepending a period (.) to its
           directory's name. This is the same way the directory is hidden on
           Linux file systems.</para>
@@ -3749,7 +3748,7 @@ $pines-&gt;editor-&gt;add_css($pines-&gt;config-&gt;location.'components/com_exa
           <title>Entity Manager</title>
 
           <para>Go brew some coffee or drink an energy drink, cause this is
-          without a doubt, the most complex and important part of Pines!
+          without a doubt, the most complex and important part of WonderPHP!
           Understanding the entity manager lets you build complex
           relationships between data as easily as setting the value of a
           property.</para>
@@ -3758,7 +3757,7 @@ $pines-&gt;editor-&gt;add_css($pines-&gt;config-&gt;location.'components/com_exa
             <title>Introduction</title>
 
             <para>The entity manager service provides database abstraction for
-            Pines. Data in Pines is based on objects called entities. An
+            WonderPHP. Data in WonderPHP is based on objects called entities. An
             entity is an object which can hold any type of data available in
             PHP (except resources), including other entities. All entity
             classes (and therefore all entities) inherit the
@@ -3802,11 +3801,11 @@ $pines-&gt;editor-&gt;add_css($pines-&gt;config-&gt;location.'components/com_exa
             <para>Entities are not strictly structured, so data of any type
             can be added and saved just by assigning a variable on the entity
             and calling <methodname>save</methodname>. This makes data
-            manipulation in Pines very easy.</para>
+            manipulation in WonderPHP very easy.</para>
 
             <para>All entities are given a globally unique identifier (GUID),
             which is an integer (but may not be in the future). No entities in
-            the same Pines installation will ever have the same GUID. The
+            the same WonderPHP installation will ever have the same GUID. The
             entity manager also provides UIDs, which can be used to number
             certain types of entities (or practically anything else). UIDs can
             be used to provide a more visibly pleasing identifier for
@@ -4732,12 +4731,12 @@ $pines-&gt;entity_manager-&gt;import($filename);</programlisting>
             file.<informalexample>
                 <bridgehead>Example Entity Export File (PEX)</bridgehead>
 
-                <programlisting># Pines Entity Export
+                <programlisting># WonderPHP Entity Export
 # com_pgentity version 1.0.0
 # sciactive.com
 #
 # Generation Time: Tue, 05 Jul 2011 09:56:14 -0700
-# Pines Version: 0.94.0beta
+# WonderPHP Version: 0.94.0beta
 
 #
 # UIDs
@@ -4849,7 +4848,7 @@ $entity-&gt;save();</programlisting>
           <title>Icons</title>
 
           <para>The icon service provides a set of icons available to use
-          through CSS classes. Pines Icons come in two sizes, 16x16 and 32x32.
+          through CSS classes. WonderPHP Icons come in two sizes, 16x16 and 32x32.
           To use an icon, you add the class of the icon, such as
           <classname>picon-document-edit</classname>, to an HTML element. This
           will use the icon's 16x16 size. To use the 32x32 size, add another
@@ -4880,7 +4879,7 @@ $pines-&gt;icons-&gt;load();
           <title>Log Manager</title>
 
           <para>The log manager service provides an easy and simple logging
-          feature for Pines. The default log manager can use the hook system
+          feature for WonderPHP. The default log manager can use the hook system
           to log all calls to an object under <varname>$pines</varname>. The
           log manager has no restriction on the backend it can use, so log
           managers can be made for flat files, MySQL, PostgreSQL, MSSQL,
@@ -4949,7 +4948,7 @@ else
           <title>Template</title>
 
           <para>The template service is a special service, which does not have
-          to declare itself as the template service. Instead, Pines reads the
+          to declare itself as the template service. Instead, WonderPHP reads the
           configuration and determines the template. The template builds the
           layout and design of the page and inserts the content from any
           modules attached to the page. It also has the responsibility of
@@ -4967,7 +4966,7 @@ else
               <listitem>
                 <para><methodname>url</methodname></para>
 
-                <para>Creates a URL, utilizing the Pines URL rewriting setup.
+                <para>Creates a URL, utilizing the WonderPHP URL rewriting setup.
                 Has the following arguments:<orderedlist>
                     <listitem>
                       <para>The name of the component to be requested by the
@@ -4987,7 +4986,7 @@ else
                     <listitem>
                       <para>Boolean determining if the URL should be a full
                       URL. Otherwise, it will be a URL relative to the server
-                      of the Pines installation.</para>
+                      of the WonderPHP installation.</para>
                     </listitem>
                   </orderedlist></para>
               </listitem>
@@ -4995,7 +4994,7 @@ else
               <bridgehead>Formatting a URL Using the Template
               Service</bridgehead>
 
-              <programlisting language="php">// A URL suitable for a link on a page in Pines.
+              <programlisting language="php">// A URL suitable for a link on a page in WonderPHP.
 $link = $pines-&gt;template-&gt;url('com_example', 'widget/edit', array('id' =&gt; $widget-&gt;guid));
 // or you can use the shortcut function:
 $link = pines_url('com_example', 'widget/edit', array('id' =&gt; $widget-&gt;guid));
@@ -5003,7 +5002,7 @@ $link = pines_url('com_example', 'widget/edit', array('id' =&gt; $widget-&gt;gui
 // A URL suitable for a link in an external page or an email.
 $link = $pines-&gt;template-&gt;url('com_example', 'widget/edit', array('id' =&gt; $widget-&gt;guid), true);
 
-// The URL of the home page of the Pines installation.
+// The URL of the home page of the WonderPHP installation.
 $link = pines_url();</programlisting>
             </informalexample></para>
 
@@ -5019,7 +5018,7 @@ $link = pines_url();</programlisting>
               <listitem>
                 <para><varname>format</varname></para>
 
-                <para>The format of the template. This format is used by Pines
+                <para>The format of the template. This format is used by WonderPHP
                 to find the view when a module is being rendered.</para>
               </listitem>
             </itemizedlist></para>
@@ -5158,7 +5157,7 @@ if (!$file_path) {
         <section>
           <title>User Manager</title>
 
-          <para>The user manager service is one of Pines' most powerful
+          <para>The user manager service is one of WonderPHP's most powerful
           features. It has many features and responsibilities, designed to
           separate and protect data. Fully understanding the user manager will
           allow you to create complex systems which function safely in a
@@ -5258,12 +5257,12 @@ if (!$file_path) {
           <para>Two of the methods of the user manager,
           <methodname>gatekeeper</methodname> and
           <methodname>punt_user</methodname>, have shortcut functions to make
-          calling them easier. Unlike most shortcut functions in Pines, which
+          calling them easier. Unlike most shortcut functions in WonderPHP, which
           have "pines_" prepended to their names, these two functions have
           identical names as their method counterparts.</para>
 
           <para>Access control is one of the features heavily considered since
-          the beginning of Pines' development. As such, the user manager has
+          the beginning of WonderPHP's development. As such, the user manager has
           some unique and powerful systems of access control.</para>
 
           <section>
@@ -5273,9 +5272,9 @@ if (!$file_path) {
             that the user manager service provides. A component is not
             required to utilize these systems, but they will certainly make
             designing a safe, functional, multi-user component much easier.
-            When developing Pines, SciActive always considers good access
+            When developing WonderPHP, SciActive always considers good access
             control very important. If you plan on contributing code to
-            SciActive maintained components or Pines Core, please take the
+            SciActive maintained components or WonderPHP Core, please take the
             time to learn and understand these access control systems very
             well.</para>
 
@@ -5300,7 +5299,7 @@ if (!$file_path) {
                   File</bridgehead>
 
                   <programlisting language="php">'abilities' =&gt; array(
-    array('view', 'View Log', 'Let the user view the Pines log.'),
+    array('view', 'View Log', 'Let the user view the WonderPHP log.'),
     array('clear', 'Clear Log', 'Let the user clear (delete) the pines log.')
 ),</programlisting>
                 </informalexample></para>
@@ -5319,7 +5318,7 @@ if (!$file_path) {
                   <programlisting language="php">$user = user::factory('hunter');
 // Check that the user has the ability.
 if (!$pines-&gt;user_manager-&gt;gatekeeper('com_logger/view', $user)) {
-    pines_notice('Hunter can\'t view the Pines log.');
+    pines_notice('Hunter can\'t view the WonderPHP log.');
     return;
 }
 
@@ -5850,7 +5849,7 @@ $entities = $pines-&gt;entity_manager-&gt;get_entities(
       <section>
         <title>Creating a Service</title>
 
-        <para>Creating a system service for Pines can be a complex process,
+        <para>Creating a system service for WonderPHP can be a complex process,
         and certain rules must be followed to ensure it works with all
         components. All system services have an interface, which their main
         class must implement. Some services have additional classes which must
@@ -5865,7 +5864,7 @@ $entities = $pines-&gt;entity_manager-&gt;get_entities(
         <classname>component</classname> class and implement the appropriate
         interface for the service.</para>
 
-        <para>A component which implements a service must inform Pines that it
+        <para>A component which implements a service must inform WonderPHP that it
         is providing the service. To do this, the component uses an init
         script with the number 10. In the init script, it sets the service's
         variable under <varname>$pines</varname> to a string containing the
@@ -5897,7 +5896,7 @@ $pines-&gt;entity_manager = 'com_xmlentity';
 ?&gt;</programlisting>
           </informalexample></para>
 
-        <para>The first time this variable is accessed, Pines will recognize
+        <para>The first time this variable is accessed, WonderPHP will recognize
         it as a system service and load a new instance of the class into the
         variable. A component can implement any number of services.</para>
 
@@ -5914,23 +5913,23 @@ $pines-&gt;entity_manager = 'com_xmlentity';
     </chapter>
 
     <chapter>
-      <title>Pines JavaScript Object</title>
+      <title>WonderPHP JavaScript Object</title>
 
-      <para>The Pines JavaScript object is a small, simple JavaScript library
+      <para>The WonderPHP JavaScript object is a small, simple JavaScript library
       mainly used to aid in development of complex Ajax technologies. Using
       the included functions to load JavaScript and CSS allows templates to
-      load a page's requirements without needing to reload the page. The Pines
+      load a page's requirements without needing to reload the page. The WonderPHP
       object also lets a page's content load first, letting the user see the
       page as soon as the browser can render it.</para>
 
       <para>Every component is strongly encouraged to take advantage of the
-      Pines JavaScript object. Not only will it ensure compatibility with Ajax
+      WonderPHP JavaScript object. Not only will it ensure compatibility with Ajax
       enabled templates, it will help control the execution order of your
       JavaScript and prevent your scripts from accidentally being loaded
       twice. Every HTML/XHTML template is required to load the object first,
       so you can use it without any extra code.</para>
 
-      <para>The Pines JavaScript file
+      <para>The WonderPHP JavaScript file
       (<filename>system/includes/pines.js</filename>), which is loaded by the
       template through <filename>js.php</filename>, begins by adding an
       indexOf method to the array prototype. This ensures that the method will
@@ -5941,14 +5940,14 @@ $pines-&gt;entity_manager = 'com_xmlentity';
           <listitem>
             <para><varname>full_location</varname></para>
 
-            <para>The full location of the Pines installation. (The URL with
+            <para>The full location of the WonderPHP installation. (The URL with
             http:// or https://.)</para>
           </listitem>
 
           <listitem>
             <para><varname>rela_location</varname></para>
 
-            <para>The relative location of the Pines installation. (A relative
+            <para>The relative location of the WonderPHP installation. (A relative
             URL.)</para>
           </listitem>
         </itemizedlist></para>
@@ -5957,7 +5956,7 @@ $pines-&gt;entity_manager = 'com_xmlentity';
       before any component's JavaScript, you can control the order in which
       your component's JavaScript and CSS is loaded even relative to other
       components.<table>
-          <title>Pines JavaScript Object Methods</title>
+          <title>WonderPHP JavaScript Object Methods</title>
 
           <tgroup cols="3">
             <colspec colnum="2" colwidth="3*"/>
@@ -6117,7 +6116,7 @@ $pines-&gt;entity_manager = 'com_xmlentity';
 
       <para>Calling the <varname>pines</varname> object as a function is a
       shortcut for <methodname>pines.ready</methodname>.<informalexample>
-          <bridgehead>Using the Pines JavaScript Object to Load
+          <bridgehead>Using the WonderPHP JavaScript Object to Load
           JavaScript</bridgehead>
 
           <programlisting language="js+php">// These files will be loaded first.
@@ -6156,14 +6155,14 @@ output.innerHTML = pines.safe(user_name);</programlisting>
       defined, a copy of json2.js is loaded to provide it. This ensures that a
       JSON object will exist in every browser.</para>
 
-      <para>The Pines JavaScript object, even though it is only a small part
-      of the Pines Framework, is an important tool to understand to make the
-      most out of Pines. It helps your web applications be more responsive,
+      <para>The WonderPHP JavaScript object, even though it is only a small part
+      of WonderPHP, is an important tool to understand to make the
+      most out of WonderPHP. It helps your web applications be more responsive,
       load faster, and interact with other components better. Try out the Ajax
-      feature of the Pines template. Keep in mind that the pages are created
+      feature of the WonderPHP template. Keep in mind that the pages are created
       in exactly the same way as without the Ajax feature. The components
       can't tell the difference, even though every page is loaded with Ajax!
-      The Pines JavaScript object makes this complex system not only possible,
+      The WonderPHP JavaScript object makes this complex system not only possible,
       but easy!</para>
     </chapter>
   </part>
@@ -6226,7 +6225,7 @@ output.innerHTML = pines.safe(user_name);</programlisting>
     </chapter>
 
     <chapter>
-      <title>Pines Plaza</title>
+      <title>WonderPHP Plaza</title>
 
       <para/>
     </chapter>
