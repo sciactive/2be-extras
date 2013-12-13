@@ -35,6 +35,3 @@ if(isset($keyword) and $keyword !="") {
 	$photos[1] = $getlinks;
 	echo json_encode($photos);
 }
-
-
-?>

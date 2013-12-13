@@ -706,5 +706,3 @@ class slim {
 		return $return;
 	}
 }
-
-?>

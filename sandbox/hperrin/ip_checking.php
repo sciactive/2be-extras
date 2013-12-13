@@ -65,5 +65,3 @@ foreach (array('192.168.0.1', '192.168.1.1', '192.168.2.1') as $ip) {
 	echo '</pre>';
 	echo check_range($ip, $from_ip, $to_ip) ? 'Same network.' : 'Different network.';
 }
-
-?>

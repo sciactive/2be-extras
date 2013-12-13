@@ -17,5 +17,3 @@ echo '<h3>'.htmlspecialchars('foreach ($array as $cur_elem)').'</h3>';
 foreach ($array as $cur_elem) {
 	var_dump(array('Current Pointer' => key($array), 'Current Value' => $cur_elem));
 }
-
-?>

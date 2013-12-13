@@ -1735,5 +1735,3 @@ NmoTkDOC1iS1RomT+ZA4SKBNMNqojdqojdqojdqojdqojdqojdqojdqojdqojdqojZLR/wE/Ldq7
 EOF;
 	return base64_decode($output);
 }
-
-?>

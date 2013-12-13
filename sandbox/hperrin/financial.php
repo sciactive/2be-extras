@@ -35,5 +35,3 @@ class financial {
 		return $pmt * exp($R * ($n/$m));
 	}
 }
-
-?>

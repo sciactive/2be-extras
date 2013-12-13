@@ -88,5 +88,3 @@ while (list($cur_key, $cur_elem) = each($array)) {
 		unset($array[8]);
 	echo $cur_elem.' ';
 }
-
-?>

@@ -50,5 +50,3 @@ if ($arc->extract()) { // testing extract all
 } else {
 	echo 'Error extracting archive. ';
 }
-
-?>

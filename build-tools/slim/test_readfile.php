@@ -28,5 +28,3 @@ if (file_get_contents('testfile') == $arc->get_file('testfile')) {
 
 if (file_exists('testinclude.slm'))
 	unlink('testinclude.slm');
-
-?>

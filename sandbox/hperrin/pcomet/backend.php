@@ -162,5 +162,3 @@ $server->stop();
 
 // This is totally unnecessary. ;)
 echo '*/';
-
-?>

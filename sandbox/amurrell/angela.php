@@ -41,5 +41,3 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(xs
 EOF;
 
 echo json_encode($angela);
-
-?>

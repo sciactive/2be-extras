@@ -16,5 +16,3 @@
 	$result = $xml->xpath("sale/items/item");
 	print_r($result);
 	 */
-	
-?>

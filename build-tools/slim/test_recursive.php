@@ -52,5 +52,3 @@ if ($arc->metadata['title'] == 'test') {
 
 $arc->working_directory = 'test_extract';
 $arc->extract('archives', true, array('/\.php$/', '/blah/'));
-
-?>

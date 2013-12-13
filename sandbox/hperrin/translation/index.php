@@ -52,5 +52,3 @@ function pines_echo($message) {
 echo (new trans('Hi'))."<br />";
 echo $trans('Bye')."<br />";
 echo pines_echo('Howdy %s. You\'ve been here %d times.', 'Bob', 9)."<br />";
-
-?>

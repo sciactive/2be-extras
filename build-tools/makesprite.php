@@ -60,5 +60,3 @@ foreach ($iterator as $file_path) {
 
 header('Content-Type: image/png');
 echo $sprite;
-
-?>

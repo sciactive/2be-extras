@@ -38,5 +38,3 @@ foreach ($styles as $key => $value) {
 	else
 		echo "{$key}{background:url(\"{$value}\")}\n";
 }
-
-?>

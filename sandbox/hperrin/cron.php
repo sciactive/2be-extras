@@ -66,4 +66,3 @@ switch ($pid = pcntl_fork()) {
 
 		return;
 }*/
-?>
