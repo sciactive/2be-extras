@@ -1,0 +1,7 @@
+Regex array index access:
+
+\$_([A-Z]+)\[(['"]\w+['"])\]
+
+Replace value:
+
+idx(\$_$1, $2)

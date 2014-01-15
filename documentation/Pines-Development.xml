@@ -4170,7 +4170,7 @@ $pines-&gt;entity_manager-&gt;sort($cats, 'name', $case_sensitive, $reverse);</p
                 Method</bridgehead>
 
                 <programlisting language="php">// Most entities use a GUID.
-$baz = com_foobar_baz::factory((int) $_REQUEST['id']);
+$baz = com_foobar_baz::factory((int) idx($_REQUEST, 'id'));
 
 if (!isset($baz-&gt;guid)) {
     pines_notice('The specified baz cannot be found!');
@@ -5115,7 +5115,7 @@ $pines-&gt;uploader-&gt;load();
               <bridgehead>Verifying and Using a URL Returned by the
               Uploader</bridgehead>
 
-              <programlisting language="php">$file_url = $_REQUEST['upload_file'];
+              <programlisting language="php">$file_url = idx($_REQUEST, 'upload_file');
 
 // The first step is always checking the file URL.
 if (!$pines-&gt;uploader-&gt;check($file_url)) {
@@ -5141,7 +5141,7 @@ $file_url_full = $pines-&gt;uploader-&gt;url($file_path, true);</programlisting>
               <bridgehead>Using a Temp File Returned by the
               Uploader</bridgehead>
 
-              <programlisting language="php">$file = $_REQUEST['temp_file'];
+              <programlisting language="php">$file = idx($_REQUEST, 'temp_file');
 
 // Get the path to the temporary location of the file.
 $file_path = $pines-&gt;uploader-&gt;temp($file);
