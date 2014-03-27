@@ -2,10 +2,10 @@
 /**
  * A serialized PHP value editor.
  * 
- * This file helps edit values from a WonderPHP database, which are often
+ * This file helps edit values from a 2be database, which are often
  * stored as serialized PHP.
  *
- * WonderPHP - an Enterprise PHP Application Framework
+ * 2be - an Enterprise PHP Application Framework
  * Copyright (C) 2008-2011  Hunter Perrin.
  *
  * This program is free software: you can redistribute it and/or modify
@@ -216,7 +216,7 @@ if (!empty($_REQUEST['type'])) {
 	<body>
 		<div style="float: right;">
 			<a href="http://sourceforge.net/projects/pines" target="_blank">
-				<img src="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>?type=header" alt="WonderPHP Logo" style="border: none;" />
+				<img src="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>?type=header" alt="2be Logo" style="border: none;" />
 			</a>
 		</div>
 		<h1 style="margin: 0; font-size: 1.2em; font-weight: bold;">Serialized PHP Editor</h1>

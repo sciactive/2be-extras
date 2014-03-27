@@ -188,7 +188,7 @@ if (isset($_REQUEST['directory'])) {
 			alert("\
 When you create a Slim PHP Self Extractor \"Build .php\", you have the\n\
 option to make the Slim archive remove itself after extracting all of\n\
-its files. This makes it easier for someone installing WonderPHP, because\n\
+its files. This makes it easier for someone installing 2be, because\n\
 they don't have to remove the file manually.");
 		}
 	</script>
@@ -196,7 +196,7 @@ they don't have to remove the file manually.");
 <body>
 <div class="wrapper">
 	<div class="header">
-		<h1>WonderPHP Release Builder</h1>
+		<h1>2be Release Builder</h1>
 		<hr />
 	</div>
 	<p>

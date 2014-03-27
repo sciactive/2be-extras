@@ -31,4 +31,4 @@ sed -i -r "s#(.+)\|#\1|/ptags#" ptags.txt
 cat core.txt components.txt tools.txt pform.txt pnotify.txt pgrid.txt ptags.txt | sort -n > combined.txt
 
 # Create the gource video.
-gource --title WonderPHP -1280x720 --highlight-colour 22FF55 --hide mouse,filenames --highlight-users --max-user-speed 1000 --user-scale 5 --max-file-lag 0.1 --max-files 0 -i 0 -a 1 -s .5 -c 4 -e 0.01 -o gource-output.ppm -r 60 combined.txt
+gource --title 2be -1280x720 --highlight-colour 22FF55 --hide mouse,filenames --highlight-users --max-user-speed 1000 --user-scale 5 --max-file-lag 0.1 --max-files 0 -i 0 -a 1 -s .5 -c 4 -e 0.01 -o gource-output.ppm -r 60 combined.txt

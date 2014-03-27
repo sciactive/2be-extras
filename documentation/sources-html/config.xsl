@@ -23,7 +23,7 @@
 	<xsl:param name="generate.index" select="1"></xsl:param>
 
 	<xsl:template name="user.header.navigation" xmlns="http://www.w3.org/1999/xhtml">
-		<a href="index.html"><div class="header">WonderPHP Development</div></a>
+		<a href="index.html"><div class="header">2be Development</div></a>
 	</xsl:template>
 
 	<!--

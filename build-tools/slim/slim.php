@@ -17,7 +17,7 @@ defined('P_RUN') or die('Direct access prohibited');
  * designed for PHP, but Slim can be easily implemented in most programming
  * languages.
  * 
- * Slim is used in WonderPHP's package manager, as the package format. Because
+ * Slim is used in 2be's package manager, as the package format. Because
  * it is written entirely in PHP, an uncompressed Slim archive can be read or
  * created by any PHP installation. And if zlib or bz2 support is enabled,
  * compressed Slim archives can be read or created.
