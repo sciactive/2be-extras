@@ -2,14 +2,12 @@
 /**
  * slim class.
  *
- * @package Pines
- * @subpackage com_slim
  * @license http://www.gnu.org/licenses/agpl-3.0.html
  * @author Hunter Perrin <hperrin@gmail.com>
  * @copyright SciActive.com
  * @link http://sciactive.com/
  */
-/* @var $pines pines */
+/* @var $_ core */
 defined('P_RUN') or die('Direct access prohibited');
 
 /**
@@ -18,9 +16,16 @@ defined('P_RUN') or die('Direct access prohibited');
  * Slim is an easy to implement, portable archiving format. It was originally
  * designed for PHP, but Slim can be easily implemented in most programming
  * languages.
+ * 
+ * Slim is used in WonderPHP's package manager, as the package format. Because
+ * it is written entirely in PHP, an uncompressed Slim archive can be read or
+ * created by any PHP installation. And if zlib or bz2 support is enabled,
+ * compressed Slim archives can be read or created.
  *
- * @package Pines
- * @subpackage com_slim
+ * @license http://www.gnu.org/licenses/agpl-3.0.html
+ * @author Hunter Perrin <hperrin@gmail.com>
+ * @copyright SciActive.com
+ * @link http://sciactive.com/
  */
 class slim {
 	/**
@@ -410,7 +415,6 @@ class slim {
 				break;
 			default:
 				return false;
-				break;
 		}
 		if (isset($entry['uid']))
 			$new_entry['uid'] = (int) $entry['uid'];
