@@ -1,7 +1,7 @@
 /*
- * Pines Comet (pcomet) 0.0pre-alpha
+ * PComet 0.0pre-alpha
  *
- * http://pinesframework.org/
+ * http://2be.io/
  * Copyright (c) 2012 Hunter Perrin
  *
  * Triple license under the GPL, LGPL, and MPL:

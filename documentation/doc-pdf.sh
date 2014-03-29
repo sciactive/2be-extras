@@ -15,7 +15,7 @@ rm sources-pdf/minted.sty.new
 
 #export PATH="$(pwd)/bin:$PATH"
 PATH="$(pwd)/bin:$PATH"
-dblatex -p sources-pdf/options.xsl -s sources-pdf/style.sty -b 'xetex' --pdf Pines-Development.xml
+dblatex -p sources-pdf/options.xsl -s sources-pdf/style.sty -b 'xetex' --pdf 2be-Development.xml
 
 # Should this be removed?
 #rm sources-pdf/minted.sty

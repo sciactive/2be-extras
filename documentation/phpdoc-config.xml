@@ -3,7 +3,7 @@
 	<title><![CDATA[2be]]></title>
 	<parser>
 		<default-package-name>Core</default-package-name>
-		<target>pines-docs</target>
+		<target>2be-docs</target>
 		<markers>
 			<item>TODO</item>
 			<item>FIXME</item>
@@ -14,12 +14,12 @@
 		<visibility></visibility>
 	</parser>
 	<transformer>
-		<target>pines-docs</target>
+		<target>2be-docs</target>
 	</transformer>
 	<files>
 		<ignore-hidden>on</ignore-hidden>
 		<ignore-symlinks>on</ignore-symlinks>
-		<directory>pines/</directory>
+		<directory>2be/</directory>
 		<ignore>components/com_barcode/includes/*</ignore>
 		<ignore>components/com_elfinder/classes/elFinder*</ignore>
 		<ignore>components/com_messenger/includes/*</ignore>

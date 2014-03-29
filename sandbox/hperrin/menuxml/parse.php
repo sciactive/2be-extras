@@ -34,8 +34,8 @@ class tep {
 		return true;
 	}
 }
-$pines = new stdClass;
-$pines->depend = new tep;
+$_ = new stdClass;
+$_->depend = new tep;
 
 $position = 'main_menu';
 
@@ -57,8 +57,8 @@ for ($i = 0; $i < $menu_nodes->length; $i++) {
 	echo $xslproc->transformToXML($cur_menu_xml_doc);
 }
 
-function pines_depend_xml($dom_array = null) {
-	global $pines;
+function _2be_depend_xml($dom_array = null) {
+	global $_;
 	if ( !is_array($dom_array) || is_null($dom_array[0]) )
 		return true;
 	$dom_element = $dom_array[0];
@@ -68,7 +68,7 @@ function pines_depend_xml($dom_array = null) {
 	$return = true;
 	for ($i = 0; $i < $depends->length; $i++) {
 		$cur_depend = $depends->item($i);
-		$return = $return && $pines->depend->check($cur_depend->nodeName, $cur_depend->nodeValue);
+		$return = $return && $_->depend->check($cur_depend->nodeName, $cur_depend->nodeValue);
 	}
 	return $return;
 }

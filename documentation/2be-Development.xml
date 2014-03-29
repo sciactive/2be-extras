@@ -311,7 +311,7 @@
         repositories from GitHub.<itemizedlist>
             <listitem>
               <para><link
-              xlink:href="https://github.com/sciactive/pines-core">https://github.com/sciactive/pines-core</link></para>
+              xlink:href="https://github.com/sciactive/2be-core">https://github.com/sciactive/2be-core</link></para>
 
               <para>2be Core repository. Contains the core system
               files.</para>
@@ -319,9 +319,9 @@
 
             <listitem>
               <para><link
-              xlink:href="https://github.com/sciactive/pines-components">https://github.com/sciactive/pines-components</link></para>
+              xlink:href="https://github.com/sciactive/2be-packages">https://github.com/sciactive/2be-packages</link></para>
 
-              <para>2be Components repository. Contains official, SciActive
+              <para>2be Packages repository. Contains official, SciActive
               maintained components and templates.</para>
             </listitem>
 
@@ -358,7 +358,7 @@
 
             <listitem>
               <para><link
-              xlink:href="https://github.com/sciactive/pines-tools">https://github.com/sciactive/pines-tools</link></para>
+              xlink:href="https://github.com/sciactive/2be-extras">https://github.com/sciactive/2be-extras</link></para>
 
               <para>Build tools, documentation, logo sources, and other
               various tools.</para>
@@ -370,34 +370,34 @@
         directories. First, from your server root (or wherever you'd like
         these directories), clone the Git repositories.</para>
 
-        <para><programlisting language="sh">git clone git://github.com/sciactive/pines-core.git
-git clone git://github.com/sciactive/pines-components.git</programlisting></para>
+        <para><programlisting language="sh">git clone git://github.com/sciactive/2be-core.git
+git clone git://github.com/sciactive/2be-packages.git</programlisting></para>
 
-        <para>Then create a pines directory, and create links to the core
+        <para>Then create a 2be directory, and create links to the core
         files, components, and templates under the correct directories.</para>
 
-        <para><programlisting language="sh">mkdir pines
-cd pines
+        <para><programlisting language="sh">mkdir 2be
+cd 2be
 
-ln -s ../pines-core/* ./
+ln -s ../2be-core/* ./
 unlink components
 unlink templates
 unlink media
 
 mkdir components
 cd components
-ln -s ../../pines-components/com_* ./
+ln -s ../../2be-packages/com_* ./
 cd ..
 
 mkdir templates
 cd templates
-ln -s ../../pines-components/tpl_* ./
+ln -s ../../2be-packages/tpl_* ./
 cd ..
 
 mkdir media
 cd media
-ln -s ../../pines-core/media/* ./
-ln -s ../../pines-components/meta_packages/* ./
+ln -s ../../2be-core/media/* ./
+ln -s ../../2be-packages/meta_packages/* ./
 cd ..</programlisting></para>
 
         <para>You will need to unlink conflicting components, such as extra
@@ -412,18 +412,18 @@ unlink components/com_ckeditor</programlisting></para>
         <para>Now you should be able to access your installation from your
         server. If you placed it in the server root of your localhost, the
         address of the development setup would be
-        <uri>http://localhost/pines/</uri>. Access the site and set up the
+        <uri>http://localhost/2be/</uri>. Access the site and set up the
         database following the instructions on screen.</para>
 
         <para>When you set up your database, you should use the username and
-        database name "pines" and the password "password". These are the
+        database name "2be" and the password "password". These are the
         configuration defaults, so this setup will allow you to use 2be
         without additional configuration files. Once you set up your database,
         remove the newly created configuration file in the SQL component you
         are using (com_mysql or com_pgsql). It is not needed, as long as the
         configuration is the same as the defaults.</para>
 
-        <para><programlisting language="sh">rm pines-components/com_mysql/config.php</programlisting></para>
+        <para><programlisting language="sh">rm 2be-packages/com_mysql/config.php</programlisting></para>
 
         <para>You are now ready to start developing and testing. When you
         first create a user in the new setup, it will be granted administrator
@@ -431,10 +431,10 @@ unlink components/com_ckeditor</programlisting></para>
 
         <para>To update your local repository and get the latest code, pull
         changes from the origin repository (the default
-        remote).<programlisting language="sh">cd pines-core/
+        remote).<programlisting language="sh">cd 2be-core/
 git pull
 
-cd ../pines-components/
+cd ../2be-packages/
 git pull</programlisting></para>
 
         <para>I recommend using a Git GUI to make using the repository easier.
@@ -485,13 +485,13 @@ switch ($var) {
 }
 
 // Typical function call.
-$pines-&gt;something(
+$_-&gt;something(
     $arg1,
     $arg2
 );
 
 // Entity manager query.
-$pines-&gt;entity_manager-&gt;get_entities(
+$_-&gt;entity_manager-&gt;get_entities(
         array('class' =&gt; entity),
         array('&amp;',
             'tag' =&gt; array('some', 'tags')
@@ -622,7 +622,7 @@ if (
 // then this is also acceptable.
 
 // Don't use a leading space when commenting out code.
-//$pines-&gt;com_example-&gt;something();</programlisting>
+//$_-&gt;com_example-&gt;something();</programlisting>
             </informalexample></para>
 
           <para>2be uses phpDocumentor (http://www.phpdoc.org) to generate
@@ -637,7 +637,7 @@ if (
         <title>Building 2be</title>
 
         <para>To build a custom release of 2be, you will need to clone the
-        "pines-tools" repository. There, you will find the
+        "2be-extras" repository. There, you will find the
         <filename>build-tools/buildrelease.php</filename> file. Point your
         browser to this script to use the release builder.</para>
 
@@ -767,95 +767,95 @@ if (
         <section>
           <title>Object Structure</title>
 
-          <para>2be is structured almost entirely around the Pines object,
-          <varname>$pines</varname>. The variable is created in the global
+          <para>2be is structured almost entirely around the core object,
+          <varname>$_</varname>. The variable is created in the global
           scope by the system init script,
           <filename>i30load_system.php</filename>. To use the variable in any
           function or method, declare it using the <keysym>global</keysym>
           keyword.</para>
 
           <para><informalexample>
-              <bridgehead>Using <varname>$pines</varname> in a function or
+              <bridgehead>Using <varname>$_</varname> in a function or
               method.</bridgehead>
 
               <programlisting language="php">function example() {
-    global $pines;
-    $pines-&gt;something();
+    global $_;
+    $_-&gt;something();
 }</programlisting>
             </informalexample></para>
 
           <para>Several core services are loaded as variables of
-          <varname>$pines</varname>. See the <link
+          <varname>$_</varname>. See the <link
           linkend="core_services">Core Services</link> section for an
           explanation of these services.<itemizedlist>
               <listitem>
-                <para><varname>$pines-&gt;info</varname></para>
+                <para><varname>$_-&gt;info</varname></para>
               </listitem>
 
               <listitem>
-                <para><varname>$pines-&gt;config</varname></para>
+                <para><varname>$_-&gt;config</varname></para>
               </listitem>
 
               <listitem>
-                <para><varname>$pines-&gt;hook</varname></para>
+                <para><varname>$_-&gt;hook</varname></para>
               </listitem>
 
               <listitem>
-                <para><varname>$pines-&gt;depend</varname></para>
+                <para><varname>$_-&gt;depend</varname></para>
               </listitem>
 
               <listitem>
-                <para><varname>$pines-&gt;menu</varname></para>
+                <para><varname>$_-&gt;menu</varname></para>
               </listitem>
 
               <listitem>
-                <para><varname>$pines-&gt;page</varname></para>
+                <para><varname>$_-&gt;page</varname></para>
               </listitem>
             </itemizedlist></para>
 
-          <para><varname>$pines</varname> also contains some useful
+          <para><varname>$_</varname> also contains some useful
           variables.<itemizedlist>
               <listitem>
-                <para><varname>$pines-&gt;components</varname></para>
+                <para><varname>$_-&gt;components</varname></para>
 
                 <para>An array of the enabled components.</para>
               </listitem>
 
               <listitem>
-                <para><varname>$pines-&gt;all_components</varname></para>
+                <para><varname>$_-&gt;all_components</varname></para>
 
                 <para>An array of all installed components.</para>
               </listitem>
 
               <listitem>
-                <para><varname>$pines-&gt;services</varname></para>
+                <para><varname>$_-&gt;services</varname></para>
 
                 <para>An array of the provided system services.</para>
               </listitem>
 
               <listitem>
-                <para><varname>$pines-&gt;request_component</varname></para>
+                <para><varname>$_-&gt;request_component</varname></para>
 
                 <para>The requested component. This is passed as the request
                 variable "option".</para>
               </listitem>
 
               <listitem>
-                <para><varname>$pines-&gt;request_action</varname></para>
+                <para><varname>$_-&gt;request_action</varname></para>
 
                 <para>The requested action. This is passed as the request
                 variable "action".</para>
               </listitem>
 
               <listitem>
-                <para><varname>$pines-&gt;component</varname></para>
+                <para><varname>$_-&gt;component</varname></para>
 
                 <para>The currently running or most recently called
                 component/option.</para>
               </listitem>
 
               <listitem>
-                <para><varname>$pines-&gt;action</varname></para>
+                <para><varname>$_-&gt;action</varname></para>
 
                 <para>The currently running or most recently called
                 action.</para>
@@ -865,13 +865,13 @@ if (
           <para>The following variables are not loaded until after the
           component init scripts are run.<itemizedlist>
               <listitem>
-                <para><varname>$pines-&gt;current_template</varname></para>
+                <para><varname>$_-&gt;current_template</varname></para>
 
                 <para>The name of the current template.</para>
               </listitem>
 
               <listitem>
-                <para><varname>$pines-&gt;template</varname></para>
+                <para><varname>$_-&gt;template</varname></para>
 
                 <para>The current template object.</para>
               </listitem>
@@ -880,10 +880,10 @@ if (
       </section>
 
       <section>
-        <title>Pines Object</title>
+        <title>Core PHP Object</title>
 
-        <para>As well as containing services and variables, the Pines object
-        (<varname>$pines</varname>) also includes several useful
+        <para>As well as containing services and variables, the core object
+        (<varname>$_</varname>) also includes several useful
         methods.</para>
 
         <section>
@@ -912,7 +912,7 @@ if (
           specified, <methodname>action</methodname> will use the default
           component specified in 2be's configuration. Once the correct file
           is found, <methodname>action</methodname> will run the file. The
-          <varname>$pines</varname> variable is already included when the file
+          <varname>$_</varname> variable is already included when the file
           is run, so there is no need to include it with the
           <keysym>global</keysym> keyword.<note>
               <para>Since actions are run inside a function, they are not in
@@ -939,13 +939,13 @@ if (
               <bridgehead>Manually Running an Action</bridgehead>
 
               <programlisting language="php">// Run a specific action.
-$pines-&gt;action('com_example', 'widgets/list');
+$_-&gt;action('com_example', 'widgets/list');
 
 // Run a component's default action.
-$pines-&gt;action('com_example');
+$_-&gt;action('com_example');
 
 // Run the default component's default action.
-$pines-&gt;action();</programlisting>
+$_-&gt;action();</programlisting>
             </informalexample></para>
         </section>
 
@@ -1000,10 +1000,10 @@ $pines-&gt;action();</programlisting>
               <bridgehead>Reading Session Data</bridgehead>
 
               <programlisting language="php">// Open the session for reading.
-$pines-&gt;session('read');
+$_-&gt;session('read');
 
 // Also works.
-$pines-&gt;session();
+$_-&gt;session();
 
 // Now the session variable is full of the session data.
 echo $_SESSION['messages'];</programlisting>
@@ -1011,14 +1011,14 @@ echo $_SESSION['messages'];</programlisting>
               <bridgehead>Writing Session Data</bridgehead>
 
               <programlisting language="php">// Open the session for writing.
-$pines-&gt;session('write');
+$_-&gt;session('write');
 // Now use the session variable normally.
 $_SESSION['messages'] = '';
 
 foreach ($messages as $cur_message) {
     if (empty($cur_message)) {
         // If you exit out of the script, remember to close the session.
-        $pines-&gt;session('close');
+        $_-&gt;session('close');
         pines_error('Broken message encountered.');
         return;
     }
@@ -1026,7 +1026,7 @@ foreach ($messages as $cur_message) {
 }
 
 // Now that we're done, close the session.
-$pines-&gt;session('close');
+$_-&gt;session('close');
 pines_notice('Messages saved.');</programlisting>
             </informalexample></para>
         </section>
@@ -1034,7 +1034,7 @@ pines_notice('Messages saved.');</programlisting>
         <section>
           <title>Redirecting the User</title>
 
-          <para>The Pines object includes <methodname>redirect</methodname>, a
+          <para>The core object includes <methodname>redirect</methodname>, a
           method to redirect users to a different URL. Using this method
           ensures that any messages and errors that are queued to be displayed
           to the user will be displayed when the user reaches the destination
@@ -1045,13 +1045,13 @@ pines_notice('Messages saved.');</programlisting>
 
               <programlisting language="php">// Notices and errors will be saved.
 pines_notice('You have been redirected here.');
-$pines-&gt;redirect(pines_url('com_example', 'widgets/list'));
+$_-&gt;redirect(pines_url('com_example', 'widgets/list'));
 
 // Redirect to the homepage.
-$pines-&gt;redirect(pines_url());
+$_-&gt;redirect(pines_url());
 
 // Use a permanent redirection code.
-$pines-&gt;redirect(pines_url('com_example', 'widgets/list'), 301);</programlisting>
+$_-&gt;redirect(pines_url('com_example', 'widgets/list'), 301);</programlisting>
             </informalexample></para>
         </section>
 
@@ -1059,7 +1059,7 @@ $pines-&gt;redirect(pines_url('com_example', 'widgets/list'), 301);</programlist
           <title>Formatting Output</title>
 
           <para>There are several types of content that need to be formatted
-          correctly before being output to the user. The Pines object provides
+          correctly before being output to the user. The core object provides
           functions to allow easy formatting of this data.</para>
 
           <section>
@@ -1087,7 +1087,7 @@ $pines-&gt;redirect(pines_url('com_example', 'widgets/list'), 301);</programlist
                 <bridgehead>Formatting Content for Output</bridgehead>
 
                 <programlisting language="html+php">&lt;div&gt;
-    &lt;?php echo $pines-&gt;format_content($post-&gt;content); ?&gt;
+    &lt;?php echo $_-&gt;format_content($post-&gt;content); ?&gt;
 &lt;/div&gt;</programlisting>
               </informalexample></para>
 
@@ -1103,7 +1103,7 @@ function com_example__replace(&amp;$arguments) {
     $arguments[0] = str_replace('2be', 'Barbecue', $arguments[0]);
 }
 
-$pines-&gt;hook-&gt;add_callback('$pines-&gt;format_content', -10, 'com_example__replace');</programlisting>
+$_-&gt;hook-&gt;add_callback('$_-&gt;format_content', -10, 'com_example__replace');</programlisting>
               </informalexample></para>
           </section>
 
@@ -1251,7 +1251,7 @@ $pines-&gt;hook-&gt;add_callback('$pines-&gt;format_content', -10, 'com_example_
                 <bridgehead>Formatting a Date</bridgehead>
 
                 <programlisting language="html+php">&lt;div&gt;
-    &lt;?php echo htmlspecialchars($pines-&gt;format_date($timestamp, 'custom', 'l jS \of F Y h:i:s A', 'America/Los_Angeles')); ?&gt;
+    &lt;?php echo htmlspecialchars($_-&gt;format_date($timestamp, 'custom', 'l jS \of F Y h:i:s A', 'America/Los_Angeles')); ?&gt;
 &lt;/div&gt;</programlisting>
               </informalexample></para>
           </section>
@@ -1450,7 +1450,7 @@ $pines-&gt;hook-&gt;add_callback('$pines-&gt;format_content', -10, 'com_example_
 
               <programlisting language="html+php">&lt;div&gt;
     This warehouse has gone
-    &lt;?php echo htmlspecialchars($pines-&gt;format_date_range($last_accident, time(), '{#days# days}{#day# day}', 'America/Los_Angeles')); ?&gt;
+    &lt;?php echo htmlspecialchars($_-&gt;format_date_range($last_accident, time(), '{#days# days}{#day# day}', 'America/Los_Angeles')); ?&gt;
     without an accident.
 &lt;/div&gt;</programlisting>
             </informalexample>
@@ -1467,7 +1467,7 @@ $pines-&gt;hook-&gt;add_callback('$pines-&gt;format_content', -10, 'com_example_
                 <bridgehead>Formatting a Fuzzy Time String</bridgehead>
 
                 <programlisting language="html+php">&lt;div&gt;
-    Sale created &lt;?php echo htmlspecialchars($pines-&gt;format_fuzzy_time($sale-&gt;p_cdate)); ?&gt;.
+    Sale created &lt;?php echo htmlspecialchars($_-&gt;format_fuzzy_time($sale-&gt;p_cdate)); ?&gt;.
 &lt;/div&gt;</programlisting>
               </informalexample></para>
           </section>
@@ -1481,7 +1481,7 @@ $pines-&gt;hook-&gt;add_callback('$pines-&gt;format_content', -10, 'com_example_
                 <bridgehead>Formatting a Phone Number</bridgehead>
 
                 <programlisting language="html+php">&lt;div&gt;
-    &lt;?php echo htmlspecialchars($pines-&gt;format_phone('1800555123456')); ?&gt;
+    &lt;?php echo htmlspecialchars($_-&gt;format_phone('1800555123456')); ?&gt;
 &lt;/div&gt;</programlisting>
               </informalexample></para>
           </section>
@@ -1491,7 +1491,7 @@ $pines-&gt;hook-&gt;add_callback('$pines-&gt;format_content', -10, 'com_example_
           <title>Checking an IP Address</title>
 
           <para>There are three methods of checking whether an IP address is
-          on a given network in the Pines object.</para>
+          on a given network using the core object.</para>
 
           <simplesect>
             <title>Using CIDR Notation</title>
@@ -1501,9 +1501,9 @@ $pines-&gt;hook-&gt;add_callback('$pines-&gt;format_content', -10, 'com_example_
             network.<informalexample>
                 <bridgehead>Checking an IP Using CIDR Notation</bridgehead>
 
-                <programlisting language="php">$good = $pines-&gt;check_ip_cidr('192.168.0.5', '192.168/24'); // Returns true.
+                <programlisting language="php">$good = $_-&gt;check_ip_cidr('192.168.0.5', '192.168/24'); // Returns true.
 
-$bad = $pines-&gt;check_ip_cidr('192.168.1.5', '192.168/24'); // Returns false.</programlisting>
+$bad = $_-&gt;check_ip_cidr('192.168.1.5', '192.168/24'); // Returns false.</programlisting>
               </informalexample></para>
           </simplesect>
 
@@ -1514,9 +1514,9 @@ $bad = $pines-&gt;check_ip_cidr('192.168.1.5', '192.168/24'); // Returns false.<
             an IP address using an IP range.<informalexample>
                 <bridgehead>Checking an IP Using an IP Range</bridgehead>
 
-                <programlisting language="php">$good = $pines-&gt;check_ip_range('192.168.0.5', '192.168.0.0', '192.168.0.255'); // Returns true.
+                <programlisting language="php">$good = $_-&gt;check_ip_range('192.168.0.5', '192.168.0.0', '192.168.0.255'); // Returns true.
 
-$bad = $pines-&gt;check_ip_range('192.168.1.5', '192.168.0.0', '192.168.0.255'); // Returns false.</programlisting>
+$bad = $_-&gt;check_ip_range('192.168.1.5', '192.168.0.0', '192.168.0.255'); // Returns false.</programlisting>
               </informalexample></para>
           </simplesect>
 
@@ -1528,9 +1528,9 @@ $bad = $pines-&gt;check_ip_range('192.168.1.5', '192.168.0.0', '192.168.0.255');
             network.<informalexample>
                 <bridgehead>Checking an IP Using a Subnet Mask</bridgehead>
 
-                <programlisting language="php">$good = $pines-&gt;check_ip_subnet('192.168.0.5', '192.168.0.0', '255.255.255.0'); // Returns true.
+                <programlisting language="php">$good = $_-&gt;check_ip_subnet('192.168.0.5', '192.168.0.0', '255.255.255.0'); // Returns true.
 
-$bad = $pines-&gt;check_ip_subnet('192.168.1.5', '192.168.0.0', '255.255.255.0'); // Returns false.</programlisting>
+$bad = $_-&gt;check_ip_subnet('192.168.1.5', '192.168.0.0', '255.255.255.0'); // Returns false.</programlisting>
               </informalexample></para>
           </simplesect>
         </section>
@@ -1653,13 +1653,13 @@ $bad = $pines-&gt;check_ip_subnet('192.168.1.5', '192.168.0.0', '255.255.255.0')
               Components</bridgehead>
 
               <programlisting language="php">// Access 2be's "system_name" configuration option:
-echo $pines-&gt;config-&gt;system_name;
+echo $_-&gt;config-&gt;system_name;
 
 // Access a component's "website_name" configuration option:
-echo $pines-&gt;config-&gt;com_example-&gt;website_name;
+echo $_-&gt;config-&gt;com_example-&gt;website_name;
 
 // Access a template's "tagline" configuration option:
-echo $pines-&gt;config-&gt;tpl_green-&gt;tagline;</programlisting>
+echo $_-&gt;config-&gt;tpl_green-&gt;tagline;</programlisting>
             </informalexample></para>
 
           <caution>
@@ -1722,6 +1722,12 @@ echo $pines-&gt;config-&gt;tpl_green-&gt;tagline;</programlisting>
                   </row>
 
                   <row>
+                    <entry>core</entry>
+
+                    <entry>Check 2be's version.</entry>
+                  </row>
+
+                  <row>
                     <entry>extension</entry>
 
                     <entry>Check whether PHP extensions are installed,
@@ -1756,12 +1762,6 @@ echo $pines-&gt;config-&gt;tpl_green-&gt;tagline;</programlisting>
                   </row>
 
                   <row>
-                    <entry>pines</entry>
-
-                    <entry>Check Pine's version.</entry>
-                  </row>
-
-                  <row>
                     <entry>request</entry>
 
                     <entry>Check the requested component and action.
@@ -1784,15 +1784,15 @@ echo $pines-&gt;config-&gt;tpl_green-&gt;tagline;</programlisting>
           <methodname>help()</methodname> method.<informalexample>
               <bridgehead>Using the Dependency Checker</bridgehead>
 
-              <programlisting language="php">if (!$pines-&gt;depend-&gt;check('component', 'com_example&gt;=2.0|com_sample')) {
+              <programlisting language="php">if (!$_-&gt;depend-&gt;check('component', 'com_example&gt;=2.0|com_sample')) {
     pines_notice('This feature is only available when you have com_example 2.0 or higher, or com_sample.');
     return;
 }
-if (!$pines-&gt;depend-&gt;check('extension', 'mysql|mysqli')) {
+if (!$_-&gt;depend-&gt;check('extension', 'mysql|mysqli')) {
     pines_notice('It appears the MySQL extension is not installed. Please install it to continue.');
     return;
 }
-$help_array = $pines-&gt;depend-&gt;help('extension');</programlisting>
+$help_array = $_-&gt;depend-&gt;help('extension');</programlisting>
             </informalexample></para>
 
           <para>Adding a new dependency checker is easy. Add a new entry to
@@ -1828,10 +1828,10 @@ EOF;
     return ($value == 'barbecue');
 }
 
-$pines-&gt;depend-&gt;checkers['something'] = 'com_example__check_something';
+$_-&gt;depend-&gt;checkers['something'] = 'com_example__check_something';
 
 // Call the new checker like this:
-// $pines-&gt;depend-&gt;check('something', 'a value'); // Would return false.</programlisting>
+// $_-&gt;depend-&gt;check('something', 'a value'); // Would return false.</programlisting>
             </informalexample></para>
 
           <caution>
@@ -1855,7 +1855,7 @@ $pines-&gt;depend-&gt;checkers['something'] = 'com_example__check_something';
               <bridgehead>Using the Simple Parser</bridgehead>
 
               <programlisting language="php">function com_example__check_something($value, $help = false) {
-    global $pines;
+    global $_;
     if ($help) {
         $return = array();
         $return['cname'] = 'Barbecue Checker';
@@ -1879,14 +1879,14 @@ EOF;
             strpos($value, '(') !== false ||
             strpos($value, ')') !== false
         )
-        return $pines-&gt;depend-&gt;simple_parse($value, 'com_example__check_something');
+        return $_-&gt;depend-&gt;simple_parse($value, 'com_example__check_something');
     return ($value == 'barbecue');
 }
 
-$pines-&gt;depend-&gt;checkers['something'] = 'com_example__check_something';
+$_-&gt;depend-&gt;checkers['something'] = 'com_example__check_something';
 
 // Call the new checker like this:
-// $pines-&gt;depend-&gt;check('something', 'a value|barbecue'); // Would return true.</programlisting>
+// $_-&gt;depend-&gt;check('something', 'a value|barbecue'); // Would return true.</programlisting>
             </informalexample></para>
 
           <para>The checker's help array must contain the following
@@ -1954,11 +1954,11 @@ $pines-&gt;depend-&gt;checkers['something'] = 'com_example__check_something';
               <programlisting language="php">// Using an extra function to call the real checker keeps the com_example
 // class from being loaded on each script run.
 function com_example__check_something($value) {
-    global $pines;
-    return $pines-&gt;com_example-&gt;something($value);
+    global $_;
+    return $_-&gt;com_example-&gt;something($value);
 }
 
-$pines-&gt;depend-&gt;checkers['something'] = 'com_example__check_something';</programlisting>
+$_-&gt;depend-&gt;checkers['something'] = 'com_example__check_something';</programlisting>
             </informalexample></para>
 
           <note>
@@ -1972,7 +1972,7 @@ $pines-&gt;depend-&gt;checkers['something'] = 'com_example__check_something';</p
           <title>Hook (<classname>hook</classname> class)</title>
 
           <para>The hook service provides method hooking for the entire
-          <varname>$pines</varname> object and most classes. Method hooking
+          <varname>$_</varname> object and most classes. Method hooking
           allows a component to intercept function calls to alter arguments,
           alter return values, and/or change the actual function being
           called.</para>
@@ -2031,11 +2031,11 @@ $pines-&gt;depend-&gt;checkers['something'] = 'com_example__check_something';</p
                 <bridgehead>Hooking an Object</bridgehead>
 
                 <programlisting language="php">$widget = new com_example_widget;
-$pines-&gt;hook-&gt;hook_object($widget, 'com_example_widget-&gt;', false);</programlisting>
+$_-&gt;hook-&gt;hook_object($widget, 'com_example_widget-&gt;', false);</programlisting>
               </informalexample></para>
 
             <note>
-              <para><varname>$pines</varname>, along with all objects within
+              <para><varname>$_</varname>, along with all objects within
               it (except the hook, depend, config, and info services) are
               automatically hooked. Most components are designed to
               automatically hook their classes using the
@@ -2122,13 +2122,13 @@ $pines-&gt;hook-&gt;hook_object($widget, 'com_example_widget-&gt;', false);</pro
 
 // Run the callback before something() is called on com_example.
 // Note the single quotes. Double quotes would be parsed by PHP and not work.
-$pines-&gt;hook-&gt;add_callback('$pines-&gt;com_example-&gt;something', -10, 'com_example__callback');
+$_-&gt;hook-&gt;add_callback('$_-&gt;com_example-&gt;something', -10, 'com_example__callback');
 
 // Run the callback before delete() is called on com_example_widget.
-$pines-&gt;hook-&gt;add_callback('com_example_widget-&gt;delete', -1, 'com_example__callback');
+$_-&gt;hook-&gt;add_callback('com_example_widget-&gt;delete', -1, 'com_example__callback');
 
 // Run the callback after every method call is caught.
-$pines-&gt;hook-&gt;add_callback('all', 10, 'com_example__callback');</programlisting>
+$_-&gt;hook-&gt;add_callback('all', 10, 'com_example__callback');</programlisting>
               </informalexample></para>
 
             <para>To manually run callbacks (without an originating function
@@ -2136,7 +2136,7 @@ $pines-&gt;hook-&gt;add_callback('all', 10, 'com_example__callback');</programli
             <methodname>run_callbacks()</methodname>.<informalexample>
                 <bridgehead>Manually Run Callbacks</bridgehead>
 
-                <programlisting language="php">$pines-&gt;hook-&gt;run_callbacks('+com_games_player_bonus');</programlisting>
+                <programlisting language="php">$_-&gt;hook-&gt;run_callbacks('+com_games_player_bonus');</programlisting>
               </informalexample></para>
           </simplesect>
         </section>
@@ -2297,7 +2297,7 @@ return array(
     'short_description' =&gt; 'Manages system configuration',
     'description' =&gt; 'Allows you to edit your system\'s configuration and the configuration of any installed components.',
     'depend' =&gt; array(
-        'pines' =&gt; '&lt;2',
+        'core' =&gt; '&lt;2',
         'component' =&gt; 'com_jquery&amp;com_ptags&amp;com_pgrid&amp;com_pform'
     ),
     'recommend' =&gt; array(
@@ -2314,13 +2314,13 @@ return array(
               <bridgehead>Accessing Info for 2be and Components</bridgehead>
 
               <programlisting language="php">// Access 2be's "license" info entry:
-echo $pines-&gt;info-&gt;license;
+echo $_-&gt;info-&gt;license;
 
 // Access a component's "description" info entry:
-echo $pines-&gt;info-&gt;com_example-&gt;description;
+echo $_-&gt;info-&gt;com_example-&gt;description;
 
 // Access a template's "version" info entry:
-echo $pines-&gt;info-&gt;tpl_green-&gt;version;</programlisting>
+echo $_-&gt;info-&gt;tpl_green-&gt;version;</programlisting>
             </informalexample></para>
         </section>
 
@@ -2494,14 +2494,14 @@ echo $pines-&gt;info-&gt;tpl_green-&gt;version;</programlisting>
               <bridgehead>Adding a Menu Entry Through Code</bridgehead>
 
               <programlisting language="php">// Using pines_url().
-$pines-&gt;menu-&gt;menu_arrays[] = array(
+$_-&gt;menu-&gt;menu_arrays[] = array(
     'path' =&gt; 'main_menu/example',
     'text' =&gt; 'Example',
     'href' =&gt; array('com_example', 'something', array('id' =&gt; $some_id)) // These are used as arguments for pines_url().
 );
 
 // Using a URL. This is placed under the above entry. It only appears when the user is logged in. It opens in a new window.
-$pines-&gt;menu-&gt;menu_arrays[] = array(
+$_-&gt;menu-&gt;menu_arrays[] = array(
     'path' =&gt; 'main_menu/example/google',
     'text' =&gt; 'Google',
     'href' =&gt; 'http://google.com',
@@ -2641,10 +2641,10 @@ $pines-&gt;menu-&gt;menu_arrays[] = array(
               <programlisting language="php">$module = new module;
 
 // Attach the module.
-$pines-&gt;page-&gt;attach_module($module, 'content');
+$_-&gt;page-&gt;attach_module($module, 'content');
 
 // Detach the module.
-$pines-&gt;page-&gt;detach_module($module, 'content');</programlisting>
+$_-&gt;page-&gt;detach_module($module, 'content');</programlisting>
             </informalexample></para>
 
           <para>The template will need to place the module content in the
@@ -2656,7 +2656,7 @@ $pines-&gt;page-&gt;detach_module($module, 'content');</programlisting>
               Model</bridgehead>
 
               <programlisting language="html+php">&lt;div id="left"&gt;
-    &lt;?php echo $pines-&gt;page-&gt;render_modules('left', 'module_sidebar'); ?&gt;
+    &lt;?php echo $_-&gt;page-&gt;render_modules('left', 'module_sidebar'); ?&gt;
 &lt;/div&gt;</programlisting>
             </informalexample></para>
 
@@ -2668,13 +2668,13 @@ $pines-&gt;page-&gt;detach_module($module, 'content');</programlisting>
               <bridgehead>Overriding the Page</bridgehead>
 
               <programlisting language="php">// Turn override on.
-$pines-&gt;page-&gt;override = true;
+$_-&gt;page-&gt;override = true;
 
 // Output JSON data.
-$pines-&gt;page-&gt;override_doc(json_encode($var));
+$_-&gt;page-&gt;override_doc(json_encode($var));
 
 // If you need to retrieve the data:
-$data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
+$data = $_-&gt;page-&gt;get_override_doc();</programlisting>
             </informalexample></para>
 
           <para>The page is rendered when the system init script
@@ -2701,7 +2701,7 @@ $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
         <title>Core Functions</title>
 
         <para>2be Core includes several functions. Most of these functions
-        are just shortcuts to common methods of the Pines object and system
+        are just shortcuts to common methods of the core object and system
         services.<table>
             <title>Core Functions</title>
 
@@ -2735,42 +2735,42 @@ $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
                   <entry><function>format_content</function></entry>
 
                   <entry>Shortcut to
-                  <code>$pines-&gt;format_content()</code>.</entry>
+                  <code>$_-&gt;format_content()</code>.</entry>
                 </row>
 
                 <row>
                   <entry><function>format_date</function></entry>
 
                   <entry>Shortcut to
-                  <code>$pines-&gt;format_date()</code>.</entry>
+                  <code>$_-&gt;format_date()</code>.</entry>
                 </row>
 
                 <row>
                   <entry><function>format_date_range</function></entry>
 
                   <entry>Shortcut to
-                  <code>$pines-&gt;format_date_range()</code>.</entry>
+                  <code>$_-&gt;format_date_range()</code>.</entry>
                 </row>
 
                 <row>
                   <entry><function>format_fuzzy_time</function></entry>
 
                   <entry>Shortcut to
-                  <code>$pines-&gt;format_fuzzy_time()</code>.</entry>
+                  <code>$_-&gt;format_fuzzy_time()</code>.</entry>
                 </row>
 
                 <row>
                   <entry><function>format_phone</function></entry>
 
                   <entry>Shortcut to
-                  <code>$pines-&gt;format_phone()</code>.</entry>
+                  <code>$_-&gt;format_phone()</code>.</entry>
                 </row>
 
                 <row>
                   <entry><function>gatekeeper</function></entry>
 
                   <entry>Shortcut to
-                  <code>$pines-&gt;user_manager-&gt;gatekeeper()</code>. If no
+                  <code>$_-&gt;user_manager-&gt;gatekeeper()</code>. If no
                   user manager is installed, <function>gatekeeper</function>
                   returns true.</entry>
                 </row>
@@ -2785,28 +2785,28 @@ $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
                 <row>
                   <entry><function>pines_action</function></entry>
 
-                  <entry>Shortcut to <code>$pines-&gt;action()</code>.</entry>
+                  <entry>Shortcut to <code>$_-&gt;action()</code>.</entry>
                 </row>
 
                 <row>
                   <entry><function>pines_depend</function></entry>
 
                   <entry>Shortcut to
-                  <code>$pines-&gt;depend-&gt;check()</code>.</entry>
+                  <code>$_-&gt;depend-&gt;check()</code>.</entry>
                 </row>
 
                 <row>
                   <entry><function>pines_error</function></entry>
 
                   <entry>Shortcut to
-                  <code>$pines-&gt;page-&gt;error()</code>.</entry>
+                  <code>$_-&gt;page-&gt;error()</code>.</entry>
                 </row>
 
                 <row>
                   <entry><function>pines_log</function></entry>
 
                   <entry>Shortcut to
-                  <code>$pines-&gt;log_manager-&gt;log()</code>. If no log
+                  <code>$_-&gt;log_manager-&gt;log()</code>. If no log
                   manager is installed, <function>pines_log</function> returns
                   true.</entry>
                 </row>
@@ -2815,28 +2815,28 @@ $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
                   <entry><function>pines_notice</function></entry>
 
                   <entry>Shortcut to
-                  <code>$pines-&gt;page-&gt;notice()</code>.</entry>
+                  <code>$_-&gt;page-&gt;notice()</code>.</entry>
                 </row>
 
                 <row>
                   <entry><function>pines_redirect</function></entry>
 
                   <entry>Shortcut to
-                  <code>$pines-&gt;redirect()</code>.</entry>
+                  <code>$_-&gt;redirect()</code>.</entry>
                 </row>
 
                 <row>
                   <entry><function>pines_session</function></entry>
 
                   <entry>Shortcut to
-                  <code>$pines-&gt;session()</code>.</entry>
+                  <code>$_-&gt;session()</code>.</entry>
                 </row>
 
                 <row>
                   <entry><function>pines_url</function></entry>
 
                   <entry>Shortcut to
-                  <code>$pines-&gt;template-&gt;url()</code>. If there is no
+                  <code>$_-&gt;template-&gt;url()</code>. If there is no
                   current template, <function>pines_url</function> returns
                   null.</entry>
                 </row>
@@ -2845,7 +2845,7 @@ $data = $pines-&gt;page-&gt;get_override_doc();</programlisting>
                   <entry><function>punt_user</function></entry>
 
                   <entry>Shortcut to
-                  <code>$pines-&gt;user_manager-&gt;punt_user()</code>. If no
+                  <code>$_-&gt;user_manager-&gt;punt_user()</code>. If no
                   user manager is installed <function>punt_user</function>
                   redirects the user to the homepage.</entry>
                 </row>
@@ -3154,7 +3154,7 @@ pines_log($module-&gt;get_content());</programlisting>
                         </listitem>
 
                         <listitem>
-                          <para>Loads <varname>$pines</varname>.<itemizedlist>
+                          <para>Loads <varname>$_</varname>.<itemizedlist>
                               <listitem>
                                 <para>Loads config service.<itemizedlist>
                                     <listitem>
@@ -3169,7 +3169,7 @@ pines_log($module-&gt;get_content());</programlisting>
 
                                     <listitem>
                                       <para>Sets
-                                      <varname>$pines-&gt;config-&gt;location</varname> to
+                                      <varname>$_-&gt;config-&gt;location</varname> to
                                       static location, or relative location if static is
                                       not set.</para>
                                     </listitem>
@@ -3265,7 +3265,7 @@ pines_log($module-&gt;get_content());</programlisting>
                         </listitem>
 
                         <listitem>
-                          <para>Hooks the <varname>$pines</varname>
+                          <para>Hooks the <varname>$_</varname>
                           object.</para>
                         </listitem>
 
@@ -3355,7 +3355,7 @@ pines_log($module-&gt;get_content());</programlisting>
                         <listitem>
                           <para>Checks system config again in case config has
                           changed. (Repeats same steps as
-                          <varname>$pines</varname> does when checking
+                          <varname>$_</varname> does when checking
                           config.)</para>
                         </listitem>
                       </itemizedlist></para>
@@ -3538,10 +3538,10 @@ pines_log($module-&gt;get_content());</programlisting>
               <bridgehead>Enabling and Disabling Components</bridgehead>
 
               <programlisting language="php">// Enable the component com_good.
-$pines-&gt;configurator-&gt;enable_component('com_good');
+$_-&gt;configurator-&gt;enable_component('com_good');
 
 // Disable the component com_bad.
-$pines-&gt;configurator-&gt;disable_component('com_bad');</programlisting>
+$_-&gt;configurator-&gt;disable_component('com_bad');</programlisting>
             </informalexample></para>
 
           <section>
@@ -3722,13 +3722,13 @@ return array (
  * @copyright SciActive.com
  * @link http://sciactive.com/
  */
-/* @var $pines pines *//* @var $this module */
+/* @var $_ core *//* @var $this module */
 defined('P_RUN') or die('Direct access prohibited');
 $this-&gt;title = 'Editors';
 // Load the editor.
-$pines-&gt;editor-&gt;load();
+$_-&gt;editor-&gt;load();
 // Load a custom stylesheet.
-$pines-&gt;editor-&gt;add_css($pines-&gt;config-&gt;location.'components/com_example/includes/custom.css');
+$_-&gt;editor-&gt;add_css($_-&gt;config-&gt;location.'components/com_example/includes/custom.css');
 ?&gt;
 &lt;div&gt;Regular Editor&lt;/div&gt;
 &lt;div&gt;&lt;textarea rows="3" cols="35" class="peditor"&gt;&lt;/textarea&gt;&lt;/div&gt;
@@ -3886,7 +3886,7 @@ $entity-&gt;foo-&gt;save();
 
 $guid = $entity-&gt;guid;
 unset($entity);
-$entity = $pines-&gt;entity_manager-&gt;get_entity($guid);
+$entity = $_-&gt;entity_manager-&gt;get_entity($guid);
 
 isset($entity-&gt;foo-&gt;guid); // False
 echo $entity-&gt;foo-&gt;bar; // Outputs nothing.</programlisting>
@@ -3903,7 +3903,7 @@ $entity-&gt;save(); // now foo has been saved.
 
 $guid = $entity-&gt;guid;
 unset($entity);
-$entity = $pines-&gt;entity_manager-&gt;get_entity($guid);
+$entity = $_-&gt;entity_manager-&gt;get_entity($guid);
 
 isset($entity-&gt;foo-&gt;guid); // True
 echo $entity-&gt;foo-&gt;bar; // Outputs 'It works!'.</programlisting>
@@ -3961,9 +3961,9 @@ $entity-&gt;foo-&gt;bar = 'Old value.';
 $entity-&gt;foo-&gt;save();
 $entity-&gt;save();
 
-$entity = $pines-&gt;entity_manager-&gt;get_entity($entity-&gt;guid);
+$entity = $_-&gt;entity_manager-&gt;get_entity($entity-&gt;guid);
 
-$inst_of_foo = $pines-&gt;entity_manager-&gt;get_entity($entity-&gt;foo-&gt;guid);
+$inst_of_foo = $_-&gt;entity_manager-&gt;get_entity($entity-&gt;foo-&gt;guid);
 $inst_of_foo-&gt;bar = 'New value.';
 $inst_of_foo-&gt;save();
 
@@ -3981,7 +3981,7 @@ echo $entity-&gt;foo-&gt;bar; // Outputs 'New value.'</programlisting>
 $entity-&gt;foo = 'Old value.';
 $entity-&gt;save();
 
-$inst_of_ent = $pines-&gt;entity_manager-&gt;get_entity($entity-&gt;guid);
+$inst_of_ent = $_-&gt;entity_manager-&gt;get_entity($entity-&gt;guid);
 $inst_of_ent-&gt;foo = 'New value.';
 $inst_of_ent-&gt;save();
 
@@ -4006,14 +4006,14 @@ echo $entity-&gt;foo; // Outputs 'New value.'</programlisting>
 // Save the entity.
 $entity-&gt;save();
 // or
-$pines-&gt;entity_manager-&gt;save_entity($entity);
+$_-&gt;entity_manager-&gt;save_entity($entity);
 
 // Delete the entity.
 $entity-&gt;delete();
 // or
-$pines-&gt;entity_manager-&gt;delete_entity($entity);
+$_-&gt;entity_manager-&gt;delete_entity($entity);
 // or
-$pines-&gt;entity_manager-&gt;delete_entity_by_id($entity-&gt;guid);</programlisting>
+$_-&gt;entity_manager-&gt;delete_entity_by_id($entity-&gt;guid);</programlisting>
               </informalexample></para>
 
             <para>Several methods are provided by entities to find and compare
@@ -4120,7 +4120,7 @@ echo $entity-&gt;array_search($array); // Outputs 'bar'</programlisting>
               </itemizedlist><informalexample>
                 <bridgehead>Sorting Entities</bridgehead>
 
-                <programlisting language="php">$cats = $pines-&gt;entity_manager-&gt;get_entities(
+                <programlisting language="php">$cats = $_-&gt;entity_manager-&gt;get_entities(
         array('class' =&gt; com_foobar_category),
         array('&amp;',
             'tag' =&gt; array('com_foobar', 'category')
@@ -4131,13 +4131,13 @@ $case_sensitive = false;
 $reverse = false;
 
 // Sort categories hierarchically by their name.
-$pines-&gt;entity_manager-&gt;hsort($cats, 'name', 'parent', $case_sensitive, $reverse);
+$_-&gt;entity_manager-&gt;hsort($cats, 'name', 'parent', $case_sensitive, $reverse);
 
 // Sort categories by their parent's name.
-$pines-&gt;entity_manager-&gt;psort($cats, 'name', 'parent', $case_sensitive, $reverse);
+$_-&gt;entity_manager-&gt;psort($cats, 'name', 'parent', $case_sensitive, $reverse);
 
 // Sort categories by their name.
-$pines-&gt;entity_manager-&gt;sort($cats, 'name', $case_sensitive, $reverse);</programlisting>
+$_-&gt;entity_manager-&gt;sort($cats, 'name', $case_sensitive, $reverse);</programlisting>
               </informalexample></para>
           </section>
 
@@ -4575,16 +4575,16 @@ pines_notice('Hooray! I found the baz you wanted and the cron user!');</programl
                 <bridgehead>Getting Entities by Querying</bridgehead>
 
                 <programlisting language="php">// Get all entities using the entity class.
-$entities = $pines-&gt;entity_manager-&gt;get_entities();
+$entities = $_-&gt;entity_manager-&gt;get_entities();
 
 // Get only the first entity.
-$entity = $pines-&gt;entity_manager-&gt;get_entity();
+$entity = $_-&gt;entity_manager-&gt;get_entity();
 
 // Get the last entity.
-$entity = $pines-&gt;entity_manager-&gt;get_entity(array('reverse' =&gt; true));
+$entity = $_-&gt;entity_manager-&gt;get_entity(array('reverse' =&gt; true));
 
 // Get all baz entities, using the com_foobar_baz class.
-$entities = $pines-&gt;entity_manager-&gt;get_entities(
+$entities = $_-&gt;entity_manager-&gt;get_entities(
         array('class' =&gt; com_foobar_baz),
         array('&amp;',
             'tag' =&gt; array('com_foobar', 'baz')
@@ -4592,7 +4592,7 @@ $entities = $pines-&gt;entity_manager-&gt;get_entities(
     );
 
 // Get the five newest baz entities.
-$entities = $pines-&gt;entity_manager-&gt;get_entities(
+$entities = $_-&gt;entity_manager-&gt;get_entities(
         array('class' =&gt; com_foobar_baz, 'reverse' =&gt; true, 'limit' =&gt; 5),
         array('&amp;',
             'tag' =&gt; array('com_foobar', 'baz')
@@ -4600,7 +4600,7 @@ $entities = $pines-&gt;entity_manager-&gt;get_entities(
     );
 
 // Get baz entities with names.
-$entities = $pines-&gt;entity_manager-&gt;get_entities(
+$entities = $_-&gt;entity_manager-&gt;get_entities(
         array('class' =&gt; com_foobar_baz),
         array('&amp;',
             'tag' =&gt; array('com_foobar', 'baz'),
@@ -4609,7 +4609,7 @@ $entities = $pines-&gt;entity_manager-&gt;get_entities(
     );
 
 // Get baz entities without names.
-$entities = $pines-&gt;entity_manager-&gt;get_entities(
+$entities = $_-&gt;entity_manager-&gt;get_entities(
         array('class' =&gt; com_foobar_baz),
         array('&amp;',
             'tag' =&gt; array('com_foobar', 'baz'),
@@ -4618,7 +4618,7 @@ $entities = $pines-&gt;entity_manager-&gt;get_entities(
     );
 
 // Get baz entities with either first names or last names.
-$entities = $pines-&gt;entity_manager-&gt;get_entities(
+$entities = $_-&gt;entity_manager-&gt;get_entities(
         array('class' =&gt; com_foobar_baz),
         array('&amp;',
             'tag' =&gt; array('com_foobar', 'baz')
@@ -4629,7 +4629,7 @@ $entities = $pines-&gt;entity_manager-&gt;get_entities(
     );
 
 // Get baz entities created since yesterday.
-$entities = $pines-&gt;entity_manager-&gt;get_entities(
+$entities = $_-&gt;entity_manager-&gt;get_entities(
         array('class' =&gt; com_foobar_baz),
         array('&amp;',
             'tag' =&gt; array('com_foobar', 'baz'),
@@ -4638,7 +4638,7 @@ $entities = $pines-&gt;entity_manager-&gt;get_entities(
     );
 
 // Get baz entities with names, who either make not greater than 8 dollars pay or are under 22.
-$entities = $pines-&gt;entity_manager-&gt;get_entities(
+$entities = $_-&gt;entity_manager-&gt;get_entities(
         array('class' =&gt; com_foobar_baz),
         array('&amp;',
             'tag' =&gt; array('com_foobar', 'baz'),
@@ -4651,7 +4651,7 @@ $entities = $pines-&gt;entity_manager-&gt;get_entities(
     );
 
 // Get baz entities named Clark, James, Chris, Christopher, Jake, or Jacob.
-$entities = $pines-&gt;entity_manager-&gt;get_entities(
+$entities = $_-&gt;entity_manager-&gt;get_entities(
         array('class' =&gt; com_foobar_baz),
         array('&amp;',
             'tag' =&gt; array('com_foobar', 'baz')
@@ -4669,7 +4669,7 @@ $entities = $pines-&gt;entity_manager-&gt;get_entities(
     );
 
 // Get all baz entities, regardless of whether the logged in user has access to them.
-$entities = $pines-&gt;entity_manager-&gt;get_entities(
+$entities = $_-&gt;entity_manager-&gt;get_entities(
         array('class' =&gt; com_foobar_baz, 'skip_ac' =&gt; true),
         array('&amp;',
             'tag' =&gt; array('com_foobar', 'baz')
@@ -4713,19 +4713,18 @@ $entities = $pines-&gt;entity_manager-&gt;get_entities(
                 <programlisting language="php">@set_time_limit(3600); // Make sure the script doesn't terminate before the entities are exported/imported.
 
 // Export entities to a file.
-$pines-&gt;entity_manager-&gt;export($filename);
+$_-&gt;entity_manager-&gt;export($filename);
 
 // Export entities to the client.
-$pines-&gt;entity_manager-&gt;export_print();
+$_-&gt;entity_manager-&gt;export_print();
 
 // Import entities from a file.
-$pines-&gt;entity_manager-&gt;import($filename);</programlisting>
+$_-&gt;entity_manager-&gt;import($filename);</programlisting>
               </informalexample></para>
 
             <para>The format of an entity export file is simple, and readable
-            by all entity managers. The file extension, PEX, stands for Pines
-            Entity eXchange. Here is an example of an exported entity
-            file.<informalexample>
+            by all entity managers. The file extension is PEX. Here is an
+			example of an exported entity file.<informalexample>
                 <bridgehead>Example Entity Export File (PEX)</bridgehead>
 
                 <programlisting># 2be Entity Export
@@ -4829,7 +4828,7 @@ $pines-&gt;entity_manager-&gt;import($filename);</programlisting>
 $entity = com_foobar_baz::factory();
 
 // Now give it a more friendly ID than GUID.
-$entity-&gt;id = $pines-&gt;entity_manager-&gt;new_uid('com_foobar_baz');
+$entity-&gt;id = $_-&gt;entity_manager-&gt;new_uid('com_foobar_baz');
 $entity-&gt;save();</programlisting>
               </informalexample></para>
 
@@ -4858,10 +4857,10 @@ $entity-&gt;save();</programlisting>
               <bridgehead>Using the Icon Service</bridgehead>
 
               <programlisting language="html+php">&lt;?php
-/* @var $pines pines *//* @var $this module */
+/* @var $_ core *//* @var $this module */
 defined('P_RUN') or die('Direct access prohibited');
 // Load the icons CSS.
-$pines-&gt;icons-&gt;load();
+$_-&gt;icons-&gt;load();
 ?&gt;
 &lt;div style="float: left; width: 32px; height: 32px; margin: 1em;" class="picon-32 picon-document-sign"&gt;&lt;/div&gt;
 &lt;p&gt;Your order can't be shipped until your contract is signed.&lt;/p&gt;
@@ -4877,7 +4876,7 @@ $pines-&gt;icons-&gt;load();
 
           <para>The log manager service provides an easy and simple logging
           feature for 2be. The default log manager can use the hook system
-          to log all calls to an object under <varname>$pines</varname>. The
+          to log all calls to an object under <varname>$_</varname>. The
           log manager has no restriction on the backend it can use, so log
           managers can be made for flat files, MySQL, PostgreSQL, MSSQL,
           Oracle, etc.</para>
@@ -4933,11 +4932,11 @@ $pines-&gt;icons-&gt;load();
 $user-&gt;username = 'bob';
 $user-&gt;password('changeme');
 
-$pines-&gt;log_manager-&gt;log('Trying to save a new user.'); // The log level defaults to info.
+$_-&gt;log_manager-&gt;log('Trying to save a new user.'); // The log level defaults to info.
 if ($user-&gt;save())
-    $pines-&gt;log_manager-&gt;log("Saved user {$user-&gt;username}.", 'notice');
+    $_-&gt;log_manager-&gt;log("Saved user {$user-&gt;username}.", 'notice');
 else
-    $pines-&gt;log_manager-&gt;log("Couldn't save user {$user-&gt;username}.", 'error');</programlisting>
+    $_-&gt;log_manager-&gt;log("Couldn't save user {$user-&gt;username}.", 'error');</programlisting>
             </informalexample></para>
         </section>
 
@@ -4992,12 +4991,12 @@ else
               Service</bridgehead>
 
               <programlisting language="php">// A URL suitable for a link on a page in 2be.
-$link = $pines-&gt;template-&gt;url('com_example', 'widget/edit', array('id' =&gt; $widget-&gt;guid));
+$link = $_-&gt;template-&gt;url('com_example', 'widget/edit', array('id' =&gt; $widget-&gt;guid));
 // or you can use the shortcut function:
 $link = pines_url('com_example', 'widget/edit', array('id' =&gt; $widget-&gt;guid));
 
 // A URL suitable for a link in an external page or an email.
-$link = $pines-&gt;template-&gt;url('com_example', 'widget/edit', array('id' =&gt; $widget-&gt;guid), true);
+$link = $_-&gt;template-&gt;url('com_example', 'widget/edit', array('id' =&gt; $widget-&gt;guid), true);
 
 // The URL of the home page of the 2be installation.
 $link = pines_url();</programlisting>
@@ -5084,11 +5083,11 @@ $link = pines_url();</programlisting>
  * @copyright SciActive.com
  * @link http://sciactive.com/
  */
-/* @var $pines pines *//* @var $this module */
+/* @var $_ core *//* @var $this module */
 defined('P_RUN') or die('Direct access prohibited');
 $this-&gt;title = 'Uploader';
 // Load the uploader.
-$pines-&gt;uploader-&gt;load();
+$_-&gt;uploader-&gt;load();
 ?&gt;
 &lt;div&gt;Choose or Upload a File on the Server&lt;/div&gt;
 &lt;div&gt;&lt;input class="puploader" name="upload_file" type="text" value="" /&gt;&lt;/div&gt;
@@ -5115,16 +5114,16 @@ $pines-&gt;uploader-&gt;load();
               <programlisting language="php">$file_url = idx($_REQUEST, 'upload_file');
 
 // The first step is always checking the file URL.
-if (!$pines-&gt;uploader-&gt;check($file_url)) {
+if (!$_-&gt;uploader-&gt;check($file_url)) {
     pines_notice('Invalid file path submitted!');
     return;
 }
 
 // Now get the real file path.
-$file_path = $pines-&gt;uploader-&gt;real($file_url);
+$file_path = $_-&gt;uploader-&gt;real($file_url);
 
 // And the full URL of the file.
-$file_url_full = $pines-&gt;uploader-&gt;url($file_path, true);</programlisting>
+$file_url_full = $_-&gt;uploader-&gt;url($file_path, true);</programlisting>
             </informalexample><warning>
               <para>Using a submitted URL without first checking it could
               allow a user to bypass safety features and exploit a server,
@@ -5141,7 +5140,7 @@ $file_url_full = $pines-&gt;uploader-&gt;url($file_path, true);</programlisting>
               <programlisting language="php">$file = idx($_REQUEST, 'temp_file');
 
 // Get the path to the temporary location of the file.
-$file_path = $pines-&gt;uploader-&gt;temp($file);
+$file_path = $_-&gt;uploader-&gt;temp($file);
 if (!$file_path) {
     pines_notice('Invalid file path submitted!');
     return;
@@ -5297,7 +5296,7 @@ if (!$file_path) {
 
                   <programlisting language="php">'abilities' =&gt; array(
     array('view', 'View Log', 'Let the user view the 2be log.'),
-    array('clear', 'Clear Log', 'Let the user clear (delete) the pines log.')
+    array('clear', 'Clear Log', 'Let the user clear (delete) the 2be log.')
 ),</programlisting>
                 </informalexample></para>
 
@@ -5314,7 +5313,7 @@ if (!$file_path) {
 
                   <programlisting language="php">$user = user::factory('hunter');
 // Check that the user has the ability.
-if (!$pines-&gt;user_manager-&gt;gatekeeper('com_logger/view', $user)) {
+if (!$_-&gt;user_manager-&gt;gatekeeper('com_logger/view', $user)) {
     pines_notice('Hunter can\'t view the 2be log.');
     return;
 }
@@ -5577,7 +5576,7 @@ $entity-&gt;save();</programlisting>
                   <bridgehead>Using "skip_ac" to Access Entities</bridgehead>
 
                   <programlisting language="php">// Get all baz entities, regardless of whether the logged in user has access to them.
-$entities = $pines-&gt;entity_manager-&gt;get_entities(
+$entities = $_-&gt;entity_manager-&gt;get_entities(
         array('class' =&gt; com_foobar_baz, 'skip_ac' =&gt; true),
         array('&amp;',
             'tag' =&gt; array('com_foobar', 'baz')
@@ -5864,7 +5863,7 @@ $entities = $pines-&gt;entity_manager-&gt;get_entities(
         <para>A component which implements a service must inform 2be that it
         is providing the service. To do this, the component uses an init
         script with the number 10. In the init script, it sets the service's
-        variable under <varname>$pines</varname> to a string containing the
+        variable under <varname>$_</varname> to a string containing the
         class name. For example, if a component, com_xmlentity, is providing
         the entity manager service, it would have something like the following
         example in an init script such as
@@ -5881,14 +5880,14 @@ $entities = $pines-&gt;entity_manager-&gt;get_entities(
  * @copyright SciActive.com
  * @link http://sciactive.com/
  */
-/* @var $pines pines */
+/* @var $_ core */
 defined('P_RUN') or die('Direct access prohibited');
 
 /**
  * The entity manager.
- * @global com_xmlentity $pines-&gt;entity_manager
+ * @global com_xmlentity $_-&gt;entity_manager
  */
-$pines-&gt;entity_manager = 'com_xmlentity';
+$_-&gt;entity_manager = 'com_xmlentity';
 
 ?&gt;</programlisting>
           </informalexample></para>
@@ -5927,11 +5926,11 @@ $pines-&gt;entity_manager = 'com_xmlentity';
       so you can use it without any extra code.</para>
 
       <para>The 2be JavaScript file
-      (<filename>system/includes/pines.js</filename>), which is loaded by the
+      (<filename>system/includes/core.js</filename>), which is loaded by the
       template through <filename>js.php</filename>, begins by adding an
       indexOf method to the array prototype. This ensures that the method will
       be available in all browsers. It then creates a global variable called
-      <varname>pines</varname>. This object has two variables, which are
+      <varname>$_</varname>. This object has two variables, which are
       filled by the <filename>js.php</filename> script at the end of the
       file.<itemizedlist>
           <listitem>
@@ -6111,41 +6110,41 @@ $pines-&gt;entity_manager = 'com_xmlentity';
           </tgroup>
         </table></para>
 
-      <para>Calling the <varname>pines</varname> object as a function is a
-      shortcut for <methodname>pines.ready</methodname>.<informalexample>
+      <para>Calling the <varname>$_</varname> object as a function is a
+      shortcut for <methodname>$_.ready</methodname>.<informalexample>
           <bridgehead>Using the 2be JavaScript Object to Load
           JavaScript</bridgehead>
 
           <programlisting language="js+php">// These files will be loaded first.
-pines.loadcss("&lt;?php echo htmlspecialchars($pines-&gt;config-&gt;location); ?&gt;components/com_example/includes/style.css");
-pines.loadcss("&lt;?php echo htmlspecialchars($pines-&gt;config-&gt;location); ?&gt;components/com_example/includes/print.css", false, {
+$_.loadcss("&lt;?php echo htmlspecialchars($_-&gt;config-&gt;location); ?&gt;components/com_example/includes/style.css");
+$_.loadcss("&lt;?php echo htmlspecialchars($_-&gt;config-&gt;location); ?&gt;components/com_example/includes/print.css", false, {
     media: "print"
 });
-pines.loadjs("&lt;?php echo htmlspecialchars($pines-&gt;config-&gt;location); ?&gt;components/com_example/includes/script1.js");
+$_.loadjs("&lt;?php echo htmlspecialchars($_-&gt;config-&gt;location); ?&gt;components/com_example/includes/script1.js");
 
 // This function won't run until all files are loaded and the DOM is ready.
-pines(function(){
+$_(function(){
     // make widgets, get the page ready, etc.
-    pines.notice("Everything is ready!");
+    $_.notice("Everything is ready!");
 });
 
 // This, however, will run right after script1.js is loaded. (The DOM will NOT be ready.)
-pines.load(function(){
-    pines.notice("Not ready yet, hold on.");
+$_.load(function(){
+    $_.notice("Not ready yet, hold on.");
     // script2.js needs this value, but it's only available in PHP, which is why I'm
     // in a load() call and not a ready() call.
-    pines.com_example_needed_value = &lt;?php echo json_encode($needed_var); ?&gt;;
+    $_.com_example_needed_value = &lt;?php echo json_encode($needed_var); ?&gt;;
 });
 
 // This script is loaded after the above function is done, so the variable is available.
-pines.loadjs("&lt;?php echo htmlspecialchars($pines-&gt;config-&gt;location); ?&gt;components/com_example/includes/script2.js");</programlisting>
+$_.loadjs("&lt;?php echo htmlspecialchars($_-&gt;config-&gt;location); ?&gt;components/com_example/includes/script2.js");</programlisting>
         </informalexample><informalexample>
-          <bridgehead>Using <methodname>pines.safe</methodname> To Sanitize
+          <bridgehead>Using <methodname>$_.safe</methodname> To Sanitize
           Untrusted Text</bridgehead>
 
           <programlisting language="js+php">var user_name = prompt("What is your name?", "");
 // Since user_name could contain HTML tags, sanitize it first.
-output.innerHTML = pines.safe(user_name);</programlisting>
+output.innerHTML = $_.safe(user_name);</programlisting>
         </informalexample></para>
 
       <para>At the end of the file, the JSON object is checked, and if not

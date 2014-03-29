@@ -1,18 +1,18 @@
 #!/bin/bash
 
 # Clone all the repos.
-git clone git://github.com/sciactive/pines-core.git
-git clone git://github.com/sciactive/pines-components.git
-git clone git://github.com/sciactive/pines-tools.git
+git clone git://github.com/sciactive/2be-core.git
+git clone git://github.com/sciactive/2be-packages.git
+git clone git://github.com/sciactive/2be-extras.git
 git clone git://github.com/sciactive/pform.git
 git clone git://github.com/sciactive/pnotify.git
 git clone git://github.com/sciactive/pgrid.git
 git clone git://github.com/sciactive/ptags.git
 
 # Output a custom log of each repo.
-gource --output-custom-log core.txt pines-core/
-gource --output-custom-log components.txt pines-components/
-gource --output-custom-log tools.txt pines-tools/
+gource --output-custom-log core.txt 2be-core/
+gource --output-custom-log components.txt 2be-packages/
+gource --output-custom-log tools.txt 2be-extras/
 gource --output-custom-log pform.txt pform/
 gource --output-custom-log pnotify.txt pnotify/
 gource --output-custom-log pgrid.txt pgrid/

@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:php="http://php.net/xsl" version="1.0">
 	<xsl:output method="html"/>
 	<xsl:template match="/menu">
-		<xsl:if test="php:function('pines_depend_xml', depends)">
+		<xsl:if test="php:function('_2be_depend_xml', depends)">
 			<p><xsl:value-of select="name" /></p>
 			<ul class="dropdown dropdown-horizontal">
 				<xsl:choose>
@@ -18,7 +18,7 @@
 		</xsl:if>
 	</xsl:template>
 	<xsl:template match="entry">
-		<xsl:if test="php:function('pines_depend_xml', depends)">
+		<xsl:if test="php:function('_2be_depend_xml', depends)">
 			<li>
 				<a>
 					<xsl:if test="href">

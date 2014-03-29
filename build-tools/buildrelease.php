@@ -216,7 +216,7 @@ they don't have to remove the file manually.");
 		</label>
 		<label>
 			<span>Filename to save as:</span>
-			<input type="text" name="file" value="pines-VERSION-STATE-DBBACKEND" />
+			<input type="text" name="file" value="2be-VERSION-STATE-DBBACKEND" />
 		</label>
 		<label>
 			<span>Remove Slim extractor: <a href="javascript:void(0);" onclick="explain_archive();">(?)</a></span>

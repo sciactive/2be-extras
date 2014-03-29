@@ -17,35 +17,35 @@ if [ ! -d "api-docs" ]; then
 fi
 cd api-docs
 
-if [ ! -d "pines" ]; then
+if [ ! -d "2be" ]; then
 	echo "Cloning git repositories..."
-	if [ ! -d "pines-core" ]; then
-		git clone git://github.com/sciactive/pines-core.git
+	if [ ! -d "2be-core" ]; then
+		git clone git://github.com/sciactive/2be-core.git
 	fi
-	if [ ! -d "pines-components" ]; then
-		git clone git://github.com/sciactive/pines-components.git
+	if [ ! -d "2be-packages" ]; then
+		git clone git://github.com/sciactive/2be-packages.git
 	fi
 
 	echo "Setting up doc installation..."
-	mkdir pines
-	mv pines-core/* pines/
-	mv pines-components/com_* pines/components/
-	mv pines-components/tpl_* pines/templates/
+	mkdir 2be
+	mv 2be-core/* 2be/
+	mv 2be-packages/com_* 2be/components/
+	mv 2be-packages/tpl_* 2be/templates/
 
 	echo "Removing git repos..."
-	rm --interactive=never -r pines-core
-	rm --interactive=never -r pines-components
+	rm --interactive=never -r 2be-core
+	rm --interactive=never -r 2be-packages
 else
 	echo "Found an existing doc installation. Using that..."
 fi
 
-if [ -d "pines-docs" ]; then
+if [ -d "2be-docs" ]; then
 	echo "Removing old docs folder..."
-	rm -r pines-docs
+	rm -r 2be-docs
 fi
 
 echo "Generating documentation..."
-mkdir pines-docs
-phpdoc project:run --sourcecode -c ../phpdoc-config.xml -p -d pines -t pines-docs
+mkdir 2be-docs
+phpdoc project:run --sourcecode -c ../phpdoc-config.xml -p -d 2be -t 2be-docs
 cd ..
 echo "Done."

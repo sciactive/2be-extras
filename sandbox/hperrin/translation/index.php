@@ -25,7 +25,7 @@ class trans {
 
 		return $this->get_translation();
 	}
-	
+
 	public function get_translation() {
 		$trans = array(
 			'Hi' => 'Hey',
@@ -40,7 +40,7 @@ class trans {
 }
 
 $trans = new trans;
-function pines_echo($message) {
+function core_echo($message) {
 	global $trans;
 	$trans->message = $message;
 	$trans->arguments = func_get_args();
@@ -51,4 +51,4 @@ function pines_echo($message) {
 
 echo (new trans('Hi'))."<br />";
 echo $trans('Bye')."<br />";
-echo pines_echo('Howdy %s. You\'ve been here %d times.', 'Bob', 9)."<br />";
+echo core_echo('Howdy %s. You\'ve been here %d times.', 'Bob', 9)."<br />";

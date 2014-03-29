@@ -2,10 +2,10 @@
 
 echo Setting up directory structure.
 mkdir "jquery.pgrid"
-mkdir "jquery.pgrid/use for pines style icons"
+mkdir "jquery.pgrid/use for picon style"
 echo Importing files.
-cp "../../pgrid/jquery.pgrid.default.icons.css" "jquery.pgrid/use for pines style icons/"
-cp "../../pgrid/jquery.pgrid.touch.icons.css" "jquery.pgrid/use for pines style icons/"
+cp "../../pgrid/jquery.pgrid.default.icons.css" "jquery.pgrid/use for picon style/"
+cp "../../pgrid/jquery.pgrid.touch.icons.css" "jquery.pgrid/use for picon style/"
 cp "../../pgrid/jquery.pgrid.default.css" "jquery.pgrid/"
 cp "../../pgrid/jquery.pgrid.touch.css" "jquery.pgrid/"
 cp "../../pgrid/jquery.pgrid.js" "jquery.pgrid/"

@@ -7,73 +7,73 @@ cd release/
 mkdir repos
 cd repos/
 
-# And get pines.
-git clone git://github.com/sciactive/pines-core.git core
-git clone git://github.com/sciactive/pines-components.git components
+# And get 2be.
+git clone git://github.com/sciactive/2be-core.git core
+git clone git://github.com/sciactive/2be-packages.git packages
 
 cd ..
-mkdir pines
+mkdir 2be
 
 # Now copy the core code.
-mv repos/core/* pines/
+mv repos/core/* 2be/
 
 # Now copy the distribution components.
-mv repos/components/com_about/ pines/components/
-mv repos/components/com_bootstrap/ pines/components/
-#mv repos/components/com_ckeditor/ pines/components/
-mv repos/components/com_configure/ pines/components/
-mv repos/components/com_content/ pines/components/
-mv repos/components/com_dash/ pines/components/
-mv repos/components/com_elfinder/ pines/components/
-mv repos/components/com_elfinderupload/ pines/components/
-mv repos/components/com_entityhelper/ pines/components/
-mv repos/components/com_entitytools/ pines/components/
-mv repos/components/com_fancybox/ pines/components/
-mv repos/components/com_iframe/ pines/components/
-mv repos/components/com_imodules/ pines/components/
-mv repos/components/com_istyle/ pines/components/
-mv repos/components/com_jquery/ pines/components/
-mv repos/components/com_jstree/ pines/components/
-mv repos/components/com_logger/ pines/components/
-mv repos/components/com_mailer/ pines/components/
-mv repos/components/com_markdown/ pines/components/
-mv repos/components/com_menueditor/ pines/components/
-mv repos/components/com_modules/ pines/components/
-mv repos/components/com_nivoslider/ pines/components/
-mv repos/components/com_notes/ pines/components/
-mv repos/components/com_oxygenicons/ pines/components/
-mv repos/components/com_package/ pines/components/
-mv repos/components/com_pform/ pines/components/
-mv repos/components/com_pgrid/ pines/components/
-mv repos/components/com_plaza/ pines/components/
-mv repos/components/com_pnotify/ pines/components/
-mv repos/components/com_popeye/ pines/components/
-mv repos/components/com_ptags/ pines/components/
-mv repos/components/com_replace/ pines/components/
-mv repos/components/com_slim/ pines/components/
-mv repos/components/com_su/ pines/components/
-mv repos/components/com_timeoutnotice/ pines/components/
-mv repos/components/com_tinymce/ pines/components/
-mv repos/components/com_uasniffer/ pines/components/
-mv repos/components/com_user/ pines/components/
-mv repos/components/tpl_mobile/ pines/templates/
-mv repos/components/tpl_pines/ pines/templates/
-mv repos/components/tpl_pinescms/ pines/templates/
-mv repos/components/tpl_print/ pines/templates/
+mv repos/packages/com_about/ 2be/components/
+mv repos/packages/com_bootstrap/ 2be/components/
+#mv repos/packages/com_ckeditor/ 2be/components/
+mv repos/packages/com_configure/ 2be/components/
+mv repos/packages/com_content/ 2be/components/
+mv repos/packages/com_dash/ 2be/components/
+mv repos/packages/com_elfinder/ 2be/components/
+mv repos/packages/com_elfinderupload/ 2be/components/
+mv repos/packages/com_entityhelper/ 2be/components/
+mv repos/packages/com_entitytools/ 2be/components/
+mv repos/packages/com_fancybox/ 2be/components/
+mv repos/packages/com_iframe/ 2be/components/
+mv repos/packages/com_imodules/ 2be/components/
+mv repos/packages/com_istyle/ 2be/components/
+mv repos/packages/com_jquery/ 2be/components/
+mv repos/packages/com_jstree/ 2be/components/
+mv repos/packages/com_logger/ 2be/components/
+mv repos/packages/com_mailer/ 2be/components/
+mv repos/packages/com_markdown/ 2be/components/
+mv repos/packages/com_menueditor/ 2be/components/
+mv repos/packages/com_modules/ 2be/components/
+mv repos/packages/com_nivoslider/ 2be/components/
+mv repos/packages/com_notes/ 2be/components/
+mv repos/packages/com_oxygenicons/ 2be/components/
+mv repos/packages/com_package/ 2be/components/
+mv repos/packages/com_pform/ 2be/components/
+mv repos/packages/com_pgrid/ 2be/components/
+mv repos/packages/com_plaza/ 2be/components/
+mv repos/packages/com_pnotify/ 2be/components/
+mv repos/packages/com_popeye/ 2be/components/
+mv repos/packages/com_ptags/ 2be/components/
+mv repos/packages/com_replace/ 2be/components/
+mv repos/packages/com_slim/ 2be/components/
+mv repos/packages/com_su/ 2be/components/
+mv repos/packages/com_timeoutnotice/ 2be/components/
+mv repos/packages/com_tinymce/ 2be/components/
+mv repos/packages/com_uasniffer/ 2be/components/
+mv repos/packages/com_user/ 2be/components/
+mv repos/packages/tpl_mobile/ 2be/templates/
+mv repos/packages/tpl_pines/ 2be/templates/
+mv repos/packages/tpl_pinescms/ 2be/templates/
+mv repos/packages/tpl_print/ 2be/templates/
 
 # Now copy MySQL code.
-cp -r pines/ pines-mysql/
-mv repos/components/com_myentity/ pines-mysql/components/
-mv repos/components/com_mysql/ pines-mysql/components/
+cp -r 2be/ 2be-mysql/
+mv repos/packages/com_myentity/ 2be-mysql/components/
+mv repos/packages/com_mysql/ 2be-mysql/components/
 
 # Now copy Postgres code.
-cp -r pines/ pines-pgsql/
-mv repos/components/com_pgentity/ pines-pgsql/components/
-mv repos/components/com_pgsql/ pines-pgsql/components/
+cp -r 2be/ 2be-pgsql/
+mv repos/packages/com_pgentity/ 2be-pgsql/components/
+mv repos/packages/com_pgsql/ 2be-pgsql/components/
 
 # Now clean up.
 rm --interactive=never -r repos/
-rm --interactive=never -r pines/
+rm --interactive=never -r 2be/
 
 # And we're done.
 echo All done.

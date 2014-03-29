@@ -5,8 +5,8 @@
 		<meta charset="utf-8" />
 		<script type="text/javascript">
 			function call_up() {
-				if (window.frameElement && window.frameElement.pines_upload_done)
-					window.frameElement.pines_upload_done();
+				if (window.frameElement && window.frameElement.2be_upload_done)
+					window.frameElement.2be_upload_done();
 			}
 		</script>
 	</head>

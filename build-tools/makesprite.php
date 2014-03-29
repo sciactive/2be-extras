@@ -10,12 +10,12 @@ $sprite = new Imagick();
 $sprite->newImage(1, 1, 'none');
 $sprite->setImageFormat('png');
 $sprite->setImageColorspace(imagick::COLORSPACE_RGB);
-$sprite->setImageBackgroundColor(new ImagickPixel('transparent')); 
+$sprite->setImageBackgroundColor(new ImagickPixel('transparent'));
 $offset = (object) array('x' => 0, 'y' => 0);
 $max_width = 800;
 $cur_row_height = 0;
 
-$working_dir = '../../pines/components/com_oxygenicons/includes/oxygen/';
+$working_dir = '../../2be/components/com_oxygenicons/includes/oxygen/';
 
 $dir_iterator = new RecursiveDirectoryIterator($working_dir);
 $iterator = new RecursiveIteratorIterator($dir_iterator, RecursiveIteratorIterator::CHILD_FIRST);
