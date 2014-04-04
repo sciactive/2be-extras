@@ -190,18 +190,20 @@ if (!empty($_REQUEST['type'])) {
 				$("#serialized").val(example).trigger("change");
 			}
 			<?php if ($secure_mode) { ?>
-			$.pnotify.defaults.history = false;
-			$.pnotify.defaults.styling = "bootstrap3";
 			var stack = {"dir1": "up", "dir2": "left", "firstpos1": 25, "firstpos2": 25};
 			$.pnotify.defaults.stack = stack;
 			$.pnotify.defaults.addclass = 'stack-bottomright';
-			$.pnotify.defaults.hide = false;
 			$(function(){
-				$.pnotify({
-					"title": "PHP Mode Disabled",
-					"text": "PHP language mode has been disabled for security reasons.",
-					"type": "info"
-				});
+				var n = $.pnotify({
+					title: "PHP Mode Disabled",
+					text: "PHP language mode has been disabled for security reasons.",
+					type: "info",
+					hide: false,
+					history: false,
+					styling: "bootstrap3",
+					nonblock: true,
+					nonblock_opacity: .2
+				}).click(function(){n.pnotify_remove()});
 			});
 			<?php } ?>
 		</script>
