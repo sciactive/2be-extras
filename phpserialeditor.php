@@ -3,7 +3,8 @@
  * A serialized PHP value editor.
  *
  * This file helps edit values from a 2be database, which are often
- * stored as serialized PHP.
+ * stored as serialized PHP. It's all self contained in this one file, including
+ * the graphics.
  *
  * 2be - an Enterprise PHP Application Framework
  * Copyright (C) 2008-2011  Hunter Perrin.
@@ -249,6 +250,9 @@ if (!empty($_REQUEST['type'])) {
 						<div id="diff"></div>
 					</div>
 				</div>
+			</div>
+			<div>
+				<a href="https://github.com/sciactive/2be-extras/blob/master/phpserialeditor.php">This tool is open source.</a>
 			</div>
 		</div>
 	</body>
