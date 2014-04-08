@@ -1,7 +1,31 @@
 #!/bin/bash
 
-git clone git@github.com:sciactive/2be-core.git
-git clone git@github.com:sciactive/2be-packages.git
+PWDDIR="$(pwd)"
+DIR="$(dirname $0)"
+if [ -e "$DIR/build-dev-env.sh" ]; then
+    cd "$DIR/../.."
+fi
+
+question () {
+	echo -n "$1"
+	read -p " (y/n)[n] " -n 1 answer
+	echo
+	if [ "$answer" = "y" ]; then
+		return 0
+	elif [ "$answer" = "Y" ]; then
+		return 0
+	else
+		return 1
+	fi
+}
+
+question "Are you authenticated to the 2be repos on GitHub?" && {
+	git clone git@github.com:sciactive/2be-core.git
+	git clone git@github.com:sciactive/2be-packages.git
+} || {
+	git clone https://github.com/sciactive/2be-core.git
+	git clone https://github.com/sciactive/2be-packages.git
+}
 
 mkdir 2be
 cd 2be
@@ -20,7 +44,15 @@ cd ../components
 ln -s ../../2be-packages/com_* ./
 
 rm com_ckeditor com_inuitcss
-mv com_pgsql .com_pgsql
-mv com_pgentity .com_pgentity
 
-cd ../../
+question "Are you using MySQL?" && {
+	echo "MySQL selected. Disabling PostgreSQL components."
+	mv com_pgsql .com_pgsql
+	mv com_pgentity .com_pgentity
+} || {
+	echo "PostgreSQL selected. Disabling MySQL components."
+	mv com_mysql .com_mysql
+	mv com_myentity .com_myentity
+}
+
+cd "$PWDDIR"
