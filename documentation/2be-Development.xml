@@ -5595,7 +5595,7 @@ $entities = $_-&gt;entity_manager-&gt;get_entities(
 
             <para>The user class is very similar to the entity class. Their
             interfaces both extend
-            <interfacename>data_object_interface</interfacename>, so they
+            <interfacename>DataObjectInterface</interfacename>, so they
             share many of the same methods. Here is a list of the methods they
             share.<itemizedlist>
                 <listitem>
@@ -5745,7 +5745,7 @@ $entities = $_-&gt;entity_manager-&gt;get_entities(
 
             <para>The group class is also very similar to the entity class.
             Its interface also extends
-            <interfacename>data_object_interface</interfacename>. It shares
+            <interfacename>DataObjectInterface</interfacename>. It shares
             the same methods with entities that the
             <classname>user</classname> class shares. It also must act like
             entities in the same way users do. Again, this does not include
